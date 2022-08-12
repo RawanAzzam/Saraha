@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { SharedModule } from './shared/shared.module';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,9 @@ import { AboutComponent } from './about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
