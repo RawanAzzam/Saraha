@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -15,7 +16,8 @@ const routes: Routes = [];
     AppComponent,
     HomeComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
