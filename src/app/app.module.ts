@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 const routes: Routes = [];
 @NgModule({
@@ -17,7 +18,7 @@ const routes: Routes = [];
     AppComponent,
     HomeComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
     ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ const routes: Routes = [];
     SharedModule,
     RouterModule,
     AuthenticationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

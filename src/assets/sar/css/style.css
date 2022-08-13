@@ -642,14 +642,14 @@ iframe {
 
 /*--- sticky header ---*/
 
-header.stick {
+.stick {
     z-index: 99;
     position: absolute;
     top: 0;
     left: 0;
 }
 
-header.sticky {
+.Sticky {
     position: fixed;
 }
 
