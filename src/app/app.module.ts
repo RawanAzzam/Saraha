@@ -8,7 +8,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [];
 @NgModule({
@@ -16,14 +17,15 @@ const routes: Routes = [];
     AppComponent,
     HomeComponent,
     ContactComponent,
-    AboutComponent,
-    LoginComponent
-  ],
+    AboutComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    AuthenticationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
