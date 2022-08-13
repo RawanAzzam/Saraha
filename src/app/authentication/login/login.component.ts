@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-username : FormControl = new FormControl('',Validators.required);
+username : FormControl = new FormControl('',[Validators.required]);
 password : FormControl = new FormControl('',[Validators.required,Validators.minLength(9)]);
 
 saveLoginInfo : boolean = false;
