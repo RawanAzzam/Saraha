@@ -58,13 +58,33 @@
                                 <span>sign in now and meet the awesome Friends around the world.</span>
                             </div>
                             <form class="we-form" >
+                                <mat-form-field appearance="outline">
                                 <input type="text" placeholder="Email" matInput [formControl]="username" >
-                         
-                                
-                                    <input type="password" placeholder="password" matInput [formControl]="password" >
-                                 
-                                   
-                                <input type="checkbox" [checked]="saveLoginInfo" (change)="saveLoginInfo = !saveLoginInfo"><label>remember me</label>
+                               
+                                  <mat-error *ngIf="username.hasError('required')"style="color:white;">
+                                    Email is <strong>required</strong>
+                                  </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <input type="password" placeholder="password" matInput [formControl]="password"  >
+                                    <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')" style="color:white ;">
+                                        Please enter strong password
+                                      </mat-error>
+                                      <mat-error *ngIf="password.hasError('required')" style="color:white;">
+                                        password is <strong>required</strong>
+                                      </mat-error>
+                                </mat-form-field>
+<!--                              
+                                <input type="checkbox" [checked]="saveLoginInfo" (change)="saveLoginInfo = !saveLoginInfo"> <label>remember me</label>
+                           -->
+                           <div class="level options">
+                           
+                              <input type="checkbox" id="checkbox" class="regular-checkbox" [checked]="saveLoginInfo" (change)="saveLoginInfo = !saveLoginInfo">
+                              <label for="checkbox"></label>
+                              <span>Remember me</span>
+                               
+                          </div>
+                  
                                 <button type="submit" data-ripple="" (click)="Login()" [disabled]="!username.valid || !password.valid">Login</button>
                                 <a class="forgot underline" href="#" title="">forgot password?</a>
                             </form>
