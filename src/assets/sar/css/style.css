@@ -1392,6 +1392,7 @@ iframe {
     margin-bottom: 14px;
     position: relative;
     width: 100%;
+    padding: 6px;
 }
 
 .sidebar .widget li:last-child {
