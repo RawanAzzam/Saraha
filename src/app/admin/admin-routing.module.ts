@@ -14,6 +14,11 @@ const routes: Routes = [
     path:'',
     component:AsiderbarComponent
  
+  },
+  {
+    path:'HomePage',
+    component:HomeComponent
+ 
   }
 ];
 
