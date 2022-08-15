@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AdminAsiderbarComponent } from './admin-asiderbar/admin-asiderbar.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -19,6 +20,7 @@ const routes: Routes = [];
     HomeComponent,
     ContactComponent,
     AboutComponent,
+    AdminAsiderbarComponent,
     ],
   imports: [
     BrowserModule,
