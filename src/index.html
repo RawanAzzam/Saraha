@@ -25,6 +25,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/AdminDashboard/img/favicons/apple-touch-icon.png">
+
+  <link rel="manifest" href="./assets/AdminDashboard/img/favicons/manifest.json">
+  <meta name="msapplication-TileImage" content="./assets/AdminDashboard/img/favicons/mstile-150x150.png">
+  <meta name="theme-color" content="#ffffff">
+  <script href="./assets/AdminDashboard/js/config.js"></script>
+  <script href="./assets/AdminDashboard/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+  <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+  <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+  <link href="./assets/AdminDashboard/vendors/dropzone/dropzone.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link href="./assets/AdminDashboard/vendors/prism/prism-okaidia.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+  <link href="./assets/AdminDashboard/vendors/overlayscrollbars/OverlayScrollbars.min.css" rel="stylesheet">
+  <link href="./assets/AdminDashboard/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
+  <link href="./assets/AdminDashboard/css/theme.min.css" rel="stylesheet" id="style-default">
+  <link href="./assets/AdminDashboard/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
+  <link href="./assets/AdminDashboard/css/user.min.css" rel="stylesheet" id="user-style-default">
 
 
 
@@ -37,6 +74,41 @@
 	<script src="./assets/sar/js/jquery.funfact.min.js"></script>
 	<script src="./assets/sar/js/counterup-t-waypoint.js"></script>
 	<script src="./assets/sar/js/script.js"></script>
- 
+ <!--Admin-->
+ <script>
+  var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+  if (isRTL) {
+      var linkDefault = document.getElementById('style-default');
+      var userLinkDefault = document.getElementById('user-style-default');
+      linkDefault.setAttribute('disabled', true);
+      userLinkDefault.setAttribute('disabled', true);
+      document.querySelector('html').setAttribute('dir', 'rtl');
+  } else {
+      var linkRTL = document.getElementById('style-rtl');
+      var userLinkRTL = document.getElementById('user-style-rtl');
+      linkRTL.setAttribute('disabled', true);
+      userLinkRTL.setAttribute('disabled', true);
+  }
+</script>
+
+<script src="./assets/AdminDashboard/vendors/echarts/echarts.min.js"></script>
+
+<script src="./assets/AdminDashboard/vendors/popper/popper.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/bootstrap/bootstrap.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/anchorjs/anchor.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/is/is.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/echarts/echarts.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/prism/prism.js"></script>
+<script src="./assets/AdminDashboard/vendors/fontawesome/all.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/lodash/lodash.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+<script src="./assets/AdminDashboard/vendors/list.js/list.min.js"></script>
+<script src="./assets/AdminDashboard/js/theme.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script src="./assets/AdminDashboard/vendors/dropzone/dropzone.min.js"></script>
+<script>
+  feather.replace()
+</script>
 </body>
 </html>
