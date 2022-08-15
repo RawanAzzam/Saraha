@@ -8,6 +8,7 @@ import { ManageServicesComponent } from './manage-services/manage-services.compo
 import { ManageReportComponent } from './manage-report/manage-report.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../admin/shared/shared.module';
+import { AsiderbarComponent } from './asiderbar/asiderbar.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SharedModule } from '../admin/shared/shared.module';
     ManageUsersComponent,
     ManageServicesComponent,
     ManageReportComponent,
-    HomeComponent
+    HomeComponent,
+    AsiderbarComponent
   ],
   imports: [
     CommonModule,
