@@ -9,6 +9,7 @@ import { ManageReportComponent } from './manage-report/manage-report.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../admin/shared/shared.module';
 import { AsiderbarComponent } from './asiderbar/asiderbar.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AsiderbarComponent } from './asiderbar/asiderbar.component';
     ManageServicesComponent,
     ManageReportComponent,
     HomeComponent,
-    AsiderbarComponent
+    AsiderbarComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
