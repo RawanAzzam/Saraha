@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../admin/shared/shared.module';
 import { AsiderbarComponent } from './asiderbar/asiderbar.component';
 import { HeaderComponent } from './header/header.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ManageHomeComponent } from './manage-home/manage-home.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { HeaderComponent } from './header/header.component';
     ManageReportComponent,
     HomeComponent,
     AsiderbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    MessagesComponent,
+    AboutUsComponent,
+    TestimonialComponent,
+    ManageHomeComponent
   ],
   imports: [
     CommonModule,
