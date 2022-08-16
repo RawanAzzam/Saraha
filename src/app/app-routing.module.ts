@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
 
 import { AuthenticationModule } from './authentication/authentication.module';
-import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { UserModule } from './user/user.module';
 
-const routes: Routes = [{
-  path:'contact',
-    component:ContactComponent
-    },
+const routes: Routes = [
     {
       path:'',
       component:HomeComponent
@@ -18,10 +14,7 @@ const routes: Routes = [{
       path:'Home',
       component:HomeComponent
       },
-      {
-        path:'about',
-        component:AboutComponent
-  },{
+  {
     path:'authentication',
     loadChildren: () =>import('./authentication/authentication.module')
     .then((m)=>m.AuthenticationModule)
@@ -31,11 +24,11 @@ const routes: Routes = [{
   loadChildren: () =>import('./admin/admin.module')
   .then((m)=>m.AdminModule)
 },
-
-
-
-
-  
+{
+path:'user',
+loadChildren: () => UserModule
+}
+ 
 ];
 
 @NgModule({
