@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AsiderbarComponent } from './asiderbar/asiderbar.component';
 import { ManageReportComponent } from './manage-report/manage-report.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path:'Report',
     component:ManageReportComponent
+ 
+  },
+  {
+    path:'message',
+    component:MessagesComponent
  
   }
 ];
