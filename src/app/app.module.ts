@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { AdminAsiderbarComponent } from './admin-asiderbar/admin-asiderbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -17,8 +16,6 @@ const routes: Routes = [];
   declarations: [
     AppComponent,
     HomeComponent,
-
-    AdminAsiderbarComponent,
     ],
   imports: [
     BrowserModule,
