@@ -14,6 +14,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
     MessagesComponent,
     AboutUsComponent,
     TestimonialComponent,
-    ManageHomeComponent
+    ManageHomeComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
