@@ -7,6 +7,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { ManageServicesComponent } from './manage-services/manage-services.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { UsersComponent } from './users/users.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
   }, {
     path:'Users',
     component:UsersComponent
+ 
+  }, {
+    path:'Purchase',
+    component:PurchaseComponent
  
   }
 ];

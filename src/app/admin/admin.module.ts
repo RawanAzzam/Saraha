@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { UsersComponent } from './users/users.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UsersComponent } from './users/users.component';
     HeaderComponent,
     MessagesComponent,
     ManageHomeComponent,
-    UsersComponent
+    UsersComponent,
+    PurchaseComponent
   ],
   imports: [
     CommonModule,
