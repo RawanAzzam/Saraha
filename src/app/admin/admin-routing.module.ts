@@ -8,6 +8,7 @@ import { ManageServicesComponent } from './manage-services/manage-services.compo
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { UsersComponent } from './users/users.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    component:AsiderbarComponent
+    component:TestimonialsComponent
  
   },
   {
@@ -52,6 +53,7 @@ const routes: Routes = [
     component:PurchaseComponent
  
   }
+
 ];
 
 @NgModule({
