@@ -9,6 +9,7 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { UsersComponent } from './users/users.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
  
   },
   {
-    path:'',
+    path:'Testimonials',
     component:TestimonialsComponent
  
   },
@@ -51,6 +52,11 @@ const routes: Routes = [
   }, {
     path:'Purchase',
     component:PurchaseComponent
+ 
+  },
+  {
+    path:'',
+    component:AdminProfileComponent
  
   }
 

@@ -13,6 +13,7 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { UsersComponent } from './users/users.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
     ManageHomeComponent,
     UsersComponent,
     PurchaseComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    AdminProfileComponent
   ],
   imports: [
     CommonModule,
