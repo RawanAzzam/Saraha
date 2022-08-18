@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MakeTestimonyComponent } from './make-testimony/make-testimony.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
+import { ServiceComponent } from './service/service.component';
 import { UserAboutComponent } from './user-about/user-about.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
@@ -26,7 +27,12 @@ const routes: Routes = [
   {
     path:'create-testimony',
     component:MakeTestimonyComponent
+  },
+  {
+    path:'my-badges',
+    component:ServiceComponent
   }
+
 ];
 
 @NgModule({

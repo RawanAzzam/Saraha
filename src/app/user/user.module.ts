@@ -8,6 +8,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
 import { UserAboutComponent } from './user-about/user-about.component';
 import { MakeTestimonyComponent } from './make-testimony/make-testimony.component';
+import { ServiceComponent } from './service/service.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MakeTestimonyComponent } from './make-testimony/make-testimony.componen
     MessagesComponent,
     NotificatonsComponent,
     UserAboutComponent,
-    MakeTestimonyComponent
+    MakeTestimonyComponent,
+    ServiceComponent
   ],
   imports: [
     CommonModule,
