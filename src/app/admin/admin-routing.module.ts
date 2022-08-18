@@ -14,7 +14,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 const routes: Routes = [
   {
-    path:'home',
+    path:'',
     component:HomeComponent
  
   },
@@ -55,7 +55,7 @@ const routes: Routes = [
  
   },
   {
-    path:'',
+    path:'MyProfile',
     component:AdminProfileComponent
  
   }
