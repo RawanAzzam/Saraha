@@ -14,7 +14,10 @@ import { UsersComponent } from './users/users.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreateNewServiceComponent } from './create-new-service/create-new-service.component';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,10 +33,14 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     PurchaseComponent,
     TestimonialsComponent,
     AdminProfileComponent,
+    CreateNewServiceComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
     ]
 })
 export class AdminModule { }
