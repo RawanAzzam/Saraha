@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { CreateNewServiceComponent } from '../create-new-service/create-new-service.component';
@@ -10,14 +11,59 @@ import { CreateNewServiceComponent } from '../create-new-service/create-new-serv
 })
 export class ManageServicesComponent implements OnInit {
 
-  constructor(public featureService : FeatureService,public dialog : MatDialog) { }
-
+  constructor(public featureService : FeatureService,private dialog:MatDialog) { }
+  @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
+  @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>;  updateForm:FormGroup=new FormGroup({
+    featureId:new FormControl(),
+    featureName:new FormControl(),
+    featurePrice:new FormControl(),
+    featureDuration:new FormControl(),
+    // enddate:new FormControl(),
+    // imagename:new FormControl()
+  })
   ngOnInit(): void {
     this.featureService.getAll();
   }
-
-  CreateNewSevice(){
-   this.dialog.open(CreateNewServiceComponent);
+  deleteservice(id:number)
+  {
+    const dialogVal= this.dialog.open(this.calldeleteDailog);
+    dialogVal.afterClosed().subscribe((result)=>{
+      if(result!=undefined)
+        {
+          if(result=='yes')
+          
+          this.featureService.deleteService(id);
+        else (result=='no')
+        console.log("Thank you");
+             }
+    })
+   
   }
+  CreateNewSevice(){
+    this.dialog.open(CreateNewServiceComponent);
+  }
+
+  p_data:any={};
+  updateDailog(obj:any){
+    this.p_data={
+      featureId:obj.featureId,
+      featureName:obj.featureName,
+    featurePrice:obj.featurePrice,
+    featureDuration:obj.featureDuration,
+    // enddate:obj.enddate,
+    // imagename:obj.imagename
+    }
+    console.log(this.p_data);
+    this.updateForm.controls['featureId'].setValue(this.p_data.featureId); 
+    
+    this.dialog.open(this.callupdateDailog2)
+    
+  }
+  updateService(){
+    debugger
+    this.featureService.UpdateService(this.updateForm.value);
+  }
+
+
 
 }

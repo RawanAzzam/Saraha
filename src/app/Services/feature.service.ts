@@ -25,5 +25,36 @@ export class FeatureService {
 
     })
   }
+    deleteService(id:number)
+  {
+    
+    this.http.delete('https://localhost:44324/api/Feature/RemoveFeature/'+id).subscribe((resp)=>{
+    
+    },err=>{
+     
+    })
+    window.location.reload();
+  }
+
+
+  UpdateService (body:any)
+  {
+    // this.spinner.show();
+    // body.imagename=this.display_Image;
+    debugger
+    this.http.put('https://localhost:44324/api/Feature/UpdateFeature',body).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+
+
 
 }
+  
+
+
