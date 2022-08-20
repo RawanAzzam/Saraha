@@ -29,7 +29,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     UsersComponent,
     PurchaseComponent,
     TestimonialsComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
   ],
   imports: [
     CommonModule,

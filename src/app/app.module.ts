@@ -11,6 +11,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [];
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ const routes: Routes = [];
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

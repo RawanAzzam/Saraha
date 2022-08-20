@@ -43,11 +43,10 @@
                                                     <a href="#" class="main-btn" title="" style="margin-bottom:25px ;">Add Service</a>
 
                                                     <div class="load-more">
-                                                        
-                                                        <div class="central-meta item" style="display: inline-block;">
+                                                        <div *ngFor="let obj of featureService.feature" class="central-meta item" style="display: inline-block;">
                                                           
                                                             <div class="classic-post">
-
+                                                        
                                                                 <div class="classic-pst-meta">
                                                                     <div class="more">
                                                                         <div class="more-post-optns"><i class="ti-more-alt"></i>
@@ -58,61 +57,15 @@
                                                                         </div>
                                                                     </div>
                                                                     <h4><i class="fa fa-check-circle" title="verified"></i> <a href="#" title=""> Bicycle BMW new for sale </a></h4>
-                                                                    <p>Ask anonymous </p>
-                                                                    <span class="prise">$300</span>
+                                                                    <p>{{obj.featureName}}</p>
+                                                                    <span class="prise">${{obj.featurePrice}}</span>
                                                                     <div class="location-area">
-                                                                        <i>Duration: 1 month</i>
+                                                                        <i>Duration: {{obj.featureDuration}} month</i>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="central-meta item" style="display: inline-block;">
-                                                            <div class="classic-post">
-                                                               
-                                                                <div class="classic-pst-meta">
-                                                                    <div class="more">
-                                                                        <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                                                <li><i class="fa fa-trash-o"></i>Delete Post</li>
-                                                                                 </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h4><i class="fa fa-check-circle" title="verified"></i> <a href="#" title=""> Exercise cycle machine </a></h4>
-                                                                    <p>Open Live</p>
-                                                                    <span class="prise">$800</span>
-                                                                    <div class="location-area">
-                                                                        <i>Duration: 1 month</i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="central-meta item" style="display: none;">
-                                                            <div class="classic-post">
-                                                               
-                                                                <div class="classic-pst-meta">
-                                                                    <div class="more">
-                                                                        <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                                                            <ul>
-                                                                                <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                                                <li><i class="fa fa-trash-o"></i>Delete Post</li>
-                                                                                <li class="bad-report"><i class="fa fa-flag"></i>Report This Post</li>
-                                                                                <li><i class="fa fa-clock-o"></i>Schedule Post</li>
-                                                                                <li><i class="fa fa-wpexplorer"></i>Select as featured</li>
-                                                                                <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <h4><i class="fa fa-check-circle" title="verified"></i> <a href="#" title=""> Dell Laptop for sale </a></h4>
-                                                                    <p>Dell Laptop N5050 for sale 3 months used 8GB ram...</p>
-                                                                    <span class="prise">$700</span>
-                                                                    <div class="location-area">
-                                                                        <i>Duration Mar,11 2020</i>
-                                                                        <span><i class="fa fa-map-marker"></i> Toronto, Canada</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                     
                                                     </div>
 
 

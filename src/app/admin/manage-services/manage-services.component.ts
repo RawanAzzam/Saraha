@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeatureService } from 'src/app/Services/feature.service';
 
 @Component({
   selector: 'app-manage-services',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageServicesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public featureService : FeatureService) { }
 
   ngOnInit(): void {
+    this.featureService.getAll();
   }
 
 }
