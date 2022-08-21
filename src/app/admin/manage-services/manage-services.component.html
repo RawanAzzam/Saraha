@@ -111,6 +111,9 @@
             <mat-label>Service Duration </mat-label>
             <input type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
           </mat-form-field>
+          <mat-label>Image :</mat-label>
+          <input type="file" #file formControlName="imagePath" placeholder="p_data.imagePath" (change)="uploadImage(file.files)" >
+  
           <button (click)="updateService()">Update</button>
     </form>
     

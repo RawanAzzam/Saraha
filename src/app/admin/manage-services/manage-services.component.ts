@@ -13,13 +13,14 @@ export class ManageServicesComponent implements OnInit {
 
   constructor(public featureService : FeatureService,private dialog:MatDialog) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
-  @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>;  updateForm:FormGroup=new FormGroup({
+  @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
+   updateForm:FormGroup=new FormGroup({
     featureId:new FormControl(),
     featureName:new FormControl(),
     featurePrice:new FormControl(),
     featureDuration:new FormControl(),
     // enddate:new FormControl(),
-    // imagename:new FormControl()
+     imagePath:new FormControl()
   })
   ngOnInit(): void {
     this.featureService.getAll();
@@ -51,7 +52,7 @@ export class ManageServicesComponent implements OnInit {
     featurePrice:obj.featurePrice,
     featureDuration:obj.featureDuration,
     // enddate:obj.enddate,
-    // imagename:obj.imagename
+    imagePath:obj.imagePath
     }
     console.log(this.p_data);
     this.updateForm.controls['featureId'].setValue(this.p_data.featureId); 
@@ -64,6 +65,15 @@ export class ManageServicesComponent implements OnInit {
     this.featureService.UpdateService(this.updateForm.value);
   }
 
-
+  uploadImage(file:any){
+    if(file.length == 0){
+     return
+    }
+ 
+    let fileToUpload = <File>file[0];
+    const formData = new FormData();
+    formData.append('file',fileToUpload,fileToUpload.name);
+    this.featureService.uploadFeatureImage(formData);
+   }
 
 }

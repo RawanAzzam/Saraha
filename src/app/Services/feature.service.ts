@@ -19,7 +19,7 @@ export class FeatureService {
   }
 
   createService(service:any){
-    service.ImagePath = this.featureImage.ImagePath;
+    service.imagePath = this.featureImage.imagePath;
     console.log(service);
 
     debugger;
@@ -28,6 +28,7 @@ export class FeatureService {
     },Erorr =>{
 
     })
+    window.location.reload();
   }
     deleteService(id:number)
   {
@@ -44,7 +45,7 @@ export class FeatureService {
   UpdateService (body:any)
   {
     // this.spinner.show();
-    // body.imagename=this.display_Image;
+    body.imagePath=this.featureImage.imagePath;
     debugger
     this.http.put('https://localhost:44324/api/Feature/UpdateFeature',body).subscribe((resp)=>{
       // this.spinner.hide();
