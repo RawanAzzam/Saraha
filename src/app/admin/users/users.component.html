@@ -41,116 +41,32 @@
                                                     <h4 class="create-post">All Users</h4>
 
                                                     <div class="row">
-                                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                                        <div *ngFor="let user of userService.users" class="col-lg-4 col-md-6 col-sm-6">
                                                             <div class="friend-box">
                                                                 <figure>
-                                                                    <img src="./assets/sar/images/resources/frnd-cover1.jpg" alt="">
-                                                                    <span>Canada</span>
+                                                                    <img src="../../../assets/{{user.imagePath}}" alt="">
                                                                 </figure>
                                                                 <div class="frnd-meta">
-                                                                    <div class="frnd-name">
-                                                                        <a href="#" title="">Adam James</a>
-                                                                    </div>
+                                                                   
                                                                     <ul class="frnd-info">
-                                                                        <li><span>Username:</span> username</li>
-                                                                        <li><span>Email:</span> email@11</li>
-                                                                        <li><span>Phone number:</span> 4455445</li>
-                                                                        <li><span>Birthdate:</span> December, 2014</li>
+                                                                        <li><span>Username:</span> {{user.username}}</li>
+                                                                        <li><span>Email:</span> {{user.email}}</li>
+                                                                        <li><span>Phone number:</span> {{user.phonenumber}}</li>
+                                                                        <li><span>Gender:</span> {{user.gender}}</li>
                                                                     </ul>
                                                                     <a class="send-mesg" href="#" title="">Message</a>
                                                                     <div class="more-opotnz">
                                                                         <i class="fa fa-ellipsis-h"></i>
                                                                         <ul>
-                                                                            <li><a href="#" title="">Block</a></li>
-                                                                            <li><a href="#" title="">UnBlock</a></li>
+                                                                          <li>  <a *ngIf="!user.is_Blocked" (click)="changeBlockStatus(user.loginid,1)" title="">Block</a></li>
+                                                                          <li><a *ngIf="user.is_Blocked" (click)="changeBlockStatus(user.loginid,0)" title="">UnBlock</a></li>
+                                                                          <li> <a  (click)="deleteAccount(user.loginid,user.userId)" title="">Delete Account</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6">
-                                                            <div class="friend-box">
-                                                                <figure>
-                                                                    <img src="./assets/sar/images/resources/frnd-cover2.jpg" alt="">
-                                                                    <span>Canada</span>
-                                                                </figure>
-                                                                <div class="frnd-meta">
-                                                                    <div class="frnd-name">
-                                                                        <a href="#" title="">Adam James</a>
-                                                                    </div>
-                                                                    <ul class="frnd-info">
-                                                                        <li><span>Username:</span> username</li>
-                                                                        <li><span>Email:</span> email@11</li>
-                                                                        <li><span>Phone number:</span> 4455445</li>
-                                                                        <li><span>Birthdate:</span> December, 2014</li>
-                                                                    </ul>
-                                                                    <a class="send-mesg" href="#" title="">Message</a>
-                                                                    <div class="more-opotnz">
-                                                                        <i class="fa fa-ellipsis-h"></i>
-                                                                        <ul>
-                                                                            <li><a href="#" title="">Block</a></li>
-                                                                            <li><a href="#" title="">UnBlock</a></li>
-                                                                           
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6">
-                                                            <div class="friend-box">
-                                                                <figure>
-                                                                    <img src="./assets/sar/images/resources/frnd-cover3.jpg" alt="">
-                                                                    <span>Canada</span>
-                                                                </figure>
-                                                                <div class="frnd-meta">
-                                                                    <div class="frnd-name">
-                                                                        <a href="#" title="">Adam James</a>
-                                                                    </div>
-                                                                    <ul class="frnd-info">
-                                                                        <li><span>Username:</span> username</li>
-                                                                        <li><span>Email:</span> email@11</li>
-                                                                        <li><span>Phone number:</span> 4455445</li>
-                                                                        <li><span>Birthdate:</span> December, 2014</li>
-                                                                    </ul>
-                                                                    <a class="send-mesg" href="#" title="">Message</a>
-                                                                    <div class="more-opotnz">
-                                                                        <i class="fa fa-ellipsis-h"></i>
-                                                                        <ul>
-                                                                            <li><a href="#" title="">Block</a></li>
-                                                                            <li><a href="#" title="">UnBlock</a></li>
-                                                                           
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-6 col-sm-6">
-                                                            <div class="friend-box">
-                                                                <figure>
-                                                                    <img src="./assets/sar/images/resources/frnd-cover4.jpg" alt="">
-                                                                    <span>Canada</span>
-                                                                </figure>
-                                                                <div class="frnd-meta">
-                                                                    <div class="frnd-name">
-                                                                        <a href="#" title="">Adam James</a>
-                                                                    </div>
-                                                                    <ul class="frnd-info">
-                                                                        <li><span>Username:</span> username</li>
-                                                                        <li><span>Email:</span> email@11</li>
-                                                                        <li><span>Phone number:</span> 4455445</li>
-                                                                        <li><span>Birthdate:</span> December, 2014</li>
-                                                                    </ul>
-                                                                    <a class="send-mesg" href="#" title="">Message</a>
-                                                                    <div class="more-opotnz">
-                                                                        <i class="fa fa-ellipsis-h"></i>
-                                                                        <ul>
-                                                                            <li><a href="#" title="">Block</a></li>
-                                                                            <li><a href="#" title="">UnBlock</a></li>
-                                                                                                                                   </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                       
                                                        
                                                     </div>
                                                    
