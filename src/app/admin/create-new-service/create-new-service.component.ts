@@ -14,11 +14,23 @@ export class CreateNewServiceComponent implements OnInit {
   createService:FormGroup = new FormGroup({
     FeatureName:new FormControl('',Validators.required),
     FeaturePrice:new FormControl('',Validators.required),
-    FeatureDuration:new FormControl('',Validators.required),})
+    FeatureDuration:new FormControl('',Validators.required),
+    ImagePath : new FormControl ('')})
   ngOnInit(): void {
   }
 
   CreateService(){
 this.featureService.createService(this.createService.value);
+  }
+
+  uploadImage(file:any){
+   if(file.length == 0){
+    return
+   }
+
+   let fileToUpload = <File>file[0];
+   const formData = new FormData();
+   formData.append('file',fileToUpload,fileToUpload.name);
+   this.featureService.uploadFeatureImage(formData);
   }
 }

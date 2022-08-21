@@ -24,6 +24,9 @@
         </mat-error>
     </mat-form-field>
 
+        <mat-label>Image :</mat-label>
+        <input type="file" #file formControlName="ImagePath" (change)="uploadImage(file.files)" >
+
  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
