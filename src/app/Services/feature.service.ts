@@ -45,9 +45,12 @@ export class FeatureService {
   UpdateService (body:any)
   {
     // this.spinner.show();
+    if(this.featureImage != null)
     body.imagePath=this.featureImage.imagePath;
-    debugger
-    this.http.put('https://localhost:44324/api/Feature/UpdateFeature',body).subscribe((resp)=>{
+    debugger;
+console.log(body);
+
+this.http.put('https://localhost:44324/api/Feature/UpdateFeature',body).subscribe((resp)=>{
       // this.spinner.hide();
       // this.toaster.success('Updated |Successfully');
     },err=>{
@@ -61,6 +64,7 @@ export class FeatureService {
 
   uploadFeatureImage(file : FormData){
     this.http.post('https://localhost:44324/api/Feature/CreateImagePath',file).subscribe((result) => {
+      debugger;
       this.featureImage = result;
       console.log(this.featureImage);
     },err => {

@@ -46,6 +46,7 @@ export class ManageServicesComponent implements OnInit {
 
   p_data:any={};
   updateDailog(obj:any){
+    console.log(obj);
     this.p_data={
       featureId:obj.featureId,
       featureName:obj.featureName,
@@ -61,7 +62,7 @@ export class ManageServicesComponent implements OnInit {
     
   }
   updateService(){
-    debugger
+    this.updateForm.value.imagePath = this.p_data.imagePath;
     this.featureService.UpdateService(this.updateForm.value);
   }
 
@@ -69,7 +70,8 @@ export class ManageServicesComponent implements OnInit {
     if(file.length == 0){
      return
     }
- 
+    debugger;
+     console.log(file);
     let fileToUpload = <File>file[0];
     const formData = new FormData();
     formData.append('file',fileToUpload,fileToUpload.name);
