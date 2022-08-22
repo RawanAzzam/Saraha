@@ -60,14 +60,14 @@
                             </div>
                             <form class="we-form" >
                                 <mat-form-field appearance="outline">
-                                <input type="text" placeholder="Email" matInput [formControl]="username"  style="color:white; height: 40px; width: 200px; border-radius:10px; color: #000;" >
+                                <input type="text" placeholder="Email" matInput [formControl]="username"  style="color:white; height: 40px; width: 200px; border-radius:1px; color: rgb(255, 255, 255); border-color: aliceblue;" >
                                
                                   <mat-error *ngIf="username.hasError('required')">
                                     Email is <strong>required</strong>
                                   </mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" >
-                                    <input type="password" placeholder="password" matInput [formControl]="password" style="color:white; height: 40px; width: 200px; border-radius:10px;color: #000;" >
+                                    <input type="password" placeholder="password" matInput [formControl]="password" style="color:white; height: 40px; width: 200px; border-radius:1px;color: rgb(255, 255, 255);border-color: aliceblue;" >
                                     <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
                                         Please enter strong password
                                       </mat-error>
@@ -78,7 +78,8 @@
 <!--                              
                                 <input type="checkbox" [checked]="saveLoginInfo" (change)="saveLoginInfo = !saveLoginInfo"> <label>remember me</label>
                            -->
-                           <div class="level options">
+                           <div class="level options" style="    display: -webkit-inline-box;
+                           margin-top: -10px;">
                            
                               <input type="checkbox" id="checkbox" class="regular-checkbox" [checked]="saveLoginInfo" (change)="saveLoginInfo = !saveLoginInfo">
                               <label for="checkbox"></label>

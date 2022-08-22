@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 username : FormControl = new FormControl('',[Validators.required]);
-password : FormControl = new FormControl('',[Validators.required,Validators.minLength(9)]);
+password : FormControl = new FormControl('',[Validators.required]);
 
 saveLoginInfo : boolean = false;
   constructor(private route :Router) { }
