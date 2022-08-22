@@ -77,6 +77,7 @@
                 <div class="central-meta">
                     <div class="forum-list">
                         <h4 class="create-post">Contact US Messages</h4>
+                        <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewMessage()"> Add Service </a> -->
 
                         <table  class="table table-responsive">
                             <thead>
@@ -96,7 +97,7 @@
                                     </td>
                                     <td>{{obj.email}}</td>
                                     <td class="date-n-reply">
-                                        <a class="addnewforum" style="color: white;" href="forum-create-topic.html" title=""> Delete</a></td>
+                                        <a class="addnewforum" style="color: white;" (click)="deleteMessage(obj.contactusid)" title=""> Delete</a></td>
             
                                 </tr>
                                
@@ -113,7 +114,11 @@
     </div>
 </section>
 
-
+<ng-template #calldeleteDailog>
+    <h2>Are You Sure uyou want to delete this item?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+</ng-template>
 
 
 
