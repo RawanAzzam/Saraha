@@ -691,20 +691,66 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
-				<div class="leter-input">
-					<form method="post">
+				<!-- <div class="leter-input"> -->
+					<form [formGroup]="createMessage" >
+<div class="col-lg-12">
+						<mat-form-field>
+							<input type="text" matInput formControlName="username"type="text" placeholder="Your Name..." >
+							<mat-error *ngIf="createMessage.controls['username'].hasError('required')">
+							 username Name is <strong>required</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="col-lg-12">
+
+						<mat-form-field>
+							<input type="text" matInput formControlName="email"type="text" placeholder="Your Email..." >
+							<mat-error *ngIf="createMessage.controls['email'].hasError('required')">
+							 Email is <strong>required</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="col-lg-12">
+
+						<mat-form-field>
+							<input type="text" matInput formControlName="message"  type="text" placeholder="Message..." >
+							<mat-error *ngIf="createMessage.controls['message'].hasError('required')">
+							 Message cannot be empty!
+							</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="row">
+
+						<button type="submit" [disabled]="!createMessage.valid" class="main-btn col-7" mat-button (click)="CreateMessage()">Create</button>
+
+						<!-- <button type="submit" class="main-btn" data-ripple="">
+							Send Message
+						   <i class="fa fa-paper-plane-o"></i>
+					   </button> -->
+					</div>
+					 </form>
+					
+
+
+
+
+
+
+
+
+					<!-- <form method="post">
 						<input style="margin: 10px" type="text" placeholder="Your Email...">
 						<input style="margin: 10px"type="text" placeholder="Your Message...">
 						<button type="submit" class="main-btn" data-ripple="">
 							 Send Message
 							<i class="fa fa-paper-plane-o"></i>
 						</button>
-					</form>
+					</form> -->
 				</div>
 			</div>
 		</div>
 		</div>	
-	</div>
+	<!-- </div> -->
 </section><!-- subscribe sec -->
 
 
