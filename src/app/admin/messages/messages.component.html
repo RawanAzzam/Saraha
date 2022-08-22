@@ -77,33 +77,28 @@
                 <div class="central-meta">
                     <div class="forum-list">
                         <h4 class="create-post">Contact US Messages</h4>
+                        <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewMessage()"> Add Service </a> -->
 
                         <table  class="table table-responsive">
                             <thead>
                                 <tr >
-                                    <th scope="col">Message</th>
-                                    <th scope="col"> Name</th>
-                                    <th scope="col"> Email</th>
+                                    <th scope="col-3">Message</th>
+                                    <th scope="col-3"> Email</th>
+                                    <th scope="col-3"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                          
+                                <tr *ngFor="let obj of contactUs.Messages">
                                     <td>
                                         <i class="fa fa-comments"></i> 
-                                        <a href="forums-category.html" title="">Asset for creating a beautiful website</a>
-                                        <p>list your recommended website and when you start to create your website so please check your laptop window and battery :-)</p>
+                                        <a href="forums-category.html" title="">{{obj.username}}</a>
+                                        <p>{{obj.message}}</p>
                                     </td>
-                                    <td style="width:100px ;display: inline-block;"><p>Sara Watson</p></td>
-                                    <td><p>Sara@gmail.com</p></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="fa fa-comments"></i> 
-                                        <a href="forums-category.html" title="">Modifications &amp; Useful Snippets</a>
-                                        <p>Share your own custom snippets for modifying the winku template beyond it's limits.</p>
-                                    </td>
-                                    <td>10</td>
-                                    <td>3</td>
+                                    <td>{{obj.email}}</td>
+                                    <td class="date-n-reply">
+                                        <a class="addnewforum" style="color: white;" (click)="deleteMessage(obj.contactusid)" title=""> Delete</a></td>
+            
                                 </tr>
                                
                             </tbody>
@@ -119,7 +114,11 @@
     </div>
 </section>
 
-
+<ng-template #calldeleteDailog>
+    <h2>Are You Sure uyou want to delete this item?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+</ng-template>
 
 
 
