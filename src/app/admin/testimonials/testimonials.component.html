@@ -86,14 +86,14 @@
                        
                         </div>
                     </div>
-                    <div class="event-invites">
+                    <div class="event-invites" *ngFor="let obj of Testimonial.testimonial" >
                         <div class="row">
                             <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="invite-figure">
-                                    <figure><img src="./assets/sar/images/resources/friend-avatar2.jpg" alt=""></figure>
-                                    <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">Waed</a></h6>
+                                    <!-- <figure><img src="./assets/sar/images/resources/friend-avatar2.jpg" alt=""></figure> -->
+                                    <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">{{obj.userid}}</a></h6>
                                     <p style="margin-left:80px ;">
-                                       Amazing website, Keep Going ❤️  
+                                       {{obj.content}}  
                                     </p>
                                 </div>
                             </div>
@@ -102,140 +102,8 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-12">
                                 <div class="invites-btns">
-                                    <a class="main-btn" href="#" title="" data-ripple="">Accept</a>
-                                    <a class="main-btn3" href="#" title="" data-ripple="">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event-invites">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="invite-figure">
-                                    <figure><img src="images/resources/friend-avatar3.jpg" alt=""></figure>
-                                    <h6><a class="invitor" href="#" title="">Andrew</a> invited you to an event <a href="#" title="">Mother's day</a></h6>
-                                    <p>
-                                        Hi, we should to get together on mother day, so join gathering and enjoy the day of mothers!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-md-4 col-sm-12">
-                                <div class="invite-location">
-                                    <i class="ti-location-pin"></i>
-                                    <span>Hayat Residency</span>
-                                    <span class="datentime">1:30PM September 02, 2020</span>
-                                    <div class="users-thumb-list">
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Anderw">
-                                            <img alt="" src="images/resources/userlist-4.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="frank">
-                                            <img alt="" src="images/resources/userlist-2.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Sara">
-                                            <img alt="" src="images/resources/userlist-3.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Amy">
-                                            <img alt="" src="images/resources/userlist-5.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Ema">
-                                            <img alt="" src="images/resources/userlist-1.jpg"> 
-                                        </a>
-                                        <span class="more-friendz">14+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12">
-                                <div class="invites-btns">
-                                    <a class="main-btn" href="#" title="" data-ripple="">Accept</a>
-                                    <a class="main-btn3" href="#" title="" data-ripple="">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event-invites">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="invite-figure">
-                                    <figure><img src="images/resources/friend-avatar4.jpg" alt=""></figure>
-                                    <h6><a class="invitor" href="#" title="">Sarah William</a> invited you to an event <a href="#" title="">Mother's day</a></h6>
-                                    <p>
-                                        Hi, we should to get together on mother day, so join gathering and enjoy the day of mothers. hope you will enjoy!
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-md-4 col-sm-12">
-                                <div class="invite-location">
-                                    <i class="ti-location-pin"></i>
-                                    <span>Ramada Washington</span>
-                                    <span class="datentime">12:30PM March 02, 2021</span>
-                                    <div class="users-thumb-list">
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Anderw">
-                                            <img alt="" src="images/resources/userlist-5.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="frank">
-                                            <img alt="" src="images/resources/userlist-1.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Sara">
-                                            <img alt="" src="images/resources/userlist-2.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Amy">
-                                            <img alt="" src="images/resources/userlist-4.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Ema">
-                                            <img alt="" src="images/resources/userlist-3.jpg"> 
-                                        </a>
-                                        <span class="more-friendz">14+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12">
-                                <div class="invites-btns">
-                                    <a class="main-btn" href="#" title="" data-ripple="">Accept</a>
-                                    <a class="main-btn3" href="#" title="" data-ripple="">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event-invites">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="invite-figure">
-                                    <figure><img src="images/resources/friend-avatar5.jpg" alt=""></figure>
-                                    <h6><a class="invitor" href="#" title="">George</a> invited you to an event <a href="#" title="">Mother's day</a></h6>
-                                    <p>
-                                        Hi, we should to get together on Valentine day, so join gathering and enjoy the day of love.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-md-4 col-sm-12">
-                                <div class="invite-location">
-                                    <i class="ti-location-pin"></i>
-                                    <span>KFC Tornoto</span>
-                                    <span class="datentime">12:30PM August 02, 2020</span>
-                                    <div class="users-thumb-list">
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Anderw">
-                                            <img alt="" src="images/resources/userlist-2.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="frank">
-                                            <img alt="" src="images/resources/userlist-4.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Sara">
-                                            <img alt="" src="images/resources/userlist-1.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Amy">
-                                            <img alt="" src="images/resources/userlist-2.jpg">  
-                                        </a>
-                                        <a data-toggle="tooltip" title="" href="#" data-original-title="Ema">
-                                            <img alt="" src="images/resources/userlist-5.jpg"> 
-                                        </a>
-                                        <span class="more-friendz">14+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-12">
-                                <div class="invites-btns">
-                                    <a class="main-btn" href="#" title="" data-ripple="">Accept</a>
-                                    <a class="main-btn3" href="#" title="" data-ripple="">Cancel</a>
+                                    <a class="main-btn3" (click)="updateDailog(obj)" title="" data-ripple="">Accept</a>
+                                    <a class="main-btn3" (click)="deletetest(obj.testimonialid)" title="" data-ripple="">Remove</a>
                                 </div>
                             </div>
                         </div>
@@ -255,4 +123,21 @@
 
 
 
+<ng-template #calldeleteDailog>
+    <h2>Are You Sure uyou want to delete this item?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+</ng-template>
 
+<ng-template #callupdateDailog>
+    <form class="example-form" [formGroup]="updateForm" >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Accept</mat-label>
+          <input type="text" matInput formControlName="is_Accepted"
+                 [(ngModel)]="p_data.is_Accepted">
+        </mat-form-field>
+   
+          <button (click)="UpdateTest()">Update</button>
+    </form>
+    
+</ng-template>

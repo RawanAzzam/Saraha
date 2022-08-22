@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ContactUsService } from '../Services/contact-us.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,12 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService) { }
 
+  createMessage:FormGroup = new FormGroup({
+    username:new FormControl('',Validators.required),
+    email:new FormControl('',Validators.required),
+    message:new FormControl('',Validators.required),
+})
   ngOnInit(): void {
     this.spinner.show();
 
@@ -17,5 +23,10 @@ export class HomeComponent implements OnInit {
       this.spinner.hide();
     }, 3000);
   }
+
+  CreateMessage(){
+this.contactUS.CreateNewMessage(this.createMessage.value);
+  }
+  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService) { }
 
 }
