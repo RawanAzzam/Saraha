@@ -60,14 +60,14 @@
                             </div>
                             <form class="we-form" >
                                 <mat-form-field appearance="outline">
-                                <input type="text" placeholder="Email" matInput [formControl]="username"  style="color:white; height: 40px; width: 200px; border-radius:1px; color: rgb(255, 255, 255); border-color: aliceblue;" >
+                                <input type="text" placeholder="Email" matInput [formControl]="username"  style="color:rgb(0, 0, 0); height: 40px; width: 200px; border-radius:1px; border-color: aliceblue;" >
                                
                                   <mat-error *ngIf="username.hasError('required')">
                                     Email is <strong>required</strong>
                                   </mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" >
-                                    <input type="password" placeholder="password" matInput [formControl]="password" style="color:white; height: 40px; width: 200px; border-radius:1px;color: rgb(255, 255, 255);border-color: aliceblue;" >
+                                    <input type="password" placeholder="password" matInput [formControl]="password" style="color:rgb(0, 0, 0); height: 40px; width: 200px; border-radius:1px;border-color: aliceblue;" >
                                     <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
                                         Please enter strong password
                                       </mat-error>
