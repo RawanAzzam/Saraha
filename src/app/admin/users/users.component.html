@@ -39,6 +39,7 @@
                                                
                                                 <div class="central-meta padding30">
                                                     <h4 class="create-post">All Users</h4>
+                                                    <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="openCreateDialog()"> Add User </a>
 
                                                     <div class="row">
                                                         <div *ngFor="let user of userService.users" class="col-lg-4 col-md-6 col-sm-6">
@@ -101,3 +102,34 @@
 </div>
 </div>
 </div>
+
+<ng-template #callCreateDailog>
+    <form class="example-form" [formGroup]="createUserForm" >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input type="text" matInput formControlName="username">
+        </mat-form-field>
+    <br>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+          </mat-form-field>
+    <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>phonenumber </mat-label>
+            <input type="text" matInput formControlName="phonenumber" >
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Country </mat-label>
+            <input type="text" matInput formControlName="country" >
+          </mat-form-field>
+       
+          <br>
+          <mat-label>Image :</mat-label>
+          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" >
+  
+          <button (click)="CreateNewUser()">Create</button>
+    </form>
+    
+</ng-template>

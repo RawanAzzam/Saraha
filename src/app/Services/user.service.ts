@@ -8,13 +8,25 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
   users : any = []
-
-  getAll(){
+  userImage:any
+  getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
     this.users=res;
     },err=>{
     
     })
+  }
+
+  createUser(user:any){
+    user.imagepath = this.userImage.imagepath;
+    console.log(user);
+    this.http.post('https://localhost:44324/api/UserProfile',user).subscribe((res)=>{
+
+      },err=>{
+      console.log(err);
+      })
+      
+      window.location.reload();
   }
 
   changeBlockUserStatus(loginId:number,blockStatus:number){
@@ -41,6 +53,17 @@ export class UserService {
 
     })
     window.location.reload();
+  }
+
+  uploadUserImage(file : FormData){
+    this.http.post('https://localhost:44324/api/UserProfile/UploadUserImage',file).subscribe((result) => {
+      debugger;
+      this.userImage = result;
+      console.log(this.userImage);
+    },err => {
+      console.log(err)
+    })
+  
   }
 
 }
