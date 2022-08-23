@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -8,10 +10,19 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./admin-profile.component.css']
 })
 export class AdminProfileComponent implements OnInit {
+ 
+   oldPassword = "123456789";
+   passwordForm:FormGroup = new FormGroup(
+    {
+      oldPasswordControl:new FormControl(''),
+      newPasswordControl:new FormControl(''),
+    }
+   )
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private toastar:ToastrService,private loginService:LoginService) { }
+
   user:any
-  updateUserForm:FormGroup = new FormGroup({
+   updateUserForm:FormGroup = new FormGroup({
     userid:new FormControl(''),
     username:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
@@ -24,7 +35,7 @@ export class AdminProfileComponent implements OnInit {
 
    ngOnInit() {
      this.userService.getUserById(2);
-
+     this.loginService.getLoginByUserId(2);
     //  while(this.userService.user == undefined)
     //  continue
      setTimeout(()=> {this.user = this.userService.user;
@@ -38,6 +49,7 @@ export class AdminProfileComponent implements OnInit {
   updateUser(){
     this.updateUserForm.controls['userid'].setValue(this.user.userid);
     this.updateUserForm.controls['gender'].setValue(this.user.gender);
+    this.updateUserForm.value.imagepath = this.user.imagepath;
     console.log(this.updateUserForm.value)
     debugger;
     this.userService.updateUser(this.updateUserForm.value);
@@ -56,4 +68,18 @@ export class AdminProfileComponent implements OnInit {
    }
 
 
+   checkMatchPassword(){
+    console.log(this.passwordForm.controls['oldPasswordControl'].value  == this.oldPassword)
+    if(this.passwordForm.controls['oldPasswordControl'].value != this.oldPassword)
+{  
+  this.toastar.warning('Old Password is not correct ...');
+
+}   }
+
+
+  changePassword(){
+   this.loginService.changePassword(this.loginService.login.loginid,this.passwordForm.controls['newPasswordControl'].value)
+  }
+
+   
 }

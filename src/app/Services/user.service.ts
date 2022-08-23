@@ -10,6 +10,8 @@ export class UserService {
   users : any = []
   userImage:any
   user:any
+  
+
   getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
     this.users=res;
@@ -69,14 +71,16 @@ export class UserService {
 
    updateUser(user:any){
     if(this.userImage != null)
-    user.imagePath=this.userImage.imagePath;
-
+    user.imagepath=this.userImage.imagepath;
+    console.log(user);
+    debugger;
     this.http.put('https://localhost:44324/api/UserProfile',user).subscribe((result) => {
-      debugger;
-      console.log(user);
+      
     },err => {
       console.log(err)
     })
+
+    window.location.reload();
   }
 
   getUserById(userId:number){
@@ -88,5 +92,8 @@ export class UserService {
       console.log(err)
     })
   }
+
+  
+  
 
 }
