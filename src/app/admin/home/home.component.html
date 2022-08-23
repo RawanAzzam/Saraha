@@ -234,66 +234,16 @@
                          <div class="widget"style=" width: 824px; margin-left: -1px;" >
                              <h4 class="widget-title">Most Active People</h4>
                              <ul class="most-actie-pep">
-                                 <li>
+                                <div  *ngFor="let user of userservice.users">
+                                <li *ngIf="user.Is_Active == 1">
+
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend1.jpg">
+                                         <img alt=""src="./assets/{{user.imagePath}">
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
-                                 <li>
-                                     <a href="#" title="Andrew" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend2.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Sapna" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend3.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Emily" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend4.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Xing Xang" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend5.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Sophia" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend6.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="George" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend7.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Katy" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend8.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Luci" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend9.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
-                                 <li>
-                                     <a href="#" title="Diana" class="user-thmb">
-                                         <img alt=""src="./assets/sar/images/resources/side-friend10.jpg">
-                                         <span class="status f-online"></span>
-                                     </a>
-                                 </li>
+                                </div> 
+                            
                              </ul>
                          </div>
                      </div>
@@ -335,14 +285,19 @@
                        
                     </tr>
                 </thead>
-                <tbody>                
-                    <tr>
+                <tbody>
+                    <div *ngFor="let message  of contactUs.Messages  "  >              
+                
+                        <tr>
                         <td>
                             <i class="fa fa-comments"></i> 
-                            <a href="forums-category.html" title="">Modifications &amp; Useful Snippets</a>
-                            <p>Share your own custom snippets for modifying the winku template beyond it's limits.</p>
+                            <a  style="font-size:meduim ;" href="forums-category.html" title="">{{message.username}} <br><a  href="mailto:someone@yoursite.com" style="color:#fa6342e8 ;font-size:small;margin-left:18px ;">{{message.email}}</a></a>
+                            
+
+                            <p>{{message.message}}</p>
                         </td>                    
                     </tr> 
+                </div>  
                 </tbody>
             </table>
            

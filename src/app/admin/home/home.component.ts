@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactUsService } from 'src/app/Services/contact-us.service';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -9,9 +10,13 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private user:UserService) { }
-
+  constructor( public userservice:UserService , public contactUs:ContactUsService) { }
   ngOnInit(): void {
+     this.userservice.getAllLoginUsers();
+   
+   this.contactUs.GetAll();
+
+
   }
 
 }

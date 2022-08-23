@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { CreateNewServiceComponent } from './create-new-service/create-new-service.component';
 import {  MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmailComposeComponent } from './email-compose/email-compose.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TestimonialsComponent,
     AdminProfileComponent,
     CreateNewServiceComponent,
+    EmailComposeComponent,
   ],
   imports: [
     CommonModule,

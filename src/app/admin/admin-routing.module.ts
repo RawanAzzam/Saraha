@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { EmailComposeComponent } from './email-compose/email-compose.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,11 @@ const routes: Routes = [
   {
     path:'MyProfile',
     component:AdminProfileComponent
+ 
+  },
+  {
+    path:'compose',
+    component:EmailComposeComponent
  
   }
 
