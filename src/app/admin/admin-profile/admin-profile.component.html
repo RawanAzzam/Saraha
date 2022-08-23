@@ -89,7 +89,7 @@
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
                                                     <div class="change-photo">
-                                                        <figure> <img  src="../../../assets/{{user.imagepath}}" alt=""></figure>
+                                                        <figure> <img width="100" height="100"  src="../../../assets/{{user.imagepath}}" alt=""></figure>
                                                         <div class="edit-img">
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>
@@ -106,7 +106,7 @@
                                                         
                                                         <div>
                                                             <label>Email</label>
-                                                            <input type="text" formControlName="email" [(ngModel)]="user.email" placeholder="jackcarter4023">
+                                                            <input type="text"  formControlName="email" [(ngModel)]="user.email" placeholder="jackcarter4023">
                                                         </div>
                                                         <div>
                                                             <label>Phone Number</label>
@@ -382,8 +382,7 @@
                                                         </div>
                                                     
                                                         <div>
-                                                            <button type="submit" (click)="updateUser()" data-ripple="">Cancel</button>
-                                                            <button type="submit" data-ripple="">Save</button>
+                                                            <button type="submit" (click)="updateUser()" data-ripple="">Save</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -661,13 +660,13 @@
                                 <div class="widget"style="height:600px ;">
                                     <div class="singin">
                                         <h4 class="widget-title">Change Password</h4>
-                                        <form method="post">
-                                            <input type="text" placeholder="Old Password">
-                                            <input type="password" placeholder="New Passowrd">
-                                            <div class="checkbox">
+                                        <form  [formGroup]="passwordForm">
+                                            
+                                            <input type="password" matInput formControlName="oldPasswordControl" (change)="checkMatchPassword()"  placeholder="Old Password">
                                            
-                                            </div>
-                                            <button type="submit">Log In</button>
+                                            <input type="password" matInput formControlName="newPasswordControl" placeholder="New Passowrd">
+                                            <button  (click)="changePassword()" type="submit">Change Password</button>
+
                                         </form>
                                     </div>	
                                 </div>
