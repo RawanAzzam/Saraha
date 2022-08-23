@@ -3,6 +3,7 @@ import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
