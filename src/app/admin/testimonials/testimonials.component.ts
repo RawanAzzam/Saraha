@@ -28,12 +28,6 @@ export class TestimonialsComponent implements OnInit {
     this.Testimonial.GetAll();
   }
 
-  @Input()testimonialid:number| undefined;
-  @Input()content:string| undefined;
-  @Input()stars:number| undefined;
-  @Input()userid:number| undefined;
-  @Input()is_Accepted:string| undefined;
-
   deletetest(id:number)
   {
     const dialogVal= this.dialog.open(this.calldeleteDailog);

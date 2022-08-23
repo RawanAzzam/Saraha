@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PurchaseService } from 'src/app/Services/purchase.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-purchase',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
+  u:any=[{}]
 
-  constructor() { }
+  constructor( public purchase:PurchaseService, public User:UserService){}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    this.purchase.GetAll();
+    this.User.getAll();
   }
-
 }

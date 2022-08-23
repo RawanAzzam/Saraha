@@ -27,10 +27,6 @@ export class MessagesComponent implements OnInit {
     this.contactUs.GetAll();
 
   }
-  @Input()contactusid:number| undefined;
-  @Input()username:string| undefined;
-  @Input()email:string| undefined;
-  @Input()message:string| undefined;
 
   deleteMessage<contactUs>(id:number)
   {
