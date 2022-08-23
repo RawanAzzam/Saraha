@@ -62,7 +62,7 @@
                                     phonenumber is not in correct format
                                   </mat-error>
                             </mat-form-field>
-                                <button type="submit" data-ripple="">Register</button>
+                                <button class="b" [disabled]="!email.valid || !password.valid || !phonenumber.valid" type="submit" data-ripple="">Register</button>
                                 <a class="forget underline" href="#" title="">forgot password?</a>
                             </form>
                             <a data-ripple="" title="" href="#" class="with-smedia facebook"><i class="fa fa-facebook"></i></a>
