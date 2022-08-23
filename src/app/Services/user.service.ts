@@ -10,7 +10,7 @@ export class UserService {
   users : any = []
 
   getAll(){
-    this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
+    this.http.get('https://localhost:44324/api/UserProfile/').subscribe((res)=>{
     this.users=res;
     },err=>{
     
