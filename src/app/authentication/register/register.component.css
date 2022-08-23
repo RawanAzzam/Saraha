@@ -1,0 +1,24 @@
+.inputfield
+{
+
+    border: 1px solid #eaeaea;
+    float: left;
+    margin-bottom: 8px;
+    padding: 13px 20px;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 12px;
+    margin:-20px;
+    align-items: center;
+    align-content: center ;
+    margin-left:5px ;
+
+}
+.forget {
+    float: right;
+    font-size: 12px;
+    margin-top: -27px;
+    text-transform: capitalize;
+    color: #fff;
+    margin-left: 5px;
+}
