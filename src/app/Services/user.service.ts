@@ -9,6 +9,7 @@ export class UserService {
   constructor(private http:HttpClient) { }
   users : any = []
   userImage:any
+  user:any
   getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
     this.users=res;
@@ -64,6 +65,28 @@ export class UserService {
       console.log(err)
     })
   
+  }
+
+   updateUser(user:any){
+    if(this.userImage != null)
+    user.imagePath=this.userImage.imagePath;
+
+    this.http.put('https://localhost:44324/api/UserProfile',user).subscribe((result) => {
+      debugger;
+      console.log(user);
+    },err => {
+      console.log(err)
+    })
+  }
+
+  getUserById(userId:number){
+    this.http.get('https://localhost:44324/api/UserProfile/GetUserById/'+userId).subscribe((result) => {
+      
+      console.log(result);
+      this.user = result;
+    },err => {
+      console.log(err)
+    })
   }
 
 }
