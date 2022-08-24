@@ -41,16 +41,17 @@ getActivePepole(){
     })
   }
 
+ 
   createUser(user:any){
-    user.imagepath = this.userImage.imagepath;
     console.log(user);
-    this.http.post('https://localhost:44324/api/UserProfile',user).subscribe((res)=>{
 
-      },err=>{
-      console.log(err);
-      })
-      
-      window.location.reload();
+    debugger;
+    this.http.post('https://localhost:44324/api/UserProfile/register',user).subscribe((result) =>{
+
+    },Erorr =>{
+
+    })
+    window.location.reload();
   }
 
   changeBlockUserStatus(loginId:number,blockStatus:number){

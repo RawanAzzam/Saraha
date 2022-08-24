@@ -90,20 +90,30 @@
                         <div class="row">
                             <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="invite-figure">
-                                    <!-- <figure><img src="./assets/sar/images/resources/friend-avatar2.jpg" alt=""></figure> -->
-                                    <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">{{obj.userid}}</a></h6>
+                                    <figure><img src="{{obj.imagePath}}" alt=""></figure>
+                                    <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">{{obj.user}}</a></h6>
                                     <p style="margin-left:80px ;">
-                                       {{obj.content}}  
+                                       {{obj.content}}
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-4 col-sm-12">
-                            
+                            <!-- <div class="col-lg-2 col-md-2 col-sm-12" *ngIf="obj.is_accepted">
+                                Accept 
+                            </div><div class="col-lg-2 col-md-2 col-sm-12" *ngIf="obj.is_accepted==false">
+                                Reject 
+                            </div> -->
+                            <div class="col-lg-2 col-md-2 col-sm-12">
+                                <div class="invites-btns" *ngIf="obj.is_accepted">
+                                    <a class="main-btn" (click)="UpdateTest(0, obj.testimonialid)" title="" data-ripple="">Accept</a>
+                                </div>   
+                                <div class="invites-btns" *ngIf="!obj.is_accepted">
+                                    <a class="main-btn2" (click)="UpdateTest(1, obj.testimonialid)" title="" data-ripple="">Remove</a>
+                                </div>                                
                             </div>
+                            
                             <div class="col-lg-2 col-md-2 col-sm-12">
                                 <div class="invites-btns">
-                                    <a class="main-btn3" (click)="updateDailog(obj)" title="" data-ripple="">Accept</a>
-                                    <a class="main-btn3" (click)="deletetest(obj.testimonialid)" title="" data-ripple="">Remove</a>
+                                    <a class="main-btn3" (click)="deletetest(obj.testimonialid)" title="" data-ripple="">Discard</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +139,7 @@
     <button mat-dialog-close="no">No</button>
 </ng-template>
 
-<ng-template #callupdateDailog>
+<!-- <ng-template #callupdateDailog>
     <form class="example-form" [formGroup]="updateForm" >
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Accept</mat-label>
@@ -137,7 +147,7 @@
                  [(ngModel)]="p_data.is_Accepted">
         </mat-form-field>
    
-          <button (click)="UpdateTest()">Update</button>
+          <button mat-dialog-close="yes" >Update</button>
     </form>
     
-</ng-template>
+</ng-template> -->
