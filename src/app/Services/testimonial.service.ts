@@ -14,7 +14,7 @@ export class TestimonialService {
 
    }
    GetAll(){
-     this.http.get("https://localhost:44324/Api/Testimonial").subscribe((result)=>
+     this.http.get("https://localhost:44324/Api/Testimonial/GetUserTestemonial").subscribe((result)=>
      {
        this.testimonial=result;
      })
@@ -23,7 +23,7 @@ export class TestimonialService {
    deletetest(id:number)
    {
      
-     this.http.delete('https://localhost:44324/Api/Testimonial/delete/'+id).subscribe((resp)=>{
+     this.http.delete('https://localhost:44324/Api/Testimonial/'+id).subscribe((resp)=>{
      
      },err=>{
       
@@ -31,10 +31,10 @@ export class TestimonialService {
      window.location.reload();
    }
 
-   UpdateTest(body:any)
+   UpdateTest(is_Accepted:number, testimonialid:number)
   {
  
- this.http.put('https://localhost:44324/api/Testimonial',body).subscribe((resp)=>{
+ this.http.get('https://localhost:44324/api/Testimonial/UpdateAcceptingStatus/'+is_Accepted+'/'+testimonialid).subscribe((resp)=>{
      
      },err=>{
       
