@@ -20,6 +20,7 @@ import { CreateNewServiceComponent } from './create-new-service/create-new-servi
 import {  MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmailComposeComponent } from './email-compose/email-compose.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EmailComposeComponent } from './email-compose/email-compose.component';
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
     ]
 })
 export class AdminModule { }
