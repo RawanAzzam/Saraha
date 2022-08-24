@@ -47,7 +47,7 @@
                                                      
                                                         <main>
                                                             <p style="color:#fa6342" class="text-center">Report Message</p>
-                                                            <form>
+                                                            <form [formGroup]="emailForm"> 
                                                                 <div class="form-row mb-3">
                                                                     <label for="to" class="col-2 col-sm-1 col-form-label">To:</label>
                                                                     <div class="col-10 col-sm-11">
@@ -60,6 +60,7 @@
                                                                         <input style="border-color:#fa6342 ;" type="email" class="form-control" id="cc" placeholder="Type email">
                                                                     </div>
                                                                 </div>
+                                                         
                                                              
                                                             </form>
                                                             <div class="row">
