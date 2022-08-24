@@ -11,9 +11,11 @@ export class EmailComposeComponent implements OnInit {
 
   constructor(private email:EmailServiceService) { }
   emailForm:FormGroup = new FormGroup({
-    To:new FormControl('',[Validators.required,Validators.email]),
-    Email:new FormControl('',Validators.required),
-    Message:new FormControl('',Validators.required),
+    reportedName:new FormControl('',[Validators.required,Validators.email]),
+    reportedEmail:new FormControl('',Validators.required),
+    reportMessage:new FormControl('',Validators.required),
+
+   
   })
   ngOnInit(): void {
   }
