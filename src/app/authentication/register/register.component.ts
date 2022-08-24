@@ -3,6 +3,7 @@ import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {ToastrService} from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 
 
 
@@ -12,9 +13,17 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm :FormGroup =  new FormGroup({  email :  new FormControl('',[Validators.required,Validators.email]),
-  password : new FormControl('',[Validators.required,Validators.minLength(8)]),
-  phonenumber : new FormControl('',[Validators.required,Validators.minLength(10),Validators.pattern("^[0-9]{10,12}$")]),
+  registerForm :FormGroup =  new FormGroup({    
+  password : new FormControl('',[Validators.required]),
+  username : new FormControl('',[Validators.required]),
+  name : new FormControl('',[Validators.required]),
+  email : new FormControl('',[Validators.required]),
+  phonenumber : new FormControl('',[Validators.required]),
+  gender : new FormControl('',[Validators.required]),
+  country : new FormControl('',[Validators.required]),
+
+
+
 
 })
 
@@ -22,9 +31,11 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService) { }
+  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , private user :UserService) { }
 
   ngOnInit(): void {
   }
-
+  CreateUser(){
+    this.user.createUser(this.registerForm.value);
+      }
 }

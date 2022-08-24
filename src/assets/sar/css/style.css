@@ -10301,8 +10301,10 @@ span.ttl {
 .c-form .social-name > label > i.fa-pinterests{color: #bd081c;}
 
 .chosen-container-single .chosen-single{
-    background: #edf2f6;
+    background: #ffffff;
     border: 1px solid #e4e4e4;
+    border-radius: 56px;
+    height: 43px;
 }
 .title1 {
     color: #515365;
