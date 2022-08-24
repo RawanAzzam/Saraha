@@ -44,25 +44,9 @@ export class TestimonialsComponent implements OnInit {
    
   }
  
-
-  updateDailog(obj:any){
-    console.log(obj);
-    this.p_data={
-      testimonialid:obj.testimonialid,
-      content:obj.content,
-      stars:obj.stars,
-      is_Accepted:obj.is_Accepted,
-    // enddate:obj.enddate,
-    userid:obj.userid
-    }
-    console.log(this.p_data);
-    this.updateForm.controls['testimonialid'].setValue(this.p_data.testimonialid); 
-    
-    this.dialog.open(this.callupdateDailog2)
-    
-  }
-  UpdateTest(){
-    this.Testimonial.UpdateTest(this.updateForm.value);
+  UpdateTest(is_accepted:number, testimonialid:number){
+    console.log(testimonialid);
+    this.Testimonial.UpdateTest(is_accepted,testimonialid);
   }
 
   // uploadImage(file:any){
