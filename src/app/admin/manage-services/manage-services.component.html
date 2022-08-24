@@ -38,16 +38,18 @@
                                        
                                     <!-- </figure> -->
                                     <div class="digi-meta">
-                                        <h4><a href="product-detail.html" title="">{{obj.featureName}}</a></h4>
+                                        <h4>{{obj.featureName}}</h4>
                                         <p>{{obj.featureDuration}} Months </p>
                                         <div class="rate">
-                                            <span class="qeemat">{{obj.featurePrice}}$</span>
-                                            <div style=" margin-right: 20px;" class="more-post-optns"><i class="ti-more-alt"></i>
+                                            <span class="qeemat"> <div style=" margin-right: 20px;" class="more-post-optns"><i class="ti-more-alt"></i>
                                                 <ul>
                                                     <li (click)="updateDailog(obj)"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
                                                     <li (click)="deleteservice(obj.featureId)"><i class="fa fa-trash-o"></i>Delete Service</li>                                                                               
                                                 </ul>
-                                            </div>
+                                            </div></span>
+                                            <span class="qeemat" style="float: left; color:#535165">{{obj.featurePrice}}$</span>
+
+                                           
                                         </div>
                                     </div>												
                                 </div>
