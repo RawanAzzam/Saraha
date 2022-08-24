@@ -15,5 +15,7 @@ export class PurchaseComponent implements OnInit {
    ngOnInit(): void {
     this.purchase.GetAll();
    // this.User.getAll();
+   this.User.getAll();
+   this.purchase.GetOrders();
   }
 }

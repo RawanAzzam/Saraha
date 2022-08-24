@@ -46,31 +46,35 @@
                                                             <div class="cart-sec">
                                                                 <table class="table table-responsive">
                                                                     <tbody><tr>
-                                                                        <th>Service name</th>
-                                                                        <th>Date from </th>
-                                                                        <th>Date to</th>
-                                                                        <th>User name</th>
-                                                                        <th>total price</th>
+                                                                        <th>Order Number</th>
+                                                                        <th>Order Date</th>
+                                                                        <th>Service Name</th>
+                                                                        <th>Service Price</th>
+                                                                        <th>Service Duration</th>
+                                                                        <th>User Name</th>
                                                                     </tr>
-                                                                    <tr *ngFor="let obj of purchase.p">
+                                                                    <tr *ngFor="let object of purchase.OServices">
                                                                         <td>
                                                                            
                                                                             <div class="cart-meta">
-                                                                                <span>{{obj.featureId}}</span>
+                                                                                <span>{{object.purchaseid}}</span>
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <span class="Date-from">{{obj.dateFrom | date:'mediumDate'}}</span>
+                                                                            <span class="Date-from">{{object.datefrom| date:'mediumDate'}}</span>
 
                                                                         </td>
                                                                         <td>
-                                                                            <span class="Date-to">{{obj.dateTo | date:'mediumDate'}} </span>
+                                                                            <span class="Date-to">{{object.featurename}}</span>
                                                                         </td >
-                                                                        <td *ngFor="let obj1 of User.users" >
-                                                                            <span class="User">{{obj1.username}}</span>
+                                                                        <td >
+                                                                            <span class="User">{{object.featureprice}}</span>
                                                                         </td>
                                                                         <td>
-                                                                        <span class="total-price">{{obj.purchaseCost}}</span>
+                                                                        <span class="total-price">{{object.featureduration}}</span>
+                                                                        </td>
+                                                                         <td>
+                                                                        <span class="total-price">{{object.username}}</span>
                                                                         </td>
 
                                                                     </tr>

@@ -7,11 +7,32 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   constructor(private http:HttpClient) { }
-  users : any = []
+  users : any = [{}]
   userImage:any
-  user:any
-  
+  user:any 
+  Activeusers : any = [{}]
+  posts : any = [{}]
+  Userposts : any = [{}]
+  totalCount :any;
+  Allusers: any = [{}]
 
+getAll(){
+    this.http.get('https://localhost:44324/api/UserProfile/').subscribe((res)=>{
+
+      this.Allusers=res;
+      this.totalCount =this.Allusers.length;
+},err=>{
+    
+})
+}
+getActivePepole(){
+  this.http.get('https://localhost:44324/api/UserProfile/GetActiveUsers').subscribe((res)=>{
+  this.Activeusers=res;
+  
+  },err=>{
+  
+  })
+}
   getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
     this.users=res;

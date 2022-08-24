@@ -7,8 +7,10 @@ import { Injectable } from '@angular/core';
 export class PurchaseService {
 
 
-  p: any=[{
-  }]
+  p: any=[{}]
+  OServices: any=[{}]
+  ordercount : any;
+ 
  
  
    constructor(private http:HttpClient) { 
@@ -19,5 +21,25 @@ export class PurchaseService {
      this.http.get("https://localhost:44324/Api/Purchase/GetPurchases").subscribe((result)=>
      {
        this.p=result;
+       this.ordercount =this.p.length;
      })
-   }}
+   }
+ 
+  
+   GetOrders(){
+    this.http.get("https://localhost:44324/Api/Purchase/GetOrders").subscribe((result)=>
+    {
+      this.OServices=result;
+     
+    })
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
