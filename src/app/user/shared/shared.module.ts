@@ -14,11 +14,13 @@ import { ProfileBarComponent } from './profile-bar/profile-bar.component';
   ],
   imports: [
     CommonModule,
+
   ],
   exports:[
     NavBarComponent,
     ActiveBarComponent,
-    ProfileBarComponent
+    ProfileBarComponent,
+
   ]
 })
 export class SharedModule { }
