@@ -12,7 +12,7 @@ export class EmailServiceService {
     console.log(email);
 
     debugger;
-    this.http.post('https://localhost:44324/Api/ContactUs',email).subscribe((result) =>{
+    this.http.post('https://localhost:44324/api/Report/SendEmail',email).subscribe((result) =>{
 
     },Erorr =>{
 
