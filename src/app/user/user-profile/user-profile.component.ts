@@ -9,11 +9,13 @@ import { PostService } from 'src/app/Services/post.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private post:PostService ) { }
+  constructor(public post:PostService ) { }
   postForm:FormGroup = new FormGroup({
     postText:new FormControl('',Validators.required),
     ImagePath : new FormControl ('')})
   ngOnInit(): void {
+    this.post.getPost();
+
   }
   CreatePost(){
   

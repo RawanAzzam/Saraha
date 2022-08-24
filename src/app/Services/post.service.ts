@@ -30,7 +30,17 @@ export class PostService {
     })
     window.location.reload();
   }
+  UserId = 21 ;
+  post : any =[]
 
+  getPost(){
+    this.http.get('https://localhost:44324/api/post/GetPostByUserId/'+this.UserId).subscribe((result) => {
+      this.post = result;
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
   uploadPostImage(file : FormData){
     this.http.post('https://localhost:44324/api/Post/UploadPostImage',file).subscribe((result) => {
       debugger;
