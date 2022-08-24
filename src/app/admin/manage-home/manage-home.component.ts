@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { AboutUsService } from 'src/app/Services/about-us.service';
 import { HomeService } from 'src/app/Services/home.service';
 
 @Component({
@@ -9,8 +11,15 @@ import { HomeService } from 'src/app/Services/home.service';
 })
 export class ManageHomeComponent implements OnInit {
 
-  constructor(public homeService:HomeService) { }
+  constructor(public homeService:HomeService,public aboutUsService:AboutUsService) { }
 
+ 
+
+  ngOnInit(): void {
+    this.homeService.getHome();
+    this.aboutUsService.getAboutUs();
+  }
+   ///////////////////////////// Manage Home Page 
   updateHomeForm : FormGroup = new FormGroup(
     {
       homeid:new FormControl(),
@@ -32,11 +41,6 @@ export class ManageHomeComponent implements OnInit {
       member4_Image:new FormControl(),
     }
   )
-
-  ngOnInit(): void {
-    this.homeService.getHome();
-  }
-
   uploadImage(file:any,index:number){
     if(file.length == 0){
      return
@@ -63,6 +67,44 @@ export class ManageHomeComponent implements OnInit {
     this.updateHomeForm.value.homeid = this.homeService.home.homeid
     
     this.homeService.updateHome(this.updateHomeForm.value);
+   }
+
+
+    ////////////////////////// Manage About Us Page 
+    updateAboutUsForm : FormGroup = new FormGroup(
+      {
+        aboutusid : new FormControl(),
+        title : new FormControl(),
+        subtitle : new FormControl(),
+        imagepath : new FormControl(),
+        feature1 : new FormControl(),
+        feature2 : new FormControl(),
+        feature3 : new FormControl(),
+        feature1_Image : new FormControl(),
+        feature2_Image : new FormControl(),
+        feature3_Image : new FormControl(),
+      }
+    )
+ 
+    updateAboutUs(){
+      debugger;
+      this.updateAboutUsForm.value.aboutusid = this.aboutUsService.aboutUs.aboutusid
+      this.updateAboutUsForm.value.imagepath = this.aboutUsService.aboutUs.imagepath
+      this.updateAboutUsForm.value.feature1_Image = this.aboutUsService.aboutUs.feature1_Image
+      this.updateAboutUsForm.value.feature2_Image = this.aboutUsService.aboutUs.feature2_Image
+      this.updateAboutUsForm.value.feature3_Image = this.aboutUsService.aboutUs.feature3_Image
+         this.aboutUsService.updateAboutUs(this.updateAboutUsForm.value);
+    }
+   uploadImageAboutUs(file:any,index:number){
+    if(file.length == 0){
+      return
+     }
+     debugger;
+      console.log(file);
+     let fileToUpload = <File>file[0];
+     const formData = new FormData();
+     formData.append('file',fileToUpload,fileToUpload.name);
+     this.aboutUsService.uploadImage(formData,index);
    }
 
 }

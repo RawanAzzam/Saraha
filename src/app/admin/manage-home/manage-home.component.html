@@ -89,22 +89,49 @@
                                                    
                                                         
                                                        
-                                                        <form method="post" class="c-form personal">
+                                                        <form class="c-form personal" [formGroup]="updateAboutUsForm">
                                                             <span>About Info</span>
                                                             <div class="row merged10">
                                                          
                                                                 <div class="col-lg-12">
-                                                                    <input type="text" placeholder="Head Line">
+                                                                    <input type="text" [(ngModel)]="this.aboutUsService.aboutUs.title" formControlName="title" placeholder="Title">
                                                                 </div>
                                                                 <div class="col-lg-12">
-                                                                    <textarea rows="5" placeholder="Text"></textarea>
+                                                                    <textarea rows="5" [(ngModel)]="this.aboutUsService.aboutUs.subtitle" formControlName="subtitle" placeholder="SubTitle"></textarea>
                                                                 </div>
                                                                 <div class="col-lg-12">
                                                                     <label class="form-label" for="customFile">About Image</label>
-                                                                    <input  style="height: 80px;" type="file" class="form-control main-btn" id="customFile" />
+                                                                    <img height="200" width="200" src="../../../assets/{{this.aboutUsService.aboutUs.imagepath}}">
+                                                                    <input   type="file" #file8 (change)="uploadImageAboutUs(file8.files,1)" />
                                                                     </div>
+                                                                    <div class="col-lg-12">
+                                                                        <textarea rows="5" [(ngModel)]="this.aboutUsService.aboutUs.feature1" formControlName="feature1" placeholder="Feature1"></textarea>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <label class="form-label" for="customFile">Feature1 Image</label>
+                                                                        <img height="200" width="200" src="../../../assets/{{this.aboutUsService.aboutUs.feature1_Image}}">
+                                                                        <input   type="file" #file9 (change)="uploadImageAboutUs(file9.files,2)" />
+                                                                        </div>
+
+                                                                    <div class="col-lg-12">
+                                                                        <textarea rows="5" [(ngModel)]="this.aboutUsService.aboutUs.feature2" formControlName="feature2" placeholder="Feature2"></textarea>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <label class="form-label" for="customFile">Feature2 Image</label>
+                                                                        <img height="200" width="200" src="../../../assets/{{this.aboutUsService.aboutUs.feature2_Image}}">
+                                                                        <input  type="file" #file10 (change)="uploadImageAboutUs(file10.files,3)" />
+                                                                        </div>
+
+                                                                    <div class="col-lg-12">
+                                                                        <textarea rows="5" [(ngModel)]="this.aboutUsService.aboutUs.feature3" formControlName="feature3" placeholder="Feature3"></textarea>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <label class="form-label" for="customFile">Feature3 Image</label>
+                                                                        <img height="200" width="200" src="../../../assets/{{this.aboutUsService.aboutUs.feature3_Image}}">
+                                                                        <input   type="file" #file11 (change)="uploadImageAboutUs(file11.files,4)" />
+                                                                        </div>
                                                                 <div class="col-lg-12">
-                                                                    <button type="submit" class="main-btn">Save</button>
+                                                                    <button type="submit" (click)="updateAboutUs()" class="main-btn">Save</button>
                                                                 </div>
                                                             </div>
                                                         </form>
