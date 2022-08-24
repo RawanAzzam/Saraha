@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
+import { AboutUsService } from '../Services/about-us.service';
 import { ContactUsService } from '../Services/contact-us.service';
+import { HomePageService } from '../Services/home-page.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
 })
   ngOnInit(): void {
     this.spinner.show();
-
+    this.home.getHome();
+    this.home.getAboutUs();
     setTimeout(() => {
       this.spinner.hide();
     }, 3000);
@@ -27,6 +30,6 @@ export class HomeComponent implements OnInit {
   CreateMessage(){
 this.contactUS.CreateNewMessage(this.createMessage.value);
   }
-  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService) { }
+  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService, public home:HomePageService) { }
 
 }

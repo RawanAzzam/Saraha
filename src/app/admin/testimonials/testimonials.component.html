@@ -76,10 +76,10 @@
                     <div class="event-invites" *ngFor="let obj of Testimonial.testimonial" >
                         <div class="row">
                             <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="invite-figure">
-                                    <figure><img src="{{obj.imagePath}}" alt=""></figure>
+                                <div class="invite-figure" style="display:flex ;">
+                                    <figure><img src="../../../assets/{{obj.imagePath}}" height="50" width="50" style="margin-right:50px ;" alt=""></figure>
                                     <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">{{obj.user}}</a></h6>
-                                    <p style="margin-left:80px ;">
+                                    <p style="margin-top:25px ;">
                                        {{obj.content}}
                                     </p>
                                 </div>
