@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { AboutUsService } from 'src/app/Services/about-us.service';
+import { FeatureService } from 'src/app/Services/feature.service';
 import { HomeService } from 'src/app/Services/home.service';
 
 @Component({
