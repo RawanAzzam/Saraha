@@ -12,6 +12,10 @@ import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 
 const routes: Routes = [
   {
+    path:'',
+    component:UserProfileComponent
+  },
+  {
     path:'my-timeline',
     component:UserProfileComponent
   },
