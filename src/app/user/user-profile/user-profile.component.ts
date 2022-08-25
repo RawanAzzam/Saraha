@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from 'src/app/Services/post.service';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,26 +8,10 @@ import { PostService } from 'src/app/Services/post.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public post:PostService ) { }
-  postForm:FormGroup = new FormGroup({
-    postText:new FormControl('',Validators.required),
-    ImagePath : new FormControl ('')})
-  ngOnInit(): void {
-    this.post.getPost();
+  constructor(private loginService:LoginService) { }
 
+  ngOnInit(): void {
+    this.loginService.checkIfLoginOrNot();
   }
-  CreatePost(){
-  
-    this.post.CreatePost(this.postForm.value);
-      }
-      uploadImage(file:any){
-        if(file.length == 0){
-         return
-        }
-        debugger;
-        let fileToUpload = <File>file[0];
-        const formData = new FormData();
-        formData.append('file',fileToUpload,fileToUpload.name);
-        this.post.uploadPostImage(formData);
-       }
+
 }

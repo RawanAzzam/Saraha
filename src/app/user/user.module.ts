@@ -12,8 +12,6 @@ import { ServiceComponent } from './service/service.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SearchComponent } from './search/search.component';
-import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +20,7 @@ import { UserTimelineComponent } from './user-timeline/user-timeline.component';
     NotificatonsComponent,
     UserAboutComponent,
     MakeTestimonyComponent,
-    ServiceComponent,
-    SearchComponent,
-    UserTimelineComponent
+    ServiceComponent
   ],
   imports: [
     CommonModule,

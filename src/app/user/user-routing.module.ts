@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MakeTestimonyComponent } from './make-testimony/make-testimony.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
@@ -33,16 +34,12 @@ const routes: Routes = [
   {
     path:'my-badges',
     component:ServiceComponent
+  },
+  {
+    path:'editProfile',
+    component:EditProfileComponent
+  }
 
-  },
-  {
-  path:'search',
-  component:SearchComponent
-  },
-  {
-    path:'user-timeline',
-    component:UserTimelineComponent
-    }
 ];
 
 @NgModule({
