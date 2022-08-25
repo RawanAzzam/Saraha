@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
   phonenumber : new FormControl('',[Validators.required]),
   gender : new FormControl('',[Validators.required]),
   country : new FormControl('',[Validators.required]),
-
+  birthdate:new FormControl('',[Validators.required]),
+  imagepath: new FormControl(''),
 
 
 
@@ -38,4 +39,34 @@ export class RegisterComponent implements OnInit {
   CreateUser(){
     this.user.createUser(this.registerForm.value);
       }
+
+      uploadImage(file:any){
+        if(file.length == 0){
+         return
+        }
+        debugger;
+        let fileToUpload = <File>file[0];
+        const formData = new FormData();
+        formData.append('file',fileToUpload,fileToUpload.name);
+        this.user.uploadUserImage(formData);
+       }
+
+        file:any;
+       imageShow: any= '';
+
+  onFileChanged(event:any) {
+       this.file = event.target.files[0]
+        var reader = new FileReader();
+         reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+         this.imageShow = (<FileReader>event.target).result;
+         this.user.uploadUserImage(this.imageShow);
+ }
+      }
+
+
+
+
+
+
 }
