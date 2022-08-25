@@ -63,26 +63,36 @@
                              
                             </mat-form-field>
                             <mat-form-field appearance="outline" >
+
+                                <input type="date" class="inputfield" matInput formControlName="birthdate">
+                             
+                               
+                             
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" >
                                 <select  class="inputfield" aria-label="country" matInput formControlName="country">
                                     
-                                    <option selected>Open this select menu</option>
+                                    <!-- <option selected matInput formControlName="country">Open this select menu</option> -->
                                     <option value="Ajloun"formControlName="country">Ajloun</option>
                                     <option value="Amman"formControlName="country">Amman</option>
                                     <option value="Aqaba"formControlName="country">Aqaba</option>
-                                    <option value="Salt">Salt</option>
-                                    <option value="Zarqa">Zarqa</option>
-                                    <option value="Madaba">Madaba</option>
+                                    <option value="Salt"formControlName="country">Salt</option>
+                                    <option value="Zarqa"formControlName="country">Zarqa</option>
+                                    <option value="Madaba"formControlName="country">Madaba</option>
                                   </select>
                             </mat-form-field>
                             <mat-form-field appearance="outline" >
                                 <select class="inputfield" aria-label="gender" formControlName="gender">
-                                    <option selected>Gender</option>
-                                    <option value="Female" >Female</option>
-                                    <option value="Male" >Male</option>
+                                    <!-- <option selected>Gender</option> -->
+                                    <option value="Female" formControlName="gender" >Female</option>
+                                    <option value="Male" formControlName="gender" >Male</option>
                               
                                   </select>
                             </mat-form-field>
-                     
+                          
+                            <!-- <input type="file" #file formControlName="imagePath" (change)="uploadImage(file.files)" > -->
+                            <input type="file" (change)="onFileChanged($event)" required formControlName="imagepath"/>
+                            <!-- <img [src]="imageShow" height="200"> <br/> -->
                               
                             
                                 <button class="b"  type="submit" (click)="CreateUser()" cdkFocusInitial>Register</button>

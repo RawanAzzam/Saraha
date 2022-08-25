@@ -15,7 +15,7 @@ export class UserService {
   Userposts : any = [{}]
   totalCount :any;
   Allusers: any = [{}]
-
+//  UserImage : any;
 getAll(){
     this.http.get('https://localhost:44324/api/UserProfile/').subscribe((res)=>{
 
