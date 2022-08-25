@@ -4,13 +4,15 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MakeTestimonyComponent } from './make-testimony/make-testimony.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
+import { SearchComponent } from './search/search.component';
 import { ServiceComponent } from './service/service.component';
 import { UserAboutComponent } from './user-about/user-about.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'my-timeline',
     component:UserProfileComponent
   },
   {

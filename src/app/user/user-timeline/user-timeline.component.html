@@ -6,11 +6,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row merged20" id="page-contents">
-                       <app-profile-bar></app-profile-bar>
+                       <app-userprofile-bar></app-userprofile-bar>
                         <div class="col-lg-3">
                             <aside class="sidebar static left">
                                 <div class="widget">
-                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See All</a></h4>
+                                    <h4 class="widget-title">User Badges <a  class="see-all" href="#" title="">See All</a></h4>
                                     <ul class="badgez-widget">
                                         <li>
                                         <a href="#" title="Male User" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge2.png" alt=""></a>
@@ -168,55 +168,7 @@
                             </aside>
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
-                            <div class="central-meta postbox">
-                                <span class="create-post">Create post</span>
-                                <div class="new-postbox">
-                                    <figure>
-                                        <img src="../../../assets/user/images/resources/admin.jpg" alt="">
-                                    </figure>
-                                    <form [formGroup]="postForm" >
-
-                                    <div class="newpst-input">
-
-                                            <textarea rows="2" placeholder="Share some what you are thinking?" formControlName="postText"></textarea>
-                                        
-                                    </div>
-                                    <div class="attachments">
-                                        <ul>
-                                     
-                                            <li>
-                                                <i class="fa fa-image"></i>
-                                                <label  class="fileContainer">
-                                                    <input #file formControlName="ImagePath" (change)="uploadImage(file.files)" type="file">
-                                                </label>
-                                            </li>
-                                     
-                                            <li class="preview-btn">
-                                                <button class="post-btn-preview" type="submit" data-ripple="">Preview</button>
-                                            </li>
-                                        </ul>
-                                        <button (click)="CreatePost()" cdkFocusInitial class="post-btn" type="submit" data-ripple="">Post</button>
-                                    </div>
-                                </form>
-                                    <div class="add-location-post">
-                                        <span>Drag map point to selected area</span>
-                                        <div class="row">
-
-                                            <div class="col-lg-6">
-                                                  <label class="control-label">Lat :</label>
-                                                  <input type="text" class="" id="us3-lat" />
-                                            </div>
-                                            <div class="col-lg-6">
-                                                  <label>Long :</label>
-                                                  <input type="text" class="" id="us3-lon" />
-                                            </div>
-                                        </div>
-                                          <!-- map -->
-                                          <div id="us3"></div>
-                                    </div>
-                                </div>
-                                
-                            </div><!-- add post new box -->
+                         <!-- add post new box -->
                             <div class="central-meta">
                                 <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
                                 <ul class="suggested-frnd-caro">
@@ -250,7 +202,7 @@
                              
                        
                             
-                                <div *ngFor="let post of this.post.post" class="central-meta item">
+                                <div  class="central-meta item">
                                     <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
@@ -268,8 +220,8 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title="">Sophia {{post.userid}}</a> shared location</ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postdate}}</span>
+                                                <ins><a href="time-line.html" title="">Sophia </a> shared location</ins>
+                                                <span><i class="fa fa-globe"></i> published: </span>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
@@ -285,7 +237,7 @@
 
                                                 <div class="description">
                                                     <p>
-                                                        {{post.posttext}} <a href="#" title="">#mypage</a> ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc,
+                                                     <a href="#" title="">#mypage</a> ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc,
                                                     </p>
                                                 </div>
                                                 <div class="we-video-info">

@@ -11,12 +11,12 @@
 	  <span style="--i:9;">.</span>
 	</div>
 </div>
-<div class="theme-layout">
+<div class="theme-layout" >
 
 	<div class="navbar-light topbar transperent " style="position: fixed;top: 0;width: 100%; background-color:#34465d
 	;opacity: 0.8;">
 		<div class="logo">
-			<a title="" href="newsfeed.html"><img src="./assets/sar/images/logo.png" height="90" width="140" alt=""></a>
+			<a title="" href="newsfeed.html"><img src="../../../assets/{{home.homePage.logo}}"  height="40" width="90" alt=""></a>
 		</div>
 		<nav>
 			<ul class="nav-list">
@@ -39,11 +39,11 @@
 				<li><a class="" href="#contact" title=""><i class="fa fa-phone"></i>Contact Us</a>
 					
 				</li>
-				<li><a class="" href="http://localhost:4200/authentication/Login" title=""><i class="fa fa-sign-in"></i> Login</a>               
+				<li><a class="" [routerLink]="['/authentication/Login']" title=""><i class="fa fa-sign-in"></i> Login</a>               
 				</li>   
 				
 			</ul>
-			<a class="main-btn" title="" href="http://localhost:4200/authentication/Register" data-ripple="">Register Now</a>
+			<a class="main-btn" title="" [routerLink]="['/authentication/Register']" data-ripple="">Register Now</a>
 		</nav><!-- nav menu -->
 	</div><!-- topbar nav -->
 	
@@ -63,18 +63,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="unit-text-caro">
-				<img src="./assets/sar/images/resources/text-caro-2.jpg" alt="">
-				<div class="text-caro-meta">
-					<span>Saraha Time Social Network</span>
-					<img src="./assets/sar/images/icon-21.png" alt="">
-					<h1><a href="#" title="">Contact with  <span>Anyone you want!</span></a></h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam, 
-						sed diam nonummy nibh euismod tincidunt ut laoreet dolore volutpat naomi delgado.
-					</p>
-				</div>
-			</div>
+			
 			<div class="unit-text-caro">
 				<img src="../assets/sar/images/resources/theme-bg.jpg" alt="">
 				<div class="text-caro-meta">
@@ -98,15 +87,16 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="welcome-area">
 						
-						<h2 style="font-size:xx-large ;">Welcome to <span style="color: #fa6342;font-weight: 550;">Saraha  Time</span> Website<br> Time to be honest.</h2>
+						<h2 style="font-size:xx-large ;"><span style="color: #fa6342;font-weight: 550;">{{this.home.aboutUs.title}}</span><br></h2>
 						<p>
-							Saraha allowed people to text messages to others and the person reading that could then reply anonymously							</p>
+							{{this.home.aboutUs.subtitle}}
+				 	</p>
 					</div>
 					
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="welcome-avatar">
-						<img src=".\assets\sar\images\AboutImage.png"alt="">
+						<img src="../../../assets/{{this.home.aboutUs.imagepath}}"alt="">
 					
 					</div>
 				</div>
@@ -524,55 +514,52 @@
 <section id="team">
 	<div class="gap">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-4">
+			<!-- <div class="row"> -->
+				<!-- <div class="col-lg-3 col-md-4">
 					<div class="team">
 						<h5>Active <span>Team</span></h5>
 						<span>Professional Developers</span>
 						<p>Amco laboris nisi ut aliquip xea commodo consequt. Duis aute irure dolor reprehenderit voluptate velit esse cillum fugiat lore ipsum dolor sit amet consectetur.</p>
 						<a href="#" title="" class="main-btn" data-ripple="">Get Inquiry</a>
 					</div>
-				</div>
-				<div class="col-lg-9 col-md-8">
-					<div class="team-carouzel">
-						<div class="team-member">
-							<img src="./assets/sar/images/resources/team1.jpg" alt="">
+				</div> -->
+				<!-- <div class="row"> -->
+					<div class="sec-heading style9 text-center">
+						<h2>Our <span>Team</span></h2>
+					</div>
+					<div class="row" style="text-align:center ;">
+						<div class="team-member  col-lg-3">
+							<img src="../../../assets/{{home.homePage.member1_Image}}"  style="object-fit:contain ; height:300px; width:250px" alt="">
 							<div class="team-info over-top">
-								<h2><a href="#" title="">Jasmine Jane</a></h2>
-								<span>Backend Developer</span>
-							</div>
-						</div>
-						<div class="team-member">
-							<img src="./assets/sar/images/resources/team2.jpg" alt="">
-							<div class="team-info over-top">
-								<h2><a href="#" title="">Jhon winslet</a></h2>
+								<h2><a href="#" title=""> {{home.homePage.member1_Name}}</a></h2>
 								<span>Developer</span>
 							</div>
 						</div>
-						<div class="team-member">
-							<img src="./assets/sar/images/resources/team3.jpg" alt="">
+						<div class="team-member col-lg-3"  >
+							<img src="../../../assets/{{home.homePage.member3_Image}}"style="object-fit:contain ; height:300px; width:250px" alt="">
 							<div class="team-info over-top">
-								<h2><a href="#" title="">Bob Larson</a></h2>
-								<span>Frontend Developer</span>
+								<h2><a href="#" title="">{{home.homePage.member3_Name}}</a></h2>
+								<span>Developer</span>
 							</div>
 						</div>
-						<div class="team-member">
-							<img src="./assets/sar/images/resources/team4.jpg" alt="">
+						<div class="team-member col-lg-3" >
+							<img src="../../../assets/{{home.homePage.member4_Image}}"  style="object-fit:contain ; height:300px; width:250px" alt="">
 							<div class="team-info over-top">
-								<h2><a href="#" title="">Bill Gates</a></h2>
-								<span>Ux/Ui Designer</span>
+								<h2><a href="#" title="">{{home.homePage.member4_Name}}</a></h2>
+								<span>Developer</span>
 							</div>
 						</div>
-						<div class="team-member">
-							<img src="./assets/sar/images/resources/team5.jpg" alt="">
+						<div class="team-member col-lg-3">
+							<img src="../../../assets/{{home.homePage.member2_Image}}" style="object-fit:contain ; height:300px; width:250px"alt="">
 							<div class="team-info over-top">
-								<h2><a href="#" title="">Liza Larson</a></h2>
-								<span>React Developer</span>
+								<h2><a href="#" title="">{{home.homePage.member2_Name}}</a></h2>
+								<span>Designer</span>
 							</div>
 						</div>
+						
 					</div>
-				</div>
-			</div>
+				<!-- </div> -->
+			<!-- </div> -->
 		</div>
 	</div>
 </section><!-- our team -->
@@ -757,7 +744,7 @@
 
 <footer class="style2 dark">
 	<div class="logo">
-		<img src="./assets/sar/images/logo.png" alt="">
+		<img src="../../../assets/{{home.homePage.logo}}" alt="">
 	</div>
 	<div class="share-article">
 		<a data-ripple="" href="#" title="" class="facebook"><i class="fa fa-facebook"></i></a>

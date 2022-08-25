@@ -31,6 +31,7 @@ const routes: Routes = [];
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    RouterModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',

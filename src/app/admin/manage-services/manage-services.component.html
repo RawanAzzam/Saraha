@@ -4,6 +4,15 @@
 
 <div class="theme-layout">
 
+
+
+
+
+
+
+
+
+
 <section>
     <div class="gap gray-bg">
       <div class="container">
@@ -15,8 +24,42 @@
                         <app-asiderbar></app-asiderbar>
                 </div><!-- sidebar widgets -->
 
-                <div class="col-lg-9" style="padding:0 ;">
-                    <section>
+                <div class="col-lg-9" style="padding:30 ;">
+                    <div class="central-meta padding30">
+
+                        <h4 class="create-post">All Service</h4>
+                        <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewSevice()"> Add Service </a>
+
+                        <div class="row">                           
+                            <div class="col-lg-4 col-md-8" *ngFor="let obj of featureService.feature">
+                                <div class="dig-pro">
+                                    <!-- <figure> -->
+                                        <img src="./assets/{{obj.imagePath}}"  style="height:200px; width:300px; object-fit: contain;" alt="">
+                                       
+                                    <!-- </figure> -->
+                                    <div class="digi-meta">
+                                        <h4>{{obj.featureName}}</h4>
+                                        <p>{{obj.featureDuration}} Months </p>
+                                        <div class="rate">
+                                            <span class="qeemat"> <div style=" margin-right: 20px;" class="more-post-optns"><i class="ti-more-alt"></i>
+                                                <ul>
+                                                    <li (click)="updateDailog(obj)"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
+                                                    <li (click)="deleteservice(obj.featureId)"><i class="fa fa-trash-o"></i>Delete Service</li>                                                                               
+                                                </ul>
+                                            </div></span>
+                                            <span class="qeemat" style="float: left; color:#535165">{{obj.featurePrice}}$</span>
+
+                                           
+                                        </div>
+                                    </div>												
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- <section>
                         <div class="gap2 gray-bg" style="padding: 0px;">
                             <div class="container">
                                 <div class="row">
@@ -31,34 +74,33 @@
                                                     <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewSevice()"> Add Service </a>
 
                                                     <div class="load-more">
-                                                        <div *ngFor="let obj of featureService.feature" class="central-meta item" style="display: inline-block;">
+                                                        <div *ngFor="let obj of featureService.feature" class="central-meta item"  >
                                                           
-                                                            <div class="classic-post">
-                                                        
-                                                                <div class="classic-pst-meta">
-                                                                    <div class="more">
-                                                                        <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                            <div class="classic-post" style="display:flex ;">                                                        
+                                                                <div class="classic-pst-meta">                                                                   
+                                                                    <ul class="badgez-widget" style=" padding-right: 20px;">
+                                                                         <li> 
+                                                                        <a href="#" title="Male User" data-toggle="tooltip"><img style="width:50px" src="./assets/{{obj.imagePath}}" alt=""></a>
+                                                                         </li> 
+                                                                    </ul>
+                                                                    <h4 style=" margin-right: 20px;"><i class="fa fa-check-circle" title="verified"></i> <a href="#" title="">{{obj.featureName}} </a></h4>
+                                                                   <p>{{obj.featureName}}</p>
+                                                                    <span style=" margin-right: 20px;" class="prise">${{obj.featurePrice}}</span>
+                                                                     <div class="location-area">
+                                                                        <i style=" margin-right: 20px;">Duration: {{obj.featureDuration}} month</i>
+                                                                    </div> -->
+                                                                    <!-- <div class="more"> 
+                                                                        <div style=" margin-right: 20px;" class="more-post-optns"><i class="ti-more-alt"></i>
                                                                             <ul>
                                                                                 <li (click)="updateDailog(obj)"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
                                                                                 <li (click)="deleteservice(obj.featureId)"><i class="fa fa-trash-o"></i>Delete Service</li>                                                                               </ul>
                                                                         </div>
                                                                     </div>
-                                                                    <ul class="badgez-widget">
-                                                                        <li>
-                                                                        <a href="#" title="Male User" data-toggle="tooltip"><img style="width:50px" src="./assets/{{obj.imagePath}}" alt=""></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <h4><i class="fa fa-check-circle" title="verified"></i> <a href="#" title=""> {{obj.featureName}} </a></h4>
-                                                                    <p>{{obj.featureName}}</p>
-                                                                    <span class="prise">${{obj.featurePrice}}</span>
-                                                                    <div class="location-area">
-                                                                        <i>Duration: {{obj.featureDuration}} month</i>
-                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                             </div> 
                                                         </div>
                                                      
-                                                    </div>
+                                                   </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> 
                 </div>
          </div>
             </div>
@@ -74,7 +116,7 @@
         </div>
       </div>
     </div>
-</section>
+</section> -->
 <ng-template #calldeleteDailog>
     <h2>Are You Sure uyou want to delete this item?</h2>
     <button mat-dialog-close="yes">Yes</button>
