@@ -15,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';  // <<<< import it here
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,9 @@ import { SearchComponent } from './search/search.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule  ],
+    MatDialogModule  ,
+    FormsModule
+    
+  ],
 })
 export class UserModule { }
