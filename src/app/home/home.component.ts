@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
 import { AboutUsService } from '../Services/about-us.service';
 import { ContactUsService } from '../Services/contact-us.service';
+import { FeatureService } from '../Services/feature.service';
 import { HomePageService } from '../Services/home-page.service';
 
 @Component({
@@ -22,6 +23,8 @@ export class HomeComponent implements OnInit {
     this.spinner.show();
     this.home.getHome();
     this.home.getAboutUs();
+    this.home.getFeature();
+    this.home.getTestimonial();
     setTimeout(() => {
       this.spinner.hide();
     }, 3000);
