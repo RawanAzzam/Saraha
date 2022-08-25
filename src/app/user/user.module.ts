@@ -12,6 +12,9 @@ import { ServiceComponent } from './service/service.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserTimelineComponent } from './user-timeline/user-timeline.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,11 @@ import { MatInputModule } from '@angular/material/input';
     NotificatonsComponent,
     UserAboutComponent,
     MakeTestimonyComponent,
-    ServiceComponent
+    ServiceComponent,
+    EditProfileComponent,
+    UserTimelineComponent,
+    SearchComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
