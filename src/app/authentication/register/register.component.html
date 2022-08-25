@@ -90,8 +90,8 @@
                                   </select>
                             </mat-form-field>
                           
-                            <!-- <input type="file" #file formControlName="imagePath" (change)="uploadImage(file.files)" > -->
-                            <input type="file" (change)="onFileChanged($event)" required formControlName="imagepath"/>
+                            <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
+                            <!-- <input type="file" (change)="onFileChanged($event)" required formControlName="imagepath"/> -->
                             <!-- <img [src]="imageShow" height="200"> <br/> -->
                               
                             
