@@ -12,6 +12,7 @@ import { ServiceComponent } from './service/service.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
     NotificatonsComponent,
     UserAboutComponent,
     MakeTestimonyComponent,
-    ServiceComponent
+    ServiceComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
