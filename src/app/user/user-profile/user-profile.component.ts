@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
   constructor(public post:PostService ) { }
   postForm:FormGroup = new FormGroup({
     postText:new FormControl('',Validators.required),
-    ImagePath : new FormControl ('')})
+    imagepath : new FormControl ('')})
   ngOnInit(): void {
     this.post.getPost();
 

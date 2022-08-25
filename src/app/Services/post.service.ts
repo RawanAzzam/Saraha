@@ -20,7 +20,7 @@ export class PostService {
   }
   CreatePost(post:any){
     console.log(post);
-    post.imagePath = this.posts.imagePath;
+    post.imagepath = this.postImage.imagepath;
 
     debugger;
     this.http.post('https://localhost:44324/api/Post/CreatePost',post).subscribe((result) =>{
