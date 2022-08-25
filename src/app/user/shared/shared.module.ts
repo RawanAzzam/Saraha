@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ActiveBarComponent } from './active-bar/active-bar.component';
 import { ProfileBarComponent } from './profile-bar/profile-bar.component';
+import { UserprofileBarComponent } from './userprofile-bar/userprofile-bar.component';
 
 
 
@@ -10,7 +11,8 @@ import { ProfileBarComponent } from './profile-bar/profile-bar.component';
   declarations: [
     NavBarComponent,
     ActiveBarComponent,
-    ProfileBarComponent
+    ProfileBarComponent,
+    UserprofileBarComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { ProfileBarComponent } from './profile-bar/profile-bar.component';
     NavBarComponent,
     ActiveBarComponent,
     ProfileBarComponent,
+    UserprofileBarComponent,
 
   ]
 })
