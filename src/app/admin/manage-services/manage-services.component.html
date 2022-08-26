@@ -30,14 +30,63 @@
                         <h4 class="create-post">All Service</h4>
                         <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewSevice()"> Add Service </a>
 
-                        <div class="row">                           
-                            <div class="col-lg-4 col-md-8" *ngFor="let obj of featureService.feature">
-                                <div class="dig-pro">
+                        <div class="row">      
+                            
+
+
+                            <div class="col-lg-112">
+								<div class="central-meta">
+									<div class="row">
+										<div class="col-lg-4 col-md-6" *ngFor="let obj of featureService.feature">
+											<div class="dig-pro">
+												<figure>
+                                                  
+													<img src="./assets/Images/Back5.png" alt="">
+													<div class="user-avatr">
+                                                       <img src="./assets/{{obj.imagePath}}"  style="height:50px; border: none; border-style: none;  object-fit: contain;" alt="">
+
+														<div>
+															<span></span>
+															<ins></ins>
+														</div>	
+													</div>
+												</figure>
+												<div class="digi-meta">
+													<h4><a href="product-detail.html" title="">{{obj.featureName}}</a></h4>
+													<div class="rate">
+														<ol class="pit-rate">
+															<li class="rated"><i class="fa fa-star"></i></li>
+															<li class="rated"><i class="fa fa-star"></i></li>
+															<li class="rated"><i class="fa fa-star"></i></li>
+															<li class="rated"><i class="fa fa-star"></i></li>
+															<li class=""><i class="fa fa-star"></i></li>
+														</ol>
+														<span class="qeemat"><span style="font-size: small; color:gray">{{obj.featureDuration}} Months </span>${{obj.featurePrice}}</span>
+													</div>
+                                                    <span class="qeemat"> <div style="margin-left: 180px; " class="more-post-optns"><i class="ti-more-alt"></i>
+                                                        <ul>
+                                                            <li (click)="updateDailog(obj)"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
+                                                            <li (click)="deleteservice(obj.featureId)"><i class="fa fa-trash-o"></i>Delete Service</li>                                                                               
+                                                        </ul>
+                                                    </div></span>
+												</div>
+											</div>
+										</div>
+									
+									
+									</div>
+								</div>
+							</div>
+
+                            
+                            
+                            <!-- <div class="col-lg-4 col-md-8" *ngFor="let obj of featureService.feature">
+                                <div class="dig-pro"> -->
                                     <!-- <figure> -->
-                                        <img src="./assets/{{obj.imagePath}}"  style="height:200px; width:300px; object-fit: contain;" alt="">
-                                       
+                                        <!-- <img src="./assets/{{obj.imagePath}}"  style="height:200px; width:300px; object-fit: contain;" alt="">
+                                        -->
                                     <!-- </figure> -->
-                                    <div class="digi-meta">
+                                    <!-- <div class="digi-meta">
                                         <h4>{{obj.featureName}}</h4>
                                         <p>{{obj.featureDuration}} Months </p>
                                         <div class="rate">
@@ -51,7 +100,7 @@
 
                                            
                                         </div>
-                                    </div>												
+                                    </div>												 -->
                                 </div>
                             </div>
                         </div>

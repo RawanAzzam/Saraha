@@ -42,8 +42,11 @@ const routes: Routes = [
   {
     path:'editProfile',
     component:EditProfileComponent
+  },
+  {
+  path:'search',
+  component:SearchComponent
   }
-
 ];
 
 @NgModule({
