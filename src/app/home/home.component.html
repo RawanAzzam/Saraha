@@ -150,7 +150,7 @@
 				<h2>Our <span>Services</span></h2>
 			</div>
 			<div class="row" id="page-contents">
-				<div class="col-lg-12">
+				<!-- <div class="col-lg-12">
 					<div id="options" class="isotop-full">
 						<div class="option-isotop">
 						  <ul id="filter2" class="option-set icon-style" data-option-key="filter">
@@ -162,11 +162,11 @@
 							  <li><a href="#hand" data-option-value=".hand" data-toggle="tooltip" data-placement="top" title="Jewellery">Shop</a></li>
 						  </ul>
 						</div>
-					</div><!-- FILTER BUTTONS -->
-				</div>
+					</div> FILTER BUTTONS 
+				</div> -->
 				<div class="col-lg-12">	
-					<div class="row masonry">	
-						<div class="hand col-lg-3 col-sm-6">
+					<div class="row">	
+						<!-- <div class="hand col-lg-3 col-sm-6">
 							<div class="portfolio-box">
 								<img src="./assets/sar/images/resources/folio-detail1.jpg" alt="">
 								<div class="overlinks">
@@ -178,97 +178,19 @@
 									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="jewl col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail2.jpg" alt="">
+						</div> -->
+						<div class="cjewl col-lg-3 col-sm-6" *ngFor="let obj of home.feature.slice(this.home.feature.length - 5,this.home.feature.length-1)">
+							<div class="portfolio-box" >
+								<img src="../../../assets/{{obj.imagePath}}" style="object-fit:contain ;height:200px; width:200px;text-align: center;" alt="">
 								<div class="overlinks">
-									<h4><a href="#" title="">Baby Chair</a></h4>
+									<h4><a href="#" title="">{{obj.featureName}}</a></h4>
 									<ul class="cate">
-										<li><a href="#" title="">Shoes</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
+										<li><a href="#" title="">{{obj.featurePrice}}$ for /</a></li>
+										<li><a href="#" title="">{{obj.featureDuration}}month</a></li>
 									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="accessory col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail3.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">JBL Headphone</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">Shoes</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="diy col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail4.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">Winter Cap</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">Shoes</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="cloth col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail5.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">Men's Watch</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">Watches</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="hand col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail6.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">Winter Cap</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">accessoires</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="accessory col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail7.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">Stylo Shoes</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">Shoes</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="jewl col-lg-3 col-sm-6">
-							<div class="portfolio-box">
-								<img src="./assets/sar/images/resources/folio-detail8.jpg" alt="">
-								<div class="overlinks">
-									<h4><a href="#" title="">G-Sound Headphone</a></h4>
-									<ul class="cate">
-										<li><a href="#" title="">accessoires</a></li>
-										<li><a href="#" title="">home made</a></li>
-										<li><a href="#" title="">clothes</a></li>
-									</ul>
-								</div>
-							</div>
+					
 						</div>
 					</div>	
 				</div>
@@ -344,8 +266,7 @@
 			</div>
 		</div>
 	</div>
-</section><!-- blog -->
-
+</section>
 <section>
 	<div class="gap">
 		<div class="container">
@@ -357,9 +278,8 @@
 							<i>K</i>
 						</div>
 						<div class="counter-meta">
-							<img src="./assets/sar/images/icon-4.png" alt="">
-							<h2><a href="#" title="">Registerd Users</a></h2>
-							<span>Honors & Recognition</span>
+							<img src="../../../assets/{{this.home.aboutUs.feature1_Image}}" alt="">
+							<h2><a href="#" title="">{{this.home.aboutUs.feature1}}</a></h2>
 						</div>
 					</div>
 				</div>
@@ -370,9 +290,8 @@
 							<i>K</i>
 						</div>
 						<div class="counter-meta">
-							<img src="./assets/sar/images/icon-5.png" alt="">
-							<h2><a href="#" title="">Post Published</a></h2>
-							<span>Honors & Recognition</span>
+							<img src="./../../assets/{{this.home.aboutUs.feature2_Image}}" alt="">
+							<h2><a href="#" title="">{{this.home.aboutUs.feature2}}</a></h2>
 						</div>
 					</div>
 				</div>
@@ -383,17 +302,15 @@
 							<i>K</i>
 						</div>
 						<div class="counter-meta">
-							<img src="./assets/sar/images/icon-6.png" alt="">
-							<h2><a href="#" title="">People Online</a></h2>
-							<span>Honors & Recognition</span>
+							<img src="./../../assets/{{this.home.aboutUs.feature3_Image}}" alt="">
+							<h2><a href="#" title="">{{this.home.aboutUs.feature3}}</a></h2>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section><!-- fun facts section -->
-
+</section>
 <section id="Testimonial">
 	<div class="gap">
 		<div class="container">
@@ -464,48 +381,65 @@
 				</div><!-- bootstrap accordion -->
 				<div class="col-lg-6 col-md-6">
 					<div class="testi-caro">
-						<div class="testi-silver">
-							<span><img alt="" src="./assets/sar/images/resources/testi-silver4.jpg"></span>
-							<div class="testi-meta">
+						<div class="testi-silver" *ngFor="let obj of home.testimonial">	
+							<span><img *ngIf="obj.is_accepted" src="./../../assets/{{obj.imagePath}}"></span>
+							<div *ngIf="obj.is_accepted" class="testi-meta">
 								<p>
-									This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
+									{{obj.content}}					
 								</p>
-								<span><i class="fa fa-thumbs-o-up"></i>Frank Martin</span>
-								<i>designer</i>
+								<span *ngIf="obj.is_accepted"><i class="fa fa-thumbs-o-up"></i>{{obj.user}}</span>
 							</div>
-						</div>
-						<div class="testi-silver">
-							<span><img alt="" src="./assets/sar/images/resources/testi-silver1.jpg"></span>
-							<div class="testi-meta">
-								<p>
-									This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
-								</p>
-								<span><i class="fa fa-thumbs-o-up"></i>Jonathan Groff</span>
-								<i>designer</i>
-							</div>
-						</div>
-						<div class="testi-silver">
-							<span><img alt="" src="./assets/sar/images/resources/testi-silver2.jpg"></span>
-							<div class="testi-meta">
-								<p>
-									This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
-								</p>
-								<span><i class="fa fa-thumbs-o-up"></i>Lucy grey</span>
-								<i>designer</i>
-							</div>
-						</div>
-						<div class="testi-silver">
-							<span><img alt="" src="./assets/sar/images/resources/testi-silver3.jpg"></span>
-							<div class="testi-meta">
-								<p>
-									This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
-								</p>
-								<span><i class="fa fa-thumbs-o-up"></i>Emma Watson</span>
-								<i>designer</i>
-							</div>
+					</div>
+
+
+
+<!-- 
+					<div class="testi-silver">
+						<span><img alt="" src="./assets/sar/images/resources/testi-silver4.jpg"></span>
+						<div class="testi-meta">
+							<p>
+								This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
+							</p>
+							<span><i class="fa fa-thumbs-o-up"></i>Frank Martin</span>
+							<i>designer</i>
 						</div>
 					</div>
+					<div class="testi-silver">
+						<span><img alt="" src="./assets/sar/images/resources/testi-silver1.jpg"></span>
+						<div class="testi-meta">
+							<p>
+								This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
+							</p>
+							<span><i class="fa fa-thumbs-o-up"></i>Jonathan Groff</span>
+							<i>designer</i>
+						</div>
+					</div>
+					<div class="testi-silver">
+						<span><img alt="" src="./assets/sar/images/resources/testi-silver2.jpg"></span>
+						<div class="testi-meta">
+							<p>
+								This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
+							</p>
+							<span><i class="fa fa-thumbs-o-up"></i>Lucy grey</span>
+							<i>designer</i>
+						</div>
+					</div>
+					<div class="testi-silver">
+						<span><img alt="" src="./assets/sar/images/resources/testi-silver3.jpg"></span>
+						<div class="testi-meta">
+							<p>
+								This app is very nice and lovely, when i am boring i am sit on the chair and play with this. its very lovely i love it.
+							</p>
+							<span><i class="fa fa-thumbs-o-up"></i>Emma Watson</span>
+							<i>designer</i>
+						</div>
+					</div> -->
+					</div>								
 				</div>
+
+
+
+			
 			</div>
 		</div>
 	</div>
