@@ -16,6 +16,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';  // <<<< import it here
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { FormsModule } from '@angular/forms';  // <<<< import it here
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule  ,
-    FormsModule
+    FormsModule,
+    RouterModule
     
   ],
 })
