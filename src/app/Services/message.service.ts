@@ -18,6 +18,16 @@ export class MessageService {
       console.log(Error);
     })
   }
+  messcount :any;
+  getMessagescountbyid(userid:number){
+    this.http.get('https://localhost:44324/api/Message/messagecount/'+userid).subscribe((result) => {
+      this.messages = result;
+      this.messcount=this.messages.length;
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
 
   createNewMessage(message:any){
     this.http.post('https://localhost:44324/api/Message',message).subscribe((result) => {
