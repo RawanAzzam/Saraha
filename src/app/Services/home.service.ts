@@ -120,7 +120,6 @@ export class HomeService {
     },err => {
       console.log(err)
     })
-
     window.location.reload();
   }
 }

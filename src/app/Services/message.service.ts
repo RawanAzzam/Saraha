@@ -8,7 +8,9 @@ export class MessageService {
 
   constructor(private http:HttpClient) { }
   id = 1 ;
-  messages : any =[]
+  messages : any =[];
+  allMessages:any=[];
+
 
   getMessages(){
     this.http.get('https://localhost:44324/api/Message/GetUserMessageById/'+this.id).subscribe((result) => {
@@ -40,5 +42,19 @@ export class MessageService {
    
     window.location.reload();
   }
+  getAllMessages(){
+
+    this.http.get("https://localhost:44324/api/Message").subscribe((result) => {
+      this.allMessages = result;
+    },error => {
+      console.log(error)
+    })
+ 
+   }
 
 }
+
+
+
+
+
