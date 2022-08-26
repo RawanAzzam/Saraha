@@ -35,7 +35,6 @@ export class LoginService {
 
   checkIfLoginOrNot(){
     console.log(localStorage.getItem('userId'));
-    debugger;
     if(localStorage.getItem('userId') == null)
     this.router.navigate(['authentication/Login']);
     else
@@ -52,7 +51,6 @@ export class LoginService {
     this.router.navigate(['']);
 
   
-   debugger;
 
  
   }

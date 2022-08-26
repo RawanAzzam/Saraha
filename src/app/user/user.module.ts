@@ -17,6 +17,7 @@ import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';  // <<<< import it here
 import { RouterModule } from '@angular/router';
+import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router';
     EditProfileComponent,
     UserTimelineComponent,
     SearchComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ViewProfileUserComponent
   ],
   imports: [
     CommonModule,

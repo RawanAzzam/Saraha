@@ -9,6 +9,7 @@ import { ServiceComponent } from './service/service.component';
 import { UserAboutComponent } from './user-about/user-about.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
+import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
   path:'search',
   component:SearchComponent
+  },
+  {
+    path:'viewProfile/:id',
+    component:ViewProfileUserComponent
   }
 ];
 

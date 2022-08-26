@@ -178,7 +178,7 @@
 
                                     <div class="newpst-input">
 
-                                            <textarea rows="2" placeholder="Share some what you are thinking?" formControlName="postText"></textarea>
+                                            <textarea rows="2" placeholder="Share some what you are thinking?" formControlName="posttext"></textarea>
                                         
                                     </div>
                                     <div class="attachments">
@@ -187,7 +187,7 @@
                                             <li>
                                                 <i class="fa fa-image"></i>
                                                 <label  class="fileContainer">
-                                                    <input #file formControlName="ImagePath" (change)="uploadImage(file.files)" type="file">
+                                                    <input #file formControlName="imagepath" (change)="uploadImage(file.files)" type="file">
                                                 </label>
                                             </li>
                                      
@@ -371,7 +371,7 @@
                                 <div *ngFor="let post of this.post.post" class="central-meta item">
                             
 <!--Postttt-->
-                                    <div class="user-post" *ngIf="post.is_Pin == false">
+                                    <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
                                                 <img src="../../../assets/user/images/resources/recent1.jpg" alt="">

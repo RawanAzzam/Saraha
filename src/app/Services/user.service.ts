@@ -15,12 +15,14 @@ export class UserService {
   Userposts : any = [{}]
   totalCount :any;
   Allusers: any = [{}]
+  searchUserResult : any =[]
 //  UserImage : any;
 getAll(){
     this.http.get('https://localhost:44324/api/UserProfile/').subscribe((res)=>{
 
       this.Allusers=res;
       this.totalCount =this.Allusers.length;
+      this.searchUserResult = res;
 },err=>{
     
 })
@@ -115,6 +117,16 @@ getActivePepole(){
     })
   }
 
+
+  searchUser(username:string , country:string,gender:string){
+    if(username == null || username.length == 0) username = " "
+    if(country == null || country.length == 0)  country = " "
+    if(gender ==  null || gender.length == 0) gender = " "
+    this.http.get("https://localhost:44324/api/UserProfile/SearchUser/"+username+'/'+country+'/'+gender+'/').subscribe((result) =>{
+   this.searchUserResult = result;
+    console.log(this.searchUserResult);
+    })
+  }
   
   
 

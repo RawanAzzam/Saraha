@@ -1,0 +1,451 @@
+<section>
+    <div class="gap2 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row merged20" id="page-contents">
+                        <div class="user-profile">
+                            <figure>
+                                <div class="edit-pp">
+                                    <label class="fileContainer">
+                                        <i class="fa fa-camera"></i>
+                                        <input type="file">
+                                    </label>
+                                </div>
+                                <img src="../../../assets/user/images/resources/fav-banner.jpg" alt="">
+                                <ul class="profile-controls">
+                                    <li><a class="send-mesg" (click)="openSendMessageDailog()" title="Send Message" data-toggle="tooltip"><i
+                                                class="fa fa-comment"></i></a></li>
+
+                                </ul>
+                                <ol class="pit-rate">
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class=""><i class="fa fa-star"></i></li>
+                                    <li><span>4.7/5</span></li>
+                                </ol>
+                            </figure>
+
+                            <div class="profile-section">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="profile-author">
+                                            <a class="profile-author-thumb" href="about.html">
+                                                <img alt="author"
+                                                    src="../../../assets/{{this.viewService.user.imagepath}}">
+                                                <div class="edit-dp">
+                                                    <label class="fileContainer">
+                                                        <i class="fa fa-camera"></i>
+                                                        <input type="file">
+                                                    </label>
+                                                </div>
+                                            </a>
+                                            <div class="author-content">
+                                                <a class="h4 author-name" href="#">{{this.viewService.user.username}}</a>
+                                                <div class="country">{{this.viewService.user.country}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <ul class="profile-menu">
+                                            <li>
+                                            </li>
+
+
+
+                                        </ul>
+                                        <ol class="folw-detail">
+                                            <li><span>Posts</span><ins>101</ins></li>
+                                            <li><span>Message</span><ins>1.3K</ins></li>
+                                            <li><span>Likes</span><ins>22k</ins></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- user profile banner  -->
+                        <div class="col-lg-3">
+                            <aside class="sidebar static left">
+                                <div class="widget">
+                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See
+                                            All</a></h4>
+                                    <ul class="badgez-widget">
+                                        <li>
+                                            <a href="#" title="Male User" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge2.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="10 Years old User" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/year10.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Page Admin" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge1.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="100+ Refferal" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge8.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Tranding Posts" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge21.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge3.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="Pitnik Shirt winner" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge20.png" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="500+ Followers" data-toggle="tooltip"><img
+                                                    src="../../../assets/user/images/badges/badge10.png" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="widget">
+                                    <h4 class="widget-title">Page Community</h4>
+                                    <ul class="fav-community">
+                                        <li>
+                                            <div class="personal-head">
+                                                <span class="f-title"><i class="fa fa-user"></i> About :<span
+                                                        style="color:rgb(156, 151, 146);font-size: 10;"> Hi, I’m
+                                                        {{this.viewService.user.username}}, I’m from
+                                                        {{this.viewService.user.country}} </span></span>
+                                                <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:
+                                                    <span style="color:rgb(156, 151, 146);font-size: 10;">
+                                                        {{this.viewService.user.birthdate |date}}</span></span>
+
+                                                <span class="f-title"><i class="fa fa-phone"></i> Phone Number:<span
+                                                        style="color:rgb(156, 151, 146);font-size: 10;">
+                                                        {{this.viewService.user.phonenumber}}</span></span>
+
+                                                <span class="f-title"><i class="fa fa-male"></i> Gender:<span
+                                                        style="color:rgb(156, 151, 146);font-size: 10;">
+                                                        {{this.viewService.user.gender}}</span></span>
+
+                                                <span class="f-title"><i class="fa fa-globe"></i> Country:<span
+                                                        style="color:rgb(156, 151, 146);font-size: 10;">
+                                                        {{this.viewService.user.country}}</span></span>
+                                                <span class="f-title"><i class="fa fa-envelope"></i> Email &amp;
+                                                    Website:<span style="color:rgb(156, 151, 146);font-size: 10;">
+                                                        {{this.viewService.user.email}}</span></span>
+
+
+                                            </div>
+                                        </li>
+                                        <li><i class="fa fa-thumbs-up"></i>13,33,454 People like this</li>
+                                        <li><i class="fa fa-rss"></i>13,33,454 People send message to him</li>
+                                        <li><i class="fa fa-share-alt"></i>13,540 Post share </li>
+                                    </ul>
+                                </div><!-- Page Community-->
+
+
+                            </aside>
+                        </div><!-- sidebar -->
+                        <div class="col-lg-6">
+
+                            <div class="central-meta">
+                                <span class="create-post">Suggested Pages <a href="#" title="">See All</a></span>
+                                <ul class="suggested-frnd-caro">
+                                    <li>
+                                        <img src="../../../assets/user/images/resources/recent1.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Olivia</a>
+                                            <span>1 mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../assets/user/images/resources/recent2.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Emma watson</a>
+                                            <span>2 mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../assets/user/images/resources/recent3.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Isabella</a>
+                                            <span><a href="#" title="">Emmy</a> is mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="images/resources/recent4.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Amelia</a>
+                                            <span>5 mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../assets/user/images/resources/recent5.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Sophia</a>
+                                            <span>1 mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../../../assets/user/images/resources/recent6.jpg" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">Amelia</a>
+                                            <span>3 mutual friend</span>
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i
+                                                            class="fa fa-star"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i
+                                                            class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- suggested friends -->
+
+                            <div class="">
+                                <div *ngFor="let post of this.viewService.Userposts" class="central-meta item">
+                                    <div class="user-post">
+                                        <div class="friend-info">
+                                            <figure>
+                                                <img src="../../../assets/{{this.viewService.user.imagepath}}" alt="">
+                                            </figure>
+                                            <div class="friend-name">
+                                                <div class="more">
+                                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                        <ul>
+                                                           
+                                                            <li class="bad-report"><i class="fa fa-flag"></i>Report Post
+                                                            </li>
+                                                         
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <ins><a href="time-line.html" title="">{{this.viewService.user.username}}</a></ins>
+                                                <span>{{post.postdate}} <i class="fa fa-globe"></i></span>
+
+                                            </div>
+                                            <div class="post-meta">
+                                                <figure>
+                                                    <ul class="like-dislike">
+                                                        <li><a class="bg-purple" href="#" title="Save to Pin Post"><i
+                                                                    class="fa fa-thumb-tack"></i></a></li>
+                                                        <li><a class="bg-blue" href="#" title="Like Post"><i
+                                                                    class="ti-thumb-up"></i></a></li>
+                                                        <li><a class="bg-red" href="#" title="dislike Post"><i
+                                                                    class="ti-thumb-down"></i></a></li>
+                                                    </ul>
+                                                </figure>
+                                                <div class="description">
+                                                   
+                                                    <p>
+                                                       {{post.posttext
+}}
+                                                    </p>
+                                                </div>
+                                                <div class="we-video-info">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="views" title="views">
+                                                                <i class="fa fa-eye"></i>
+                                                                <ins>1.2k</ins>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            <div class="likes heart" title="Like/Dislike">❤
+                                                                <span>2K</span></div>
+                                                        </li>
+                                                        <li>
+                                                            <span class="comment" title="Comments">
+                                                                <i class="fa fa-commenting"></i>
+                                                                <ins>52</ins>
+                                                            </span>
+                                                        </li>
+
+                                                        <li>
+                                                            <span>
+                                                                <a class="share-pst" href="#" title="Share">
+                                                                    <i class="fa fa-share-alt"></i>
+                                                                </a>
+                                                                <ins>20</ins>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="users-thumb-list">
+                                                        <a data-toggle="tooltip" title="Anderw" href="#">
+                                                            <img alt="" src="images/resources/userlist-1.jpg">
+                                                        </a>
+                                                        <a data-toggle="tooltip" title="frank" href="#">
+                                                            <img alt="" src="images/resources/userlist-2.jpg">
+                                                        </a>
+                                                        <a data-toggle="tooltip" title="Sara" href="#">
+                                                            <img alt="" src="images/resources/userlist-3.jpg">
+                                                        </a>
+                                                        <a data-toggle="tooltip" title="Amy" href="#">
+                                                            <img alt="" src="images/resources/userlist-4.jpg">
+                                                        </a>
+                                                        <a data-toggle="tooltip" title="Ema" href="#">
+                                                            <img alt="" src="images/resources/userlist-5.jpg">
+                                                        </a>
+                                                        <span><strong>You</strong>, <b>Sarah</b> and <a href="#"
+                                                                title="">24+ more</a> liked</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="coment-area" style="display: block;">
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- digital sponsors -->
+                              
+                           
+                               
+                            
+                              
+                            </div>
+                        </div><!-- centerl meta -->
+                        <div class="col-lg-3">
+                            <aside class="sidebar static right">
+                                <div class="widget">
+                                    <h4 class="widget-title">Share Page</h4>
+                                    <ul class="socials">
+                                        <li class="facebook">
+                                            <a title="" href="#"><i class="fa fa-facebook"></i> <span>facebook</span>
+                                                <ins>45 likes</ins></a>
+                                        </li>
+                                        <li class="twitter">
+                                            <a title="" href="#"><i class="fa fa-twitter"></i>
+                                                <span>twitter</span><ins>25 likes</ins></a>
+                                        </li>
+                                        <li class="google">
+                                            <a title="" href="#"><i class="fa fa-google"></i> <span>google</span><ins>35
+                                                    likes</ins></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="widget">
+                                    <div class="weather-widget low-opacity bluesh">
+                                        <div class="bg-image"
+                                            style="background-image: url(images/resources/weather.jpg)"></div>
+                                        <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+                                        <div class="weather-week">
+                                            <div class="icon sun-shower">
+                                                <div class="cloud"></div>
+                                                <div class="sun">
+                                                    <div class="rays"></div>
+                                                </div>
+                                                <div class="rain"></div>
+                                            </div>
+                                        </div>
+                                        <div class="weather-infos">
+                                            <span class="weather-tem">25</span>
+                                            <h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
+                                            <div class="weather-date skyblue-bg">
+                                                <span>MAY<strong>21</strong></span>
+                                            </div>
+                                        </div>
+                                        <div class="monthly-weather">
+                                            <ul>
+                                                <li>
+                                                    <span>Sun</span>
+                                                    <a href="#" title=""><i class="wi wi-day-sunny"></i></a>
+                                                    <em>40°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Mon</span>
+                                                    <a href="#" title=""><i class="wi wi-day-cloudy"></i></a>
+                                                    <em>10°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Tue</span>
+                                                    <a href="#" title=""><i class="wi wi-day-hail"></i></a>
+                                                    <em>20°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Wed</span>
+                                                    <a href="#" title=""><i class="wi wi-day-lightning"></i></a>
+                                                    <em>34°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Thu</span>
+                                                    <a href="#" title=""><i class="wi wi-day-showers"></i></a>
+                                                    <em>22°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Fri</span>
+                                                    <a href="#" title=""><i class="wi wi-day-windy"></i></a>
+                                                    <em>26°</em>
+                                                </li>
+                                                <li>
+                                                    <span>Sat</span>
+                                                    <a href="#" title=""><i class="wi wi-day-sunny-overcast"></i></a>
+                                                    <em>30°</em>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div><!-- Weather Widget -->
+                                </div><!-- weather-->
+
+
+
+                            </aside>
+                        </div><!-- sidebar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- content -->
+
+<ng-template #callSendMessageDailog>
+    <form class="example-form" [formGroup]="replyForm" >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Message Content</mat-label>
+          <textarea rows="4" type="text" matInput formControlName="messageContent">
+          </textarea>
+        </mat-form-field>
+        <br>
+        
+        
+        <div class="setting-row">
+            <span>Send As Anonymous</span>
+            <input type="checkbox" (change)="change($event)"  formControlName="is_Anon" id="switch2"/> 
+            <label for="switch2"  data-off-label="OFF"></label>
+        </div>
+      
+  
+          <button (click)="replyMessage()">Send Message</button>
+    </form>
+    
+</ng-template>

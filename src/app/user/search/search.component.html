@@ -15,15 +15,17 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="align-left">
-                                            <h5>Saraha Users : <span>44</span></h5>
+                                            <h5>Saraha Users : <span>{{this.userService.searchUserResult.length}}</span></h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="row merged20">
                                             <div style="margin-left:156px" class="col-lg-7 col-lg-7 col-sm-7">
-                                                <form  method="post">
-                                                    <input type="text" placeholder="Search Friend">
-                                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                                <form  [formGroup]="searchForm">
+                                                   
+                                                    <input class="mb-2" type="text" formControlName="username" (change)="search()" placeholder="Search By Name">
+                                                    <input class="mb-2" type="text" formControlName="country" (change)="search()" placeholder="Search By Country">
+                                                    <input  type="text" formControlName="gender" (change)="search()" placeholder="Search By Gender">
                                                 </form>
                                             </div>
                                            
@@ -44,40 +46,35 @@
                         </div><!-- title block -->
                         <div class="central-meta padding30">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                    <div class="friend-box">
+                               
+                                <div *ngFor="let user of this.userService.searchUserResult" class="col-lg-3 col-md-6 col-sm-6">
+                                    <div  class="friend-box">
                                         <figure>
                                             <img src="./assets/sar/images/resources/frnd-cover1.jpg" alt="">
-                                            <span>Followers: 120</span>
                                         </figure>
                                         <div class="frnd-meta">
-                                            <img src="./assets/sar/images/resources/frnd-figure1.jpg" alt="">
-                                            <div class="frnd-name">
-                                                <a href="#" title="">Adam James</a>
-                                                <span>California, USA</span>
-                                            </div>
+                                            <img width="50" src="./assets/{{user.imagepath}}" alt="">
+                                            
                                             <ul class="frnd-info">
-                                                <li><span>Friends:</span> 223 (2 mutule friends)</li>
-                                                <li><span>Videos:</span> 240</li>
-                                                <li><span>Photos:</span> 144</li>
-                                                <li><span>Post:</span> 250</li>
-                                                <li><span>Since:</span> December, 2014</li>
+                                                <li><span>Name:</span> <a href="#">{{user.username}}</a> </li>
+                                                <li><span>Gender:</span> {{user.gender}}</li>
+                                                <li><span>Country:</span> {{user.country}}</li>
                                             </ul>
                                             <a class="send-mesg" href="#" title="">Message</a>
                                             <div class="more-opotnz">
                                                 <i class="fa fa-ellipsis-h"></i>
                                                 <ul>
-                                                    <li><a href="#" title="">Block</a></li>
-                                                    <li><a href="#" title="">UnBlock</a></li>
-                                                    <li><a href="#" title="">Mute Notifications</a></li>
-                                                    <li><a href="#" title="">hide from friend list</a></li>
+                                                   
+                                                    <li><a  (click)="viewProfile(user.userid)" title="">View Page</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
+                                        
                                     </div>
-                                </div>
+                                </div>   
                             
-                              
+                               
                             </div>
                             <div class="lodmore">
                                 <span>Viewing 1-8 of 44 friends</span>

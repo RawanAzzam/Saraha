@@ -20,17 +20,18 @@ export class PostService {
   }
   CreatePost(post:any){
     console.log(post);
+    if(this.postImage != null)
     post.imagepath = this.postImage.imagepath;
 
     debugger;
     this.http.post('https://localhost:44324/api/Post/CreatePost',post).subscribe((result) =>{
-
+      console.log(result)
     },Erorr =>{
-
+      console.log(Erorr)
     })
     window.location.reload();
   }
-  UserId = 21 ;
+  UserId = localStorage.getItem('userId') ;
   post : any =[]
 
   getPost(){

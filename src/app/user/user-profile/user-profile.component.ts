@@ -11,16 +11,23 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public post:PostService ) { }
   postForm:FormGroup = new FormGroup({
-    postText:new FormControl('',Validators.required),
-    imagepath : new FormControl ('')})
+    posttext:new FormControl('',Validators.required),
+    postdate : new FormControl(),
+    imagepath : new FormControl (''),
+    userid : new FormControl()})
+
   ngOnInit(): void {
     this.post.getPost();
 
   }
   CreatePost(){
-  
+    this.postForm.value.userid = Number(localStorage.getItem('userId'));
+    this.postForm.value.postdate = new Date();
+     console.log("here , create post")
     this.post.CreatePost(this.postForm.value);
       }
+
+
       uploadImage(file:any){
         if(file.length == 0){
          return
