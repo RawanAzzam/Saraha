@@ -195,8 +195,9 @@
                                                 <button class="post-btn-preview" type="submit" data-ripple="">Preview</button>
                                             </li>
                                         </ul>
-                                        <button (click)="CreatePost()" cdkFocusInitial class="post-btn" type="submit" data-ripple="">Post</button>
+                                        <button  cdkFocusInitial class="post-btn" type="submit"   (click)="CreatePost()">Post</button>
                                     </div>
+                              <button type="submit" (click)="CreatePost()"></button>
                                 </form>
                                     <div class="add-location-post">
                                         <span>Drag map point to selected area</span>
@@ -217,18 +218,22 @@
                                 </div>
                                 
                             </div><!-- add post new box -->
-                            <div class="central-meta">
+                            <!-- <div class="central-meta">
                                 <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
+                              
                                 <ul class="suggested-frnd-caro">
-                                    <li>
-                                        <img src="../../../assets/user/images/resources/recent1.jpg" alt="">
+                                  
+                                    <li style="display:inline-block;">
+                                        <div *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
+                                        <img src="../../../assets/{{user.imagepath}}" height="100" width="100" alt="">
                                         <div class="sugtd-frnd-meta">
-                                            <a href="#" title="">Olivia</a>
-                                            <span>1 mutual friend</span>
-                                            <ul class="add-remove-frnd">
+                                            <a href="#" title="">{{user.username}}</a>
+                                            <!-- <span>1 mutual friend</span> -->
+                                            <!-- <ul class="add-remove-frnd">
                                                 <li class="add-tofrndlist"><a href="#" title="Add friend"><i class="fa fa-user-plus"></i></a></li>
                                                 <li class="remove-frnd"><a href="#" title="remove friend"><i class="fa fa-user-times"></i></a></li>
                                             </ul>
+                                        </div>
                                         </div>
                                     </li>
                                    
@@ -244,8 +249,45 @@
                                             </ul>
                                         </div>
                                     </li>
+                                
                                 </ul>
-                            </div><!-- suggested friends -->
+                            </div> --> 
+                            <!-- suggested friends -->
+
+                            <!-- **************************     -->          
+                         <div class="central-meta">
+                            <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
+                              
+                            <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
+                                <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;" *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
+                                 <li>
+                                    <div>
+                                        <img src="../../../assets/{{user.imagepath}}" height="100" width="100" alt="">
+                                        <div class="sugtd-frnd-meta">
+                                            <a href="#" title="">{{user.username}}</a>
+                                            <!-- <span>1 mutual friend</span> -->
+                                            <ul class="add-remove-frnd">
+                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i class="fa fa-user-plus"></i></a></li>
+                                                <li class="remove-frnd"><a href="#" title="remove friend"><i class="fa fa-user-times"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        </div>
+                                     </li>
+                                 </div>
+                                    
+                                    
+             
+                                   
+                                 </ul>
+                        </div>
+
+
+
+
+
+
+
+                           
                             <div class="">
                              
                                 <div  class="central-meta ">

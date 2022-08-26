@@ -8,9 +8,11 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class UserTimelineComponent implements OnInit {
 
-  constructor(public userService : UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
+   
+    
   }
 
 }

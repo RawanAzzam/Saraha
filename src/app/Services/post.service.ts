@@ -33,10 +33,22 @@ export class PostService {
   }
   UserId = localStorage.getItem('userId') ;
   post : any =[]
-
-  getPost(){
-    this.http.get('https://localhost:44324/api/post/GetPostByUserId/'+this.UserId).subscribe((result) => {
+  postcountById : any;
+  getPost(userId:number){
+    this.http.get('https://localhost:44324/api/post/GetPostByUserId/'+userId).subscribe((result) => {
       this.post = result;
+      this.postcountById=this.post.length; 
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
+  like :any =[{}]
+  likecount:any;
+  getlikecount(userId:number){
+    this.http.get('https://localhost:44324/api/Like/Likescount/'+userId).subscribe((result) => {
+      this.like = result;
+     this.likecount = this.like.length;
       console.log(result);
     },Error => {
       console.log(Error);
