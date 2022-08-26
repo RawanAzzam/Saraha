@@ -9,11 +9,14 @@ import { TestimonialService } from 'src/app/Services/testimonial.service';
 })
 export class MakeTestimonyComponent implements OnInit {
   createTest:FormGroup = new FormGroup({
-    content:new FormControl(''),
+    content:new FormControl('',[Validators.required]),
     userid: new FormControl('')
 })
+id: any;
   constructor(private Testimonial:TestimonialService) { }
   CreateTest(){
+   this.createTest.controls["userid"].setValue(Number(localStorage.getItem('userId')));
+
     this.Testimonial.createTest(this.createTest.value);
       }
   ngOnInit(): void {

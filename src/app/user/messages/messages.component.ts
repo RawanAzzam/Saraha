@@ -11,7 +11,7 @@ import { MessageService } from 'src/app/Services/message.service';
 export class MessagesComponent implements OnInit {
 
   constructor(public messageService:MessageService,private dialog:MatDialog) { }
-  id = 1;
+  // id = 1;
  @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
   
    replyForm : FormGroup = new FormGroup(
@@ -36,7 +36,7 @@ export class MessagesComponent implements OnInit {
 
   replyMessage(){
    this.replyForm.controls["messageDate"].setValue(new Date());
-   this.replyForm.controls["userFrom"].setValue(this.id);
+   this.replyForm.controls["userFrom"].setValue(localStorage.getItem('userId'));
    debugger;
    console.log(this.replyForm.value)
    this.messageService.createNewMessage(this.replyForm.value);
