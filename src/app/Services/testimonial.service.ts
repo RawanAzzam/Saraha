@@ -41,6 +41,14 @@ export class TestimonialService {
      })
     window.location.reload();
    }
- 
+   createTest(testimonial:any){
+    this.http.post('https://localhost:44324/api/Testimonial',testimonial).subscribe((result) => {
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+
+    window.location.reload();
+  }
 
   }

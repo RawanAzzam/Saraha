@@ -4,6 +4,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ActiveBarComponent } from './active-bar/active-bar.component';
 import { ProfileBarComponent } from './profile-bar/profile-bar.component';
 import { UserprofileBarComponent } from './userprofile-bar/userprofile-bar.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,6 +17,7 @@ import { UserprofileBarComponent } from './userprofile-bar/userprofile-bar.compo
   ],
   imports: [
     CommonModule,
+    RouterModule
 
   ],
   exports:[

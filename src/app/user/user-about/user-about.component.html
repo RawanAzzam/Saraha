@@ -1,54 +1,55 @@
 <app-nav-bar></app-nav-bar>
 <app-active-bar></app-active-bar>
 <section>
-    <div class="container">
-    <div class="col-lg-12">
-        <div class="tab-content">
-            <div class="tab-pane active fade show" id="link1">
-                <div class="row merged20" id="page-contents">
+    <div class="gap2 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row merged20" id="page-contents">
                     <app-profile-bar></app-profile-bar>
+                    <div class="col-lg-12">
+                        <div class="tab-content">
+                       
+                        
+                            <div class="tab-pane fade active show" id="link3">
+                                <div class="">
+                                
+                                    <div class="row merged20">
 
-                    <div class="col-lg-4 col-md-4">
+
+                    <div class="col-lg-3">
                         <aside class="sidebar">
                             <div class="central-meta stick-widget">
                                 <span class="create-post">Personal Info<a href="http://localhost:4200/user/editProfile" title="">Edit Profile</a></span>
                                 <div class="personal-head">
                                     <span class="f-title"><i class="fa fa-user"></i> About Me:</span>
                                     <p>
-                                        Hi, I’m John Carter, I’m 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada
+                                        Hi, I’m {{this.userService.user.username}}, I’m from {{this.userService.user.country}} ....
+                                        <!-- 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada -->
                                     </p>
                                     <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:</span>
                                     <p>
-                                        December 17, 1985 
+                                      {{this.userService.user.birthdate |date}}
                                     </p>
                                     <span class="f-title"><i class="fa fa-phone"></i> Phone Number:</span>
                                     <p>
-                                        +1-989-232435234 
+                                      
+                                        {{this.userService.user.phonenumber}}
                                     </p>
-                                    <span class="f-title"><i class="fa fa-medkit"></i> Blood group:</span>
-                                    <p>
-                                        B+
-                                    </p>
+                                   
                                     <span class="f-title"><i class="fa fa-male"></i> Gender:</span>
                                     <p>
-                                        Male 
+                                       {{this.userService.user.gender}}
                                     </p>
                                     <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
                                     <p>
-                                        San Francisco, California, USA 
+                                     {{this.userService.user.country}}
                                     </p>
-                                    <span class="f-title"><i class="fa fa-briefcase"></i> Occupation:</span>
-                                    <p>
-                                        UI/UX Designer 
-                                    </p>
-                                    <span class="f-title"><i class="fa fa-handshake-o"></i> Joined:</span>
-                                    <p>
-                                        December 20, 2001  
-                                    </p>
+                                  
     
                                     <span class="f-title"><i class="fa fa-envelope"></i> Email &amp; Website:</span>
                                     <p>
-                                        <a href="wpkixx.com" title="">www.wpkixx.com</a> Pitnik@yourmail.com 
+                                        {{this.userService.user.email}} 
                                     </p>
     
                                 </div>
@@ -1173,5 +1174,11 @@
         </div>
     </div>
 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+                
 </section><!-- content -->
 
