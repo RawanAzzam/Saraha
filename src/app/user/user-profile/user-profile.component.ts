@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from 'src/app/Services/post.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,13 +10,14 @@ import { PostService } from 'src/app/Services/post.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public post:PostService ) { }
+  constructor(public post:PostService,public userService : UserService ) { }
   postForm:FormGroup = new FormGroup({
     postText:new FormControl('',Validators.required),
     imagepath : new FormControl ('')})
   ngOnInit(): void {
     this.post.getPost();
-
+    this.userService.getAll();
+    this.userService.Allusers();
   }
   CreatePost(){
   

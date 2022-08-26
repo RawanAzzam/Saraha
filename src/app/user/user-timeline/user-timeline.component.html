@@ -171,7 +171,8 @@
                          <!-- add post new box -->
                             <div class="central-meta">
                                 <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
-                                <ul class="suggested-frnd-caro" *ngFor="let user of userService.users" >
+                                <div *ngFor="let user of userService.users">
+                                <ul class="suggested-frnd-caro"  >
                                     <li>
                                         <!-- <img src="../../../assets/user/images/resources/recent1.jpg" alt=""> -->
                                         <img src="../../../assets/{{user.imagePath}}" alt="">
@@ -197,7 +198,7 @@
                                             </ul>
                                         </div>
                                     </li>  -->
-                                </ul>
+                                </ul></div>
                             </div><!-- suggested friends -->
                             <div class="loadMore">
                              

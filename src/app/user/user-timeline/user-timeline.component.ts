@@ -11,6 +11,8 @@ export class UserTimelineComponent implements OnInit {
   constructor(public userService : UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAll();
+    
   }
 
 }
