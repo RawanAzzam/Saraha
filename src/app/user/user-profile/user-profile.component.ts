@@ -14,7 +14,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public post:PostService,public userService : UserService,public loginservice:LoginService,private dialog:MatDialog ) { }
+  constructor(public post:PostService,public userService : UserService,public loginservice:LoginService,private dialog:MatDialog) { }
+  @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
 postForm:FormGroup = new FormGroup({
   posttext:new FormControl('',Validators.required),
@@ -77,14 +78,31 @@ createComment(postId:number){
   this.CommentForm.value.imagepath=null;
   this.post.createComment(this.CommentForm.value);
 }
-      uploadImage(file:any){
-        if(file.length == 0){
-         return
-        }
-        debugger;
-        let fileToUpload = <File>file[0];
-        const formData = new FormData();
-        formData.append('file',fileToUpload,fileToUpload.name);
-        this.post.uploadPostImage(formData);
-       }
+
+
+deletePost(id:number){ 
+
+    const dialogVal= this.dialog.open(this.calldeleteDailog);
+    dialogVal.afterClosed().subscribe((result)=>{
+      if(result!=undefined)
+        {
+          if(result=='yes')
+          
+          this.post.deletePost(id);
+        else (result=='no')
+        console.log("Thank you");
+             }
+    })
+   
+}
+uploadImage(file:any){
+  if(file.length == 0){
+    return
+  }
+  debugger;
+  let fileToUpload = <File>file[0];
+  const formData = new FormData();
+  formData.append('file',fileToUpload,fileToUpload.name);
+  this.post.uploadPostImage(formData);
+}
 }

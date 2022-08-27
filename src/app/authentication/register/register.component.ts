@@ -3,6 +3,7 @@ import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {ToastrService} from 'ngx-toastr';
+import { HomePageService } from 'src/app/Services/home-page.service';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -19,10 +20,10 @@ export class RegisterComponent implements OnInit {
   name : new FormControl('',[Validators.required]),
   email : new FormControl('',[Validators.required]),
   phonenumber : new FormControl('',[Validators.required]),
-  gender : new FormControl('',[Validators.required]),
+  gender : new FormControl(''),
   country : new FormControl('',[Validators.required]),
-  birthdate:new FormControl('',[Validators.required]),
-  imagepath: new FormControl(''),
+  Birthdate:new FormControl('',[Validators.required]),
+  //imagepath: new FormControl(''),
 
 
 
@@ -32,24 +33,26 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , private user :UserService) { }
+  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , public user :UserService,public home: HomePageService) { }
 
   ngOnInit(): void {
+    this.home.getHome();
   }
   CreateUser(){
+    debugger;
     this.user.createUser(this.registerForm.value);
       }
 
-      uploadImage(file:any){
-        if(file.length == 0){
-         return
-        }
-        debugger;
-        let fileToUpload = <File>file[0];
-        const formData = new FormData();
-        formData.append('file',fileToUpload,fileToUpload.name);
-        this.user.uploadUserImage(formData);
-       }
+      // uploadImage(file:any){
+      //   if(file.length == 0){
+      //    return
+      //   }
+      //   debugger;
+      //   let fileToUpload = <File>file[0];
+      //   const formData = new FormData();
+      //   formData.append('file',fileToUpload,fileToUpload.name);
+      //   this.user.uploadUserImage(formData);
+       //}
 
         file:any;
        imageShow: any= '';
