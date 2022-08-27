@@ -11,9 +11,8 @@
                     <div class="col-lg-12" >
 
                         <div class="central-meta item" *ngFor="let message of this.messageService.messages">
-                            <form [formGroup]="msgToPostForm">	
+                         
                             <div class="user-post">
-                       
                                 <div class="friend-info">
                                     <figure>
                                         <img *ngIf="!message.is_Anon" src="./../../assets/{{message.userFromImage}}" alt="">
@@ -39,13 +38,14 @@
                                      								
                                         <div class="description">
                                             <p >{{message.messageContent}}  </p>
+                                    
                                         </div>
-                                
+                              
                                     </div>
                                    
                                 </div>
                             </div>
-                        </form>
+                            
                         </div>
                        
                        
