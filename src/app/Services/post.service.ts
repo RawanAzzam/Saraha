@@ -80,10 +80,11 @@ export class PostService {
   createLike(postId: number, userId:number){
     debugger;
     // this.Postlike.postId=postId;
-    this.http.post('https://localhost:44324/api/Like/CreateLike'+userId,+postId ).subscribe((result) =>{
+    this.http.get('https://localhost:44324/api/Like/CreateLike/'+userId+'/'+postId ).subscribe((result) =>{
       console.log(result)
     },Erorr =>{
       console.log(Erorr)
+      
     })
     window.location.reload();
   }
