@@ -41,12 +41,12 @@ export class AuthService {
      localStorage.setItem('userId',data.UserId );
      localStorage.setItem('loginId',data.loginId);
       localStorage.setItem('user',JSON.stringify({...data}) );
-       console.log(localStorage.getItem('userId'))
+       console.log("LOOOOOOGGIIIn IIIddd"+localStorage.getItem('loginId'))
        
       this.spinner.hide();
-      if(data.is_Blocked == "False" && data.Is_Verified =="True"){
+      if(data.is_Blocked == "False" ){
         console.log("Hiii")
-        this.loginService.updateActiveStatus(1,Number(data.loginId));
+        this.loginService.updateActiveStatus(Number(data.loginId),1);
         if(data.role=='2')
         {
           this.router.navigate(['admin']);

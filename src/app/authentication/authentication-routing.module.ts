@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
+import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,12 @@ const routes: Routes = [
   {
     path:"logout",
     component:LogoutComponent
+  },
+ {
+   path:'verfiy',
+   component:VerfiyEmailComponent
   }
+
 ];
 
 @NgModule({
