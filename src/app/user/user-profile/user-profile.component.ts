@@ -53,13 +53,16 @@ export class UserProfileComponent implements OnInit {
 // this.postId=postId;
 
 //   }
-  CreatePost(){
-    this.postForm.value.userid = Number(localStorage.getItem('userId'));
-    this.postForm.value.postdate = new Date();
-     console.log("here , create post")
-    this.post.CreatePost(this.postForm.value);
-      }
-
+CreatePost(){
+  this.postForm.value.userid = Number(localStorage.getItem('userId'));
+  this.postForm.value.postdate = new Date();
+   console.log("here , create post")
+  this.post.CreatePost(this.postForm.value);
+    }
+    CreateLike(postId: number){
+            this.post.createLike(postId);
+        }
+  
 
       uploadImage(file:any){
         if(file.length == 0){

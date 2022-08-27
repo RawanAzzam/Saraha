@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public loginservice:LoginService) { }
   posts : any = [{}]
   postcount : any;
   postImage:any;
+  Postlike:any;
   getAll(){
     this.http.get('https://localhost:44324/api/Post/').subscribe((res)=>{
     this.posts=res;
@@ -75,4 +77,15 @@ export class PostService {
 
   }
 
+  createLike(postId: number){
+    debugger;
+    this.Postlike.postId=postId;
+    this.Postlike.userId=this.loginservice.userId;
+    this.http.post('https://localhost:44324/api/Like/CreateLike',this.Postlike).subscribe((result) =>{
+      console.log(result)
+    },Erorr =>{
+      console.log(Erorr)
+    })
+    window.location.reload();
+  }
 }

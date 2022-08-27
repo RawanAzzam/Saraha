@@ -169,6 +169,8 @@
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
                             <div class="central-meta postbox">
+                                <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateLike(41)"> Like</a>
+
                                 <span class="create-post">Create post</span>
                                 <div class="new-postbox">
                                     <figure>
@@ -320,9 +322,9 @@
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red" href="#" title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
+                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li><a class="bg-blue" title="Like Post"><i  (click)="CreateLike(post.postId)"  class="ti-thumb-up"></i></a></li>
+                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
     
@@ -331,9 +333,10 @@
                                                         {{post.postText}} 
                                                     </p>
                                                 </div>
+
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li style="margin-right: 13px;">
+                                                        <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;">
                                                             <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
                                                                 <ins> {{post.likes}} </ins>
                                                             </span>
