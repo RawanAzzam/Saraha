@@ -21,33 +21,36 @@
 
 <div class="col-lg-9">
                 <div class="central-meta " >
-                  <div class="forum-open">
-                    <h4 class="create-post">All Reported Users</h4>
+                  <!-- <div class="forum-open"> -->
+
+                    <h4 class="create-post">All Reported Users <span style="color:white; background-color: #fa6342e8; border-radius:5px ; padding:5px ;" >{{report.reports.length}}</span></h4>
                     <table class="table table-responsive">
                       <thead>
                         <tr>
-                          <th>User Name</th>
+                          <th>User</th>
                           <th>Report Message</th>
-                          <!-- <th>Report Date</th> -->
+                          <th>Report count</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let obj of report.reports">
                         <tr>
-                          <td class="topic-data">
-                            <img src="./assets/{{obj.imageName}}" alt="">
-                            <span>{{obj.username}}</span>
+                          <td  class="topic-data">
+                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" height="90" width="90" alt="">
+                            <span>{{obj.count}} Report</span>
                             <!-- <em>Participant</em> -->
                           </td>
                        
-                          <td class="topic-detail">
-                            <p style="margin-left:30px ; text-align: center;align-content: center;">{{obj.message}}</p>
+                          <td >
+                            <p style="margin:50px ; text-align: center;align-content: center;">{{obj.message}}</p>
                           </td>
-                          <td class="date-n-reply">
-                            <!-- <span>October 13, 2019 at 9:31 pm</span> -->
+                          <td>
+                            <p style="margin-top:50px ;">{{obj.username}}</p>
                           </td>
-                          <td class="date-n-reply">
-                            <a class="addnewforum" style="color: white;" href="forum-create-topic.html" title=""> Block <i class="fa fa-close"></i></a>
-                            <a [routerLink]="['/admin/compose']" class="addnewforum" style="color: white; margin-top: -10px;" href="forum-create-topic.html" title=""> Contact <i class="fa fa-envelope"></i></a>
+                          <td style="padding-right:50px ;" class="date-n-reply"> 
+                             <a class="addnewforum" style="color: white;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
+                            <a class="addnewforum" style="color: white;" *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
+                            <a [routerLink]="['/admin/compose']" class="addnewforum" style="color: white; margin-top: -10px;" title=""> Contact <i class="fa fa-envelope"></i></a>
                           </td>
 
                           </tr>
@@ -79,7 +82,7 @@
                 </div>
      
 
-                </div>
+                <!-- </div> -->
             </div>
           </div>
       </div>

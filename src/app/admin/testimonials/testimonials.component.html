@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="align-left">
-                                    <h5 style="font-size: large;">Manage Tetimonials <span style="color:white; background-color: #fa6342e8" >99</span></h5>
+                                    <h5 style="font-size: large;">Manage Tetimonials <span style="color:white; background-color: #fa6342e8" >{{Testimonial.testimonial.length}}</span></h5>
                                 <hr style="width: 600px;color:#fa6342e8 ; border-style: dotted;"/>
                                 </div>
                             </div>
@@ -75,9 +75,9 @@
                     </div>
                     <div class="event-invites" *ngFor="let obj of Testimonial.testimonial" >
                         <div class="row">
-                            <div class="col-lg-5 col-md-6 col-sm-12">
+                            <div class="col-lg-12 col-md-6 col-sm-12">
                                 <div class="invite-figure" style="display:flex ;">
-                                    <figure><img src="../../../assets/{{obj.imagePath}}" height="50" width="50" style="margin-right:50px ;" alt=""></figure>
+                                    <figure><img src="../../../assets/{{obj.imagePath}}" height="100" width="100" alt=""></figure>
                                     <h6><a class="invitor" href="#" title=""></a><br><a href="#" title="">{{obj.user}}</a></h6>
                                     <p style="margin-top:25px ;">
                                        {{obj.content}}
@@ -91,16 +91,16 @@
                             </div> -->
                             <div class="col-lg-2 col-md-2 col-sm-12">
                                 <div class="invites-btns" *ngIf="obj.is_accepted">
-                                    <a class="main-btn" (click)="UpdateTest(0, obj.testimonialid)" title="" data-ripple="">Accept</a>
+                                    <a class="main-btn" (click)="UpdateTest(0, obj.testimonialid)" title="" data-ripple="">Accepted</a>
                                 </div>   
                                 <div class="invites-btns" *ngIf="!obj.is_accepted">
-                                    <a class="main-btn2" (click)="UpdateTest(1, obj.testimonialid)" title="" data-ripple="">Remove</a>
+                                    <a class="main-btn2" (click)="UpdateTest(1, obj.testimonialid)" title="" data-ripple="">Process</a>
                                 </div>                                
                             </div>
                             
                             <div class="col-lg-2 col-md-2 col-sm-12">
                                 <div class="invites-btns">
-                                    <a class="main-btn3" (click)="deletetest(obj.testimonialid)" title="" data-ripple="">Discard</a>
+                                    <a class="main-btn3" (click)="deletetest(obj.testimonialid)" title="" data-ripple="">Remove</a>
                                 </div>
                             </div>
                         </div>

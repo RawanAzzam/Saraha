@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from 'src/app/Services/report.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-manage-report',
@@ -8,10 +9,14 @@ import { ReportService } from 'src/app/Services/report.service';
 })
 export class ManageReportComponent implements OnInit {
 
-  constructor(public report:ReportService) { }
+  constructor(public report:ReportService,public userService : UserService) { }
 
   ngOnInit(): void {
     this.report.getAllUserReport();
+  }
+  changeBlockStatus(loginId:number,blockStatus:number){
+    console.log(loginId);
+    this.userService.changeBlockUserStatus(loginId,blockStatus);
   }
 
 }
