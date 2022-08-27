@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   email : new FormControl('',[Validators.required]),
   phonenumber : new FormControl('',[Validators.required]),
   gender : new FormControl(''),
-  country : new FormControl('',[Validators.required]),
+  // country : new FormControl('',[Validators.required]),
   Birthdate:new FormControl('',[Validators.required]),
   //imagepath: new FormControl(''),
 
