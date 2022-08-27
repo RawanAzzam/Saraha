@@ -37,8 +37,8 @@ this.id = this.route.snapshot.params['id']
 console.log(this.id)
 this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
-    this.post.getPost(this.id);
-   
+    this.post.GetPostLikedBy(this.id);
+    
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
   }
