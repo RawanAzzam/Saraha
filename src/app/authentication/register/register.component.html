@@ -6,16 +6,16 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="big-ad">
-                            <a class="" href="http://localhost:4200//Home">   <figure><img src="../assets/sar/images/logo.png" alt=""></figure>
+                            <a class="" href="http://localhost:4200//Home">   <figure><img src="../../../assets/{{home.homePage.logo}}" alt=""></figure>
                             </a>
-                            <h1>Welcome to the Pitnik</h1>
+                            <h1>Welcome to the Saraha Time</h1>
                             <p>
-                                 Pitnik is a social network template that can be used to connect people. use this template for multipurpose social activities like job, dating, posting, bloging and much more. Now join & Make Cool Friends around the world !!!                             
+                                 Saraha Time is a social network template that can be used to connect people. use this template for multipurpose social activities like job, dating, posting, bloging and much more. Now join & Make Cool Friends around the world !!!                             
                             </p>
                             <div class="barcode">
-                                <figure><img src="./assets/sar/images/resources/Barcode.jpg" alt=""></figure>
+                                <!-- <figure><img src="./assets/sar/images/resources/Barcode.jpg" alt=""></figure> -->
                                 <div class="app-download">
-                                    <span>Download Mobile App and Scan QR Code to login</span>
+                                    <h1>Welcome to the Saraha Time</h1>
                                     <ul class="colla-apps">
                                         <li><a title="" href="https://play.google.com/store?hl=en"><img src="./assets/sar/images/android.png" alt="">android</a></li>
                                         <li><a title="" href="https://www.apple.com/lae/ios/app-store/"><img src="./assets/sar/images/apple.png" alt="">iPhone</a></li>
@@ -64,31 +64,57 @@
                             </mat-form-field>
                             <mat-form-field appearance="outline" >
 
-                                <input type="date" class="inputfield" matInput formControlName="birthdate">
-                             
+                                <input type="date" class="inputfield" matInput formControlName="Birthdate">                      
                                
                              
                             </mat-form-field>
-                            <mat-form-field appearance="outline" >
-
-                                <select class="inputfield"  formControlName="country">
+                           <!--  <mat-form-field appearance="outline" >-->
+                                <!-- <select id="country" class="inputfield" aria-label="country" matInput formControlName="country">
                                     
-                                    <option value="Ajloun">Ajloun</option>
-                                    <option value="Amman">Amman</option>
-                                    <option value="Aqaba">Aqaba</option>
-                                    <option value="Salt">Salt</option>
-                                    <option value="Zarqa">Zarqa</option>
-                                    <option value="Madaba">Madaba</option>
-                                  </select>
-                                </mat-form-field>
-                                  <mat-form-field appearance="outline" >
+                                     <option selected for="country">Open this select menu</option> 
+                                    <option value="Ajloun"for="country">Ajloun</option>
+                                    <option value="Amman"for="country">Amman</option>
+                                    <option value="Aqaba"for="country">Aqaba</option>
+                                    <option value="Salt"for="country">Salt</option>
+                                    <option value="Zarqa"for="country">Zarqa</option>
+                                    <option value="Madaba"for="country">Madaba</option>
+                                  </select> -->
 
-                                <select class="inputfield" formControlName="gender">
-                                    <option value="Female">Female</option>
-                                    <option value="Male"  >Male</option>
-                                  </select>
-                                </mat-form-field>
-                            <input class="mb-2" type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
+
+
+
+                                  <!-- <select formControlName="country" (ngModel)="this.user.user.country">
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antartica">Antarctica</option>
+                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                    <option value="Argentina">Argentina</option>                   
+                    
+                                    </select> -->
+
+
+
+
+                         <!--   </mat-form-field> -->
+                            <!-- <mat-form-field appearance="outline" > -->
+                                <input type="radio" id="rd1" value="male" formControlName="gender">
+                                <label for="rd1">Male</label>
+                                <input type="radio" id="rd2" value="female" formControlName="gender">
+                                <label for="rd2">Female</label>
+                                <!-- <select class="inputfield" aria-label="gender" formControlName="gender">
+                                     <option selected>Gender</option> 
+                                    <option value="Female" formControlName="gender" >Female</option>
+                                    <option value="Male" formControlName="gender" >Male</option>
+                              
+                                  </select> -->
+                            <!-- </mat-form-field> -->
+                          
+                            <!-- <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" > -->
                             <!-- <input type="file" (change)="onFileChanged($event)" required formControlName="imagepath"/> -->
                             <!-- <img [src]="imageShow" height="200"> <br/> -->
                               
