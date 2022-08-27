@@ -2,7 +2,9 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
+import { PostService } from 'src/app/Services/post.service';
 import { UserService } from 'src/app/Services/user.service';
 import { ViewProfileService } from 'src/app/Services/view-profile.service';
 
@@ -14,7 +16,7 @@ import { ViewProfileService } from 'src/app/Services/view-profile.service';
 export class ViewProfileUserComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,public viewService:ViewProfileService,
-    private dialog:MatDialog,public messageService:MessageService) { }
+    private dialog:MatDialog,public messageService:MessageService,private loginService:LoginService,public post:PostService) { }
    id : any
   
    @ViewChild('callSendMessageDailog') callSendMessageDailog! :TemplateRef<any>;
@@ -35,6 +37,10 @@ this.id = this.route.snapshot.params['id']
 console.log(this.id)
 this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
+    this.post.getPost(this.id);
+   
+    this.post.getlikecount(this.id);
+    this.messageService.getMessagescountbyid(this.id);
   }
 
   openSendMessageDailog(){
