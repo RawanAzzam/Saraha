@@ -10,7 +10,7 @@
                         <div class="col-lg-3">
                             <aside class="sidebar static left">
                                 <div class="widget">
-                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See All</a></h4>
+                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title=""> See All</a></h4>
                                     <ul class="badgez-widget">
                                         <li>
                                         <a href="#" title="Male User" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge2.png" alt=""></a>
@@ -169,10 +169,12 @@
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
                             <div class="central-meta postbox">
+                                <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateLike(41)"> Like</a> -->
+
                                 <span class="create-post">Create post</span>
                                 <div class="new-postbox">
                                     <figure>
-                                        <img src="../../../assets/user/images/resources/admin.jpg" alt="">
+                                        <img src="../../../assets/{{this.post.userpost.autherImage}}" alt="">
                                     </figure>
                                     <form [formGroup]="postForm" >
 
@@ -197,9 +199,8 @@
                                         </ul>
                                         <button  cdkFocusInitial class="post-btn" type="submit"   (click)="CreatePost()">Post</button>
                                     </div>
-                              <button type="submit" (click)="CreatePost()"></button>
                                 </form>
-                                    <div class="add-location-post">
+                                    <!-- <div class="add-location-post">
                                         <span>Drag map point to selected area</span>
                                         <div class="row">
 
@@ -212,9 +213,8 @@
                                                   <input type="text" class="" id="us3-lon" />
                                             </div>
                                         </div>
-                                          <!-- map -->
-                                          <div id="us3"></div>
-                                    </div>
+                                          map -->
+                                    <!-- </div> -->
                                 </div>
                                 
                             </div><!-- add post new box -->
@@ -228,7 +228,7 @@
                                         <img src="../../../assets/{{user.imagepath}}" height="100" width="100" alt="">
                                         <div class="sugtd-frnd-meta">
                                             <a href="#" title="">{{user.username}}</a>
-                                            <!-- <span>1 mutual friend</span> -->
+                                            <span>1 mutual friend</span> -->
                                             <!-- <ul class="add-remove-frnd">
                                                 <li class="add-tofrndlist"><a href="#" title="Add friend"><i class="fa fa-user-plus"></i></a></li>
                                                 <li class="remove-frnd"><a href="#" title="remove friend"><i class="fa fa-user-times"></i></a></li>
@@ -255,14 +255,14 @@
                             <!-- suggested friends -->
 
                             <!-- **************************     -->          
-                         <div class="central-meta">
+                         <div style="margin-bottom:-31px ;" class="central-meta">
                             <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
                               
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;" *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
                                  <li>
                                     <div>
-                                        <img src="../../../assets/{{user.imagepath}}" height="100" width="100" alt="">
+                                        <img src="./assets/{{user.imagepath}}" height="100" width="100" alt="">
                                         <div class="sugtd-frnd-meta">
                                             <a href="#" title="">{{user.username}}</a>
                                             <!-- <span>1 mutual friend</span> -->
@@ -290,93 +290,75 @@
                            
                             <div class="">
                              
-                                <div  class="central-meta ">
+                                <div style="margin-bottom:4px; background: none ; border: none;"  class="central-meta ">
                                     <!--Pinned Posts-->
-                                    <div *ngFor="let post of this.post.post" >
+                                    <div *ngFor="let post of this.post.userpost" >
                                     <div class="user-post" *ngIf="post.is_Pin == true">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/user/images/resources/recent1.jpg" alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
                                                             <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li><i  class="fa fa-trash-o"></i>Delete Post</li>
                                                         
                                                             <li><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title="">Sophia {{post.userid}}</a> shared location <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
                                                 </ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postdate | date}}</span>
+                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
                                                     <div class="nearby-map">
                                                         <figure>
-                                                            <img src="../../../assets/Images/{{post.imagepath}}" alt="">
+                                                            <img src="../../../assets/Images/{{post.imagePath}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                        <li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
+                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li><a class="bg-blue" title="Like Post"><i  (click)="CreateLike(post.postId)"  class="ti-thumb-up"></i></a></li>
+                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
     
                                                 <div class="description">
                                                     <p>
-                                                        {{post.posttext}} 
+                                                        {{post.postText}} 
                                                     </p>
                                                 </div>
+
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li>
-                                                            <span class="views" title="views">
-                                                                <i class="fa fa-eye"></i>
-                                                                <ins>1.2k</ins>
+                                                        <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;">
+                                                            <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
+                                                                <ins> {{post.likes}} </ins>
                                                             </span>
                                                         </li>
                                                         <li>
-                                                            <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
+                                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
                                                         </li>
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <i class="fa fa-commenting"></i>
-                                                                <ins>52</ins>
+                                                                <ins>{{post.comments}} </ins>
                                                             </span>
                                                         </li>
     
-                                                        <li>
-                                                            <span>
-                                                                <a class="share-pst" href="#" title="Share">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                </a>
-                                                                <ins>20</ins>
-                                                            </span>	
-                                                        </li>
+                                                     
                                                     </ul>
-                                                    <div class="users-thumb-list">
-                                                        <a data-toggle="tooltip" title="Anderw" href="#">
+                                                    <div class="users-thumb-list" >
+                                                        <a data-toggle="tooltip" title="Anderw">
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
-                                                        <a data-toggle="tooltip" title="frank" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-2.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Sara" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-3.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Amy" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-4.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Ema" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-5.jpg">  
-                                                        </a>
-                                                        <span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
+                                                   
+                                                        <span><strong></strong>, <b>Sarah</b> and <a title="">24+ more</a> liked</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -410,13 +392,13 @@
                               </div> 
                             
                             <br/>
-                                <div *ngFor="let post of this.post.post" class="central-meta item">
+                                <div *ngFor="let post of this.post.userpost" class="central-meta item" >
                             
 <!--Postttt-->
                                     <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/user/images/resources/recent1.jpg" alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
@@ -430,99 +412,107 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title="">Sophia  {{post.userid}}</a> shared location</ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postdate | date}}</span>
+                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
+                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
                                                     <div class="nearby-map">
                                                         <figure>
-                                                            <img src="../../../assets/Images/{{post.imagepath}}" alt="">
+                                                            <img src="../../../assets/Images/{{post.imagePath}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                        <li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
+                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red" href="#" title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
 
                                                 <div class="description">
                                                     <p>
-                                                        {{post.posttext}} 
+                                                        {{post.postText}} 
                                                     </p>
                                                 </div>
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li>
-                                                            <span class="views" title="views">
-                                                                <i class="fa fa-eye"></i>
-                                                                <ins>1.2k</ins>
+                                                        <li style="margin-right: 13px;">
+                                                            <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
+                                                                <ins> {{post.likes}} </ins>
                                                             </span>
                                                         </li>
-                                                        <li>
-                                                            <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
+                                                        <li style="margin-right: 13px;">
+                                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
                                                         </li>
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <i class="fa fa-commenting"></i>
-                                                                <ins>52</ins>
+                                                                <ins>{{post.comments}}</ins>
                                                             </span>
                                                         </li>
 
-                                                        <li>
-                                                            <span>
-                                                                <a class="share-pst" href="#" title="Share">
-                                                                    <i class="fa fa-share-alt"></i>
-                                                                </a>
-                                                                <ins>20</ins>
-                                                            </span>	
-                                                        </li>
+                                                     
                                                     </ul>
-                                                    <div class="users-thumb-list">
-                                                        <a data-toggle="tooltip" title="Anderw" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                                    <div class="users-thumb-list" >
+                                                        <div *ngFor="let user of this.post.likes">
+
+                                                        <a data-toggle="tooltip" title="{{user.likeFrom}}" href="#" >
+                                                            <img alt="" src="../../../assets/{{this.userService.user.imagepath}}">  
                                                         </a>
-                                                        <a data-toggle="tooltip" title="frank" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-2.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Sara" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-3.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Amy" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-4.jpg">  
-                                                        </a>
-                                                        <a data-toggle="tooltip" title="Ema" href="#">
-                                                            <img alt="" src="../../../assets/sar/images/resources/userlist-5.jpg">  
-                                                        </a>
-                                                        <span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
+                                                    </div>
+                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a>	<a (click)="GetPostLikedBy(post.postId)" >See All </a>
+                                                           
+                                                        </span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="coment-area" >
-                                                <ul class="we-comet">
-                                                    <li>
-                                                        <div class="comet-avatar">
-                                                            <img src="../../../assets/sar/images/resources/nearly3.jpg" alt="">
-                                                        </div>
-                                                        <div class="we-comment">
-                                                            <h5><a href="time-line.html" title="">Jason borne</a></h5>
-                                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-                                                            <div class="inline-itms">
-                                                                <span>1 year ago</span>
-                                                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                                                <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-                                                            </div>
-                                                        </div>
+                                                
 
-                                                    </li>
-                                                  
-                                                    <li>
-                                                        <a href="#" title="" class="showmore underline">more comments+</a>
-                                                    </li>
-                                                   
-                                                </ul>
+                                                <div class="coment-area" style="display: block;">
+													<ul class="we-comet">												
+														<li class="post-comment">
+															<div class="comet-avatar">
+																<img src="images/resources/nearly1.jpg" alt="">
+															</div>
+															<div class="post-comt-box">
+																<form [formGroup]="CommentForm">
+																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<input formControlName="userid" hidden>
+                                                                    <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
+                                                                    <div class="add-smiles">
+																		<!-- <div class="uploadimage">
+																			<i class="fa fa-image"></i>
+																			<label class="fileContainer">
+																				<input type="file">
+																			</label>
+																		</div> -->
+																		<span class="em em-expressionless" title="add icon"></span>
+																		<!-- <div class="smiles-bunch">
+																			<i class="em em---1"></i>
+																			<i class="em em-smiley"></i>
+																			<i class="em em-anguished"></i>
+																			<i class="em em-laughing"></i>
+																			<i class="em em-angry"></i>
+																			<i class="em em-astonished"></i>
+																			<i class="em em-blush"></i>
+																			<i class="em em-disappointed"></i>
+																			<i class="em em-worried"></i>
+																			<i class="em em-kissing_heart"></i>
+																			<i class="em em-rage"></i>
+																			<i class="em em-stuck_out_tongue"></i>
+																		</div> -->
+
+																	</div>
+                                                                    <button (click)="createComment(post.postId)" type="submit">submit</button>
+
+																</form>	
+															</div>
+														</li>
+													</ul>
+												</div>
+
+
                                             </div>
+                                     
                                         </div>
                                     </div>
                                 </div>
@@ -588,4 +578,13 @@
         </div>
     </div>	
 </section><!-- content -->
+<ng-template #callLikesDailog>
+    <h2>Likes List</h2>
+    <div *ngFor="let user of this.post.likes ">
+    <h2 >{{user.likeFrom}}</h2>
+</div>
+    <button mat-dialog-close="close">close</button>
+</ng-template>
+
+
 
