@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <section>
     <div class="gap2 gray-bg">
         <div class="container">
@@ -22,7 +24,7 @@
                                     <div class="col-lg-2 col-md-3">
                                         <div class="profile-author">
                                             <div class="profile-author-thumb">
-                                                <img alt="author" src="./assets/sar/images/resources/author.jpg">
+                                                <img alt="author" src="./assets/{{this.userService.user.imagepath}}">
                                                 <div class="edit-dp">
                                                     <label class="fileContainer">
                                                         <i class="fa fa-camera"></i>
@@ -32,8 +34,8 @@
                                             </div>
                                                 
                                             <div class="author-content">
-                                                <a class="h4 author-name" href="about.html">Jack Carter</a>
-                                                <div class="country">Ontario, CA</div>
+                                                <a class="h4 author-name" href="about.html">{{this.userService.user.username}}</a>
+                                                <div class="country">{{this.userService.user.country}}</div>
                                             </div>
                                         </div>
                                     </div>

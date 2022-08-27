@@ -61,7 +61,7 @@ const routes: Routes = [
  
   },
   {
-    path:'compose',
+    path:'compose/:id',
     component:EmailComposeComponent
  
   }

@@ -49,11 +49,11 @@ export class AuthService {
         this.loginService.updateActiveStatus(1,Number(data.loginId));
         if(data.role=='2')
         {
-          this.router.navigate(['admin']);
+          this.router.navigate(['user']);
         }
         else if (data.role=='1')
         {
-          this.router.navigate(['user']);
+          this.router.navigate(['admin']);
         }
       }
      
