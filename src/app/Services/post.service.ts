@@ -77,10 +77,9 @@ export class PostService {
 
   }
 
-  createLike(postId: number){
+  createLike(postId: number, userId:number){
     debugger;
     this.Postlike.postId=postId;
-    this.Postlike.userId=this.loginservice.userId;
     this.http.post('https://localhost:44324/api/Like/CreateLike',this.Postlike).subscribe((result) =>{
       console.log(result)
     },Erorr =>{

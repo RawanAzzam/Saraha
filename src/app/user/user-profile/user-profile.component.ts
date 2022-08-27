@@ -59,8 +59,12 @@ CreatePost(){
    console.log("here , create post")
   this.post.CreatePost(this.postForm.value);
     }
+    userId:any;
     CreateLike(postId: number){
-            this.post.createLike(postId);
+      debugger;
+
+      this.userId=localStorage.getItem('userId');
+            this.post.createLike(postId,this.userId);
         }
   
 
