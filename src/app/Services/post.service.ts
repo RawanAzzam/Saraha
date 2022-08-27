@@ -99,6 +99,18 @@ export class PostService {
     })
     window.location.reload();
   }
+  
+  MsgToPost(msg: any){
+   
+    this.http.post('https://localhost:44324/api/Post/MsgToPost',msg).subscribe((result) =>{
+      console.log(result)
+    },Erorr =>{
+      debugger;
+      console.log(Erorr)
+      window.location.reload();
+
+    })
+  }
 
   deletePost(id:number){
     this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
