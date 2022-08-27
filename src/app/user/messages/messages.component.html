@@ -15,7 +15,7 @@
                             <div class="user-post">
                                 <div class="friend-info">
                                     <figure>
-                                        <img *ngIf="!message.is_Anon" src="../../../assets/{{message.userFromImage}}" alt="">
+                                        <img *ngIf="!message.is_Anon" src="./../../assets/{{message.userFromImage}}" alt="">
                                         <img *ngIf="message.is_Anon" src="../../../assets/Unknown_person.jpg" alt="">
 
                                     </figure>
@@ -32,7 +32,7 @@
                                         </div>
                                         <ins *ngIf="!message.is_Anon"><a  href="time-line.html" title="">{{message.from}}</a> </ins>
                                         <ins *ngIf="message.is_Anon"><a  href="time-line.html" title="">Unknown</a> </ins>
-                                        <span>{{message.messageDate}} </span>
+                                        <span>{{message.messageDate| date:'medium'}} </span>
                                     </div>
                                     <div class="post-meta">
                                      										
