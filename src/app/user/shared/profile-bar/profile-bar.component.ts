@@ -16,7 +16,7 @@ export class ProfileBarComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
-    this.loginService.getLoginByUserId(this.loginService.loginId);
+    this.loginService.getLoginByUserId(this.loginService.userId);
     this.post.getPost(this.loginService.userId);
     // this.post.getPost();
     this.post.getlikecount(this.loginService.userId);

@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loginservice.checkIfLoginOrNot();
     
-    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+    this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.post.getPost(this.loginservice.userId);
     this.userService.getAll();
     this.userService.Allusers();

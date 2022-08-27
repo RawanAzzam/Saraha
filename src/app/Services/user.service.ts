@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private route:Router) { }
   users : any = [{}]
   userImage:any
   user:any 
@@ -16,6 +17,8 @@ export class UserService {
   totalCount :any;
   Allusers: any = [{}]
   searchUserResult : any =[]
+
+
 //  UserImage : any;
 getAll(){
     this.http.get('https://localhost:44324/api/UserProfile/').subscribe((res)=>{
@@ -46,14 +49,15 @@ getActivePepole(){
  
   createUser(user:any){
     console.log(user);
-    user.imagepath = this.Allusers.imagepath;
-    
-    this.http.post('https://localhost:44324/api/UserProfile/register',user).subscribe((result) =>{
+    if(this.userImage != null)
+    user.imagepath = this.userImage.imagepath;
+    debugger;
+    this.http.post('https://localhost:44324/api/UserProfile/Register',user).subscribe((result) =>{
+      this.route.navigate(['authentication/Login'])
 
     },Erorr =>{
-
+   console.log(Erorr);
     })
-    window.location.reload();
   }
 
   changeBlockUserStatus(loginId:number,blockStatus:number){

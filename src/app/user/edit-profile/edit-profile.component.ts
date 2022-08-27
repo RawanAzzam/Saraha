@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -28,22 +29,25 @@ export class EditProfileComponent implements OnInit {
     country : new FormControl (''),
     imagepath : new FormControl ('')})
     
-  constructor(public userService:UserService,private loginService:LoginService) { }
+  constructor(public userService:UserService,public loginService:LoginService,private route:Router) { }
   
   ngOnInit(): void {
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
-    this.loginService.getLoginByUserId(this.loginService.loginId);
+    this.loginService.getLoginByUserId(this.loginService.userId);
     
    
   }
 
   updateUser(){
-    this.updateUserForm.controls['userid'].setValue(this.user.userid);
-    this.updateUserForm.controls['gender'].setValue(this.user.gender);
-    this.updateUserForm.value.imagepath = this.user.imagepath;
-    console.log(this.updateUserForm.value)
     debugger;
+
+    this.updateUserForm.controls['userid'].setValue(this.userService.user.userid);
+    this.updateUserForm.controls['gender'].setValue(this.userService.user.gender);
+   // this.updateUserForm.controls['country'].setValue(this.userService.user.country);
+
+    this.updateUserForm.value.imagepath = this.userService.user.imagepath;
+    console.log(this.updateUserForm.value)
     this.userService.updateUser(this.updateUserForm.value);
   }
 
@@ -75,5 +79,15 @@ export class EditProfileComponent implements OnInit {
    this.loginService.changePassword(this.loginService.login.loginid,this.passwordForm.controls['newPasswordControl'].value)
   }
 
+  verfiyEmail(){
+    console.log("here,verfiy")
+    this.loginService.getLoginByUserId(this.loginService.userId);
+    console.log(this.loginService.login)
+
+    this.loginService.sendVerfiyCodeEmail(this.loginService.login.username);
+    this.route.navigate(['authentication/verfiy'])
+
+
+  }
 
 }

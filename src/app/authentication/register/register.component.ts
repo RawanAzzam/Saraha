@@ -20,17 +20,13 @@ export class RegisterComponent implements OnInit {
   email : new FormControl('',[Validators.required]),
   phonenumber : new FormControl('',[Validators.required]),
   gender : new FormControl('',[Validators.required]),
-  country : new FormControl('',[Validators.required]),
   birthdate:new FormControl('',[Validators.required]),
+  country : new FormControl('',[Validators.required]),
   imagepath: new FormControl(''),
 
 
 
 })
-
-
-
-
 
   constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , private user :UserService) { }
 
@@ -51,18 +47,6 @@ export class RegisterComponent implements OnInit {
         this.user.uploadUserImage(formData);
        }
 
-        file:any;
-       imageShow: any= '';
-
-  onFileChanged(event:any) {
-       this.file = event.target.files[0]
-        var reader = new FileReader();
-         reader.readAsDataURL(event.target.files[0]);
-        reader.onload = (event) => {
-         this.imageShow = (<FileReader>event.target).result;
-         this.user.uploadUserImage(this.imageShow);
- }
-      }
 
 
 
