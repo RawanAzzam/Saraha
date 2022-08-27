@@ -16,11 +16,16 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public post:PostService,public userService : UserService,public loginservice:LoginService,private dialog:MatDialog ) { }
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
-  postForm:FormGroup = new FormGroup({
-    posttext:new FormControl('',Validators.required),
-    postdate : new FormControl(),
-    imagepath : new FormControl (''),
-    userid : new FormControl()})
+postForm:FormGroup = new FormGroup({
+  posttext:new FormControl('',Validators.required),
+  postdate : new FormControl(),
+  imagepath : new FormControl (''),
+  userid : new FormControl()}) 
+  CommentForm:FormGroup = new FormGroup({
+    commenttext:new FormControl('',Validators.required),
+    userid: new FormControl(),
+    // imagepath : new FormControl (''),
+    postid : new FormControl()})
   GetPostLikedBy(postId:any)
   {
     const dialogVal= this.dialog.open(this.callLikesDailog);
@@ -58,16 +63,20 @@ CreatePost(){
   this.postForm.value.postdate = new Date();
    console.log("here , create post")
   this.post.CreatePost(this.postForm.value);
-    }
-    userId:any;
-    CreateLike(postId: number){
+}
+userId:any;
+CreateLike(postId: number){
       debugger;
 
       this.userId=localStorage.getItem('userId');
-            this.post.createLike(postId,this.userId);
-        }
-  
-
+      this.post.createLike(postId,this.userId);
+}
+createComment(postId:number){
+  this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
+  this.CommentForm.value.postid=postId;
+  this.CommentForm.value.imagepath=null;
+  this.post.createComment(this.CommentForm.value);
+}
       uploadImage(file:any){
         if(file.length == 0){
          return

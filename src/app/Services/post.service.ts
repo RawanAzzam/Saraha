@@ -88,4 +88,15 @@ export class PostService {
     })
     window.location.reload();
   }
+
+  createComment(comment: any){
+    debugger;
+    this.http.post('https://localhost:44324/api/Comment/CreateComment', comment).subscribe((result) =>{
+      console.log(result)
+    },Erorr =>{
+      console.log(Erorr)
+      
+    })
+    window.location.reload();
+  }
 }

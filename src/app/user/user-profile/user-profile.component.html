@@ -10,7 +10,7 @@
                         <div class="col-lg-3">
                             <aside class="sidebar static left">
                                 <div class="widget">
-                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See All</a></h4>
+                                    <h4 class="widget-title">User Badges <a class="see-all" href="#" title=""> See All</a></h4>
                                     <ul class="badgez-widget">
                                         <li>
                                         <a href="#" title="Male User" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge2.png" alt=""></a>
@@ -169,7 +169,7 @@
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
                             <div class="central-meta postbox">
-                                <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateLike(41)"> Like</a>
+                                <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateLike(41)"> Like</a> -->
 
                                 <span class="create-post">Create post</span>
                                 <div class="new-postbox">
@@ -303,7 +303,7 @@
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
                                                             <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li><i  class="fa fa-trash-o"></i>Delete Post</li>
                                                         
                                                             <li><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
@@ -412,7 +412,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a> shared location</ins>
+                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                                             </div>
                                             <div class="post-meta">
@@ -460,65 +460,33 @@
                                                             <img alt="" src="../../../assets/{{this.userService.user.imagepath}}">  
                                                         </a>
                                                     </div>
-                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more</a>	<a (click)="GetPostLikedBy(post.postId)" >See All </a>
+                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a>	<a (click)="GetPostLikedBy(post.postId)" >See All </a>
                                                            
                                                         </span>
                                                     </div>
                                                 </div>
                                                 
 
-<div class="coment-area" style="display: block;">
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
+                                                <div class="coment-area" style="display: block;">
+													<ul class="we-comet">												
 														<li class="post-comment">
 															<div class="comet-avatar">
 																<img src="images/resources/nearly1.jpg" alt="">
 															</div>
 															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
+																<form [formGroup]="CommentForm">
+																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<input formControlName="userid" hidden>
+                                                                    <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
+                                                                    <div class="add-smiles">
+																		<!-- <div class="uploadimage">
 																			<i class="fa fa-image"></i>
 																			<label class="fileContainer">
 																				<input type="file">
 																			</label>
-																		</div>
+																		</div> -->
 																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
+																		<!-- <div class="smiles-bunch">
 																			<i class="em em---1"></i>
 																			<i class="em em-smiley"></i>
 																			<i class="em em-anguished"></i>
@@ -531,10 +499,11 @@
 																			<i class="em em-kissing_heart"></i>
 																			<i class="em em-rage"></i>
 																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
+																		</div> -->
 
-																	<button type="submit"></button>
+																	</div>
+                                                                    <button (click)="createComment(post.postId)" type="submit">submit</button>
+
 																</form>	
 															</div>
 														</li>
