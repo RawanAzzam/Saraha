@@ -99,4 +99,13 @@ export class PostService {
     })
     window.location.reload();
   }
+
+  deletePost(id:number){
+    this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
+     
+    },err=>{
+     
+    })
+    window.location.reload();
+  }
 }

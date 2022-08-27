@@ -11,6 +11,8 @@ export class LoginService {
   login :any 
   userId : any
   loginId : any
+
+  code : any
   getLoginByUserId(userId:number){
     this.http.get('https://localhost:44324/api/Login/GetLoginByUserId/'+userId).subscribe((result) => {
       
@@ -39,6 +41,8 @@ export class LoginService {
     this.router.navigate(['authentication/Login']);
     else
    { 
+    console.log("LOOOOOOGGIIIn IIIddd"+localStorage.getItem('loginId'))
+
     this.userId = Number(localStorage.getItem('userId'));
    this.loginId = Number(localStorage.getItem('loginId'));}
   }
@@ -65,6 +69,26 @@ export class LoginService {
     })
   }
 
+  updateVerfiyStatus(loginId:number,isVerfiy:number)
+  {
+    debugger;
+    this.http.get("https://localhost:44324/api/Login/UpdateVerifyStatus/"+isVerfiy+"/"+loginId).subscribe((result) => {
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
 
+  sendVerfiyCodeEmail(email:string){
+   this.http.get("https://localhost:44324/api/Login/SendVerfiyCodeEmail/"+email).subscribe((result)=>{
+     this.code = result
+   },error =>{
+    console.log(error);
+   })
+  }
+
+  verfiyEmail(code:Number){
+   console.log(this.code == code)
+  }
   
 }

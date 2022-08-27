@@ -8,7 +8,7 @@
                     <div class="row merged20" id="page-contents">
                        <app-profile-bar></app-profile-bar>
                     <!-- Edit Profile -->
-                    <div class="col-lg-3">
+                    <div class="col-lg-9">
                         <div class="central-meta">
                             <div class="about">
                                 <div class="d-flex flex-row mt-2">
@@ -129,7 +129,8 @@
                                                         
                                                         <div>
                                                             <label>Email</label>
-                                                            <input type="text"  formControlName="email" [(ngModel)]="this.userService.user.email" placeholder="jackcarter4023">
+                                                            <input type="text" class="col-8 mr-2" formControlName="email" [(ngModel)]="this.userService.user.email" placeholder="jackcarter4023">
+                                                            <a  *ngIf="!this.loginService.login.is_Verified"  (click)="verfiyEmail()">Verfiy Email</a>
                                                         </div>
                                                         <div>
                                                             <label>Phone Number</label>
@@ -160,8 +161,8 @@
                                                             </div>
                                                         </div> -->
                                                         <div>
-                                                            <label>Country :</label>
-                                                            <select formControlName="country" [(ngModel)]="this.userService.user.country">
+                                                            <label >Country :</label>
+                                                            <select class="select" formControlName="country" [(ngModel)]="userService.user.country">
                                                             <option value="Afghanistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
                                                             <option value="Algeria">Algeria</option>

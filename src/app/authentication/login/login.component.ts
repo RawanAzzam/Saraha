@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { HomePageService } from 'src/app/Services/home-page.service';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,10 @@ username : FormControl = new FormControl('',[Validators.required]);
 password : FormControl = new FormControl('',[Validators.required]);
 
 saveLoginInfo : boolean = false;
-  constructor(private route :Router,private auth:AuthService) { }
+  constructor(private route :Router,private auth:AuthService, public home: HomePageService) { }
 
   ngOnInit(): void {
+    this.home.getHome();
     if(localStorage.getItem('username') != null && localStorage.getItem('password') != null){
       this.username.setValue(localStorage.getItem('username'));
       this.password.setValue(localStorage.getItem('password'));
