@@ -288,12 +288,13 @@
 
 
                            
-                            <div class="">
+                            <div>
                              
-                                <div style="margin-top:50px"   class="central-meta item ">
+                                <div style="margin-top:50px"   class="">
                                     <!--Pinned Posts-->
                                     <div *ngFor="let post of this.post.userpost" >
-                                    <div class="user-post" *ngIf="post.is_Pin">
+                                        <div class ="">
+                                    <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info">
                                             <figure>
                                                 <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
@@ -389,6 +390,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                               </div> 
                             
                             <br/>
@@ -399,10 +401,10 @@
                            
                                     <div class="user-post">
                                         <div class="friend-info">
-                                            <figure *ngIf="post.postType=='post'">
+                                            <figure>
                                                 <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
                                             </figure>
-                                            <div class="friend-name" *ngIf="post.postType != 'post' ">
+                                            <div class="friend-name">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
@@ -417,9 +419,9 @@
                                                 <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a' }}</span>
                                             </div>
-                                            <div class="post-meta" >
+                                            <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map" *ngIf="post.postType=='post'">
+                                                    <div class="nearby-map" >
                                                         <figure>
                                                             <img src="../../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
@@ -447,7 +449,7 @@
                                                             <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
                                                         </li>
                                                         <li>
-                                                            <span class="comment" title="Comments"*ngIf="post.postType=='post'">
+                                                            <span class="comment" title="Comments">
                                                                 <i class="fa fa-commenting"></i>
                                                                 <ins>{{post.comments}}</ins>
                                                             </span>
@@ -469,7 +471,7 @@
                                                 </div>
                                                 
 
-                                                <div class="coment-area" style="display: block;" *ngIf="post.postType=='post'">
+                                                <div class="coment-area" style="display: block;">
 													<ul class="we-comet">												
 														<li class="post-comment">
 															<div class="comet-avatar">
