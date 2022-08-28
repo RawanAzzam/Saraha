@@ -13,17 +13,23 @@ export class MessagesComponent implements OnInit {
 
   constructor(public messageService:MessageService,private dialog:MatDialog , public postService :PostService) { }
   // id = 1;
- @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
+  @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
+  @ViewChild('callPublishDailog') callPublishDailog! :TemplateRef<any>;
   
-   replyForm : FormGroup = new FormGroup(
+ replyForm : FormGroup = new FormGroup(
+  {
+    messageContent : new FormControl(),
+    messageDate : new FormControl(),
+    userFrom : new FormControl(),
+    userTo : new FormControl(),
+  }
+   )
+   publishForm : FormGroup = new FormGroup(
     {
       messageContent : new FormControl(),
-      messageDate : new FormControl(),
-      userFrom : new FormControl(),
+      reply : new FormControl(),
       userTo : new FormControl(),
-    }
-
-   )
+    })
    msgToPostForm : FormGroup = new FormGroup(
     {
       messageContent : new FormControl(),
@@ -33,14 +39,15 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
   this.messageService.getMessages();
   }
-  MsgToPost(msg:string, userTo : number){
+  MsgToPost(){
     debugger;
 
     // this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
     // this.msgToPostForm.value.messageContent=msg;
-    this.messageService.MsgToPost(msg,userTo);
+    // this.publishForm.controls["reply"].setValue(reply);
+    this.messageService.MsgToPost(this.publishForm.value);
 
-    console.log(this.msgToPostForm.value)
+    console.log(this.publishForm.value)
 
   //  this.dialog.open(this.callreplyDailog)
   }
@@ -49,6 +56,14 @@ export class MessagesComponent implements OnInit {
     this.replyForm.controls["userTo"].setValue(fromId);
 
    this.dialog.open(this.callreplyDailog)
+  }
+
+  openPublishDailog(msg:string, userTo : number){
+    debugger;
+    this.publishForm.controls["userTo"].setValue(userTo);
+    this.publishForm.controls["messageContent"].setValue(msg);
+
+   this.dialog.open(this.callPublishDailog)
   }
 
   replyMessage(){
