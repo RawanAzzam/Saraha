@@ -99,6 +99,16 @@ export class PostService {
     })
     window.location.reload();
   }
+  
+  MsgToPost(msg: any){
+    debugger;
+    this.http.post('https://localhost:44324/api/Post/MsgToPost',msg).subscribe((result) =>{
+      console.log(result)
+    },Erorr =>{
+      console.log(Erorr)
+      
+    })
+  }
 
   deletePost(id:number){
     this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
@@ -108,4 +118,40 @@ export class PostService {
     })
     window.location.reload();
   }
+
+
+  UpdatePost (body:any)
+  {
+    // this.spinner.show();
+    if(this.postImage != null)
+    body.imagepath=this.postImage.imagepath;
+    debugger;
+console.log(body);
+
+this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+  PinPost (postId :any,isPin:any)
+  {
+    debugger;
+
+    this.http.get('https://localhost:44324/api/Post/PinPost/'+postId+'/'+isPin).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+
+
+
+
 }

@@ -17,16 +17,26 @@ export class UserProfileComponent implements OnInit {
   constructor(public post:PostService,public userService : UserService,public loginservice:LoginService,private dialog:MatDialog) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
+@ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
+
 postForm:FormGroup = new FormGroup({
   posttext:new FormControl('',Validators.required),
   postdate : new FormControl(),
   imagepath : new FormControl (''),
   userid : new FormControl()}) 
+
+
   CommentForm:FormGroup = new FormGroup({
     commenttext:new FormControl('',Validators.required),
     userid: new FormControl(),
     // imagepath : new FormControl (''),
     postid : new FormControl()})
+
+    updateForm:FormGroup=new FormGroup({
+      postId: new FormControl(),
+      posttext:new FormControl(),
+      imagepath:new FormControl()
+    })
   GetPostLikedBy(postId:any)
   {
     const dialogVal= this.dialog.open(this.callLikesDailog);
@@ -81,7 +91,7 @@ createComment(postId:number){
 
 
 deletePost(id:number){ 
-
+debugger;
     const dialogVal= this.dialog.open(this.calldeleteDailog);
     dialogVal.afterClosed().subscribe((result)=>{
       if(result!=undefined)
@@ -105,4 +115,32 @@ uploadImage(file:any){
   formData.append('file',fileToUpload,fileToUpload.name);
   this.post.uploadPostImage(formData);
 }
+PinPost(postId :any,isPin:any){
+  debugger;
+  console.log(postId,isPin);
+this.post.PinPost(postId,isPin);  
+}
+
+p_data:any={};
+  updateDailog(obj:any){
+    debugger;
+    console.log(obj);
+    this.p_data={
+      postId:obj.postId,
+      posttext:obj.posttext,
+    imagepath:obj.imagepath,
+  
+    }
+    console.log(this.p_data);
+    this.updateForm.controls['postId'].setValue(this.p_data.postId); 
+    
+    this.dialog.open(this.callupdateDailog2)
+    
+  }
+  updatePost(){
+    //this.updateForm.value.postId=id;
+    debugger;
+    this.updateForm.value.imagePath = this.p_data.imagepath;
+    this.post.UpdatePost(this.updateForm.value);
+  }
 }
