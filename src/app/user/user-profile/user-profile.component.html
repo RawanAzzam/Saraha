@@ -302,8 +302,8 @@
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
-                                                            <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i  class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
                                                         
                                                             <li><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
@@ -318,7 +318,7 @@
                                                 <div class="post-map">
                                                     <div class="nearby-map">
                                                         <figure>
-                                                            <img src="../../../assets/Images/{{post.imagePath}}" alt="">
+                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -404,8 +404,8 @@
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
-                                                            <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>
                                                         
                                                             <li><i class="fa fa-wpexplorer"></i>Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
@@ -419,7 +419,7 @@
                                                 <div class="post-map">
                                                     <div class="nearby-map">
                                                         <figure>
-                                                            <img src="../../../assets/Images/{{post.imagePath}}" alt="">
+                                                            <img src="../../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -578,6 +578,33 @@
         </div>
     </div>	
 </section><!-- content -->
+
+<ng-template #calldeleteDailog>
+    <h2>Are You Sure uyou want to delete this post?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+</ng-template>
+
+
+<ng-template #callupdateDailog>
+    <form class="example-form" [formGroup]="updateForm" >
+     
+    <!-- <br> -->
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Post</mat-label>
+            <input type="text" matInput formControlName="posttext"
+            [(ngModel)]="p_data.posttext">
+          </mat-form-field>
+    <br>
+          
+          <mat-label>Image :</mat-label>
+          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" >
+  
+          <button (click)="updatePost()">Update</button>
+    </form>
+    
+</ng-template>
+
 <ng-template #callLikesDailog>
     <h2>Likes List</h2>
     <div *ngFor="let user of this.post.likes ">
