@@ -107,8 +107,7 @@ export class PostService {
     },Erorr =>{
       debugger;
       console.log(Erorr)
-      window.location.reload();
-
+      
     })
   }
 
