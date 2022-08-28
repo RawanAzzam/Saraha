@@ -115,7 +115,11 @@ uploadImage(file:any){
   formData.append('file',fileToUpload,fileToUpload.name);
   this.post.uploadPostImage(formData);
 }
-
+PinPost(postId :any,isPin:any){
+  debugger;
+  console.log(postId,isPin);
+this.post.PinPost(postId,isPin);  
+}
 
 p_data:any={};
   updateDailog(obj:any){

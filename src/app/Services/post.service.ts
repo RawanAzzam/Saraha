@@ -101,11 +101,10 @@ export class PostService {
   }
   
   MsgToPost(msg: any){
-   
+    debugger;
     this.http.post('https://localhost:44324/api/Post/MsgToPost',msg).subscribe((result) =>{
       console.log(result)
     },Erorr =>{
-      debugger;
       console.log(Erorr)
       
     })
@@ -130,6 +129,19 @@ export class PostService {
 console.log(body);
 
 this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+  PinPost (postId :any,isPin:any)
+  {
+    debugger;
+
+    this.http.get('https://localhost:44324/api/Post/PinPost/'+postId+'/'+isPin).subscribe((resp)=>{
       // this.spinner.hide();
       // this.toaster.success('Updated |Successfully');
     },err=>{
