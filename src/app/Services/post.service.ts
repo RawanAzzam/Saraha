@@ -119,4 +119,27 @@ export class PostService {
     })
     window.location.reload();
   }
+
+
+  UpdatePost (body:any)
+  {
+    // this.spinner.show();
+    if(this.postImage != null)
+    body.imagepath=this.postImage.imagepath;
+    debugger;
+console.log(body);
+
+this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+
+
+
+
 }
