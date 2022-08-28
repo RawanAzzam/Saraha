@@ -51,6 +51,27 @@ export class MessageService {
     })
  
    }
+// userId:any=0;
+// msg: any="";
+
+   MsgToPost(msg: any){
+    debugger;
+    // this.messagePost.messageContent= msg.messageContent;
+    // this.messagePost.userTo=msg.userTo;
+    
+    // console.log(this.messagePost.messageContent)
+    // console.log(this.messagePost.userTo)
+
+
+
+    this.http.get('https://localhost:44324/api/Post/MsgToPost/'+msg.messageContent+'/'+msg.userTo+'/'+msg.reply).subscribe((result) => {
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+   
+    window.location.reload();
+  }
 
 }
 
