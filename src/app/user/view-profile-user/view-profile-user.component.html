@@ -1,3 +1,6 @@
+<app-nav-bar></app-nav-bar>
+<app-active-bar></app-active-bar>
+
 <section>
     <div class="gap2 gray-bg">
         <div class="container">
@@ -18,14 +21,14 @@
                                                 class="fa fa-comment"></i></a></li>
 
                                 </ul>
-                                <ol class="pit-rate">
+                                <!-- <ol class="pit-rate">
                                     <li class="rated"><i class="fa fa-star"></i></li>
                                     <li class="rated"><i class="fa fa-star"></i></li>
                                     <li class="rated"><i class="fa fa-star"></i></li>
                                     <li class="rated"><i class="fa fa-star"></i></li>
                                     <li class=""><i class="fa fa-star"></i></li>
                                     <li><span>4.7/5</span></li>
-                                </ol>
+                                </ol> -->
                             </figure>
 
                             <div class="profile-section">
@@ -57,9 +60,10 @@
 
                                         </ul>
                                         <ol class="folw-detail">
-                                            <li><span>Posts</span><ins>101</ins></li>
-                                            <li><span>Message</span><ins>1.3K</ins></li>
-                                            <li><span>Likes</span><ins>22k</ins></li>
+                                          
+                                            <li><span>Posts</span><ins>{{post.postcountById}}</ins></li>
+                                            <li><span>Messages</span><ins>{{messageService.messcount}}</ins></li>
+                                            <li><span>Likes</span><ins>{{post.likecount}}</ins></li>
                                         </ol>
                                     </div>
                                 </div>
@@ -147,7 +151,7 @@
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
 
-                            <div class="central-meta">
+                            <!-- <div class="central-meta">
                                 <span class="create-post">Suggested Pages <a href="#" title="">See All</a></span>
                                 <ul class="suggested-frnd-caro">
                                     <li>
@@ -229,8 +233,132 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div><!-- suggested friends -->
+                            </div> -->
+                            <!-- suggested friends -->
+                            <div  class="central-meta ">
+                                <!--Pinned Posts-->
+                                <div *ngFor="let post of this.viewService.Userposts" >
+                                <div class="user-post" *ngIf="post.is_Pin == true">
+                                    <div class="friend-info">
+                                        <figure>
+                                            <img src="../../../assets/{{this.viewService.user.imagepath}}" alt="">
+                                        </figure>
+                                        <div class="friend-name">
+                                            <div class="more">
+                                                <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                    <ul>
+                                                        <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                                        <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                                                    
+                                                        <li><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
+                                                        <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <ins><a href="time-line.html" title="">{{this.viewService.user.username}}</a> shared location <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                            </ins>
+                                            <span><i class="fa fa-globe"></i> published: {{post.postdate | date}}</span>
+                                        </div>
+                                        <div class="post-meta">
+                                            <div class="post-map">
+                                                <!-- <div class="nearby-map"> -->
+                                                    <figure>
+                                                     
+                                               
+                                                <ul class="like-dislike">
+                                                    <li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                    <li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                    <li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
+                                                </ul>
+                                                </figure>
 
+                                            </div><!-- near by map -->
+
+                                            <div class="description">
+                                                <p>
+                                                    {{post.postText}} 
+                                                </p>
+                                            </div>
+                                            <figure>
+                                                <img src="../../../assets/Images/{{post.postImage}}" alt="">
+                                            </figure>
+                                            <div class="we-video-info">
+                                                <ul>
+                                                    <li>
+                                                        <span class="views" title="views">
+                                                            <i class="fa fa-eye"></i>
+                                                            <ins>1.2k</ins>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
+                                                    </li>
+                                                    <li>
+                                                        <span class="comment" title="Comments">
+                                                            <i class="fa fa-commenting"></i>
+                                                            <ins>52</ins>
+                                                        </span>
+                                                    </li>
+
+                                                    <li>
+                                                        <span>
+                                                            <a class="share-pst" href="#" title="Share">
+                                                                <i class="fa fa-share-alt"></i>
+                                                            </a>
+                                                            <ins>20</ins>
+                                                        </span>	
+                                                    </li>
+                                                </ul>
+                                                <div class="users-thumb-list">
+                                                    <a data-toggle="tooltip" title="Anderw" href="#">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                                    </a>
+                                                    <a data-toggle="tooltip" title="frank" href="#">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-2.jpg">  
+                                                    </a>
+                                                    <a data-toggle="tooltip" title="Sara" href="#">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-3.jpg">  
+                                                    </a>
+                                                    <a data-toggle="tooltip" title="Amy" href="#">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-4.jpg">  
+                                                    </a>
+                                                    <a data-toggle="tooltip" title="Ema" href="#">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-5.jpg">  
+                                                    </a>
+                                                    <span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="coment-area" >
+                                            <ul class="we-comet">
+                                                <li>
+                                                    <div class="comet-avatar">
+                                                        <img src="../../../assets/sar/images/resources/nearly3.jpg" alt="">
+                                                    </div>
+                                                    <div class="we-comment">
+                                                        <h5><a href="time-line.html" title="">Jason borne</a></h5>
+                                                        <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+                                                        <div class="inline-itms">
+                                                            <span>1 year ago</span>
+                                                            <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                                            <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+                                                        </div>
+                                                    </div>
+
+                                                </li>
+                                              
+                                                <li>
+                                                    <a href="#" title="" class="showmore underline">more comments+</a>
+                                                </li>
+                                               
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div> 
+                        
+                        <br/>
                             <div class="">
                                 <div *ngFor="let post of this.viewService.Userposts" class="central-meta item">
                                     <div class="user-post">
@@ -250,7 +378,7 @@
                                                     </div>
                                                 </div>
                                                 <ins><a href="time-line.html" title="">{{this.viewService.user.username}}</a></ins>
-                                                <span>{{post.postdate}} <i class="fa fa-globe"></i></span>
+                                                <span>{{post.postdate|date}} <i class="fa fa-globe"></i></span>
 
                                             </div>
                                             <div class="post-meta">
@@ -269,10 +397,12 @@
                                                 <div class="description">
                                                    
                                                     <p>
-                                                       {{post.posttext
-}}
+                                                        {{post.postText}} 
                                                     </p>
                                                 </div>
+                                                <figure>
+                                                    <img src="../../../assets/Images/{{post.postImage}}" alt="">
+                                                </figure>
                                                 <div class="we-video-info">
                                                     <ul>
                                                         <li>
@@ -337,7 +467,7 @@
                         </div><!-- centerl meta -->
                         <div class="col-lg-3">
                             <aside class="sidebar static right">
-                                <div class="widget">
+                                <!-- <div class="widget">
                                     <h4 class="widget-title">Share Page</h4>
                                     <ul class="socials">
                                         <li class="facebook">
@@ -353,7 +483,7 @@
                                                     likes</ins></a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                                 <div class="widget">
                                     <div class="weather-widget low-opacity bluesh">

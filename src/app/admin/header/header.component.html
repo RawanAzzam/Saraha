@@ -211,7 +211,7 @@
   
   <div class="topbar stick" >
     <div class="logo">
-      <a title="" href="newsfeed.html"><img src="./assets/sar/images/logo.png" height="150" width="150" alt=""></a>
+      <a title="" href="newsfeed.html"><img src="./assets/{{home.homePage.logo}}" height="35" width="90" alt=""></a>
     </div>
     <div class="top-area">
       <div class="main-menu">
@@ -727,8 +727,8 @@
         </li>
       </ul> -->
       <div class="user-img">
-        <h5>Jack Carter</h5>
-        <img src="./assets/sar/images/resources/admin.jpg" alt="">
+        <h5>{{this.userService.user.username}}</h5>
+        <img src="./assets/{{this.userService.user.imagepath}}" alt="" height="45" width="60">
         <span class="status f-online"></span>
         <div class="user-setting">
           <span class="seting-title">Chat setting <a href="#" title="">see all</a></span>

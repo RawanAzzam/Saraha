@@ -19,7 +19,7 @@ export class AdminProfileComponent implements OnInit {
     }
    )
 
-  constructor(private userService:UserService,private toastar:ToastrService,private loginService:LoginService) { }
+  constructor(public userService:UserService,private toastar:ToastrService,public loginService:LoginService) { }
 
   user:any
    updateUserForm:FormGroup = new FormGroup({
@@ -34,8 +34,11 @@ export class AdminProfileComponent implements OnInit {
 
 
    ngOnInit() {
-     this.userService.getUserById(2);
-     this.loginService.getLoginByUserId(2);
+    //  this.userService.getUserById(2);
+    //  this.loginService.getLoginByUserId(2);
+     this.loginService.checkIfLoginOrNot();
+     this.userService.getUserById(this.loginService.userId);
+     this.loginService.getLoginByUserId(this.loginService.loginId);
     //  while(this.userService.user == undefined)
     //  continue
      setTimeout(()=> {this.user = this.userService.user;

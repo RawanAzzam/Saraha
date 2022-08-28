@@ -50,9 +50,9 @@
                           <td style="padding-right:50px ;" class="date-n-reply"> 
                              <a class="addnewforum" style="color: white;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
                             <a class="addnewforum" style="color: white;" *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
-                            <a [routerLink]="['/admin/compose']" class="addnewforum" style="color: white; margin-top: -10px;" title=""> Contact <i class="fa fa-envelope"></i></a>
+                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="addnewforum" style="color: white; margin-top: -10px;" title=""> Contact <i class="fa fa-envelope"></i></a>
                           </td>
-
+                          <!-- (click)="contactrepory(obj.userto)"  -->
                           </tr>
                         <!-- <tr>
                           <td class="topic-data">

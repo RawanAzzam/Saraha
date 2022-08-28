@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <app-active-bar></app-active-bar>
-<section>
+
     <div class="gap2 gray-bg">
         <div class="container">
             <div class="row">
@@ -56,19 +56,14 @@
                             </div>
                         </aside>	
                     </div>	
-                    <div class="col-lg-8 col-md-8">
+                    <!-- <div class="col-lg-8 col-md-8">
                         <div class="central-meta">
                             <span class="create-post">Posts<a href="#" title="">See All</a></span>
                             <div class="widget">
                                 <h4 class="widget-title">Top Posts</h4>
-                                <ul class="activitiez">
+                                <ul class="activitiez" *ngFor="let post of this.post.Top3post.slice(this.post.Top3post.length - 4,this.post.Top3post.length-1)">
                                     <li>
-                                        <div class="activity-meta">
-                                            <i>10 hours Ago</i>
-                                            <span><a href="#" title="">Hey Waed is here !❤️😊 </a></span>
-                                            <h6>Likes :<a href="time-line.html">100</a></h6>
-                                        </div>
-                                    </li>
+                                        
                                     <li>
                                         <div class="activity-meta">
                                             <i>30 Days Ago</i>
@@ -84,8 +79,10 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="central-meta">
+                        </div> -->
+
+
+                        <!-- <div class="central-meta">
                             <span class="create-post">Photos &amp; Likes (3) <a href="#" title="">See All</a></span>
                             <div class="row">
                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -114,13 +111,131 @@
                                 </div>
                                 
                             </div>
-                        </div>
+                        </div> -->
                   
-                    
-                    </div>	
+                 
+
+            <!-- **************************************************************** -->
+            <div class="col-lg-8 col-md-8" >
+                <div class="central-meta">
+                    <span class="create-post">Top Posts<a href="#" title="">See All</a></span>
+                    <div class="widget">
+                        <!-- <h4 class="widget-title">Top Posts</h4> -->
+            <div>
+                             
+                <div  class="">
+                  
+                    <div *ngFor="let post of this.post.Top3post.slice(this.post.Top3post.length - 4,this.post.Top3post.length-1)" >
+                        <div class ="">
+                    <div class=" central-meta item" >
+                        <div class="friend-info">
+                            <figure>
+                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
+                            </figure>
+                            <div class="friend-name">
+                                <!-- <div class="more">
+                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                        <ul>
+                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
+                                        
+                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
+                                            <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                                <ins><a href="time-line.html" title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                </ins>
+                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
+                            </div>
+                            <div class="post-meta">
+                                <div class="post-map">
+                                    <div class="nearby-map">
+                                        <figure>
+                                            <!-- <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                        </figure>
+                                    </div> -->
+                                    <ul class="like-dislike">
+                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                        <li><a class="bg-blue" title="Like Post"><i  class="ti-thumb-up"></i></a></li>
+                                        <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
+                                    </ul></figure></div>
+                                </div><!-- near by map -->
+
+                                <div class="description">
+                                    <p>
+                                        {{post.postText}} 
+                                    </p>
+                                    <figure>
+                                        <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                    </figure>
+                                </div>
+                               
+                                <div class="we-video-info">
+                                    <ul>
+                                        <!-- <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;"> -->
+                                    <li  style="margin-right: 13px;">
+                                            <span class="views" title="views">  <i class="fa fa-thumbs-up"></i>
+                                                <ins> {{post.likes}} </ins>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
+                                        </li>
+                                        <li>
+                                            <span class="comment" title="Comments">
+                                                <i class="fa fa-commenting"></i>
+                                                <ins>{{post.comments}} </ins>
+                                            </span>
+                                        </li>
+
+                                     
+                                    </ul>
+                                    <div class="users-thumb-list" >
+                                        <a data-toggle="tooltip" title="Anderw">
+                                            <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                        </a>
+                                   
+                                        <span><strong></strong>, <b>Sarah</b> and <a title="">24+ more</a> liked</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coment-area" >
+                                <ul class="we-comet">
+                                    <li>
+                                        <div class="comet-avatar">
+                                            <img src="../../../assets/sar/images/resources/nearly3.jpg" alt="">
+                                        </div>
+                                        <div class="we-comment">
+                                            <h5><a href="time-line.html" title="">Jason borne</a></h5>
+                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+                                            <div class="inline-itms">
+                                                <span>1 year ago</span>
+                                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                                <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                  
+                                    <li>
+                                        <a href="#" title="" class="showmore underline">more comments+</a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-pane" id="link2">
+                </div>
+              </div> 
+            
+            <br/>
+            </div></div></div>
+         <!-- ************************************************************************* -->
+
+         
+            <!-- <div class="tab-pane" id="link2">
               
             </div>
             <div class="tab-pane fade" id="link3">
@@ -1179,6 +1294,12 @@
         </div>
     </div>
     </div>
-                
-</section><!-- content -->
+                      -->
 
+<!-- content -->
+</div>
+</div>
+</div>
+   
+</div>	
+</div>
