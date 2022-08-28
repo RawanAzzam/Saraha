@@ -141,8 +141,16 @@ this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
     })
    window.location.reload();
   }
-
-
+ Top3post : any =[{}];
+  Top3Post(userId:number){
+    this.http.get('https://localhost:44324/api/Post/Top3Post/'+userId).subscribe((result) => {
+      this.Top3post = result;
+    
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
 
 
 }
