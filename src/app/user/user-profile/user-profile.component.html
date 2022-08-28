@@ -402,7 +402,7 @@
                                             <figure *ngIf="post.postType=='post'">
                                                 <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
                                             </figure>
-                                            <div class="friend-name" *ngIf="post.postType == 'post' ">
+                                            <div class="friend-name" *ngIf="post.postType != 'post' ">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
