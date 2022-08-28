@@ -33,10 +33,12 @@ export class MessagesComponent implements OnInit {
   ngOnInit(): void {
   this.messageService.getMessages();
   }
-  MsgToPost(msg:any){
-    this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
-    this.msgToPostForm.value.messageContent=msg;
-    this.postService.MsgToPost(this.msgToPostForm.value);
+  MsgToPost(msg:string, userTo : number){
+    debugger;
+
+    // this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
+    // this.msgToPostForm.value.messageContent=msg;
+    this.messageService.MsgToPost(msg,userTo);
 
     console.log(this.msgToPostForm.value)
 
