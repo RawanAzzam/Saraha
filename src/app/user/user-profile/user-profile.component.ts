@@ -134,7 +134,7 @@ p_data:any={};
     console.log(this.p_data);
     this.updateForm.controls['postId'].setValue(this.p_data.postId); 
     
-    this.dialog.open(this.callupdateDailog2)
+    this.dialog.open(this.callupdateDailog2,{panelClass: 'custom-modalbox'})
     
   }
   updatePost(){
