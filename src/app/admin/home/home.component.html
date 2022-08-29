@@ -114,7 +114,7 @@
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;"*ngFor="let obj of report.reports.slice(this.report.reports.length - 4,this.report.reports.length-1)">
                                  <li>
-                                         <img src="./assets/sar/images/resources/recent1.jpg" alt="">
+                                         <img src="../../../assets/{{obj.imageName}}" style="object-fit:contain ;" alt="">
                                          <div class="sugtd-frnd-meta">
                                              <a href="#" title="">{{obj.username}}</a>
                                              <span>{{obj.count}} report</span>
