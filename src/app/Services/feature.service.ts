@@ -18,25 +18,22 @@ export class FeatureService {
     })
 
   }
-  // servName =new Map();
-  servName :any=[];
-  // servSales=new Map();
-  servSales:any=[];
-  FeatureSales :any =[{}];
+  servName =new Array<string>();
+  servSales  : number[]= [];
+  featureSales :any = []
+
   getservicesales(){
-    console.log("sajaaaaaaaaaaa");
+    console.log("getservicesales");
     this.http.get('https://localhost:44324/api/Feature/GetFeatureSales').subscribe((res)=>{
-      this.FeatureSales=res;
-      console.log("sajaaaaaaaaaaa");
-    // this.servName =res.featureName;
-    // this.servSales =res.totalSales;
-    for(let obj of this.FeatureSales)
+      this.featureSales = res;
+    for(let obj of this.featureSales )
        { 
-        this.servName.add(obj.featureName);
-        console.log(obj.featureName);
-        this.servSales.add(obj.totalSales);
+      this.servName.push(obj.featureName);
+      this.servSales.push(obj.totalSales);
+        console.log(obj);
         }
-      
+        console.log(this.servName)
+        console.log(this.servSales)
     },err=>{
     
     })
