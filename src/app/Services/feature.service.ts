@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,30 @@ export class FeatureService {
   getAll(){
     this.http.get('https://localhost:44324/api/Feature/GetFeatures').subscribe((res)=>{
     this.feature=res;
+    },err=>{
+    
+    })
+
+  }
+  // servName =new Map();
+  servName :any=[];
+  // servSales=new Map();
+  servSales:any=[];
+  FeatureSales :any =[{}];
+  getservicesales(){
+    console.log("sajaaaaaaaaaaa");
+    this.http.get('https://localhost:44324/api/Feature/GetFeatureSales').subscribe((res)=>{
+      this.FeatureSales=res;
+      console.log("sajaaaaaaaaaaa");
+    // this.servName =res.featureName;
+    // this.servSales =res.totalSales;
+    for(let obj of this.FeatureSales)
+       { 
+        this.servName.add(obj.featureName);
+        console.log(obj.featureName);
+        this.servSales.add(obj.totalSales);
+        }
+      
     },err=>{
     
     })
