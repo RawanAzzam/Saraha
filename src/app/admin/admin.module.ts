@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // <<<< import it here
-
+import { NgChartsModule } from 'ng2-charts';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageServicesComponent } from './manage-services/manage-services.component';
@@ -21,6 +21,7 @@ import {  MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmailComposeComponent } from './email-compose/email-compose.component';
 import { RouterModule } from '@angular/router';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { RouterModule } from '@angular/router';
     AdminProfileComponent,
     CreateNewServiceComponent,
     EmailComposeComponent,
+    PieChartComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgChartsModule
     ]
 })
 export class AdminModule { }

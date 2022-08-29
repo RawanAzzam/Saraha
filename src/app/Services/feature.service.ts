@@ -17,6 +17,20 @@ export class FeatureService {
     })
 
   }
+  servName :any =[]
+  servSales :any =[{}];
+  FeatureSales :any =[{}];
+  getservicesales(){
+    this.http.get('https://localhost:44324/api/Feature/GetFeatureSales').subscribe((res)=>{
+      this.FeatureSales=res;
+    // this.servName =res.featureName;
+    // this.servSales =res.totalSales;
+    
+    },err=>{
+    
+    })
+
+  }
 
   createService(service:any){
     service.imagePath = this.featureImage.imagePath;
