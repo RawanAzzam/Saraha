@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
    this.message.getAllMessages();
    this.userservice.getActivePepole();
    this.order.GetOrders();
-
+   this.featureService.getservicesales();
   }
 // ********************************
 
@@ -57,11 +57,18 @@ export class HomeComponent implements OnInit {
     }
   };
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [ [ 'Download', 'Sales' ], [ 'In', 'Store', 'Sales' ], 'Mail Sales' ],
-    datasets: [ {
-      data: [ 300, 500, 100 ]
+    labels: this.featureService.servName,
+    datasets:  [ {
+      data: this.featureService.servSales,
     } ]
   };
+  
+  // pieChartLabels = this.featureService.servName;
+//   pieChartData:any = [
+//     { 
+//         data: this.featureService.servSales
+//     }
+// ];
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [ DatalabelsPlugin ];
 
