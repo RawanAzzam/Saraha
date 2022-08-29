@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageService } from 'src/app/Services/message.service';
+import { PostService } from 'src/app/Services/post.service';
 
 @Component({
   selector: 'app-messages',
@@ -10,28 +11,59 @@ import { MessageService } from 'src/app/Services/message.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(public messageService:MessageService,private dialog:MatDialog) { }
+  constructor(public messageService:MessageService,private dialog:MatDialog , public postService :PostService) { }
   // id = 1;
- @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
+  @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
+  @ViewChild('callPublishDailog') callPublishDailog! :TemplateRef<any>;
   
-   replyForm : FormGroup = new FormGroup(
+ replyForm : FormGroup = new FormGroup(
+  {
+    messageContent : new FormControl(),
+    messageDate : new FormControl(),
+    userFrom : new FormControl(),
+    userTo : new FormControl(),
+  }
+   )
+   publishForm : FormGroup = new FormGroup(
     {
       messageContent : new FormControl(),
-      messageDate : new FormControl(),
-      userFrom : new FormControl(),
+      reply : new FormControl(),
       userTo : new FormControl(),
-    }
-   )
+    })
+   msgToPostForm : FormGroup = new FormGroup(
+    {
+      messageContent : new FormControl(),
+      userTo : new FormControl(),
+    })
 
   ngOnInit(): void {
-  this.messageService.getMessages();
+  //this.messageService.getMessages();
   }
+  MsgToPost(){
+    debugger;
 
+    // this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
+    // this.msgToPostForm.value.messageContent=msg;
+    // this.publishForm.controls["reply"].setValue(reply);
+    this.messageService.MsgToPost(this.publishForm.value);
+
+    console.log(this.publishForm.value)
+
+  //  this.dialog.open(this.callreplyDailog)
+  }
   openReplyDailog(fromId:number){
     console.log(fromId);
     this.replyForm.controls["userTo"].setValue(fromId);
 
    this.dialog.open(this.callreplyDailog)
+  }
+
+  openPublishDailog(msg:string, userTo : number){
+    debugger;
+    this.publishForm.controls["userTo"].setValue(userTo);
+    this.publishForm.controls["messageContent"].setValue(msg);
+
+   this.dialog.open(this.callPublishDailog)
   }
 
   replyMessage(){

@@ -99,7 +99,8 @@ export class PostService {
     })
     window.location.reload();
   }
-
+  
+  
   deletePost(id:number){
     this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
      
@@ -108,4 +109,48 @@ export class PostService {
     })
     window.location.reload();
   }
+
+
+  UpdatePost (body:any)
+  {
+    // this.spinner.show();
+    if(this.postImage != null)
+    body.imagepath=this.postImage.imagepath;
+    debugger;
+console.log(body);
+
+this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+  PinPost (postId :any,isPin:any)
+  {
+    debugger;
+
+    this.http.get('https://localhost:44324/api/Post/PinPost/'+postId+'/'+isPin).subscribe((resp)=>{
+      // this.spinner.hide();
+      // this.toaster.success('Updated |Successfully');
+    },err=>{
+      // this.spinner.hide();
+      // this.toaster.error(err.message);
+    })
+   window.location.reload();
+  }
+ Top3post : any =[{}];
+  Top3Post(userId:number){
+    this.http.get('https://localhost:44324/api/Post/Top3Post/'+userId).subscribe((result) => {
+      this.Top3post = result;
+    
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
+
+
 }

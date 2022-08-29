@@ -288,12 +288,13 @@
 
 
                            
-                            <div class="">
+                            <div>
                              
-                                <div style="margin-bottom:4px; background: none ; border: none;"  class="central-meta ">
+                                <div style="margin-top:50px"   class="">
                                     <!--Pinned Posts-->
                                     <div *ngFor="let post of this.post.userpost" >
-                                    <div class="user-post" *ngIf="post.is_Pin == true">
+                                        <div class ="">
+                                    <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info">
                                             <figure>
                                                 <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
@@ -302,10 +303,10 @@
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
-                                                            <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i  class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
                                                         
-                                                            <li><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
+                                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
@@ -318,7 +319,7 @@
                                                 <div class="post-map">
                                                     <div class="nearby-map">
                                                         <figure>
-                                                            <img src="../../../assets/Images/{{post.imagePath}}" alt="">
+                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -389,12 +390,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                               </div> 
                             
                             <br/>
-                                <div *ngFor="let post of this.post.userpost" class="central-meta item" >
+                            <div  *ngFor="let post of this.post.userpost" >
+                                <div  *ngIf="!post.is_Pin" class="central-meta item" >
                             
 <!--Postttt-->
+                           
                                     <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
@@ -404,32 +408,37 @@
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
-                                                            <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>
                                                         
-                                                            <li><i class="fa fa-wpexplorer"></i>Pin Post</li>
+                                                            <li ><i class="fa fa-wpexplorer"></i>Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title=""> {{this.userService.user.username}}</a></ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
+                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
+                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a' }}</span>
                                             </div>
+                                            <div class="post-meta" *ngIf="post.repley !=' '">
+                                                <p>
+                                                    {{post.repley}}
+                                                </p>
+                                                </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map">
-                                                        <figure>
+                                                    <div class="nearby-map" >
+                                                        <figure *ngIf="post.postImage != null">
                                                             <img src="../../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                        <li style="cursor:pointer ;" (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li style="cursor:pointer ;"><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
                                                         <li><a style="align-items:center ;align-content: center;" class="bg-red" href="#" title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
 
-                                                <div class="description">
+                                                <div class="description" >
                                                     <p>
                                                         {{post.postText}} 
                                                     </p>
@@ -515,6 +524,8 @@
                                      
                                         </div>
                                     </div>
+                           
+                                </div>
                                 </div>
                                 
                            
@@ -578,6 +589,33 @@
         </div>
     </div>	
 </section><!-- content -->
+
+<ng-template #calldeleteDailog>
+    <h2>Are You Sure uyou want to delete this post?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+</ng-template>
+
+
+<ng-template #callupdateDailog>
+    <form class="example-form" [formGroup]="updateForm" >
+     
+    <!-- <br> -->
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Post</mat-label>
+            <input type="text" matInput formControlName="posttext"
+            [(ngModel)]="p_data.posttext">
+          </mat-form-field>
+    <br>
+          
+          <mat-label>Image :</mat-label>
+          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" >
+  
+          <button (click)="updatePost()">Update</button>
+    </form>
+    
+</ng-template>
+
 <ng-template #callLikesDailog>
     <h2>Likes List</h2>
     <div *ngFor="let user of this.post.likes ">
@@ -585,6 +623,4 @@
 </div>
     <button mat-dialog-close="close">close</button>
 </ng-template>
-
-
 
