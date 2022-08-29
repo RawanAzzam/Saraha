@@ -37,19 +37,22 @@ export class PostService {
   userpost : any =[]
   postcountById : any;
   GetPostInfoByUserId(userId:number){
+    
     this.http.get('https://localhost:44324/api/Post/GetPostByUserId/'+userId).subscribe((result) => {
       this.userpost = result;
+      for(let x of this.userpost){this.GetPostLikedBy(x.postId)}
       this.postcountById=this.userpost.length; 
       console.log(result);
     },Error => {
       console.log(Error);
     })
   }
-  likes:any=[];
-  GetPostLikedBy(postId:number){
+  likes=new Map();
+  GetPostLikedBy(postId:number){ 
+    debugger;
     this.http.get('https://localhost:44324/api/Post/GetPostLikedByPostId/'+postId).subscribe((result) => {
-      this.likes = result;
-      this.postcountById=this.likes.length; 
+      this.likes.set(postId,result);
+
       console.log(result);
     },Error => {
       console.log(Error);

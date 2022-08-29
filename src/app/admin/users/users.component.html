@@ -33,7 +33,7 @@
                                                         <div *ngFor="let user of userService.users" class="col-lg-4 col-md-6 col-sm-6">
                                                             <div class="friend-box">
                                                                 <figure>
-                                                                    <img src="../../../assets/{{user.imagePath}}" alt="">
+                                                                    <img src="../../../assets/{{user.imagepath}}" style="object-fit:contain ; height:200px; width:200" alt="">
                                                                 </figure>
                                                                 <div class="frnd-meta">
                                                                    
@@ -47,9 +47,9 @@
                                                                     <div class="more-opotnz">
                                                                         <i class="fa fa-ellipsis-h"></i>
                                                                         <ul>
-                                                                          <li>  <a *ngIf="!user.is_Blocked" (click)="changeBlockStatus(user.loginid,1)" title="">Block</a></li>
-                                                                          <li><a *ngIf="user.is_Blocked" (click)="changeBlockStatus(user.loginid,0)" title="">UnBlock</a></li>
-                                                                          <li> <a  (click)="deleteAccount(user.loginid,user.userId)" title="">Delete Account</a></li>
+                                                                          <li><a *ngIf="!user.is_Blocked" (click)="changeBlockStatus(user.loginid,1)" title="">Block</a>
+                                                                          <a *ngIf="user.is_Blocked" (click)="changeBlockStatus(user.loginid,0)" title="">UnBlock</a></li>
+                                                                          <li><a  (click)="deleteAccount(user.loginid,user.userId)" title="">Delete Account</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
