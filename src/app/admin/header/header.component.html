@@ -211,7 +211,7 @@
   
   <div class="topbar stick" >
     <div class="logo">
-      <a title="" href="newsfeed.html"><img src="./assets/{{home.homePage.logo}}" height="35" width="90" alt=""></a>
+      <a title=""><img src="./assets/{{home.homePage.logo}}" height="35" width="90" alt=""></a>
     </div>
     <div class="top-area">
       
@@ -724,7 +724,7 @@
       </ul> -->
       <div class="user-img">
         <h5>{{this.userService.user.username}}</h5>
-        <img src="./assets/{{this.userService.user.imagepath}}" alt="" height="45" width="60">
+        <a [routerLink]="['/admin/HomePage']" class="user-img"> <img  style="object-fit:contain ; height:50px; width:50px" src="./assets/{{this.userService.user.imagepath}}" alt="" ></a>
         <span class="status f-online"></span>
         <!-- <div class="user-setting">
           <span class="seting-title">Chat setting <a href="#" title="">see all</a></span>
