@@ -39,23 +39,27 @@ postForm:FormGroup = new FormGroup({
     })
   GetPostLikedBy(postId:any)
   {
-    const dialogVal= this.dialog.open(this.callLikesDailog);
-    dialogVal.afterClosed().subscribe((result)=>{
-      if(result!=undefined)
-        {
-          if(result=='close')
-          
+    
+   // const dialogVal= this.dialog.open(this.callLikesDailog);
+   // dialogVal.afterClosed().subscribe((result)=>{
+      // if(result!=undefined)
+      //   {
+      //     if(result=='close')
+          debugger;
           this.post.GetPostLikedBy(postId);
         
-        console.log("Thank you");
-       }
-    })
+      //   console.log("Thank you");
+      //  }
+    // })
 
   }
+postId:any;
+changePostId(Id:any){
+this.postId=Id;
+}
 
   ngOnInit(): void {
     this.loginservice.checkIfLoginOrNot();
-    
     this.loginservice.getLoginByUserId(this.loginservice.loginId);
     this.post.GetPostInfoByUserId(this.loginservice.userId);
     
