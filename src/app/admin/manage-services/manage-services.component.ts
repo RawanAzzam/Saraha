@@ -27,7 +27,7 @@ export class ManageServicesComponent implements OnInit {
   }
   deleteservice(id:number)
   {
-    const dialogVal= this.dialog.open(this.calldeleteDailog);
+    const dialogVal= this.dialog.open(this.calldeleteDailog,{panelClass: 'waedInput'});
     dialogVal.afterClosed().subscribe((result)=>{
       if(result!=undefined)
         {
@@ -41,7 +41,7 @@ export class ManageServicesComponent implements OnInit {
    
   }
   CreateNewSevice(){
-    this.dialog.open(CreateNewServiceComponent);
+    this.dialog.open(CreateNewServiceComponent ,{panelClass: 'mat-dialog-content', width: '30%', height: '900px' });
   }
 
   p_data:any={};

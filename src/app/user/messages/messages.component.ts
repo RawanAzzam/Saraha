@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit {
     })
 
   ngOnInit(): void {
-  this.messageService.getMessages();
+  //this.messageService.getMessages();
   }
   MsgToPost(){
     debugger;

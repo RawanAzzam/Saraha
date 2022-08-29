@@ -419,21 +419,26 @@
                                                 <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a' }}</span>
                                             </div>
+                                            <div class="post-meta" *ngIf="post.repley !=' '">
+                                                <p>
+                                                    {{post.repley}}
+                                                </p>
+                                                </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
                                                     <div class="nearby-map" >
-                                                        <figure>
+                                                        <figure *ngIf="post.postImage != null">
                                                             <img src="../../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                        <li style="cursor:pointer ;" (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li style="cursor:pointer ;"><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
                                                         <li><a style="align-items:center ;align-content: center;" class="bg-red" href="#" title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
 
-                                                <div class="description">
+                                                <div class="description" >
                                                     <p>
                                                         {{post.postText}} 
                                                     </p>
@@ -618,6 +623,4 @@
 </div>
     <button mat-dialog-close="close">close</button>
 </ng-template>
-
-
 
