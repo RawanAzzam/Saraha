@@ -20,6 +20,7 @@ export class ServiceComponent implements OnInit {
   constructor(public featureService : FeatureService,public visa :VisaService) { }
 
   ngOnInit(): void {
+    debugger;
     this.featureService.getAll();
     this.visa.getAll();
 
@@ -31,6 +32,7 @@ export class ServiceComponent implements OnInit {
 
 
 checkout(cost:any){
+  debugger;
   this.visa.checkVisa(this.VisaForm.controls['Cardnum'].value,cost)
 }
 

@@ -33,26 +33,56 @@ updateVisa(visa:any){
 }
 
 
-checkVisa(cvv:string,totalcost:number){
-for(let obj of this.visa)
-{
-  if(obj.cardNumber == cvv)
-  {
-    if(obj.balance >= totalcost){
-       this.updateVisa(obj)
-    }
-    else{
-      this.toaster.error("no enough balance");
-    }
-  }
-  else{
-    this.toaster.error("Invalid Card Number");
-  }
+// checkVisa(cvv:string,totalcost:number){
+// for(let obj of this.visa)
+// {
+//   if(obj.cardNumber == cvv)
+//   {
+//     debugger;
+//     if(obj.balance >= totalcost){
+//        this.updateVisa(obj)
+//     }
+//     else{
+//       this.toaster.error("no enough balance");
+//     }
+//   }
+//   else{
+//     this.toaster.error("Invalid Card Number");
+//   }
   
-}
+// }
 
-window.location.reload();
-}
+// window.location.reload();
+// }
+
+
+message: any;
+checkVisa(cardNum:string,totalcost:number){
+ 
+  debugger;
+  this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+totalcost).subscribe((result) => {
+    this.message=result;
+    console.log(result);
+    if(this.message.toString()=="Not enough balance")
+    {
+      this.toaster.error("No enough balance");
+    }
+    else if(this.message.toString()=="Invalid card number"){
+      this.toaster.error("Invalid Card Number");
+      
+    }
+    else if(this.message.toString()=="Paid sucessfully")
+    {
+      this.toaster.success("Paid sucessfully");
+    }
+  },err => {
+    console.log(err)
+  })
+
+  window.location.reload();
+  }
+
+
 
 // VisaForm:FormGroup = new FormGroup(
 //   {
