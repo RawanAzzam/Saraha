@@ -54,6 +54,8 @@
                             <div>
 								<div class="" *ngFor="let obj of this.featureService.feature; first as isFirst">
 									<div class="central-meta" *ngIf="isFirst">
+								<div class="">
+									<div class="central-meta">
 										<div class="full-postmeta">
 											<ol class="pit-rate">
 												<li class="rated"><i class="fa fa-star"></i></li>
@@ -65,15 +67,26 @@
 											</ol>
 											<div class="share">
 												<span>Saraha Badge</span>
-												<a style="width:50px" href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge3.png" alt=""></a>
+												<a style="width:50px" href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="./assets/{{obj.imagePath}}" alt=""></a>
 
 											</div>
 											
 											<i></i>
-											
+											<div class="row">
+												<div class="col-sm-12">
+													<ul class="list-inline rating-list" 
+														*ngFor="let star of stars" style="display: inline-block" >
+														  <li (click)="countStar(star)"
+															  [ngClass]="{'selected': (star <= selectedValue)}">
+															<i class="fa fa-star"></i>
+														  </li> 
+													</ul>
+												</div>
+											  </div>
 											<h4> <span>{{obj.featureName}}</span> </h4>
+
 											<p>
-												This feature makes you know who is sending you an anynoumus messages, by showing the sender name 😉
+												{{obj.featureDescribtion}} 😉
 											</p>
 											
 											<form class="qty-select">
@@ -82,28 +95,24 @@
 											<span class="prices style4">
 												<ins>
 													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>18.00
+														<span class="woocommerce-Price-currencySymbol">$</span>{{obj.featurePrice}}
 													</span>
 												</ins>
 												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>23.00
+													<span class="woocommerce-Price-amount amount" *ngIf="obj.oldPrice > 0 ">
+														<span class="woocommerce-Price-currencySymbol">$</span>{{obj.oldPrice}}
 													</span>
 												</del>                                             
 											</span>
-											<div class="post-as">
-												<div class="prod categories">
-													<span class="cat-heading">Categories:
-														<a title="" href="#">Movie Ticket</a>
-														<a title="" href="#">Web Themes</a>
-													</span>
-												</div>
-												<div class="prod tags">
-													<span class="cat-heading">Applied by:
-														<a title="" href="#">100 people</a>
-												
-													</span>
-												</div>
+											<div class="post-as" *ngIf="obj.rateCount >0">
+												<ol class="pit-rate">
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class=""><i class="fa fa-star"></i></li>
+													<li><span>{{obj.starRates}}/{{obj.rateCount}}</span></li>
+												</ol>
 											</div>
 											<div class="extras">
 												
@@ -237,5 +246,5 @@
             </div>
         </div>
     </div>	
-</section><!-- content -->
+<!-- content -->
 
