@@ -37,22 +37,17 @@ postForm:FormGroup = new FormGroup({
       posttext:new FormControl(),
       imagepath:new FormControl()
     })
-  GetPostLikedBy(postId:any)
-  {
+    // GetPostLikedBy(postId:any)
+    // {
+    //   debugger;
+    //   this.post.GetPostLikedBy(postId);
+    // }
+    // GetPostCommentBy(postId:any)
+    // {
+    //  debugger;
+    //  this.post.GetPostCommentBy(postId);
+    // }
     
-   // const dialogVal= this.dialog.open(this.callLikesDailog);
-   // dialogVal.afterClosed().subscribe((result)=>{
-      // if(result!=undefined)
-      //   {
-      //     if(result=='close')
-          debugger;
-          this.post.GetPostLikedBy(postId);
-        
-      //   console.log("Thank you");
-      //  }
-    // })
-
-  }
 postId:any;
 changePostId(Id:any){
 this.postId=Id;

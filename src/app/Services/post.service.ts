@@ -40,7 +40,8 @@ export class PostService {
     
     this.http.get('https://localhost:44324/api/Post/GetPostByUserId/'+userId).subscribe((result) => {
       this.userpost = result;
-      for(let x of this.userpost){this.GetPostLikedBy(x.postId)}
+      for(let x of this.userpost){setTimeout(()=>{this.GetPostLikedBy(x.postId)},2000)}
+      for(let x of this.userpost){setTimeout(()=>{this.GetPostCommentBy(x.postId)},2000)}
       this.postcountById=this.userpost.length; 
       console.log(result);
     },Error => {
@@ -52,6 +53,18 @@ export class PostService {
     debugger;
     this.http.get('https://localhost:44324/api/Post/GetPostLikedByPostId/'+postId).subscribe((result) => {
       this.likes.set(postId,result);
+
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
+  Comments= new Map();
+
+  GetPostCommentBy(postId:number){ 
+    debugger;
+    this.http.get('https://localhost:44324/api/Post/CommentsByUser/'+postId).subscribe((result) => {
+      this.Comments.set(postId,result);
 
       console.log(result);
     },Error => {
