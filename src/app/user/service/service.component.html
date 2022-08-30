@@ -70,7 +70,7 @@
 												<a style="width:50px" href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="./assets/{{obj.imagePath}}" alt=""></a>
 
 											</div>
-											
+		
 											<i></i>
 											<div class="row">
 												<div class="col-sm-12">
@@ -117,8 +117,11 @@
 											<div class="extras">
 												
 												<a style="margin-right:4px ;" href="https://www.youtube.com/watch?v=XNeFJzO8v9c" title="" data-strip-group="mygroup" class="strip play-btn"><i class="fa fa-play-circle"></i> play video</a>
-												<a href="https://www.youtube.com/watch?v=XNeFJzO8v9c" title="" data-strip-group="mygroup" class="strip play-btn"><i class="fa fa-credit-card"></i> Buy Now</a>
-
+												<a  type="button" class="waed strip play-btn" data-toggle="modal" data-target="#exampleModalCenter">
+													<i class="fa fa-credit-card"></i> Buy Now
+											</a>
+										
+											
 												<a title="" data-group="set2" class="html5lightbox btn2" href="">
 												</a>
 											</div>
@@ -242,9 +245,109 @@
                             </div>
                         </div>	<!-- sidebar -->
                     </div>	
-                </div>
+                </div><div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+							<div class=""> 
+								<div class="text-right">
+									 <i class="" data-dismiss="modal"></i>
+									 </div> <div class="tabs mt-3">
+										 <ul class="nav nav-tabs" id="myTab" role="tablist">
+											 <li class="nav-item" role="presentation">
+												 <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> 
+													<img src="https://i.imgur.com/sB4jftM.png" width="80">
+												 </a> </li>
+												  <li class="nav-item" role="presentation">
+													 <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">
+														 <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li> </ul> <div class="tab-content" id="myTabContent"> 
+															<div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab"> 
+																<div class="mt-4 mx-4"> <div class="text-center"> <h5>Credit card</h5> </div>
+																 <div class="form mt-3"> <div class="inputbox"> 
+																	<input  type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div> <div class="inputbox"> 
+																		<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Card Number</span> <i class="fa fa-eye"></i> </div> <div class="d-flex flex-row"> <div class="inputbox"> 
+																			<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Expiration Date</span> </div> <div class="inputbox"> 
+																				<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div> </div> <div class="px-5 pay"> 
+																					<button style="margin-left: 227px;
+																					/* margin-right: -63px; */
+																					margin-top: 10px;    width: 103px;" class="btn waed">Pay</button>
+																				 </div>
+																				 </div> 
+																				</div>
+																			 </div> 
+																			 <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab"> 
+																				<div class="px-5 mt-5"> 
+																					<div class="inputbox">
+																						 <input type="text" name="name" class="form-control" required="required"> 
+																						 <span>Paypal Email Address</span>
+																						 </div> <div class="pay px-5">
+																							 <button style="margin-left: 227px;
+																							 /* margin-right: -63px; */
+																							 margin-top: 10px;    width: 103px;" class="btn waed">Add paypal</button>
+																							 </div>
+																							 </div> 
+																							</div>
+																						 </div>
+																						 </div> 
+																						</div> 
+						</div>
+					
+					  </div>
+					</div>
+				  </div>
             </div>
         </div>
-    </div>	
+    </div>
+	
+	
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		 <div class="modal-dialog"> 
+			<div class="modal-content"> 
+				<div class="modal-body"> 
+					<div class="text-right">
+						 <i class="" data-dismiss="modal"></i>
+						 </div> <div class="tabs mt-3">
+							 <ul class="nav nav-tabs" id="myTab" role="tablist">
+								 <li class="nav-item" role="presentation">
+									 <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> 
+										<img src="https://i.imgur.com/sB4jftM.png" width="80">
+									 </a> </li>
+									  <li class="nav-item" role="presentation">
+										 <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">
+											 <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li> </ul> <div class="tab-content" id="myTabContent"> 
+												<div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab"> 
+													<div class="mt-4 mx-4"> <div class="text-center"> <h5>Credit card</h5> </div>
+													 <div class="form mt-3"> <div class="inputbox"> 
+														<input type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div> <div class="inputbox"> 
+															<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Card Number</span> <i class="fa fa-eye"></i> </div> <div class="d-flex flex-row"> <div class="inputbox"> 
+																<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Expiration Date</span> </div> <div class="inputbox"> 
+																	<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div> </div> <div class="px-5 pay"> 
+																		<button class="btn btn-success btn-block">Add card</button>
+																	 </div>
+																	 </div> 
+																	</div>
+																 </div> 
+																 <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab"> 
+																	<div class="px-5 mt-5"> 
+																		<div class="inputbox">
+																			 <input type="text" name="name" class="form-control" required="required"> 
+																			 <span>Paypal Email Address</span>
+																			 </div> <div class="pay px-5">
+																				 <button class="btn btn-primary btn-block">Add paypal</button>
+																				 </div>
+																				 </div> 
+																				</div>
+																			 </div>
+																			 </div> 
+</div> 
+</div>
+ </div>
+	</div>
 <!-- content -->
 

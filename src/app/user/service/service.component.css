@@ -14,3 +14,21 @@
     display: inline-block;
     list-style: none;
   }
+  .waed{
+    border: 1px solid #bababa;
+											border-radius: 30px;
+											padding: 7px 13px;
+											text-transform: capitalize;
+											color: #fff;
+											transition: all 0.2s linear 0s;
+											background-color: #fa6342;
+
+
+  }
+  .waed:hover
+  {
+    color: #fa6342;
+    background-color:  #fff;
+
+  }
+  
