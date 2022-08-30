@@ -24,17 +24,17 @@
                                     <div class="col-lg-2 col-md-3">
                                         <div class="profile-author">
                                             <div class="profile-author-thumb">
-                                                <img alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                <img style="object-fit:contain ; height:170px; width:120px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
                                                 <div class="edit-dp">
                                                     <label class="fileContainer">
                                                         <i class="fa fa-camera"></i>
-                                                        <input type="file">
+                                                        <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
                                                     </label>
                                                 </div>
                                             </div>
                                                 
                                             <div class="author-content">
-                                                <a class="h4 author-name" href="about.html">{{this.userService.user.username}}</a>
+                                                <a class="h4 author-name">{{this.userService.user.username}}</a>
                                                 <div class="country">{{this.userService.user.country}}</div>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                                 <a class="active" >My Profile</a>
                                             </li>
                                             <li>
-                                                <a class=""  href="http://localhost:4200/admin/HomePage">Back Home</a>
+                                                <a class="" [routerLink]="['/admin/HomePage']">Back Home</a>
                                             </li>
                                        
                                         </ul>
@@ -86,12 +86,12 @@
                                             <div class="tab-pane fade show active" id="edit-profile">
                                                 <div class="set-title">
                                                     <h5>Edit Profile</h5>
-                                                    <span>People on Pitnik will get to know you with the info below</span>
+                                                    <span>People on Saraha Time will get to know you with the info below</span>
                                                 </div>
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
                                                     <div class="change-photo">
-                                                        <figure> <img width="100" height="100"  src="../../../assets/{{user.imagepath}}" alt=""></figure>
+                                                        <figure> <img style="object-fit:contain ; height:90px; width:90px"  src="../../../assets/{{user.imagepath}}" alt=""></figure>
                                                         <div class="edit-img">
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>

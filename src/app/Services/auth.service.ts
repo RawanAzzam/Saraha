@@ -47,11 +47,11 @@ export class AuthService {
       if(data.is_Blocked == "False" ){
         console.log("Hiii")
         this.loginService.updateActiveStatus(Number(data.loginId),1);
-        if(data.role=='1')
+        if(data.role=='2')
         {
           this.router.navigate(['user']);
         }
-        else if (data.role=='2')
+        else if (data.role=='1')
         {
           this.router.navigate(['admin']);
         }

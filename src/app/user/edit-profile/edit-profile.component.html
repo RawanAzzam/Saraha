@@ -112,12 +112,12 @@
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
                                                     <div class="change-photo">
-                                                        <figure> <img width="100" height="100"  src="../../../assets/{{this.userService.user.imagepath}}" alt=""></figure>
+                                                        <img style="object-fit:contain ; height:70px; width:70px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
                                                         <div class="edit-img">
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>
                                                                     Chage DP
-                                                                <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
+                                                                    <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
                                                                 </label>
                                                            
                                                         </div>

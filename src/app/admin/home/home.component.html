@@ -29,7 +29,7 @@
                                         <h4>Registerd</h4>
 
                                         <p>{{userservice.totalCount}}</p>
-                                        <span>Total Users</span> 
+                                        <span>Total Users </span> 
                                     </div>
                                     <div class="progress" style="height:6px">
                                         <div class="progress-bar" style="width:70%"></div>
@@ -114,7 +114,7 @@
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;"*ngFor="let obj of report.reports.slice(this.report.reports.length - 4,this.report.reports.length-1)">
                                  <li>
-                                         <img src="./assets/sar/images/resources/recent1.jpg" alt="">
+                                         <img src="../../../assets/{{obj.imageName}}" style="object-fit:contain ;" alt="">
                                          <div class="sugtd-frnd-meta">
                                              <a href="#" title="">{{obj.username}}</a>
                                              <span>{{obj.count}} report</span>
@@ -149,10 +149,10 @@
                                     </div>
                                 </div>
                                 <div class="weather-infos">
-                                    <span class="weather-tem">25</span>
-                                    <h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
+                                    <span class="weather-tem">{{this.weatherService.weather.temp}}</span>
+                                    <h3>{{this.weatherService.weather.description}}<i>{{this.weatherService.weather.city}} , {{this.weatherService.weather.country}}</i></h3>
                                     <div class="weather-date skyblue-bg">
-                                        <span>MAY<strong>21</strong></span>
+                                        <span>{{this.mnth}}<strong>{{this.day1}}</strong></span>
                                     </div>
                                 </div>
                          
