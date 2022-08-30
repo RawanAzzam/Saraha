@@ -18,26 +18,27 @@ export class FeatureService {
     })
 
   }
-  servName =new Array<string>();
-  servSales  : number[]= [];
+  servName : any =new Array<string>();
+  servSales  :any = [];
   featureSales :any = []
-
-  getservicesales(){
-    console.log("getservicesales");
-    this.http.get('https://localhost:44324/api/Feature/GetFeatureSales').subscribe((res)=>{
-      this.featureSales = res;
-    for(let obj of this.featureSales )
-       { 
-      this.servName.push(obj.featureName);
-      this.servSales.push(obj.totalSales);
-        console.log(obj);
-        }
-        console.log(this.servName)
-        console.log(this.servSales)
+  
+  FeatureTotalSales(){
+    console.log("sajaaaaaaaaaaa");
+    this.http.get('https://localhost:44324/api/Feature/featureTotalSales').subscribe((res)=>{
+      this.servSales= res;
+      console.log(this.servSales);
     },err=>{
     
     })
-
+  }
+  FeatureName(){
+    this.http.get('https://localhost:44324/api/Feature/featureName').subscribe((res)=>{
+      this.servName=res;
+      console.log("sajaaaaaaaaaaa");
+      console.log(this.servName);
+    },err=>{
+    
+    })
   }
 
   createService(service:any){
