@@ -42,12 +42,10 @@ for(let obj of this.visa)
        this.updateVisa(obj)
     }
     else{
-     
       this.toaster.error("no enough balance");
     }
   }
   else{
-   
     this.toaster.error("Invalid Card Number");
   }
   
