@@ -462,7 +462,8 @@
                                                             <span class="comment" title="Comments">
                                                                 <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
                                                                     see
-                                                                    </a>	                                                                <ins>{{post.comments}}</ins>
+                                                                    </a>	                        
+                                                            <ins>{{post.comments}}</ins>
                                                             </span>
                                                         </li>
 
@@ -747,18 +748,18 @@
         <!-- Modal body -->
         <div class="modal-body">
             <div class="row">
-                 <div class="col-lg-6"  *ngFor="let comment of this.post.Comments.get(this.postId)">
+                 <div class="col-lg-6">
                    
                      <div class="pop-image">
                         <div class="pop-item">
-                            <figure><img src="../../../assets/Images/{{comment.postImage}}" style="width:600px; object-fit: contain;" alt="">
+                            <figure *ngFor="let comment of this.post.Comments.get(this.postId)"><img src="../../../assets/Images/{{comment.postImage}}" style="width:600px; object-fit: contain;" alt="">
                             </figure>
                         </div>
                     </div>
                     
                 </div>
-                <div class="col-lg-6"  *ngFor="let comment of this.post.Comments.get(this.postId)">
-                    <div class="user">
+                <div class="col-lg-6"  >
+                    <div class="user" *ngFor="let comment of this.post.Comments.get(this.postId)">
                         <figure><img src="../../../assets/{{comment.userImage}}" width="50" alt=""></figure>
                         <div class="user-information">
                             <h4><a title="">{{comment.auther}}</a></h4>
@@ -804,9 +805,9 @@
                             <span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
                         </div> -->
                     </div>
-                    <div style="display: block;" class="coment-area">
+                    <div style="display: block;" class="coment-area" >
                         <ul class="we-comet">
-                            <li>
+                            <li *ngFor="let comment of this.post.Comments.get(this.postId)">
                                 <div class="comet-avatar">
                                     <img alt="" src="../../../assets/{{comment.image}}">
                                 </div>
@@ -819,8 +820,7 @@
                                         <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
                                     </div>
                                 </div>
-
-                          
+                            </li>                                               
                         </ul>
                     </div>
                 </div>
