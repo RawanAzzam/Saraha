@@ -310,7 +310,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a href="time-line.html" title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                                <ins><a title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
                                                 </ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                                             </div>
@@ -347,7 +347,10 @@
                                                         </li>
                                                         <li>
                                                             <span class="comment" title="Comments">
-                                                                <i class="fa fa-commenting"></i>
+                                                                <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
+                                                                    see
+                                                                    </a>	
+                                                                <i data-target="#exampleModalCenter" class="fa fa-commenting"></i>
                                                                 <ins>{{post.comments}} </ins>
                                                             </span>
                                                         </li>
@@ -355,14 +358,15 @@
                                                      
                                                     </ul>
                                                     <div class="users-thumb-list" >
-                                                        <a data-toggle="tooltip" title="Anderw">
+                                                        <!-- <a data-toggle="tooltip" title="Anderw">
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
-                                                   
-                                                        <span><strong></strong>, <b>Sarah</b> and
-                                                            <button type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
-                                                                24+ more
-                                                          </button> liked</span>
+                                                    -->
+                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
+                                                            <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
+                                                            See All
+                                                            </a>	
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -405,17 +409,15 @@
                                     <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:contain ; width:110px; height:50px " alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
                                                             <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>
-                                                        
+                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                        
                                                             <li (click)="PinPost(post.postId,1)" ><i class="fa fa-wpexplorer"></i>Pin Post</li>
-                                                            <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -458,8 +460,8 @@
                                                         </li>
                                                         <li>
                                                             <span class="comment" title="Comments">
-                                                                <i class="fa fa-commenting"></i>
-                                                                <ins>{{post.comments}}</ins>
+                                                                <a  (click)="changePostId(post.postId)" data-target="#Comments"><i class="fa fa-commenting" >see</i>
+                                                                </a><ins>{{post.comments}}</ins>
                                                             </span>
                                                         </li>
 
@@ -468,9 +470,9 @@
                                                     <div class="users-thumb-list" >                                              
                                                    
                                                         <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a> 
-                                                            <button (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
+                                                            <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
                                                             See All
-                                                      </button>	
+                                                            </a>	
                                                         </span>
                                                     </div>
                                                 </div>
@@ -631,13 +633,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" *ngFor="let user of this.post.likes.get(this.postId)">
-              <img src="../../../assets/{{user.userLikeImage}}" hight="50" width="50" class="topic-data" alt="">
+           
+           <img src="../../../assets/{{user.userLikeImage}}" hight="50" width="50" class="topic-data" alt="">
         {{user.likeFrom}}
         </div>
         <div class="modal-footer">
@@ -646,3 +649,179 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="modal fade"  id="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body 
+        <div class="modal-body">
+            <div class="row" *ngFor="let comment of this.post.Comments.get(this.postId)">
+                <div class="col-lg-8">
+                    <div class="pop-image">
+                        <div class="pop-item">
+                            <figure><img src="../../../assets/{{comment.postImage}}" alt="">
+                            </figure>
+                            <div>
+                                {{comment.postText}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                   
+                    <div class="we-video-info">
+                        <ul>
+                            <!-- <li>
+                                <div title="Like/Dislike" class="likes heart">❤ <span>{{post.likes}}</span></div>
+                            </li>
+                            <li>
+                                <span title="Comments" class="comment">
+                                    <i class="fa fa-commenting"></i>
+                                    <ins></ins>
+                                </span>
+                            </li> 
+
+                           
+                        </ul>
+                        <div class="users-thumb-list">
+                          
+                            <a  type="button" class="" data-toggle="modal" data-target="#Comments">
+                                See All
+                                </a>	
+                            </div>
+                    </div>
+                    <div style="display: block;" class="coment-area">
+                        <ul class="we-comet">
+                            <li>
+                                <div class="comet-avatar">
+                                    <img alt="" src="images/resources/nearly3.jpg">
+                                </div>
+                                <div class="we-comment">
+                                    <h5><a title="" href="time-line.html">Jason borne</a></h5>
+                                    <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+                                    <div class="inline-itms">
+                                        <span>1 year ago</span>
+                                        <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div> 
+</div>--><!-- The Scrolling Modal image with comment -->
+
+
+
+<div class="modal fade" id="Comments">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="row" *ngFor="let comment of this.post.Comments.get(this.postId)">
+                <div class="col-lg-8">
+                    <div class="pop-image">
+                        <div class="pop-item">
+                            <figure><img src="../../../assets/{{comment.postImage}}" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="user">
+                        <figure><img src="../../../assets/{{comment.UserImage}}" alt=""></figure>
+                        <div class="user-information">
+                            <h4><a href="#" title="">{{comment.auther}}</a></h4>
+                            <span>{{comment.postDate}}}</span>
+                        </div>
+                        <!-- <a href="#" title="Follow" data-ripple="">Follow</a> -->
+                    </div>
+                    <div class="we-video-info">
+                        <!-- <ul>
+                            <li>
+                                <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
+                            </li>
+                            <li>
+                                <span title="Comments" class="comment">
+                                    <i class="fa fa-commenting"></i>
+                                    <ins>52</ins>
+                                </span>
+                            </li>
+
+                            <li>
+                                <span>
+                                    <a title="Share" href="#" class="">
+                                        <i class="fa fa-share-alt"></i>
+                                    </a>
+                                    <ins>20</ins>
+                                </span>	
+                            </li>
+                        </ul> -->
+                        <!-- <div class="users-thumb-list">
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Anderw">
+                                <img src="images/resources/userlist-1.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="frank">
+                                <img src="images/resources/userlist-2.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Sara">
+                                <img src="images/resources/userlist-3.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Amy">
+                                <img src="images/resources/userlist-4.jpg" alt="">  
+                            </a>
+                            <span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
+                        </div> -->
+                    </div>
+                    <div style="display: block;" class="coment-area">
+                        <ul class="we-comet">
+                            <li>
+                                <div class="comet-avatar">
+                                    <img alt="" src="../../../assets/{{comment.image}}">
+                                </div>
+                                <div class="we-comment">
+                                    <h5><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
+                                    <p>{{comment.commentText}}</p>
+                                    <div class="inline-itms">
+                                        <span>{{comment.commentDate}}</span>
+                                        <!-- <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a> -->
+                                    </div>
+                                </div>
+
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div><!-- The Scrolling Modal image with comment -->
