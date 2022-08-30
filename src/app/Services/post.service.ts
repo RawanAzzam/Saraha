@@ -40,6 +40,7 @@ export class PostService {
     
     this.http.get('https://localhost:44324/api/Post/GetPostByUserId/'+userId).subscribe((result) => {
       this.userpost = result;
+      debugger;
       for(let x of this.userpost){setTimeout(()=>{this.GetPostLikedBy(x.postId)},2000)}
       for(let x of this.userpost){setTimeout(()=>{this.GetPostCommentBy(x.postId)},2000)}
       this.postcountById=this.userpost.length; 
