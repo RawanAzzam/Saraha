@@ -297,16 +297,15 @@
                                     <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:contain ; width:110px; height:50px " alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
                                                             <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
-                                                        
-                                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
+                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                    
+                                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>UnPin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
@@ -323,8 +322,8 @@
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" title="Like Post"><i  (click)="CreateLike(post.postId)"  class="ti-thumb-up"></i></a></li>
+                                                        <li (click)="PinPost(post.postId,0)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
                                                         <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
@@ -337,8 +336,9 @@
 
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;">
-                                                            <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
+                                                        <li (click)="CreateLike(post.postId)" style="margin-right: 13px;">
+                                                            <span class="views" title="views">                            
+                                                                <i class="fa fa-thumbs-up"></i>
                                                                 <ins> {{post.likes}} </ins>
                                                             </span>
                                                         </li>
@@ -359,7 +359,10 @@
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
                                                    
-                                                        <span><strong></strong>, <b>Sarah</b> and <a title="">24+ more</a> liked</span>
+                                                        <span><strong></strong>, <b>Sarah</b> and
+                                                            <button type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
+                                                                24+ more
+                                                          </button> liked</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -411,7 +414,7 @@
                                                             <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
                                                             <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>
                                                         
-                                                            <li ><i class="fa fa-wpexplorer"></i>Pin Post</li>
+                                                            <li (click)="PinPost(post.postId,1)" ><i class="fa fa-wpexplorer"></i>Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
@@ -428,7 +431,7 @@
                                                 <div class="post-map">
                                                     <div class="nearby-map" >
                                                         <figure *ngIf="post.postImage != null">
-                                                            <img src="../../../assets/Images/{{post.postImage}}" alt="">
+                                                            <img src="../../../assets/Images/{{post.postimage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -462,15 +465,12 @@
 
                                                      
                                                     </ul>
-                                                    <div class="users-thumb-list" >
-                                                        <div *ngFor="let user of this.post.likes">
-
-                                                        <a data-toggle="tooltip" title="{{user.likeFrom}}" href="#" >
-                                                            <img alt="" src="../../../assets/{{this.userService.user.imagepath}}">  
-                                                        </a>
-                                                    </div>
-                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a>	<a (click)="GetPostLikedBy(post.postId)" >See All </a>
-                                                           
+                                                    <div class="users-thumb-list" >                                              
+                                                   
+                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a> 
+                                                            <button (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
+                                                            See All
+                                                      </button>	
                                                         </span>
                                                     </div>
                                                 </div>
@@ -616,11 +616,33 @@
     
 </ng-template>
 
-<ng-template #callLikesDailog>
+<!-- <ng-template #callLikesDailog>
     <h2>Likes List</h2>
     <div *ngFor="let user of this.post.likes ">
     <h2 >{{user.likeFrom}}</h2>
 </div>
     <button mat-dialog-close="close">close</button>
-</ng-template>
+</ng-template> -->
 
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngFor="let user of this.post.likes.get(this.postId)">
+              <img src="../../../assets/{{user.userLikeImage}}" hight="50" width="50" class="topic-data" alt="">
+        {{user.likeFrom}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

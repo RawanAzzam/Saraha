@@ -11,6 +11,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EmailComposeComponent } from './email-compose/email-compose.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 
 const routes: Routes = [
@@ -61,10 +62,15 @@ const routes: Routes = [
  
   },
   {
-    path:'compose',
+    path:'compose/:id',
     component:EmailComposeComponent
  
-  }
+  },
+  {
+    path:'chart',
+    component:PieChartComponent
+    }
+   
 
 ];
 

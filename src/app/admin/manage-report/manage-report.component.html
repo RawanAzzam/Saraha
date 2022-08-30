@@ -36,7 +36,7 @@
                       <tbody *ngFor="let obj of report.reports">
                         <tr>
                           <td  class="topic-data">
-                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" height="90" width="90" alt="">
+                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" width="60" alt="">
                             <span>{{obj.count}} Report</span>
                             <!-- <em>Participant</em> -->
                           </td>
@@ -48,11 +48,11 @@
                             <p style="margin-top:50px ;">{{obj.username}}</p>
                           </td>
                           <td style="padding-right:50px ;" class="date-n-reply"> 
-                             <a class="addnewforum" style="color: white;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
-                            <a class="addnewforum" style="color: white;" *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
-                            <a [routerLink]="['/admin/compose']" class="addnewforum" style="color: white; margin-top: -10px;" title=""> Contact <i class="fa fa-envelope"></i></a>
+                             <a class="addnewforum" style="color: white;; cursor: pointer;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
+                            <a class="addnewforum" style="color: white; cursor: pointer;" *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
+                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="addnewforum" style="color: white; margin-top: -10px;" title=""> Contact <i class="fa fa-envelope"></i></a>
                           </td>
-
+                          <!-- (click)="contactrepory(obj.userto)"  -->
                           </tr>
                         <!-- <tr>
                           <td class="topic-data">

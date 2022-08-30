@@ -7,12 +7,13 @@ import { Injectable } from '@angular/core';
 export class MessageService {
 
   constructor(private http:HttpClient) { }
-  id = 1 ;
+    id = 1 ;
   messages : any =[];
   allMessages:any=[];
 
 
   getMessages(){
+
     this.http.get('https://localhost:44324/api/Message/GetUserMessageById/'+this.id).subscribe((result) => {
       this.messages = result;
       console.log(result);
@@ -51,15 +52,20 @@ export class MessageService {
     })
  
    }
-messagePost:any;
-   MsgToPost(msg: string, userid: number){
+// userId:any=0;
+// msg: any="";
+
+   MsgToPost(msg: any){
     debugger;
-    // this.messagePost.messageContent= msg;
-    // this.messagePost.userTo=userid;
+    // this.messagePost.messageContent= msg.messageContent;
+    // this.messagePost.userTo=msg.userTo;
+    
     // console.log(this.messagePost.messageContent)
     // console.log(this.messagePost.userTo)
 
-    this.http.get('https://localhost:44324/api/Post/MsgToPost/'+msg+'/'+userid).subscribe((result) => {
+
+
+    this.http.get('https://localhost:44324/api/Post/MsgToPost/'+msg.messageContent+'/'+msg.userTo+'/'+msg.reply).subscribe((result) => {
       console.log(result);
     },Error => {
       console.log(Error);

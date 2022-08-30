@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
+
 import { UserModule } from './user/user.module';
 
 const routes: Routes = [
@@ -27,8 +28,8 @@ const routes: Routes = [
 {
 path:'user',
 loadChildren: () => UserModule
-}
- 
+},
+
 ];
 
 @NgModule({

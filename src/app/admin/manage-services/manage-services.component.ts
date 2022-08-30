@@ -41,7 +41,7 @@ export class ManageServicesComponent implements OnInit {
    
   }
   CreateNewSevice(){
-    this.dialog.open(CreateNewServiceComponent, {panelClass: 'my-outlined-dialog  mat-dialog-container'});
+    this.dialog.open(CreateNewServiceComponent ,{panelClass: 'mat-dialog-content', width: '30%', height: '900px' });
   }
 
   p_data:any={};

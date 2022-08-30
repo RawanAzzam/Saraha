@@ -3,12 +3,12 @@
 <div style="height: 750; margin-bottom:50px ; background-color: #fa6342e8; position: sticky; top: 0;border-radius: 4px;">
   <div class="friend-box" style="height:600px ;margin-top: 50px;">
     <div class="frnd-meta">
-      <img alt="" src="./assets/sar/images/resources/frnd-figure3.jpg">
+      <img alt="" style="object-fit:contain ;  width:70px" src="./assets/{{this.userService.user.imagepath}}">
       <div class="frnd-name">
-        <a title="" href="#">Jack Carter</a>
-        <span>@jack5000</span>
+        <a title="" >{{this.userService.user.username}}</a>
+        <span>{{this.userService.user.country}}</span>
       </div>
-      <a class="main-btn2" style="margin-left: 110px;margin-top: 26px;" href="http://localhost:4200/admin/MyProfile" title="">Edit Profile</a>
+      <a class="main-btn2" style="margin-left: 110px;margin-top: 26px;" [routerLink]="['/admin/MyProfile']" title="">Edit Profile</a>
     </div>
     <ul class="menu-list">
       <li><a [routerLink]="['/admin/HomePage']" title="" data-ripple=""><i style="padding:10px ;" class="fa fa-home"></i>Home</a></li>
