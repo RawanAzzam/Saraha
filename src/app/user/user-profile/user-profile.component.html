@@ -297,16 +297,15 @@
                                     <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:contain ; width:110px; height:50px " alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
                                                     <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
                                                             <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
-                                                        
-                                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
+                                                            <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                    
+                                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>UnPin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
@@ -323,8 +322,8 @@
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
-                                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li><a class="bg-blue" title="Like Post"><i  (click)="CreateLike(post.postId)"  class="ti-thumb-up"></i></a></li>
+                                                        <li (click)="PinPost(post.postId,0)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
                                                         <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
                                                     </ul>
                                                 </div><!-- near by map -->
@@ -337,8 +336,9 @@
 
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;">
-                                                            <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
+                                                        <li (click)="CreateLike(post.postId)" style="margin-right: 13px;">
+                                                            <span class="views" title="views">                            
+                                                                <i class="fa fa-thumbs-up"></i>
                                                                 <ins> {{post.likes}} </ins>
                                                             </span>
                                                         </li>
@@ -414,7 +414,7 @@
                                                             <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
                                                             <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>
                                                         
-                                                            <li ><i class="fa fa-wpexplorer"></i>Pin Post</li>
+                                                            <li (click)="PinPost(post.postId,1)" ><i class="fa fa-wpexplorer"></i>Pin Post</li>
                                                             <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
                                                         </ul>
                                                     </div>
