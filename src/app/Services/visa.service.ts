@@ -57,10 +57,10 @@ updateVisa(visa:any){
 
 
 message: any;
-checkVisa(cardNum:string,totalcost:number){
+checkVisa(cardNum:string,totalcost:number, userId:any, featureId:number){
  
   debugger;
-  this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+totalcost).subscribe((result) => {
+  this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+totalcost+'/'+userId+'/'+featureId).subscribe((result) => {
     this.message=result;
     console.log(result);
     if(this.message.toString()=="Not enough balance")

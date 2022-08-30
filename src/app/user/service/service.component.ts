@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeatureService } from 'src/app/Services/feature.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { VisaService } from 'src/app/Services/visa.service';
 
 
@@ -14,15 +15,19 @@ export class ServiceComponent implements OnInit {
     {
       Cardnum:new FormControl('',[Validators.required]),
       Expir:new FormControl('',[Validators.required]),
+     // featureId:new FormControl('',[Validators.required]),
     })
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number=0;
-  constructor(public featureService : FeatureService,public visa :VisaService) { }
+  constructor(public featureService : FeatureService,public visa :VisaService,public loginservice:LoginService) { }
 
   ngOnInit(): void {
     debugger;
+    this.loginservice.checkIfLoginOrNot();
+    this.loginservice.getLoginByUserId(this.loginservice.loginId);
     this.featureService.getAll();
     this.visa.getAll();
+    
 
   }
   countStar(star:any) {
@@ -31,9 +36,9 @@ export class ServiceComponent implements OnInit {
   }
 
 
-checkout(cost:any){
+checkout(cost:any, featureId:any){
   debugger;
-  this.visa.checkVisa(this.VisaForm.controls['Cardnum'].value,cost)
+  this.visa.checkVisa(this.VisaForm.controls['Cardnum'].value,cost,localStorage.getItem('userId'),featureId)
 }
 
 }
