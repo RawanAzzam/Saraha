@@ -10,6 +10,7 @@ import { UserAboutComponent } from './user-about/user-about.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
 import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
+import { VisaComponent } from './visa/visa.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path:'editProfile',
     component:EditProfileComponent
+  },
+  {
+    path:'visa',
+    component:VisaComponent
   },
   {
   path:'search',

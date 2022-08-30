@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';  // <<<< import it here
 import { RouterModule } from '@angular/router';
 import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
+import { VisaComponent } from './visa/visa.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.
     UserTimelineComponent,
     SearchComponent,
     UserProfileComponent,
-    ViewProfileUserComponent
+    ViewProfileUserComponent,
+    VisaComponent
   ],
   imports: [
     CommonModule,
