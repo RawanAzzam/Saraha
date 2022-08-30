@@ -460,8 +460,9 @@
                                                         </li>
                                                         <li>
                                                             <span class="comment" title="Comments">
-                                                                <a  (click)="changePostId(post.postId)" data-target="#Comments">see</a><i class="fa fa-commenting" ></i>
-                                                                <ins>{{post.comments}}</ins>
+                                                                <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
+                                                                    see
+                                                                    </a>	                                                                <ins>{{post.comments}}</ins>
                                                             </span>
                                                         </li>
 
@@ -735,7 +736,7 @@
 
 
 <div class="modal fade" id="Comments">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="max-width:1000px ;">
       <div class="modal-content">
 
         <!-- Modal Header -->
@@ -746,21 +747,23 @@
         <!-- Modal body -->
         <div class="modal-body">
             <div class="row">
-                 <div class="col-lg-4"  *ngFor="let comment of this.post.Comments.get(this.postId)">
-                    <div class="pop-image">
+                 <div class="col-lg-6"  *ngFor="let comment of this.post.Comments.get(this.postId)">
+                   
+                     <div class="pop-image">
                         <div class="pop-item">
-                            <figure><img src="../../../assets/{{comment.postImage}}" style="width:25px ; object-fit:contain ;" alt="">
+                            <figure><img src="../../../assets/Images/{{comment.postImage}}" style="width:600px; object-fit: contain;" alt="">
                             </figure>
                         </div>
                     </div>
+                    
                 </div>
-                <div class="col-lg-8"  *ngFor="let comment of this.post.Comments.get(this.postId)">
+                <div class="col-lg-6"  *ngFor="let comment of this.post.Comments.get(this.postId)">
                     <div class="user">
                         <figure><img src="../../../assets/{{comment.userImage}}" width="50" alt=""></figure>
                         <div class="user-information">
-                            <h4><a href="#" title="">{{comment.auther}}</a></h4>
+                            <h4><a title="">{{comment.auther}}</a></h4>
                             <span>{{comment.postDate | date}}</span>
-                            <p>  {{comment.postText}}</p>
+                            <h3> {{comment.postText}}</h3>
                         </div>
                         <!-- <a href="#" title="Follow" data-ripple="">Follow</a> -->
                     </div>
@@ -805,11 +808,11 @@
                         <ul class="we-comet">
                             <li>
                                 <div class="comet-avatar">
-                                    <img alt="" src="../../../assets/{{comment.image}}" width="150">
+                                    <img alt="" src="../../../assets/{{comment.image}}">
                                 </div>
                                 <div class="we-comment">
                                     <h5><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
-                                    <p>{{comment.commentText}}</p>
+                                    <p>   {{comment.commentText}}</p>
                                     <div class="inline-itms">
                                         <span>{{comment.commentDate| date}}</span>
                                          <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
