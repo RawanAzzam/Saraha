@@ -48,7 +48,9 @@ console.log(this.weatherService.weather);
    this.message.getAllMessages();
    this.userservice.getActivePepole();
    this.order.GetOrders();
-   this.featureService.getservicesales();
+   this.featureService.FeatureName();
+   this.featureService.FeatureTotalSales();
+
   }
 // ********************************
 
