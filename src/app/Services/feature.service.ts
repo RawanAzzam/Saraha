@@ -18,8 +18,9 @@ export class FeatureService {
     })
 
   }
+  // servName : any =new Array<string>();
   servName : any =new Array<string>();
-  servSales  :any = [];
+  servSales :any=[];
   featureSales :any = []
   
   FeatureTotalSales(){

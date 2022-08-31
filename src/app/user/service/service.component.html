@@ -52,6 +52,8 @@
                         </div><!-- sidebar -->
                         <div class="col-lg-9 " style="width:700px">
                             <div>
+								<div class="" *ngFor="let obj of this.featureService.feature; first as isFirst">
+									<div class="central-meta" *ngIf="isFirst">
 								<div class="">
 									<div class="central-meta">
 										<div class="full-postmeta">
@@ -65,15 +67,28 @@
 											</ol>
 											<div class="share">
 												<span>Saraha Badge</span>
-												<a style="width:50px" href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge3.png" alt=""></a>
+												<a style="width:50px" href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="./assets/{{obj.imagePath}}" alt=""></a>
 
 											</div>
-											
+		
 											<i></i>
-											
-											<h4> <span>Anonymous Messages Breaker</span> </h4>
+											<div class="row">
+												<div class="col-sm-12">
+													<ul class="list-inline rating-list" 
+														*ngFor="let star of stars" style="display: inline-block" >
+														  <li (click)="countStar(star)"
+															  [ngClass]="{'selected': (star <= selectedValue)}">
+															<i class="fa fa-star"></i>
+														  </li> 
+													</ul>
+												</div>
+											  </div>
+
+											<h4> <span>{{obj.featureName}}
+											</span> </h4>
+
 											<p>
-												This feature makes you know who is sending you an anynoumus messages, by showing the sender name 😉
+												{{obj.featureDescribtion}} 😉
 											</p>
 											
 											<form class="qty-select">
@@ -82,34 +97,104 @@
 											<span class="prices style4">
 												<ins>
 													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>18.00
+														<span class="woocommerce-Price-currencySymbol">$</span>{{obj.featurePrice}}
 													</span>
 												</ins>
 												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>23.00
+													<span class="woocommerce-Price-amount amount" *ngIf="obj.oldPrice > 0 ">
+														<span class="woocommerce-Price-currencySymbol">$</span>{{obj.oldPrice}}
 													</span>
 												</del>                                             
 											</span>
-											<div class="post-as">
-												<div class="prod categories">
-													<span class="cat-heading">Categories:
-														<a title="" href="#">Movie Ticket</a>
-														<a title="" href="#">Web Themes</a>
-													</span>
-												</div>
-												<div class="prod tags">
-													<span class="cat-heading">Applied by:
-														<a title="" href="#">100 people</a>
-												
-													</span>
-												</div>
+											<div class="post-as" *ngIf="obj.rateCount >0">
+												<ol class="pit-rate">
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class="rated"><i class="fa fa-star"></i></li>
+													<li class=""><i class="fa fa-star"></i></li>
+													<li><span>{{obj.starRates}}/{{obj.rateCount}}</span></li>
+												</ol>
 											</div>
 											<div class="extras">
 												
 												<a style="margin-right:4px ;" href="https://www.youtube.com/watch?v=XNeFJzO8v9c" title="" data-strip-group="mygroup" class="strip play-btn"><i class="fa fa-play-circle"></i> play video</a>
-												<a href="https://www.youtube.com/watch?v=XNeFJzO8v9c" title="" data-strip-group="mygroup" class="strip play-btn"><i class="fa fa-credit-card"></i> Buy Now</a>
-
+												<a  type="button" class="waed strip play-btn" data-toggle="modal" data-target="#exampleModalCenter">
+													<i class="fa fa-credit-card"></i> Buy Now
+											</a>
+										<!-- ************************************************************************ -->
+										<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+											<div class="modal-dialog modal-dialog-centered" role="document">
+											  <div class="modal-content">
+												<div class="modal-header">
+												  <h5 class="modal-title" id="exampleModalLongTitle">
+												  Billing Details
+												 </h5>
+												  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												  </button>
+												</div>
+												<div class="modal-body">
+													<div class=""> 
+														<div class="text-right">
+															 <i class="" data-dismiss="modal"></i>
+															 </div> <div class="tabs mt-3">
+																 <ul class="nav nav-tabs" id="myTab" role="tablist">
+																	 <li class="nav-item" role="presentation">
+																		 <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> 
+																			<img src="https://i.imgur.com/sB4jftM.png" width="80">
+																		 </a> </li>
+																		  <li class="nav-item" role="presentation">
+																			 <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">
+																				 <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li> </ul> <div class="tab-content" id="myTabContent"> 
+																					<div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab"> 
+																						<div class="mt-4 mx-4"> <div class="text-center"> <h5>Credit card</h5> </div>
+																						 <div class="form mt-3">
+																							<form [formGroup]="VisaForm">
+																							 <div class="inputbox"> 
+																								
+																							<input  type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div> 
+																							<div class="inputbox"> 
+																								<input type="text"   class="form-control" required="required" formControlName="Cardnum">  <span>Card Number</span> <i class="fa fa-eye"></i> 
+																							</div>
+																								 <div class="d-flex flex-row">
+																									 <div class="inputbox"> 
+																									<input type="date"  min="1" max="999" class="form-control" required="required" formControlName="Expir"> <span>Expiration Date</span>
+																								 </div> 
+																									<div class="inputbox"> 
+																										<input type="text" min="1" max="999" class="form-control" required="required"> <span>CVV</span>
+																									 </div> </div> 
+																										<div class="px-5 pay"> 
+																											<button style="margin-left: 227px;
+																											/* margin-right: -63px; */
+																											margin-top: 10px;    width: 103px;" class="btn waed" (click)="checkout(obj.featurePrice, obj.featureId)">Pay</button>
+																										 </div>
+																										</form>
+																										 </div> 
+																										</div>
+																									 </div> 
+																									 <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab"> 
+																										<div class="px-5 mt-5"> 
+																											<div class="inputbox">
+																												 <input type="text" name="name" class="form-control" required="required"> 
+																												 <span>Paypal Email Address</span>
+																												 </div> <div class="pay px-5">
+																													 <button style="margin-left: 227px;
+																													 /* margin-right: -63px; */
+																													 margin-top: 10px;    width: 103px;" class="btn waed">Add paypal</button>
+																													 </div>
+																													 </div> 
+																													</div>
+																												 </div>
+																												 </div> 
+																												</div> 
+												</div>
+											
+											  </div>
+											</div>
+										  </div>
+										<!-- ******************************************************************************* -->
+											
 												<a title="" data-group="set2" class="html5lightbox btn2" href="">
 												</a>
 											</div>
@@ -234,8 +319,69 @@
                         </div>	<!-- sidebar -->
                     </div>	
                 </div>
+				<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="exampleModalLongTitle">
+                          Billing Details
+						 </h5>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+							<div class=""> 
+								<div class="text-right">
+									 <i class="" data-dismiss="modal"></i>
+									 </div> <div class="tabs mt-3">
+										 <ul class="nav nav-tabs" id="myTab" role="tablist">
+											 <li class="nav-item" role="presentation">
+												 <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> 
+													<img src="https://i.imgur.com/sB4jftM.png" width="80">
+												 </a> </li>
+												  <li class="nav-item" role="presentation">
+													 <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">
+														 <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li> </ul> <div class="tab-content" id="myTabContent"> 
+															<div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab"> 
+																<div class="mt-4 mx-4"> <div class="text-center"> <h5>Credit card</h5> </div>
+																 <div class="form mt-3"> <div class="inputbox"> 
+																	<input  type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div> <div class="inputbox"> 
+																		<input type="text" name="name" min="1" max="999" class="form-control" required="required" formControlName="Cardnum"> > <span>Card Number</span> <i class="fa fa-eye"></i> </div> <div class="d-flex flex-row"> <div class="inputbox"> 
+																			<input type="text" name="name" min="1" max="999" class="form-control" required="required" formControlName="Expir"> <span>Expiration Date</span> </div> <div class="inputbox"> 
+																				<input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div> </div> <div class="px-5 pay"> 
+																					<button style="margin-left: 227px;
+																					/* margin-right: -63px; */
+																					margin-top: 10px;    width: 103px;" class="btn waed" (click)="checkout(obj.featurePrice)">Pay</button>
+																				 </div>
+																				 </div> 
+																				</div>
+																			 </div> 
+																			 <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab"> 
+																				<div class="px-5 mt-5"> 
+																					<div class="inputbox">
+																						 <input type="text" name="name" class="form-control" required="required"> 
+																						 <span>Paypal Email Address</span>
+																						 </div> <div class="pay px-5">
+																							 <button style="margin-left: 227px;
+																							 /* margin-right: -63px; */
+																							 margin-top: 10px;    width: 103px;" class="btn waed">Add paypal</button>
+																							 </div>
+																							 </div> 
+																							</div>
+																						 </div>
+																						 </div> 
+																						</div> 
+						</div>
+					
+					  </div>
+					</div>
+				  </div> -->
             </div>
         </div>
-    </div>	
-</section><!-- content -->
+    </div>
+	
+	
+
+<!-- content -->
 
