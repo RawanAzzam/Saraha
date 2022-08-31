@@ -43,11 +43,11 @@ export class FeatureService {
   }
 
   createService(service:any){
-    service.imagePath = this.featureImage.imagePath;
+    // service.imagePath = this.featureImage.imagePath;
     console.log(service);
 
     debugger;
-    this.http.post('https://localhost:44324/api/Feature/CreateFeature',service).subscribe((result) =>{
+    this.http.get('https://localhost:44324/api/Feature/CreateFeature',service).subscribe((result) =>{
 
     },Erorr =>{
 
