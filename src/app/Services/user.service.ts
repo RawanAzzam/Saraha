@@ -17,7 +17,7 @@ export class UserService {
   totalCount :any;
   Allusers: any = [{}]
   searchUserResult : any =[]
-
+//  activeUser :any=[]
 
 //  UserImage : any;
 getAll(){
