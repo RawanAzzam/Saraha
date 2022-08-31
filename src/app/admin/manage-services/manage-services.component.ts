@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { CreateNewServiceComponent } from '../create-new-service/create-new-service.component';
 
+
 @Component({
   selector: 'app-manage-services',
   templateUrl: './manage-services.component.html',
@@ -14,11 +15,28 @@ export class ManageServicesComponent implements OnInit {
   constructor(public featureService : FeatureService,private dialog:MatDialog) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
   @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
+  createForm:FormGroup=new FormGroup({
+    featureName:new FormControl(),
+    featurePrice:new FormControl(),
+    featureDuration:new FormControl(),
+    featureDescribtion:new FormControl(),
+
+    oldPrice:new FormControl(),
+
+    // enddate:new FormControl(),
+     imagePath:new FormControl()
+  
+  
+  });
    updateForm:FormGroup=new FormGroup({
     featureId:new FormControl(),
     featureName:new FormControl(),
     featurePrice:new FormControl(),
     featureDuration:new FormControl(),
+    featureDescibtion:new FormControl(),
+
+    oldPrice:new FormControl(),
+
     // enddate:new FormControl(),
      imagePath:new FormControl()
   })
@@ -40,9 +58,11 @@ export class ManageServicesComponent implements OnInit {
     })
    
   }
-  CreateNewSevice(){
-    this.dialog.open(CreateNewServiceComponent ,{panelClass: 'mat-dialog-content', width: '30%', height: '900px' });
+  createService(){
+  this.featureService.createService(this.createForm)
+
   }
+  
 
   p_data:any={};
   updateDailog(obj:any){
@@ -52,8 +72,12 @@ export class ManageServicesComponent implements OnInit {
       featureName:obj.featureName,
     featurePrice:obj.featurePrice,
     featureDuration:obj.featureDuration,
+    featureDescribtion:obj.featureDescribtion,
+    oldPrice:obj.oldPrice,
+
     // enddate:obj.enddate,
     imagePath:obj.imagePath
+    
     }
     console.log(this.p_data);
     this.updateForm.controls['featureId'].setValue(this.p_data.featureId); 
