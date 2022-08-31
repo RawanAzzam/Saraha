@@ -348,9 +348,9 @@
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
-                                                                    see
+                                                                    <i data-target="#exampleModalCenter" class="fa fa-commenting"></i>
                                                                     </a>	
-                                                                <i data-target="#exampleModalCenter" class="fa fa-commenting"></i>
+                                                               
                                                                 <ins>{{post.comments}} </ins>
                                                             </span>
                                                         </li>
@@ -369,6 +369,49 @@
                                                         </span>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="coment-area" style="display: block;">
+													<ul class="we-comet">												
+														<li class="post-comment">
+															<div class="comet-avatar">
+																<img src="images/resources/nearly1.jpg" alt="">
+															</div>
+															<div class="post-comt-box">
+																<form [formGroup]="CommentForm">
+																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<input formControlName="userid" hidden>
+                                                                    <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
+                                                                    <div class="add-smiles">
+																		<!-- <div class="uploadimage">
+																			<i class="fa fa-image"></i>
+																			<label class="fileContainer">
+																				<input type="file">
+																			</label>
+																		</div> -->
+																		<span class="em em-expressionless" title="add icon"></span>
+																		<!-- <div class="smiles-bunch">
+																			<i class="em em---1"></i>
+																			<i class="em em-smiley"></i>
+																			<i class="em em-anguished"></i>
+																			<i class="em em-laughing"></i>
+																			<i class="em em-angry"></i>
+																			<i class="em em-astonished"></i>
+																			<i class="em em-blush"></i>
+																			<i class="em em-disappointed"></i>
+																			<i class="em em-worried"></i>
+																			<i class="em em-kissing_heart"></i>
+																			<i class="em em-rage"></i>
+																			<i class="em em-stuck_out_tongue"></i>
+																		</div> -->
+
+																	</div>
+                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
+
+																</form>	
+															</div>
+														</li>
+													</ul>
+												</div>
                                             </div>
                                             <div class="coment-area" >
                                                 <ul class="we-comet">
@@ -389,7 +432,7 @@
                                                     </li>
                                                   
                                                     <li>
-                                                        <a href="#" title="" class="showmore underline">more comments+</a>
+                                                        <a title="" class="showmore underline">more comments+</a>
                                                     </li>
                                                    
                                                 </ul>
@@ -461,7 +504,7 @@
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
-                                                                    see
+                                                                    <i data-target="#exampleModalCenter" class="fa fa-commenting"></i>
                                                                     </a>	                        
                                                             <ins>{{post.comments}}</ins>
                                                             </span>
@@ -471,7 +514,7 @@
                                                     </ul>
                                                     <div class="users-thumb-list" >                                              
                                                    
-                                                        <span> Liked By :<strong></strong> <b></b><a href="#" title="">+{{post.likes}} more </a> 
+                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
                                                             <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
                                                             See All
                                                             </a>	
@@ -515,7 +558,7 @@
 																		</div> -->
 
 																	</div>
-                                                                    <button (click)="createComment(post.postId)" type="submit">submit</button>
+                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
 
 																</form>	
 															</div>
@@ -737,7 +780,7 @@
 
 
 <div class="modal fade" id="Comments">
-    <div class="modal-dialog" style="max-width:1000px ;">
+    <div class="modal-dialog" style="max-width:600px ;">
       <div class="modal-content">
 
         <!-- Modal Header -->
@@ -747,29 +790,29 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <div class="row">
-                 <div class="col-lg-6">
+            <!-- <div class="row"> -->
+                 <!-- <div class="col-lg-6">
                    
                      <div class="pop-image">
                         <div class="pop-item">
-                            <figure *ngFor="let comment of this.post.Comments.get(this.postId)"><img src="../../../assets/Images/{{comment.postImage}}" style="width:600px; object-fit: contain;" alt="">
+                            <figure><img src="../../../assets/Images/{{this.postById.postImage}}" style="width:600px; object-fit: contain;" alt="">
                             </figure>
                         </div>
                     </div>
                     
-                </div>
-                <div class="col-lg-6"  >
-                    <div class="user" *ngFor="let comment of this.post.Comments.get(this.postId)">
+                </div> -->
+                <div class="col-lg-12"  >
+                    <!-- <div class="user" *ngFor="let comment of this.post.Comments.get(this.postId)">
                         <figure><img src="../../../assets/{{comment.userImage}}" width="50" alt=""></figure>
                         <div class="user-information">
                             <h4><a title="">{{comment.auther}}</a></h4>
                             <span>{{comment.postDate | date}}</span>
                             <h3> {{comment.postText}}</h3>
-                        </div>
+                        </div> -->
                         <!-- <a href="#" title="Follow" data-ripple="">Follow</a> -->
-                    </div>
-                    <div class="we-video-info">
-                       <ul>
+                    <!-- </div> -->
+                    <!-- <div class="we-video-info"> -->
+                    <!--    <ul>
                             <li>
                                 <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
                             </li>
@@ -788,7 +831,7 @@
                                     <ins>20</ins>
                                 </span>	
                             </li>
-                        </ul>
+                        </ul> -->
                         <!-- <div class="users-thumb-list">
                             <a href="#" title="" data-toggle="tooltip" data-original-title="Anderw">
                                 <img src="images/resources/userlist-1.jpg" alt="">  
@@ -804,16 +847,16 @@
                             </a>
                             <span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
                         </div> -->
-                    </div>
+                    <!-- </div> -->
                     <div style="display: block;" class="coment-area" >
                         <ul class="we-comet">
                             <li *ngFor="let comment of this.post.Comments.get(this.postId)">
                                 <div class="comet-avatar">
-                                    <img alt="" src="../../../assets/{{comment.image}}">
+                                    <img alt="" src="../../../assets/{{comment.image}}" style="width:50px ; height: 50px; object-fit: contain;">
                                 </div>
                                 <div class="we-comment">
-                                    <h5><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
-                                    <p>   {{comment.commentText}}</p>
+                                    <h5 style="color:#f87000 ;"><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
+                                    <p style="margin:30px ;">   {{comment.commentText}}</p>
                                     <div class="inline-itms">
                                         <span>{{comment.commentDate| date}}</span>
                                          <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
@@ -827,5 +870,5 @@
             </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
 </div><!-- The Scrolling Modal image with comment -->
