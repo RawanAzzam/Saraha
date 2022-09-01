@@ -117,11 +117,11 @@
                                          <img src="../../../assets/{{obj.imageName}}" style="object-fit:contain ;" alt="">
                                          <div class="sugtd-frnd-meta">
                                              <a href="#" title="">{{obj.username}}</a>
-                                             <span>{{obj.count}} report</span>
-                                             <ul class="add-remove-frnd">
+                                             <!-- <span>{{obj.count}} report</span> -->
+                                             <!-- <ul class="add-remove-frnd">
                                                  <li class="add-tofrndlist"><a href="#" title="Details"><i class="ti ti-alert"></i></a></li>
                                                  <li class="remove-frnd"><a href="#" title="Block"><i class="fa fa-user-times"></i></a></li>
-                                             </ul>
+                                             </ul> -->
                                          </div>
                                      </li>
                                  </div>
@@ -171,17 +171,17 @@
                      <div class="col-lg-12">
                  
                          <div class="widget"style=" width: 824px; margin-left: -1px;" >
-                             <h4 class="widget-title">Most Active People</h4>
-                             <ul class="most-actie-pep">
-                                <div  *ngFor="let user of userservice.users">
-                                <li *ngIf="user.Is_Active == 1">
-
+                             <h4 class="widget-title"> Active People</h4>
+                             <ul class="most-actie-pep" >
+                                <!-- <div  *ngFor="let user of userservice.users"> -->
+                                <!-- <li *ngIf="user.Is_Active == 1"> -->
+                                <li *ngFor="let active of active.Activeusers">
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt=""src="./assets/{{user.imagePath}">
+                                         <img alt="" src="./assets/{{active.imagepath}">
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
-                                </div> 
+                                <!-- </div>  -->
                             
                              </ul>
                          </div>
