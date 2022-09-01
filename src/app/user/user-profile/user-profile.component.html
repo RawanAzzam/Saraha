@@ -204,7 +204,7 @@
                                             </li>
                                      
                                             <li class="preview-btn">
-                                                <button class="post-btn-preview" type="submit" data-ripple="">Preview</button>
+                                                <button   class="post-btn-preview" type="submit" data-ripple="">Preview</button>
                                             </li>
                                         </ul>
                                         <button  cdkFocusInitial class="post-btn" type="submit"   (click)="CreatePost()">Post</button>
@@ -290,6 +290,7 @@
                                    
                                  </ul>
                         </div>
+                        
 
 
 
@@ -320,7 +321,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                                <ins><a title=""> {{post.auther}}</a>  <a style=" margin-left: 305px;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
                                                 </ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                                             </div>
@@ -372,9 +373,9 @@
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
                                                     -->
-                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
+                                                        <span><strong></strong> <b></b><a title="">+ {{post.likes}} more </a> 
                                                             <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
-                                                            See All
+                                                            See All Likes
                                                             </a>	
                                                         </span>
                                                     </div>
@@ -388,7 +389,7 @@
 															</div>
 															<div class="post-comt-box">
 																<form [formGroup]="CommentForm">
-																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<textarea  style=" margin-left: -22px;"  formControlName="commenttext" placeholder="Post your comment"></textarea>
 																	<input formControlName="userid" hidden>
                                                                     <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                     <div class="add-smiles">
@@ -398,7 +399,6 @@
 																				<input type="file">
 																			</label>
 																		</div> -->
-																		<span class="em em-expressionless" title="add icon"></span>
 																		<!-- <div class="smiles-bunch">
 																			<i class="em em---1"></i>
 																			<i class="em em-smiley"></i>
@@ -415,7 +415,7 @@
 																		</div> -->
 
 																	</div>
-                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
+                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;" (click)="createComment(post.postId)" type="submit">submit</a>
 
 																</form>	
 															</div>
@@ -524,9 +524,9 @@
                                                     </ul>
                                                     <div class="users-thumb-list" >                                              
                                                    
-                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
+                                                        <span><strong></strong> <b></b><a title="">+ {{post.likes}} more </a> 
                                                             <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
-                                                            See All
+                                                            See All Likes
                                                             </a>	
                                                         </span>
                                                     </div>
@@ -541,7 +541,7 @@
 															</div>
 															<div class="post-comt-box">
 																<form [formGroup]="CommentForm">
-																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<textarea style="    margin-left: -22px;"  formControlName="commenttext" placeholder="Post your comment"></textarea>
 																	<input formControlName="userid" hidden>
                                                                     <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                     <div class="add-smiles">
@@ -551,7 +551,7 @@
 																				<input type="file">
 																			</label>
 																		</div> -->
-																		<span class="em em-expressionless" title="add icon"></span>
+																		<span class="" title=""></span>
 																		<!-- <div class="smiles-bunch">
 																			<i class="em em---1"></i>
 																			<i class="em em-smiley"></i>
@@ -568,7 +568,8 @@
 																		</div> -->
 
 																	</div>
-                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
+                                                                    <a class="addnewforum" style="color: white;    margin-right: 19px;
+                                                                    margin-top: 10px; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
 
 																</form>	
 															</div>
