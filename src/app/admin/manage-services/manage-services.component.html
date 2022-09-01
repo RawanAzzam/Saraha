@@ -28,7 +28,7 @@
                     <div class="central-meta padding30">
 
                         <h4 class="create-post">All Service</h4>
-                        <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="CreateNewSevice()"> Add Service </a>
+                        <a class="main-btn" title="" style="margin-bottom:25px ;"data-toggle="modal" data-target="#createService" > Add Service </a>
 
                         <div class="row">      
                             
@@ -68,7 +68,7 @@
 													</div>
                                                     <span class="qeemat"> <div style="margin-left: 180px; " class="more-post-optns"><i class="ti-more-alt"></i>
                                                         <ul>
-                                                            <li (click)="updateDailog(obj)"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
+                                                            <li data-toggle="modal"  data-target="#updateService"><i class="fa fa-pencil-square-o" ></i>Edit Service</li>
                                                             <li (click)="deleteservice(obj.featureId)"><i class="fa fa-trash-o"></i>Delete Service</li>                                                                               
                                                         </ul>
                                                     </div></span>
@@ -177,26 +177,152 @@
 
 
 <ng-template #callupdateDailog>
-    <form class="" [formGroup]="updateForm" >
-        <mat-form-field  >
-          <mat-label>Service Name</mat-label>
-          <input  type="text" matInput formControlName="featureName"
-                 [(ngModel)]="p_data.featureName">
-        </mat-form-field>
-    <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>price</mat-label>
-            <input type="number" matInput formControlName="featurePrice"
-            [(ngModel)]="p_data.featurePrice">
-          </mat-form-field>
-    <br>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Feature Duration</mat-label>
-      <input type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
-          </mat-form-field>
-          <mat-label>Image :</mat-label>
-          <input type="file" #file formControlName="imagePath"  (change)="uploadImage(file.files)" >
-          <button (click)="updateService()">Update</button>
-    </form>
+    
     
 </ng-template>
+
+
+<!-- Button trigger modal -->
+
+
+
+
+
+    <!--Add Service Modal-->
+      <!-- Modal -->
+  <div class="modal fade" id="updateService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add New Service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="width:80% ;margin: auto;">
+            <form  class="" [formGroup]="createForm" >
+                <div style="width:80%;margin:auto;padding:auto">
+             
+                  <input style="    margin: 3px;
+                  margin-bottom: 12px;
+                  min-width: 298px;
+                  max-width: 94px;" placeholder="Service Name" type="text" matInput formControlName="featureName" required>
+        
+            <br>
+                    <input placeholder="Price" type="number" matInput formControlName="featurePrice">
+            <br>
+              <input style="margin-top:15px ;" placeholder="Duration" type="number" matInput formControlName="featureDuration" >
+                  <div class="row">
+              <input style="margin-top:15px ;    margin-left: 10px;
+              "   placeholder=" Describtion" type="string" matInput formControlName="featureDescribtion" >
+                  </div>
+                 <div class="row">
+                    <label style="
+                 color: red;
+    font-size: 10px;
+    margin-bottom: -8px;
+    margin-top: 8px;" 
+    
+    
+                    >Optional</label>
+
+                    <input style="margin-top:5px ;    margin-left: 15px;
+                    " placeholder="Old Price" type="string" matInput formControlName="oldPrice"  >
+                   </div>
+                    <div class="row">
+
+                  <label>Feature Image </label>
+                  <input style="margin-left:15px" type="file" #file    >
+                    </div>
+
+                  <button style="    margin-top: 19px;
+                  margin-right: -3px;" (click)="createService() ">Create</button>
+                </div>
+                </form>
+          
+            </div>
+        <div class="modal-footer">
+      
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="createService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Update Service</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="width:80% ;margin: auto;">
+                <form  class="" [formGroup]="updateForm"  >
+                    <div style="width:80%;margin:auto;padding:auto">
+                 
+                      <input style="    margin: 3px;margin-bottom: 12px;min-width: 298px; max-width: 94px;" placeholder="Service Name" type="text" matInput formControlName="featureName" required formControlName="featureName">
+                      <input placeholder="Price" type="number" matInput formControlName="featurePrice" formControlName="featurePrice" [(ngModel)]="p_data.featurePrice">
+                      <input style="margin-top:15px ;" placeholder="Duration" type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
+                      <div class="row">
+                      <input style="margin-top:15px ;    margin-left: 10px;" placeholder=" Describtion" type="string" matInput formControlName="featureDescribtion" [(ngModel)]="p_data.featureDescribtion" >
+
+                      </div>
+                     <div class="row">
+                        <label style=" color: red; font-size: 10px; margin-bottom: -8px;margin-top: 8px;" >Optional</label>
+    
+                       <input style="margin-top:5px ; margin-left: 15px;" placeholder="Old Price" type="string" matInput formControlName="oldPrice" [(ngModel)]="p_data.oldPrice"  >
+                      </div>
+                      <div class="row">
+                      <label>Feature Image </label>
+                      <input style="margin-left:15px" type="file" #file   (change)="uploadImage(file.files)"  >
+                     </div>
+                      <button style="    margin-top: 19px;
+                      margin-right: -3px;" (click)="updateService()">Update</button>
+                     </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+
+
+    <ng-template #callupdateDailog>
+        <form class="" [formGroup]="updateForm" >
+            <mat-form-field  >
+              <mat-label>Service Name</mat-label>
+              <input  type="text" matInput formControlName="featureName"
+                     [(ngModel)]="p_data.featureName">
+            </mat-form-field>
+        <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>price</mat-label>
+                <input type="number" matInput formControlName="featurePrice"
+                [(ngModel)]="p_data.featurePrice">
+              </mat-form-field>
+        <br>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Feature Duration</mat-label>
+          <input type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
+              </mat-form-field>
+              <mat-label>Image :</mat-label>
+              <input type="file" #file formControlName="imagePath"  (change)="uploadImage(file.files)" >
+              <button (click)="updateService()">Update</button>
+        </form>
+        
+    </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

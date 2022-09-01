@@ -1,7 +1,7 @@
 <div class="topbar stick">
     
     <div class="logo">
-        <a title="" href="newsfeed.html"><img src="../../../../assets/{{home.homePage.logo}}"  width="90"alt=""></a>
+        <a title="" href="newsfeed.html"><img src="../../../../assets/{{home.homePage.logo}}"  style=" height:50px; width:100px; object-fit:contain ;"lt=""></a>
     </div>
     <div class="top-area">
         <!-- <div class="main-menu">
@@ -21,8 +21,9 @@
         <!-- <div class="page-name">
           <a href="http://localhost:4200/authentication/logout" ><i style="padding:10px ;" class="fa fa-sign-out"></i></a>
         </div> -->
-        <!-- <ul class="setting-area">
-            <li><a href="newsfeed.html" title="Home" data-ripple=""><i class="fa fa-home"></i></a></li>
+         <ul class="setting-area">
+            <li> <a class="" [routerLink]="['/user/about']">About</a></li></ul>
+<!--<a href="newsfeed.html" title="Home" data-ripple=""><i class="fa fa-home"></i></a></li>
             <!-- <li>
                 <a href="#" title="Friend Requests" data-ripple="">
                     <i class="fa fa-user"></i><em class="bg-red">5</em>
@@ -32,6 +33,9 @@
                     <ul class="drops-menu">
                         <li>
                             <div>
+                                
+                                
+                                
                                 <figure>
                                     <img src="../../../../assets/user/images/resources/thumb-2.jpg" alt="">
                                 </figure>
@@ -217,10 +221,10 @@
         <div class="user-img">
            
             <h5>{{this.userService.user.username}}</h5>
-            <img style="object-fit:contain ; height:60px; width:60px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
-           
-            <!-- <span class="status f-online"></span>
-            <div class="user-setting">
+            <img style="object-fit:cover ; height:60px; width:60px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+            <span class="status f-online"></span>
+             <span class="status f-online"></span>
+            <!--<div class="user-setting">
                 <span class="seting-title">Chat setting <a href="#" title="">see all</a></span>
                 <ul class="chat-setting">
                     <li><a href="#" title=""><span class="status f-online"></span>online</a></li>
@@ -228,7 +232,7 @@
                     <li><a href="#" title=""><span class="status f-off"></span>offline</a></li>
                 </ul>
                 <span class="seting-title">User setting <a href="#" title="">see all</a></span>
-                <ul class="log-out">
+               <-- <ul class="log-out">
                     <li><a href="about.html" title=""><i class="ti-user"></i> view profile</a></li>
                     <li><a href="setting.html" title=""><i class="ti-pencil-alt"></i>edit profile</a></li>
                     <li><a href="#" title=""><i class="ti-target"></i>activity log</a></li>
@@ -236,8 +240,8 @@
                     <li><a href="logout.html" title=""><i class="ti-power-off"></i>log out</a></li>
                 </ul>
             </div> -->
-        
-            <div class="page-name">
+        </div>
+            <div class="main-menu">
                 <a href="http://localhost:4200/authentication/logout" ><i style="padding:10px ;" class="fa fa-sign-out"></i></a>
               </div>
         </div>
@@ -374,4 +378,4 @@
         
     </nav>nav menu -->
   
-</div><!-- topbar -->
+<!-- </div>topbar -->

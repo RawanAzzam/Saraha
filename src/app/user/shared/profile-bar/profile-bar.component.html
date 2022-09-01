@@ -1,7 +1,7 @@
 <div class="user-profile">
     <figure>
      
-        <img src="../../../assets/user/images/resources/profile-image.jpg" alt="">
+        <img src="../../../assets/user/images/resources/profile-image2.jpg" alt="">
         <ul class="profile-controls">
             <li><a href="http://localhost:4200/user/my-badges" title="My Badges" data-toggle="tooltip"><i class="fa fa-star"></i></a></li>
            
@@ -14,18 +14,20 @@
             <div class="col-lg-2 col-md-3">
                 <div class="profile-author">
                     <div class="profile-author-thumb">
-                        <img style="object-fit:contain ;  width:200px; height: 150px;" alt="author" src="./assets/{{this.userService.user.imagepath}}" >
-                        <div class="edit-dp">
+                        <img style="object-fit:cover ;  width:280px; height: 175px;" alt="author" src="../../../assets/{{this.userService.user.imagepath}}" >
+                        <!-- <div class="edit-dp">
+>>>>>>> 2eae09b20cb237b0a5d8dc79a90f1c3a4c0ca4f3
                             <label class="fileContainer">
                                 <i class="fa fa-camera"></i>
                                 <input type="file">
                             </label>
-                        </div>
+                        </div> -->
                     </div>
                         
                     <div class="author-content">
                         <a class="h4 author-name" href="about.html">{{this.userService.user.username}}</a>
                         <div class="country">{{this.userService.user.country}}</div>
+                       
                     </div>
                 </div>
             </div>
@@ -38,17 +40,16 @@
                         <a class="" [routerLink]="['/user/messages']">Messages</a>
                     </li>
                     <li>
+                        <a class="" [routerLink]="['/user/search']">People</a>
+                    </li>   
+                    <li>
                         <a class="" [routerLink]="['/user/notifications']">Notifications</a>
                     </li>
-                    <li>
-                        <a class="" [routerLink]="['/user/about']">About</a>
-                    </li>
+                   
                     <li>
                         <a class="" [routerLink]="['/user/create-testimony']">Make a testimony</a>
                     </li>
-                 
-
-                  
+                            
                     
                 </ul>
                 <ol class="folw-detail">
