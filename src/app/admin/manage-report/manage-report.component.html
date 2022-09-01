@@ -24,35 +24,36 @@
                   <!-- <div class="forum-open"> -->
 
                     <h4 class="create-post">All Reported Users <span style="color:white; background-color: #fa6342e8; border-radius:5px ; padding:5px ;" >{{report.reports.length}}</span></h4>
-                    <table class="table table-responsive">
+                    <table class="table table-responsive" style="vertical-align:middle;">
                       <thead>
-                        <tr>
+                        <tr style="text-align:center ;">
                           <th>User</th>
                           <th>Report Message</th>
-                          <th style="min-width: 104px;">Report count</th>
+                          <th>Report count</th>
+                          <th></th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let obj of report.reports">
-                        <tr>
-                          <td  class="topic-data">
-                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" width="60" alt="">
-                            <p style="margin-top:50px ;">{{obj.username}}</p>
-
+                        <tr style="text-align:center ;">
+                          <td  class="topic-data" style="vertical-align:middle;">
+                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" style="height:70px; width:70px; object-fit:cover ;" alt="">
+                            <span> {{obj.username}}</span>
                             <!-- <em>Participant</em> -->
                           </td>
                        
-                          <td >
-                            <p style="margin:50px ; text-align: center;align-content: center;">{{obj.message}}</p>
+                          <td style="vertical-align:middle;">
+                            <p style="margin-bottom:50px ;margin-top: 50px; text-align: center;align-content: center;">{{obj.message}}</p>
                           </td>
-                          <td>
-                            <span style="margin:20px ;">{{obj.count}} Report</span>
-
+                          <td style="vertical-align:middle;padding-left: 0px;">
+                            <span style="padding-top:50px ;">{{obj.count}} Report</span>
                           </td>
-                          <td style="padding-right:50px ; margin-top: 10px;" class="date-n-reply"> 
-                             <a class="addnewforum " style="color: #fa6342e8;cursor: pointer; background-color: white;margin-bottom:1px ;    margin-top: 40px;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
-                            <a class="addnewforum" style="color: #fa6342e8; cursor: pointer;background-color: white;margin-bottom:1px ;  " *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
-                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="addnewforum" style="color:#fa6342e8; margin-top: -10px;background-color: white;" title=""> Contact <i class="fa fa-envelope"></i></a>
+                          <td style="vertical-align:middle;width:120px; padding: 5px;" class="date-n-reply"> 
+                             <a class="addnewforum" style="color: white; font-size: 11px;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
+                            <a class="addnewforum" style="color: white; font-size: 11px;" *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
+                          </td>
+                          <td style="vertical-align:middle; width: 120px;padding: 5px;" class="date-n-reply"> 
+                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="addnewforum" style="color: white; font-size: 11px;" title=""><i class="fa fa-envelope"></i>Contact</a>
                           </td>
                           <!-- (click)="contactrepory(obj.userto)"  -->
                           </tr>

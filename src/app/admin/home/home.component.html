@@ -53,8 +53,8 @@
                                 <div class="stat-box"style="padding:25px 50px 15px">
                                     <i class="fa fa-envelope"></i>
                                     <div class="anlytc-meta">
-                                        <h4>Between Users</h4>
-                                        <p>{{this.message.allMessages.length}}</p>
+                                        <h4>Between User</h4>
+                                        <p style="font-size:small ; margin:0px ;">{{this.message.allMessages.length}}</p>
                                         <span>user's Messages</span> 
                                     </div>
                                     <div class="progress" style="height:6px">
@@ -69,8 +69,7 @@
                 <div class="col-lg-4">
                     <div class="central-meta postbox">
                         <span class="create-post">Number Of Services</span>
-                        <div class="new-postbox">
-                          
+                        <div class="new-postbox">                          
                             <div class="newpst-input">
                                 {{featureService.feature.length}} Service
                             </div>     
@@ -114,9 +113,9 @@
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;"*ngFor="let obj of report.reports.slice(this.report.reports.length - 4,this.report.reports.length-1)">
                                  <li>
-                                         <img src="../../../assets/{{obj.imageName}}" style="object-fit:contain ;" alt="">
+                                         <img src="../../../assets/{{obj.imageName}}" style="object-fit:cover ; width:150 ; height: 150px;" alt="">
                                          <div class="sugtd-frnd-meta">
-                                             <a href="#" title="">{{obj.username}}</a>
+                                             <a title="">{{obj.username}}</a>
                                              <!-- <span>{{obj.count}} report</span> -->
                                              <!-- <ul class="add-remove-frnd">
                                                  <li class="add-tofrndlist"><a href="#" title="Details"><i class="ti ti-alert"></i></a></li>
@@ -177,7 +176,7 @@
                                 <!-- <li *ngIf="user.Is_Active == 1"> -->
                                 <li *ngFor="let active of active.Activeusers">
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt="" src="./assets/{{active.imagepath}">
+                                         <img alt="" src="./assets/{{active.imagepath}}" style="object-fit:cover ; width:80 ; height: 50px;">
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
@@ -201,7 +200,7 @@
                                     <p>
                                         Manage home page
                                     </p>
-                                    <a data-ripple="" title="" href="http://localhost:4200/admin/ManageHome">HERE!</a>
+                                    <a data-ripple="" title="" [routerLink]="['/admin/ManageHome']">HERE!</a>
                                 </div>
                             </div>											
                         </div>
