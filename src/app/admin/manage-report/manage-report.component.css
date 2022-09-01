@@ -1,0 +1,13 @@
+a.addnewforum:hover{
+
+    color: aliceblue;
+}
+a.addnewforum{
+    border-radius: 100px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 10px 30px;
+    float: right;
+}
