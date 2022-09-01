@@ -31,6 +31,7 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                      
                                         <ins *ngIf="!message.is_Anon"><a  href="time-line.html" title="">{{message.from}}</a> </ins>
                                         <ins *ngIf="message.is_Anon"><a  href="time-line.html" title="">Unknown</a> </ins>
                                         <span>{{message.messageDate| date:'medium'}} </span>
