@@ -21,6 +21,7 @@ export class MessagesComponent implements OnInit {
   {
     messageContent : new FormControl(),
     messageDate : new FormControl(),
+    is_Anon : new FormControl(),
     userFrom : new FormControl(),
     userTo : new FormControl(),
   }
@@ -73,11 +74,14 @@ export class MessagesComponent implements OnInit {
 
   replyMessage(){
    this.replyForm.controls["messageDate"].setValue(new Date());
-   this.replyForm.controls["userFrom"].setValue(localStorage.getItem('userId'));
+  // this.replyForm.controls["userFrom"].setValue(localStorage.getItem('userId'));
    debugger;
    console.log(this.replyForm.value)
    this.messageService.createNewMessage(this.replyForm.value);
   }
 
-
+  change(evant:any){
+    console.log(this.replyForm.value)
+    console.log(evant);
+  }
 }

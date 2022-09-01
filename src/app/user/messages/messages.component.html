@@ -69,7 +69,12 @@
           </textarea>
         </mat-form-field>
    
-  
+   <div class="setting-row">
+            <span>Send As Anonymous</span>
+            <input type="checkbox" (change)="change($event)"  formControlName="is_Anon" id="switch2"/> 
+            <label for="switch2"  data-off-label="OFF"></label>
+        </div>
+      
           <button (click)="replyMessage()">Reply</button>
     </form>
     
