@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
 
@@ -11,7 +12,7 @@ import { PostService } from 'src/app/Services/post.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(public messageService:MessageService,private dialog:MatDialog , public postService :PostService) { }
+  constructor(public messageService:MessageService,private dialog:MatDialog , public postService :PostService,public loginservice:LoginService) { }
   // id = 1;
   @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
   @ViewChild('callPublishDailog') callPublishDailog! :TemplateRef<any>;
@@ -37,7 +38,9 @@ export class MessagesComponent implements OnInit {
     })
 
   ngOnInit(): void {
-  //this.messageService.getMessages();
+    this.loginservice.checkIfLoginOrNot();
+    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+  this.messageService.getMessages(this.loginservice.userId);
   }
   MsgToPost(){
     debugger;
@@ -51,9 +54,11 @@ export class MessagesComponent implements OnInit {
 
   //  this.dialog.open(this.callreplyDailog)
   }
-  openReplyDailog(fromId:number){
+  openReplyDailog(fromId:number, ToId :number){
     console.log(fromId);
+    debugger;
     this.replyForm.controls["userTo"].setValue(fromId);
+    this.replyForm.controls["userFrom"].setValue(ToId);
 
    this.dialog.open(this.callreplyDailog)
   }
