@@ -7,15 +7,15 @@ import { Injectable } from '@angular/core';
 export class MessageService {
 
   constructor(private http:HttpClient) { }
-    id = 1 ;
+    //id = 1 ;
   messages : any =[];
   allMessages:any=[];
+  userMessages:any=[];
 
+  getMessages(Id:number){
 
-  getMessages(){
-
-    this.http.get('https://localhost:44324/api/Message/GetUserMessageById/'+this.id).subscribe((result) => {
-      this.messages = result;
+    this.http.get('https://localhost:44324/api/Message/GetUserMessageById/'+Id).subscribe((result) => {
+      this.userMessages = result;
       console.log(result);
     },Error => {
       console.log(Error);

@@ -5,6 +5,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
 
 import { UserModule } from './user/user.module';
+import { WaedComponent } from './waed/waed.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,10 @@ const routes: Routes = [
     {
       path:'Home',
       component:HomeComponent
+      },
+      {
+      path:'waed',
+      component:WaedComponent
       },
   {
     path:'authentication',
