@@ -27,17 +27,20 @@
                     <table class="table table-responsive">
                       <thead>
                         <tr>
-                          <th>User</th>
-                          <th>Report Message</th>
-                          <th style="min-width: 104px;">Report count</th>
+                          <th style="min-width: 104px;" >User</th>
+                          <th style="min-width: 104px;padding-left: 114px;" >Report Message</th>
+                          <th style="min-width: 117px;">Report count</th>
                           <th></th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let obj of report.reports">
                         <tr>
                           <td  class="topic-data">
-                            <img style="margin:20px ;" src="./assets/{{obj.imageName}}" width="60" alt="">
-                            <p style="margin-top:50px ;">{{obj.username}}</p>
+                            <img style="margin: 20px;
+                            margin-left: -11px;
+                            max-width: 56px;
+                            min-height: 61px; " src="./assets/{{obj.imageName}}"   alt="user">
+                            <p style=" margin-left: -41px;padding-top: -15px;">{{obj.username}}</p>
 
                             <!-- <em>Participant</em> -->
                           </td>
@@ -45,14 +48,15 @@
                           <td >
                             <p style="margin:50px ; text-align: center;align-content: center;">{{obj.message}}</p>
                           </td>
-                          <td>
+                          <td style="    padding-top: 55px;
+                          ">
                             <span style="margin:20px ;">{{obj.count}} Report</span>
 
                           </td>
                           <td style="padding-right:50px ; margin-top: 10px;" class="date-n-reply"> 
-                             <a class="addnewforum " style="color: #fa6342e8;cursor: pointer; background-color: white;margin-bottom:1px ;    margin-top: 40px;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> <i class="fa fa-close"></i> Block</a>
-                            <a class="addnewforum" style="color: #fa6342e8; cursor: pointer;background-color: white;margin-bottom:1px ;  " *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock</a>
-                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="addnewforum" style="color:#fa6342e8; margin-top: -10px;background-color: white;" title=""> Contact <i class="fa fa-envelope"></i></a>
+                             <a class="waed" style="margin-bottom:1px ;    margin-top: 40px;" *ngIf="!obj.is_blocked" (click)="changeBlockStatus(obj.loginId,1)" title=""> Block  <i class="fa fa-close"></i></a>
+                            <a class="waed" style="margin-bottom:1px ;  " *ngIf="obj.is_blocked" (click)="changeBlockStatus(obj.loginId,0)" title="">UnBlock <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                            <a  [routerLink]="['/admin/compose/',obj.userId]" class="waed" style=" margin-top: 5px;" title=""> Contact <i class="fa fa-envelope"></i></a>
                           </td>
                           <!-- (click)="contactrepory(obj.userto)"  -->
                           </tr>
