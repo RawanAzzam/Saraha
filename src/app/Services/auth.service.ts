@@ -5,12 +5,14 @@ import { FeatureService } from './feature.service';
 import jwt_decode from "jwt-decode";
 import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { LoginService } from './login.service';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( private loginService:LoginService, private home:FeatureService, private spinner :NgxSpinnerService, private http:HttpClient, private router :Router) { }
+  constructor( private loginService:LoginService, private home:FeatureService, 
+    private spinner :NgxSpinnerService, private http:HttpClient, private router :Router,private toster:ToastrService) { }
   submit(email:any,password:any){
     console.log(email);
     debugger;
@@ -30,7 +32,7 @@ export class AuthService {
     }
     this.http.post('https://localhost:44324/api/Login/Login',body,requestOptions).subscribe
     ((resp)=>{
-   
+      
       const responce ={
         token:resp.toString()
       }
@@ -41,8 +43,6 @@ export class AuthService {
      localStorage.setItem('userId',data.UserId );
      localStorage.setItem('loginId',data.loginId);
       localStorage.setItem('user',JSON.stringify({...data}) );
-       console.log("LOOOOOOGGIIIn IIIddd"+localStorage.getItem('loginId'))
-       
       this.spinner.hide();
       if(data.is_Blocked == "False" ){
         console.log("Hiii")
@@ -55,15 +55,19 @@ export class AuthService {
         {
           this.router.navigate(['admin']);
         }
+      }else{
+        alert("sorry .. CAN NOT be login , your account is blocked")
       }
      
      
     },err => {
       console.log(err)
+        alert("Email or Password is not correct ...")
     })
 
 
-
+  
+    
 
   }
 }

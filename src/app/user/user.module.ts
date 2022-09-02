@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';  // <<<< import it here
 import { RouterModule } from '@angular/router';
 import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
 import { VisaComponent } from './visa/visa.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -45,7 +46,12 @@ import { VisaComponent } from './visa/visa.component';
     MatInputModule,
     MatDialogModule  ,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
     
   ],
 })

@@ -38,11 +38,9 @@ export class AdminProfileComponent implements OnInit {
     //  this.loginService.getLoginByUserId(2);
      this.loginService.checkIfLoginOrNot();
      this.userService.getUserById(this.loginService.userId);
-     this.loginService.getLoginByUserId(this.loginService.loginId);
+     this.loginService.getLoginByUserId(this.loginService.userId);
     //  while(this.userService.user == undefined)
     //  continue
-     setTimeout(()=> {this.user = this.userService.user;
-      console.log(this.user)},5000)
      
      
     
@@ -50,16 +48,17 @@ export class AdminProfileComponent implements OnInit {
   }
 
   updateUser(){
-    this.updateUserForm.controls['userid'].setValue(this.user.userid);
-    this.updateUserForm.controls['gender'].setValue(this.user.gender);
-    this.updateUserForm.value.imagepath = this.user.imagepath;
-    console.log(this.updateUserForm.value)
     debugger;
+    this.updateUserForm.controls['userid'].setValue(this.userService.user.userid);
+    this.updateUserForm.controls['gender'].setValue(this.userService.user.gender);
+    this.updateUserForm.value.imagepath = this.userService.user.imagepath;
+    console.log(this.updateUserForm.value)
     this.userService.updateUser(this.updateUserForm.value);
   }
 
   uploadImage(file:any){
     if(file.length == 0){
+      console.log("hi");
      return
     }
     debugger;
@@ -72,8 +71,9 @@ export class AdminProfileComponent implements OnInit {
 
 
    checkMatchPassword(){
-    console.log(this.passwordForm.controls['oldPasswordControl'].value  == this.oldPassword)
-    if(this.passwordForm.controls['oldPasswordControl'].value != this.oldPassword)
+    console.log(this.passwordForm.controls['oldPasswordControl'].value);
+    console.log(this.loginService.login.password);
+    if(this.passwordForm.controls['oldPasswordControl'].value != this.loginService.login.password)
 {  
   this.toastar.warning('Old Password is not correct ...');
 
@@ -81,7 +81,12 @@ export class AdminProfileComponent implements OnInit {
 
 
   changePassword(){
+    debugger;
+    console.log(this.passwordForm.controls['oldPasswordControl'].value);
+    console.log(this.loginService.login.password);
+    if(this.passwordForm.controls['oldPasswordControl'].value == this.loginService.login.password){
    this.loginService.changePassword(this.loginService.login.loginid,this.passwordForm.controls['newPasswordControl'].value)
+    }
   }
 
    

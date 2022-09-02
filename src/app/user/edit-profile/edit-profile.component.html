@@ -117,7 +117,7 @@
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>
                                                                     Chage DP
-                                                                    <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
+                                                                    <input type="file" #file1 formControlName="imagepath" (change)="uploadImage(file1.files)" >
                                                                 </label>
                                                            
                                                         </div>
@@ -686,9 +686,9 @@
                                     <h4 class="widget-title">Change Password</h4>
                                     <form  [formGroup]="passwordForm">
                                         
-                                        <input type="password" matInput formControlName="oldPasswordControl" (change)="checkMatchPassword()"  placeholder="Old Password">
+                                        <input type="password"  formControlName="oldPasswordControl" (change)="checkMatchPassword()"  placeholder="Old Password">
                                        
-                                        <input type="password" matInput formControlName="newPasswordControl" placeholder="New Passowrd">
+                                        <input type="password"  formControlName="newPasswordControl" placeholder="New Passowrd">
                                         <button  (click)="changePassword()" type="submit">Change Password</button>
 
                                     </form>

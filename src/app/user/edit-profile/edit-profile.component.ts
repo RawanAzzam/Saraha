@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -29,7 +30,7 @@ export class EditProfileComponent implements OnInit {
     country : new FormControl (''),
     imagepath : new FormControl ('')})
     
-  constructor(public userService:UserService,public loginService:LoginService,private route:Router) { }
+  constructor(public userService:UserService,public loginService:LoginService,private route:Router,private toster:ToastrService) { }
   
   ngOnInit(): void {
     this.loginService.checkIfLoginOrNot();
@@ -68,7 +69,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.passwordForm.controls['oldPasswordControl'].value  == this.loginService.login.password)
     if(this.passwordForm.controls['oldPasswordControl'].value != this.loginService.login.password)
 {  
- // this.toastar.warning('Old Password is not correct ...');
+  this.toster.warning('Old Password is not correct ...');
  console.log("Old Password is not correct ...")
 
 }   }

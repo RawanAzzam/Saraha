@@ -16,7 +16,7 @@ export class NotificatonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginservice.checkIfLoginOrNot();
-    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+    this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.userService.getUserById(this.loginservice.userId);
     this.activityService.getActivityByUserId(this.loginservice.userId);
    console.log("HERERR      "+this.activityService.activityUserLike);
