@@ -41,19 +41,20 @@ export class FeatureService {
     
     })
   }
-
-  createService(service:any){
-    // service.imagePath = this.featureImage.imagePath;
-    console.log(service);
+  createService(feature:any){
+    console.log(feature);
+    if(this.featureImage != null)
+    feature.imagePath = this.featureImage.imagePath;
 
     debugger;
-    this.http.get('https://localhost:44324/api/Feature/CreateFeature',service).subscribe((result) =>{
-
+    this.http.post('https://localhost:44324/api/Feature/CreateFeature',feature).subscribe((result) =>{
+      console.log(result)
     },Erorr =>{
-
+      console.log(Erorr)
     })
     window.location.reload();
   }
+ 
     deleteService(id:number)
   {
     
