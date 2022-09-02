@@ -30,11 +30,9 @@ export class AuthService {
     const requestOptions={
       headers:new HttpHeaders(headerDir)
     }
-    this.toster.warning("Email or Password is not correct ...")
-
     this.http.post('https://localhost:44324/api/Login/Login',body,requestOptions).subscribe
     ((resp)=>{
-
+      
       const responce ={
         token:resp.toString()
       }
@@ -45,12 +43,9 @@ export class AuthService {
      localStorage.setItem('userId',data.UserId );
      localStorage.setItem('loginId',data.loginId);
       localStorage.setItem('user',JSON.stringify({...data}) );
-       console.log("LOOOOOOGGIIIn IIIddd"+localStorage.getItem('loginId'))
-       
       this.spinner.hide();
       if(data.is_Blocked == "False" ){
         console.log("Hiii")
-
         this.loginService.updateActiveStatus(Number(data.loginId),1);
         if(data.role=='2')
         {
@@ -60,15 +55,19 @@ export class AuthService {
         {
           this.router.navigate(['admin']);
         }
+      }else{
+        alert("sorry .. CAN NOT be login , your account is blocked")
       }
      
      
     },err => {
       console.log(err)
+        alert("Email or Password is not correct ...")
     })
 
 
-
+  
+    
 
   }
 }
