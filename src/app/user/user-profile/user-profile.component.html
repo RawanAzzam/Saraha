@@ -11,11 +11,11 @@
                             <aside class="sidebar static left">
                                 <div class="widget">
                                     <h4 class="widget-title">User Badges <a class="see-all" href="#" title=""> See All</a></h4>
-                                    <ul class="badgez-widget">
+                                    <ul class="badgez-widget" *ngIf="userService.user.is_Premium">
                                         <li>
-                                        <a href="#" title="Male User" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge2.png" alt=""></a>
+                                            <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge3.png" alt=""></a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                         <a href="#" title="10 Years old User" data-toggle="tooltip"><img src="../../../assets/user/images/badges/year10.png" alt=""></a>
                                         </li>
                                         <li>
@@ -35,7 +35,7 @@
                                         </li>
                                         <li>
                                         <a href="#" title="500+ Followers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge10.png" alt=""></a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div><!-- badges -->
   
