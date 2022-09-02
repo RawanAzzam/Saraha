@@ -13,12 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { WaedComponent } from './waed/waed.component';
 
 const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    WaedComponent,
    
   ],
   imports: [

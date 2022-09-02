@@ -17,7 +17,7 @@ export class UserService {
   totalCount :any;
   Allusers: any = [{}]
   searchUserResult : any =[]
-
+//  activeUser :any=[]
 
 //  UserImage : any;
 getAll(){
@@ -51,6 +51,13 @@ getActivePepole(){
     console.log(user);
     if(this.userImage != null)
     user.imagepath = this.userImage.imagepath;
+    else
+    {
+      if(user.gender == 'Female')
+      user.imagepath = "Unknown_person.jpg";
+      else
+      user.imagepath = "Unknown_person.jpg";
+    }
     debugger;
     this.http.post('https://localhost:44324/api/UserProfile/Register',user).subscribe((result) =>{
       this.route.navigate(['authentication/Login'])

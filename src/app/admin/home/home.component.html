@@ -113,15 +113,17 @@
                             <span class="create-post"> Lastest Reported users <a href="#" title="">See All</a></span>
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;"*ngFor="let obj of report.reports.slice(this.report.reports.length - 4,this.report.reports.length-1)">
-                                 <li>
-                                         <img src="../../../assets/{{obj.imageName}}" style="object-fit:contain ;" alt="">
+                                 <li style="   min-height: 231px;
+                                 max-height: 231px;"> 
+                                         <img src="../../../assets/{{obj.imageName}}" style="   min-height: 185px;
+                                         max-height: 185px;" alt="">
                                          <div class="sugtd-frnd-meta">
                                              <a href="#" title="">{{obj.username}}</a>
-                                             <span>{{obj.count}} report</span>
-                                             <ul class="add-remove-frnd">
+                                             <!-- <span>{{obj.count}} report</span> -->
+                                             <!-- <ul class="add-remove-frnd">
                                                  <li class="add-tofrndlist"><a href="#" title="Details"><i class="ti ti-alert"></i></a></li>
                                                  <li class="remove-frnd"><a href="#" title="Block"><i class="fa fa-user-times"></i></a></li>
-                                             </ul>
+                                             </ul> -->
                                          </div>
                                      </li>
                                  </div>
@@ -141,11 +143,11 @@
                                 <span class="refresh-content"><i class="fa fa-refresh"></i></span>
                                 <div class="weather-week">
                                     <div class="icon sun-shower">
-                                      <div class="cloud"></div>
+                                      <div class=""></div>
                                       <div class="sun">
                                         <div class="rays"></div>
                                       </div>
-                                      <div class="rain"></div>
+                                      <div class=""></div>
                                     </div>
                                 </div>
                                 <div class="weather-infos">
@@ -171,17 +173,17 @@
                      <div class="col-lg-12">
                  
                          <div class="widget"style=" width: 824px; margin-left: -1px;" >
-                             <h4 class="widget-title">Most Active People</h4>
-                             <ul class="most-actie-pep">
-                                <div  *ngFor="let user of userservice.users">
-                                <li *ngIf="user.Is_Active == 1">
-
+                             <h4 class="widget-title"> Active People</h4>
+                             <ul class="most-actie-pep" >
+                                <!-- <div  *ngFor="let user of userservice.users"> -->
+                                <!-- <li *ngIf="user.Is_Active == 1"> -->
+                                <li *ngFor="let active of active.Activeusers">
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt=""src="./assets/{{user.imagePath}">
+                                         <img alt="" src="./assets/{{active.imagepath}}">
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
-                                </div> 
+                                <!-- </div>  -->
                             
                              </ul>
                          </div>
@@ -219,11 +221,14 @@
             <table class="table table-responsive">
                 <thead>
                     <tr>
-                        <th scope="col">Lastest Messages</th>
-                       
+                        <!-- <th> -->
+                            <span  class="create-post">Recent Messages<a title="" [routerLink]="['/admin/Message']">See All</a></span>
+                        <!-- </th>     -->
                     </tr>
+                    
                 </thead>
                 <tbody>
+                  
                     <div *ngFor="let message  of contactUs.Messages"  >              
                 
                         <tr>
@@ -231,9 +236,13 @@
                             <i class="fa fa-comments"></i> 
                             <a  style="font-size:meduim ;" href="forums-category.html" title="">{{message.username}} <br><a  href="mailto:someone@yoursite.com" style="color:#fa6342e8 ;font-size:small;margin-left:18px ;">{{message.email}}</a></a>
                             
-
-                            <p>{{message.message}}</p>
-                        </td>                    
+                        </td>  
+                        <td>
+                            <p style="min-width: 330px;"> {{message.message}}</p>
+                        </td>  
+                        <td>
+                          <a style="color:#fa6342e8; padding-top:100px;cursor: pointer;" >Reply</a>
+                        </td>       
                     </tr> 
                 </div>  
                 </tbody>
@@ -247,8 +256,8 @@
 
 
 <div class="central-meta" style=" width: 825px;margin-left: 15px;">
-    <span class="create-post">Orders<a title="" href="#">Full Month</a></span>
-    <table class="table table-responsive monthly-forecast">
+    <span class="create-post">Orders<a title=""[routerLink]="['/admin/Report']">Full Month</a></span>
+    <table class="table table-responsive monthly-forecast" style="padding-left:50px">
         <thead>
             <tr>
                 <th>Order Number</th>
@@ -260,10 +269,10 @@
                 <!-- <th>Percip</th> -->
             </tr>
         </thead>
-        <tbody *ngFor="let object of order.OServices">
-            <tr>
+        <tbody *ngFor="let object of order.OServices.slice(this.order.OServices.length - 6,this.order.OServices.length-1)">
+            <tr style="text-align:center ;">
                 <td><span>{{object.purchaseid}}</span></td>
-                <td>{{object.datefrom}}</td>
+                <td>{{object.datefrom | date}}</td>
                 <!-- <td><i class="wi wi-day-cloudy"></i></td> -->
                 <td>{{object.featurename}}</td>
                 <td>{{object.featureprice}}</td>

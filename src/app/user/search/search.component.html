@@ -50,17 +50,23 @@
                                 <div *ngFor="let user of this.userService.searchUserResult" class="col-lg-3 col-md-6 col-sm-6">
                                     <div  class="friend-box">
                                         <figure>
-                                            <img src="./assets/sar/images/resources/frnd-cover1.jpg" alt="">
+                                            <img  src="./assets/sar/images/resources/frnd-cover1.jpg" alt="">
                                         </figure>
                                         <div class="frnd-meta">
-                                            <img width="50" src="./assets/{{user.imagepath}}" alt="">
-                                            
+                                            <img *ngIf="user.imagepath != null" style="     max-height: 53px;
+                                            min-height: 53px;
+                                            max-width: 53px;
+                                            min-width: 53px;" src="./assets/{{user.imagepath}}" alt="">
+                                             <img *ngIf="user.imagepath == null" style="     max-height: 53px;
+                                             min-height: 53px;
+                                             max-width: 53px;
+                                             min-width: 53px;" src="../../../assets/Unknown_person.jpg" alt="">
                                             <ul class="frnd-info">
                                                 <li><span>Name:</span> <a href="#">{{user.username}}</a> </li>
                                                 <li><span>Gender:</span> {{user.gender}}</li>
                                                 <li><span>Country:</span> {{user.country}}</li>
                                             </ul>
-                                            <a class="send-mesg" href="#" title="">Message</a>
+                                            <!-- <a class="send-mesg" href="#" title="">Message</a> -->
                                             <div class="more-opotnz">
                                                 <i class="fa fa-ellipsis-h"></i>
                                                 <ul>

@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http:HttpClient,private router :Router) { }
+  constructor(private http:HttpClient,private router :Router,private toster:ToastrService) { }
   login :any 
   userId : any
   loginId : any
@@ -27,11 +28,11 @@ export class LoginService {
     this.http.get('https://localhost:44324/api/Login/ChangePassword/'+loginId+'/'+password).subscribe((result) => {
       
       console.log(result);
+      this.toster.success("Password Changed Sucessfully")
     },err => {
       console.log(err)
     })
 
-    window.location.reload();
   }
 
   checkIfLoginOrNot(){
@@ -87,8 +88,32 @@ export class LoginService {
    })
   }
 
+  isVerfiyCode : boolean = false;
   verfiyEmail(code:Number){
-   console.log(this.code == code)
+   if(this.code == code)
+   this.isVerfiyCode = true;
+
   }
+ 
+  isEmailExist : any
+  IsEmailExist(email:string){
+    debugger;
+    this.http.get("https://localhost:44324/api/UserProfile/IsEmailExist/"+email).subscribe((result)=>{
+     this.isEmailExist= result;
+    },error =>{
+     console.log(error);
+    })
+   
+  }
+
+  loginIdToChangePassword : any;
+  getLoginIdByEmail(email:string){
+    this.http.get("https://localhost:44324/api/Login/GetLoginIdByEmail/"+email).subscribe((result)=>{
+      this.loginIdToChangePassword = result
+    },error =>{
+     console.log(error);
+    })
+   }
+ 
   
 }

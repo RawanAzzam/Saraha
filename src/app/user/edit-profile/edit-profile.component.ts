@@ -45,7 +45,7 @@ export class EditProfileComponent implements OnInit {
 
     this.updateUserForm.controls['userid'].setValue(this.userService.user.userid);
     this.updateUserForm.controls['gender'].setValue(this.userService.user.gender);
-   // this.updateUserForm.controls['country'].setValue(this.userService.user.country);
+   this.updateUserForm.controls['country'].setValue(this.userService.user.country);
 
     this.updateUserForm.value.imagepath = this.userService.user.imagepath;
     console.log(this.updateUserForm.value)
@@ -70,7 +70,6 @@ export class EditProfileComponent implements OnInit {
     if(this.passwordForm.controls['oldPasswordControl'].value != this.loginService.login.password)
 {  
   this.toster.warning('Old Password is not correct ...');
- console.log("Old Password is not correct ...")
 
 }   }
 
