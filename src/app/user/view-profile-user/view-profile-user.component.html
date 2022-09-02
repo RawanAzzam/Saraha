@@ -74,12 +74,11 @@
                                 <div class="widget">
                                     <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See
                                             All</a></h4>
-                                    <ul class="badgez-widget">
-                                        <li>
-                                            <a href="#" title="Male User" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge2.png" alt=""></a>
-                                        </li>
-                                        <li>
+                                            <ul class="badgez-widget" *ngIf="viewService.user.is_Premium">
+                                                <li>
+                                                    <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge3.png" alt=""></a>
+                                                </li>
+                                        <!-- <li>
                                             <a href="#" title="10 Years old User" data-toggle="tooltip"><img
                                                     src="../../../assets/user/images/badges/year10.png" alt=""></a>
                                         </li>
@@ -106,7 +105,7 @@
                                         <li>
                                             <a href="#" title="500+ Followers" data-toggle="tooltip"><img
                                                     src="../../../assets/user/images/badges/badge10.png" alt=""></a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 <div class="widget">
