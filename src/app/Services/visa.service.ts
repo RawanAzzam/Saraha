@@ -56,30 +56,36 @@ updateVisa(visa:any){
 // }
 
 
-message: any;
+mess: any;
 checkVisa(cardNum:string,totalcost:number, userId:any, featureId:number){
  
   debugger;
   this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+totalcost+'/'+userId+'/'+featureId).subscribe((result) => {
-    this.message=result;
-    console.log(result);
-    if(this.message.toString()=="Not enough balance")
+    this.mess=result;
+    console.log(this.mess);
+    if(this.mess.message=="Not enough balance")
     {
       this.toaster.error("No enough balance");
     }
-    else if(this.message.toString()=="Invalid card number"){
+    else if(this.mess.message=="Invalid card number"){
       this.toaster.error("Invalid Card Number");
       
     }
-    else if(this.message.toString()=="Paid sucessfully")
+    else if(this.mess.message== "Sorry! You already have this service")
+    {
+      this.toaster.error("Sorry! You already have this service");
+      
+    }
+    else if(this.mess.message=="Paid sucessfully")
     {
       this.toaster.success("Paid sucessfully");
+      window.location.reload();
     }
   },err => {
     console.log(err)
   })
 
-  window.location.reload();
+  // window.location.reload();
   }
 
 
