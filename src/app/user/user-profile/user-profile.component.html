@@ -302,6 +302,7 @@
                             <div>
                              
                                 <div style="margin-top:50px"   class="">
+
                                     <!--Pinned Posts-->
                                     <div *ngFor="let post of this.post.userpost" >
                                         <div class ="">
@@ -344,6 +345,26 @@
                                                         {{post.postText}} 
                                                     </p>
                                                 </div>
+                                                <div class="detail" style=" margin-left: -147px;" *ngIf="post.postType=='msg'">
+												
+                                                    <div class="description" >
+                                                        <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                        min-width: 460px;max-width: 460px;margin-left: 162px;">
+                                                            <figure>
+                                                                <i class="fa fa-share"></i>
+                                                            </figure>
+                                                            <div class="origin-name">
+                                                                <a href="#" title="">Saraha Message</a>
+                                                            </div>
+                                                            <p style="margin-left: 0px;">
+                                                                {{post.postReply}}
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                
+                                                
+                                                </div>	
 
                                                 <div class="we-video-info">
                                                     <ul>
@@ -451,11 +472,158 @@
                                     </div>
                                 </div>
                                 </div>
+
                               </div> 
-                            
+                            <div *ngFor="let post of this.post.userpost" >
+                               <div class="central-meta item"  *ngIf="post.postType=='msg'">
+										<div class="user-post">
+											<div class="friend-info">
+                                                <figure>
+                                                    <img style="min-width:40px;max-width:40px;min-height:40px;max-height:40px" src="../../../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
+                                                </figure>
+													
+												<div class="friend-name">
+													<div class="more">
+														<div class="more-post-optns"><i class="ti-more-alt"></i>
+															<ul>
+                                                                <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                    
+                                                                <li (click)="PinPost(post.postId,1)"><i class="fa fa-wpexplorer"></i>Pin Post</li>
+																
+															</ul>
+														</div>
+													</div>
+													<ins><a title="" href="time-line.html">{{post.auther}}</a></ins>
+													<span>published: {{post.postDate| date }}</span>
+												</div>
+												<div class="description" >
+													<p style="margin-left:6px ;">
+                                                        {{post.postText}}
+
+													</p>
+												</div>
+												<div class="post-meta">
+													<div class="linked-image align-left">
+													</div>
+													<div class="detail" style=" margin-left: -147px;">
+												
+                                                        <div class="description" >
+                                                            <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                            min-width: 460px;max-width: 460px;">
+                                                                <figure>
+                                                                    <i class="fa fa-share"></i>
+                                                                </figure>
+                                                                <div class="origin-name">
+                                                                    <a href="#" title="">Saraha Message</a>
+                                                                </div>
+                                                                <p style="margin-left: 0px;">
+                                                                    {{post.postReply}}
+
+                                                                </p>
+                                                            </div>
+                                                        </div>
+													
+													
+													</div>		
+													
+													<ul class="like-dislike">
+                                                        <li (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                       
+                                                    </ul>
+													<div class="we-video-info">
+														<ul>
+															<li>
+																<span style="margin-left:5px" class="views" title="views">
+																	<i  class="fa fa-thumbs-up"></i>
+																	<ins>{{post.likes}}</ins>
+																</span>
+															</li>
+															<li>
+																<div class="likes heart" title="Like/Dislike"></div>
+															</li>
+															<li>
+																<span class="comment" title="Comments">
+																	
+																</span>
+															</li>
+
+															<li>
+																<span>
+																	<a class="share-pst" href="#" title="Share">
+																	</a>
+																	<ins></ins>
+																</span>	
+															</li>
+														</ul>
+													
+													</div>
+												</div>
+												<!-- <div class="coment-area" style="">
+													<ul class="we-comet">
+														<li>
+															<div class="comet-avatar">
+																<img src="images/resources/nearly3.jpg" alt="">
+															</div>
+															<div class="we-comment">
+																<h5><a href="time-line.html" title="">Jason borne</a></h5>
+																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+																<div class="inline-itms">
+																	<span>1 year ago</span>
+																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+																</div>
+															</div>
+
+														</li>
+														<li>
+															<div class="comet-avatar">
+																<img src="images/resources/comet-4.jpg" alt="">
+															</div>
+															<div class="we-comment">
+																<h5><a href="time-line.html" title="">Sophia</a></h5>
+																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
+																	<i class="em em-smiley"></i>
+																</p>
+																<div class="inline-itms">
+																	<span>1 year ago</span>
+																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+																</div>
+															</div>
+														</li>
+														<li>
+															<a href="#" title="" class="showmore underline">more comments+</a>
+														</li>
+														<li class="post-comment">
+															<div class="comet-avatar">
+																<img src="images/resources/nearly1.jpg" alt="">
+															</div>
+															<div class="post-comt-box">
+																<form method="post">
+																	<textarea placeholder="Post your comment"></textarea>
+																	<div class="add-smiles">
+																		<div class="uploadimage">
+																			<i class="fa fa-image"></i>
+																			<label class="fileContainer">
+																				<input type="file">
+																			</label>
+																		</div>
+																		
+																	</div>
+
+																	<button type="submit"></button>
+																</form>	
+															</div>
+														</li>
+													</ul>
+												</div> -->
+											</div>
+										</div>
+									</div>   
+                             </div>                        
                             <br/>
                             <div  *ngFor="let post of this.post.userpost" >
-                                <div  *ngIf="!post.is_Pin" class="central-meta item" >
+                                <div  *ngIf="!post.is_Pin && post.postType=='post'" class="central-meta item" >
                             
 <!--Postttt-->
                            
