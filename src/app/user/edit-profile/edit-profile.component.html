@@ -112,7 +112,9 @@
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
                                                     <div class="change-photo">
-                                                        <img style="object-fit:contain ; height:70px; width:70px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                        <img *ngIf="this.userService.user.imagepath != null" style="object-fit:contain ; height:70px; width:70px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                        <img *ngIf="this.userService.user.imagepath == null" style="object-fit:contain ; height:70px; width:70px" alt="author" src="../../../assets/Unknown_person.jpg">
+
                                                         <div class="edit-img">
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>

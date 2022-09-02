@@ -70,7 +70,6 @@ export class EditProfileComponent implements OnInit {
     if(this.passwordForm.controls['oldPasswordControl'].value != this.loginService.login.password)
 {  
   this.toster.warning('Old Password is not correct ...');
- console.log("Old Password is not correct ...")
 
 }   }
 

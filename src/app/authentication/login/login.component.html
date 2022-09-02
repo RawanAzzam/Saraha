@@ -88,13 +88,13 @@
                           </div>
                   
                                 <button class="b" type="submit" data-ripple="" (click)="Login()" [disabled]="!username.valid || !password.valid">Login</button>
-                                <a class="forgot underline" href="#" title="">forgot password?</a>
+                                <a class="forgot underline" (click)="forgetPassword()" title="">forgot password?</a>
                             </form>
                             <a class="with-smedia facebook" href="#" title="" data-ripple=""><i class="fa fa-facebook"></i></a>
                             <a class="with-smedia twitter" href="#" title="" data-ripple=""><i class="fa fa-twitter"></i></a>
                             <a class="with-smedia instagram" href="#" title="" data-ripple=""><i class="fa fa-instagram"></i></a>
                             <a class="with-smedia google" href="#" title="" data-ripple=""><i class="fa fa-google-plus"></i></a>
-                            <span>don't have an account? <a class="we-account underline" href="#" title="">register now</a></span>
+                            <span>don't have an account? <a class="we-account underline" href="http://localhost:4200/authentication/Register" title="">register now</a></span>
                         </div>
                     </div>
                     
