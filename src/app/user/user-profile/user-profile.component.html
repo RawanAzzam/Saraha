@@ -820,13 +820,12 @@
     <!-- <br> -->
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Post</mat-label>
-            <input type="text" matInput formControlName="posttext"
-            [(ngModel)]="p_data.posttext">
+            <input type="text" matInput formControlName="posttext" [(ngModel)]="p_data.posttext" placeholder="{{p_data.posttext}}">
           </mat-form-field>
     <br>
           
           <mat-label>Image :</mat-label>
-          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" >
+          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" [(ngModel)]="p_data.imagepath" placeholder="{{p_data.imagepath}}" >
   
           <button (click)="updatePost()">Update</button>
     </form>
@@ -1041,4 +1040,5 @@
         </div>
       </div>
     <!-- </div> -->
-</div><!-- The Scrolling Modal image with comment -->
+</div>
+<!-- The Scrolling Modal image with comment -->

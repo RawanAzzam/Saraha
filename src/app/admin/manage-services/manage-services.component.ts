@@ -15,6 +15,7 @@ export class ManageServicesComponent implements OnInit {
   constructor(public featureService : FeatureService,private dialog:MatDialog) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
   @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
+  @ViewChild('callCreateDailog') callCreateDailog! :TemplateRef<any>; 
   createForm:FormGroup=new FormGroup({
     featureName:new FormControl(),
     featurePrice:new FormControl(),
@@ -24,7 +25,7 @@ export class ManageServicesComponent implements OnInit {
     oldPrice:new FormControl(),
 
     // enddate:new FormControl(),
-     imagePath:new FormControl()
+    imagePath:new FormControl()
   
   
   });
@@ -59,11 +60,17 @@ export class ManageServicesComponent implements OnInit {
    
   }
   createService(){
-  this.featureService.createService(this.createForm)
+    
+    this.dialog.open(this.callCreateDailog)
+    debugger;
+
+  } createThisService(){
+    
+    debugger;
+  this.featureService.createService(this.createForm.value)
 
   }
   
-
   p_data:any={};
   updateDailog(obj:any){
     console.log(obj);
