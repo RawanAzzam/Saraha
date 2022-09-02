@@ -35,20 +35,17 @@ ngSwitchCase: any
   ngOnInit(): void {
 this.id = this.route.snapshot.params['id']
 console.log(this.id)
-this.viewService.getUserById(this.id);
+    this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
+    this.post.GetPostInfoByUserId(this.id)
     this.post.GetPostLikedBy(this.id);
-    this.userService.getAll();
-    this.userService.Allusers();
- 
-    
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
   }
 
   openSendMessageDailog(){
     this.replyForm.controls["userTo"].setValue(Number(this.id));
-
+   console.log(this.viewService.user)
    this.dialog.open(this.callSendMessageDailog)
   }
 

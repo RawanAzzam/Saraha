@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from 'ngx-toastr';
+import { VerfiyEmailToPasswordComponent } from './verfiy-email-to-password/verfiy-email-to-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -17,7 +18,9 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    VerfiyEmailComponent
+    VerfiyEmailComponent,
+    VerfiyEmailToPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -26,11 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatFormFieldModule,
     FormsModule,
     RouterModule,
-    ToastrModule.forRoot({
-      timeOut: 10000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    })
+   
   ]
 })
 export class AuthenticationModule {
