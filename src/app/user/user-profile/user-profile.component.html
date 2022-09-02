@@ -324,11 +324,11 @@
                                                 </div>
                                                 <ins><a title=""> {{post.auther}}</a>  <a style=" margin-left: 305px;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
                                                 </ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
+                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a'}}</span>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map">
+                                                    <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
                                                             <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
@@ -493,7 +493,7 @@
 														</div>
 													</div>
 													<ins><a title="" href="time-line.html">{{post.auther}}</a></ins>
-													<span>published: {{post.postDate| date }}</span>
+													<span>published: {{post.postDate| date :'M/d/yy, h:mm a'  }}</span>
 												</div>
 												<div class="description" >
 													<p style="margin-left:6px ;">
@@ -645,14 +645,10 @@
                                                 <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a' }}</span>
                                             </div>
-                                            <div class="post-meta" *ngIf="post.repley !=' '">
-                                                <p>
-                                                    {{post.repley}}
-                                                </p>
-                                                </div>
+                                         
                                             <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map">
+                                                    <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
                                                             <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
