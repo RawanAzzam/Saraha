@@ -1,12 +1,14 @@
 <div class="fixed-sidebar right col-lg-2">
     <div class="chat-friendz">
-        <ul class="chat-users" *ngFor="let active of active.Activeusers">
-            <li>
+        <ul class="chat-users">
+            <div  *ngFor="let active of active.Activeusers">
+            <li >
                 <div class="author-thmb">
                     <img src="../../../../assets/{{active.imagepath}} ">
                     <span class="status f-online"></span>
                 </div>
             </li>
+        </div>
             <!-- <li>
                 <div class="author-thmb">
                     <img src="../../../../assets/user/images/resources/side-friend2.jpg" alt="">
