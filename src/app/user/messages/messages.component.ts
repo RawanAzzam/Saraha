@@ -45,6 +45,7 @@ export class MessagesComponent implements OnInit {
   }
   MsgToPost(){
     debugger;
+    this.publishForm.controls["userTo"].setValue(localStorage.getItem('userId'));
 
     // this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
     // this.msgToPostForm.value.messageContent=msg;
@@ -64,15 +65,15 @@ export class MessagesComponent implements OnInit {
    this.dialog.open(this.callreplyDailog)
   }
 
-  openPublishDailog(msg:string, userTo : number){
+  openPublishDailog(msg:string){
     debugger;
-    this.publishForm.controls["userTo"].setValue(userTo);
     this.publishForm.controls["messageContent"].setValue(msg);
 
    this.dialog.open(this.callPublishDailog)
   }
 
   replyMessage(){
+    
    this.replyForm.controls["messageDate"].setValue(new Date());
   // this.replyForm.controls["userFrom"].setValue(localStorage.getItem('userId'));
    debugger;
