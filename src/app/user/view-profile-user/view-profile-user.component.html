@@ -547,10 +547,105 @@
             <span>Send As Anonymous</span>
             <input type="checkbox" (change)="change($event)"  formControlName="is_Anon" id="switch2"/> 
             <label for="switch2"  data-off-label="OFF"></label>
-        </div>
-      
+        </div>      
   
           <button (click)="replyMessage()">Send Message</button>
     </form>
     
 </ng-template>
+
+<div class="modal fade" id="Comments">
+    <div class="modal-dialog" style="max-width:600px ;">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">Comments
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <!-- <div class="row"> -->
+                 <!-- <div class="col-lg-6">
+                   
+                     <div class="pop-image">
+                        <div class="pop-item">
+                            <figure><img src="../../../assets/Images/{{this.postById.postImage}}" style="width:600px; object-fit: contain;" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                    
+                </div> -->
+                <div class="col-lg-12"  >
+                    <!-- <div class="user" *ngFor="let comment of this.post.Comments.get(this.postId)">
+                        <figure><img src="../../../assets/{{comment.userImage}}" width="50" alt=""></figure>
+                        <div class="user-information">
+                            <h4><a title="">{{comment.auther}}</a></h4>
+                            <span>{{comment.postDate | date}}</span>
+                            <h3> {{comment.postText}}</h3>
+                        </div> -->
+                        <!-- <a href="#" title="Follow" data-ripple="">Follow</a> -->
+                    <!-- </div> -->
+                    <!-- <div class="we-video-info"> -->
+                    <!--    <ul>
+                            <li>
+                                <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
+                            </li>
+                            <li>
+                                <span title="Comments" class="comment">
+                                    <i class="fa fa-commenting"></i>
+                                    <ins>52</ins>
+                                </span>
+                            </li>
+
+                            <li>
+                                <span>
+                                    <a title="Share" href="#" class="">
+                                        <i class="fa fa-share-alt"></i>
+                                    </a>
+                                    <ins>20</ins>
+                                </span>	
+                            </li>
+                        </ul> -->
+                        <!-- <div class="users-thumb-list">
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Anderw">
+                                <img src="images/resources/userlist-1.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="frank">
+                                <img src="images/resources/userlist-2.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Sara">
+                                <img src="images/resources/userlist-3.jpg" alt="">  
+                            </a>
+                            <a href="#" title="" data-toggle="tooltip" data-original-title="Amy">
+                                <img src="images/resources/userlist-4.jpg" alt="">  
+                            </a>
+                            <span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
+                        </div> -->
+                    <!-- </div> -->
+                    <div style="display: block;" class="coment-area" >
+                        <ul class="we-comet">
+                            <li *ngFor="let comment of this.post.Comments.get(this.postId)">
+                                <div class="comet-avatar">
+                                    <img alt="" src="../../../assets/{{comment.image}}" style="width:50px ; height: 50px; object-fit: contain;">
+                                </div>
+                                <div class="we-comment">
+                                    <h5 style="color:#FA6342 ;"><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
+                                    <p style="margin:30px ;">   {{comment.commentText}}</p>
+                                    <div class="inline-itms">
+                                        <span>{{comment.commentDate| date}}</span>
+                                         <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                                    </div>
+                                </div>
+                            </li>                                               
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- </div> -->
+</div>
+
+

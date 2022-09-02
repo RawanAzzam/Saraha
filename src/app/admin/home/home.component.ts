@@ -34,8 +34,15 @@ user :any =  this.userservice.getUserById(Number(localStorage.getItem('userId'))
 ngOnInit(): void {
   this.featureService.FeatureName();
   this.featureService.FeatureTotalSales();
+  this.featureService.getAll();
      this.userservice.getAllLoginUsers();
-
+this.post.getAll();
+   this.order.GetAll();
+   this.featureService.getAll();
+   this.message.getAllMessages();
+   this.userservice.getActivePepole();
+   this.order.GetOrders();
+  
    this.contactUs.GetAll();
    this.userservice.getAll();
   //  this.userservice.getUserById(Number(localStorage.getItem('country')));
@@ -45,13 +52,7 @@ ngOnInit(): void {
    this.active.Activeusers();
  
 console.log(this.weatherService.weather);
-   this.post.getAll();
-   this.order.GetAll();
-   this.featureService.getAll();
-   this.message.getAllMessages();
-   this.userservice.getActivePepole();
-   this.order.GetOrders();
-  
+   
 
   }
 // ********************************

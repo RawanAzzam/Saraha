@@ -131,8 +131,8 @@ p_data:any={};
     console.log(obj);
     this.p_data={
       postId:obj.postId,
-      posttext:obj.posttext,
-    imagepath:obj.imagepath,
+      posttext:obj.postText,
+      imagepath:obj.postImage,
   
     }
     console.log(this.p_data);
@@ -144,7 +144,9 @@ p_data:any={};
   updatePost(){
     //this.updateForm.value.postId=id;
     debugger;
-    this.updateForm.value.imagePath = this.p_data.imagepath;
+    // this.updateForm.controls['imagepath'].setValue(this.p_data.postId);
+    this.updateForm.value.imagepath = this.p_data.imagepath;
+   
     this.post.UpdatePost(this.updateForm.value);
   }
 }
