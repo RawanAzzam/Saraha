@@ -15,8 +15,7 @@ export class LoginService {
   code : any
   getLoginByUserId(userId:number){
     this.http.get('https://localhost:44324/api/Login/GetLoginByUserId/'+userId).subscribe((result) => {
-      
-      console.log(result);
+       console.log(result);
       this.login = result;
     },err => {
       console.log(err)
@@ -41,10 +40,11 @@ export class LoginService {
     this.router.navigate(['authentication/Login']);
     else
    { 
-    console.log("LOOOOOOGGIIIn IIIddd"+localStorage.getItem('loginId'))
 
     this.userId = Number(localStorage.getItem('userId'));
-   this.loginId = Number(localStorage.getItem('loginId'));}
+   this.loginId = Number(localStorage.getItem('loginId'));
+   console.log(this.userId)
+  }
   }
 
   logout(){

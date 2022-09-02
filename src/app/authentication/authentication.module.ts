@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -24,7 +25,12 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ]
 })
 export class AuthenticationModule {

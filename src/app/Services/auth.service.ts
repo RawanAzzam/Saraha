@@ -5,12 +5,14 @@ import { FeatureService } from './feature.service';
 import jwt_decode from "jwt-decode";
 import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { LoginService } from './login.service';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor( private loginService:LoginService, private home:FeatureService, private spinner :NgxSpinnerService, private http:HttpClient, private router :Router) { }
+  constructor( private loginService:LoginService, private home:FeatureService, 
+    private spinner :NgxSpinnerService, private http:HttpClient, private router :Router,private toster:ToastrService) { }
   submit(email:any,password:any){
     console.log(email);
     debugger;
@@ -28,9 +30,11 @@ export class AuthService {
     const requestOptions={
       headers:new HttpHeaders(headerDir)
     }
+    this.toster.warning("Email or Password is not correct ...")
+
     this.http.post('https://localhost:44324/api/Login/Login',body,requestOptions).subscribe
     ((resp)=>{
-   
+
       const responce ={
         token:resp.toString()
       }
@@ -46,6 +50,7 @@ export class AuthService {
       this.spinner.hide();
       if(data.is_Blocked == "False" ){
         console.log("Hiii")
+
         this.loginService.updateActiveStatus(Number(data.loginId),1);
         if(data.role=='2')
         {

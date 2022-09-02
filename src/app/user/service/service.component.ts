@@ -24,7 +24,7 @@ export class ServiceComponent implements OnInit {
   ngOnInit(): void {
     debugger;
     this.loginservice.checkIfLoginOrNot();
-    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+    this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.featureService.getAll();
     this.visa.getAll();
     
