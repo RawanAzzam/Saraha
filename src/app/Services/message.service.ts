@@ -62,9 +62,6 @@ export class MessageService {
     
     // console.log(this.messagePost.messageContent)
     // console.log(this.messagePost.userTo)
-
-
-
     this.http.get('https://localhost:44324/api/Post/MsgToPost/'+msg.messageContent+'/'+msg.userTo+'/'+msg.reply).subscribe((result) => {
       console.log(result);
     },Error => {
