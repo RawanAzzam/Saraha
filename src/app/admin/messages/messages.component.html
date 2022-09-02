@@ -74,7 +74,7 @@
                                     <th scope="col-3"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  >
                           
                                 <tr *ngFor="let obj of contactUs.Messages">
                                     <td>
@@ -84,10 +84,13 @@
                                     </td>
                                     <td>{{obj.email}}</td>
                                     <td class="date-n-reply">
-                                        <a class="addnewforum" style="color: white;" (click)="deleteMessage(obj.contactusid)" title=""> Delete</a></td>
-            
+                                        <a class="addnewforum" style="color: white;" (click)="deleteMessage(obj.contactusid)" title=""> Delete</a>
+                                        <a [routerLink]="['/admin/email/',obj.username,obj.email]" class="addnewforum" style="color: white;"  title=""> Contact</a>
+                            
+                                    </td>
                                 </tr>
-                               
+                           
+                                
                             </tbody>
                         </table>
                     </div>

@@ -1,13 +1,15 @@
 <div class="fixed-sidebar right col-lg-2">
     <div class="chat-friendz">
         <ul class="chat-users">
-            <li>
+            <div  *ngFor="let active of active.Activeusers">
+            <li >
                 <div class="author-thmb">
-                    <img src="../../../../assets/user/images/resources/side-friend1.jpg" alt="">
+                    <img src="../../../../assets/{{active.imagepath}} ">
                     <span class="status f-online"></span>
                 </div>
             </li>
-            <li>
+        </div>
+            <!-- <li>
                 <div class="author-thmb">
                     <img src="../../../../assets/user/images/resources/side-friend2.jpg" alt="">
                     <span class="status f-away"></span>
@@ -66,7 +68,7 @@
                     <img src="../../../../assets/user/images/resources/side-friend8.jpg" alt="">
                     <span class="status f-online"></span>
                 </div>
-            </li>
+            </li> -->
         </ul>
       
     </div>

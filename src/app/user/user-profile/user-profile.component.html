@@ -31,13 +31,49 @@
                                         <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge3.png" alt=""></a>
                                         </li>
                                         <li>
-                                        <a href="#" title="Pitnik Shirt winner" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge20.png" alt=""></a>
+                                        <a href="#" title="Sarah Time Shirt winner" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge20.png" alt=""></a>
                                         </li>
                                         <li>
                                         <a href="#" title="500+ Followers" data-toggle="tooltip"><img src="../../../assets/user/images/badges/badge10.png" alt=""></a>
                                         </li>
                                     </ul>
                                 </div><!-- badges -->
+  
+                                <div class="widget">
+                                    <h4 class="widget-title">Recent Activity</h4>
+                                    <ul class="activitiez" *ngFor="let activity of activityService.userActivity.slice(this.activityService.userActivity.length -10,this.activityService.userActivity.length-1)">
+                                        <li>
+                                            <div class="activity-meta" *ngIf="activity.activityName == 'post'">
+                                                <i>{{activity.activityDate |
+                                                    date:'short'}}</i>
+                                                <span><a title="">You Share a new Post </a></span>
+                                            </div>
+
+                                            <div class="activity-meta"  *ngIf="activity.activityName == 'like'">
+                                                <i>{{activity.activityDate |
+                                                    date:'short'}}</i>
+                                                <span><a title="">You liked a <a
+                                                    href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserLike.get(activity.likeId).userid}}">
+                                                    {{this.activityService.activityUserLike.get(activity.likeId).username}}'s
+                                                </a></a></span>
+                                                <h6>Post </h6>
+                                            </div>
+
+                                            <div class="activity-meta"*ngIf="activity.activityName == 'comment'" >
+                                                <i>{{activity.activityDate |
+                                                    date:'short'}}</i>
+                                                <span><a title="">You commented on <a
+                                                    href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserComment.get(activity.commentId).userid}}">
+                                                    {{this.activityService.activityUserComment.get(activity.commentId).username}}'s
+                                                </a> </a></span>
+                                                <h6>post</h6>
+                                            </div>
+                                        </li>
+                                   </ul>
+                                </div><!-- recent activites -->
+                               
+
+
                                 <div class="widget">
                                     <div class="weather-widget low-opacity bluesh">
                                         <div class="bg-image" style="background-image: url(./assets/sar/images/resources/weather.jpg)"></div>
@@ -138,33 +174,7 @@
                                         <a href="#" title="Advertisment"><img src="../../../assets/user/images/resources/ad-widget.gif" alt=""></a>
                                     </figure>
                                 </div>
-                              
-                                <div class="widget">
-                                    <h4 class="widget-title">Recent Activity</h4>
-                                    <ul class="activitiez">
-                                        <li>
-                                            <div class="activity-meta">
-                                                <i>10 hours Ago</i>
-                                                <span><a href="#" title="">Commented on Video posted </a></span>
-                                                <h6>by <a href="time-line.html">black demon.</a></h6>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="activity-meta">
-                                                <i>30 Days Ago</i>
-                                                <span><a href="#" title="">Posted your status. “Hello guys, how are you?”</a></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="activity-meta">
-                                                <i>2 Years Ago</i>
-                                                <span><a href="#" title="">Share a video on her timeline.</a></span>
-                                                <h6>"<a href="#">you are so funny mr.been.</a>"</h6>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div><!-- recent activites -->
-                               
+                            
                             </aside>
                         </div><!-- sidebar -->
                         <div class="col-lg-6">
@@ -194,7 +204,7 @@
                                             </li>
                                      
                                             <li class="preview-btn">
-                                                <button class="post-btn-preview" type="submit" data-ripple="">Preview</button>
+                                                <button   class="post-btn-preview" type="submit" data-ripple="">Preview</button>
                                             </li>
                                         </ul>
                                         <button  cdkFocusInitial class="post-btn" type="submit"   (click)="CreatePost()">Post</button>
@@ -256,7 +266,7 @@
 
                             <!-- **************************     -->          
                          <div style="margin-bottom:-31px ;" class="central-meta">
-                            <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
+                            <span class="create-post">Suggested Friend's <a [routerLink]="['/user/search']" title="">See All</a></span>
                               
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;" *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
@@ -280,6 +290,7 @@
                                    
                                  </ul>
                         </div>
+                        
 
 
 
@@ -291,13 +302,14 @@
                             <div>
                              
                                 <div style="margin-top:50px"   class="">
+
                                     <!--Pinned Posts-->
                                     <div *ngFor="let post of this.post.userpost" >
                                         <div class ="">
                                     <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:contain ; width:110px; height:50px " alt="">
+                                                <img src="../../../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
@@ -310,13 +322,13 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <ins><a title=""> {{post.auther}}</a>  <a style="margin-left:200px ;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
+                                                <ins><a title=""> {{post.auther}}</a>  <a style=" margin-left: 305px;" class="fa fa-thumb-tack" aria-hidden="true"> Pinned</a>
                                                 </ins>
-                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
+                                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a'}}</span>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map">
+                                                    <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
                                                             <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
@@ -333,6 +345,26 @@
                                                         {{post.postText}} 
                                                     </p>
                                                 </div>
+                                                <div class="detail" style=" margin-left: -147px;" *ngIf="post.postType=='msg'">
+												
+                                                    <div class="description" >
+                                                        <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                        min-width: 460px;max-width: 460px;margin-left: 162px;">
+                                                            <figure>
+                                                                <i class="fa fa-share"></i>
+                                                            </figure>
+                                                            <div class="origin-name">
+                                                                <a href="#" title="">Saraha Message</a>
+                                                            </div>
+                                                            <p style="margin-left: 0px;">
+                                                                {{post.postReply}}
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                
+                                                
+                                                </div>	
 
                                                 <div class="we-video-info">
                                                     <ul>
@@ -362,9 +394,9 @@
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
                                                     -->
-                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
+                                                        <span><strong></strong> <b></b><a title="">+ {{post.likes}} more </a> 
                                                             <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
-                                                            See All
+                                                            See All Likes
                                                             </a>	
                                                         </span>
                                                     </div>
@@ -378,7 +410,7 @@
 															</div>
 															<div class="post-comt-box">
 																<form [formGroup]="CommentForm">
-																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<textarea  style=" margin-left: -22px;"  formControlName="commenttext" placeholder="Post your comment"></textarea>
 																	<input formControlName="userid" hidden>
                                                                     <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                     <div class="add-smiles">
@@ -388,7 +420,6 @@
 																				<input type="file">
 																			</label>
 																		</div> -->
-																		<span class="em em-expressionless" title="add icon"></span>
 																		<!-- <div class="smiles-bunch">
 																			<i class="em em---1"></i>
 																			<i class="em em-smiley"></i>
@@ -405,7 +436,7 @@
 																		</div> -->
 
 																	</div>
-                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
+                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;" (click)="createComment(post.postId)" type="submit">submit</a>
 
 																</form>	
 															</div>
@@ -441,18 +472,165 @@
                                     </div>
                                 </div>
                                 </div>
+
                               </div> 
-                            
+                            <div *ngFor="let post of this.post.userpost" >
+                               <div class="central-meta item"  *ngIf="post.postType=='msg'">
+										<div class="user-post">
+											<div class="friend-info">
+                                                <figure>
+                                                    <img style="min-width:40px;max-width:40px;min-height:40px;max-height:40px" src="../../../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
+                                                </figure>
+													
+												<div class="friend-name">
+													<div class="more">
+														<div class="more-post-optns"><i class="ti-more-alt"></i>
+															<ul>
+                                                                <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                    
+                                                                <li (click)="PinPost(post.postId,1)"><i class="fa fa-wpexplorer"></i>Pin Post</li>
+																
+															</ul>
+														</div>
+													</div>
+													<ins><a title="" href="time-line.html">{{post.auther}}</a></ins>
+													<span>published: {{post.postDate| date :'M/d/yy, h:mm a'  }}</span>
+												</div>
+												<div class="description" >
+													<p style="margin-left:6px ;">
+                                                        {{post.postText}}
+
+													</p>
+												</div>
+												<div class="post-meta">
+													<div class="linked-image align-left">
+													</div>
+													<div class="detail" style=" margin-left: -147px;">
+												
+                                                        <div class="description" >
+                                                            <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                            min-width: 460px;max-width: 460px;">
+                                                                <figure>
+                                                                    <i class="fa fa-share"></i>
+                                                                </figure>
+                                                                <div class="origin-name">
+                                                                    <a href="#" title="">Saraha Message</a>
+                                                                </div>
+                                                                <p style="margin-left: 0px;">
+                                                                    {{post.postReply}}
+
+                                                                </p>
+                                                            </div>
+                                                        </div>
+													
+													
+													</div>		
+													
+													<ul class="like-dislike">
+                                                        <li (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
+                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                       
+                                                    </ul>
+													<div class="we-video-info">
+														<ul>
+															<li>
+																<span style="margin-left:5px" class="views" title="views">
+																	<i  class="fa fa-thumbs-up"></i>
+																	<ins>{{post.likes}}</ins>
+																</span>
+															</li>
+															<li>
+																<div class="likes heart" title="Like/Dislike"></div>
+															</li>
+															<li>
+																<span class="comment" title="Comments">
+																	
+																</span>
+															</li>
+
+															<li>
+																<span>
+																	<a class="share-pst" href="#" title="Share">
+																	</a>
+																	<ins></ins>
+																</span>	
+															</li>
+														</ul>
+													
+													</div>
+												</div>
+												<!-- <div class="coment-area" style="">
+													<ul class="we-comet">
+														<li>
+															<div class="comet-avatar">
+																<img src="images/resources/nearly3.jpg" alt="">
+															</div>
+															<div class="we-comment">
+																<h5><a href="time-line.html" title="">Jason borne</a></h5>
+																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+																<div class="inline-itms">
+																	<span>1 year ago</span>
+																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+																</div>
+															</div>
+
+														</li>
+														<li>
+															<div class="comet-avatar">
+																<img src="images/resources/comet-4.jpg" alt="">
+															</div>
+															<div class="we-comment">
+																<h5><a href="time-line.html" title="">Sophia</a></h5>
+																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
+																	<i class="em em-smiley"></i>
+																</p>
+																<div class="inline-itms">
+																	<span>1 year ago</span>
+																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
+																</div>
+															</div>
+														</li>
+														<li>
+															<a href="#" title="" class="showmore underline">more comments+</a>
+														</li>
+														<li class="post-comment">
+															<div class="comet-avatar">
+																<img src="images/resources/nearly1.jpg" alt="">
+															</div>
+															<div class="post-comt-box">
+																<form method="post">
+																	<textarea placeholder="Post your comment"></textarea>
+																	<div class="add-smiles">
+																		<div class="uploadimage">
+																			<i class="fa fa-image"></i>
+																			<label class="fileContainer">
+																				<input type="file">
+																			</label>
+																		</div>
+																		
+																	</div>
+
+																	<button type="submit"></button>
+																</form>	
+															</div>
+														</li>
+													</ul>
+												</div> -->
+											</div>
+										</div>
+									</div>   
+                             </div>                        
                             <br/>
                             <div  *ngFor="let post of this.post.userpost" >
-                                <div  *ngIf="!post.is_Pin" class="central-meta item" >
+                                <div  *ngIf="!post.is_Pin && post.postType=='post'" class="central-meta item" >
                             
 <!--Postttt-->
                            
                                     <div class="user-post">
                                         <div class="friend-info">
                                             <figure>
-                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:contain ; width:110px; height:50px " alt="">
+                                                <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px; " alt="">
                                             </figure>
                                             <div class="friend-name">
                                                 <div class="more">
@@ -467,16 +645,12 @@
                                                 <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
                                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date :'M/d/yy, h:mm a' }}</span>
                                             </div>
-                                            <div class="post-meta" *ngIf="post.repley !=' '">
-                                                <p>
-                                                    {{post.repley}}
-                                                </p>
-                                                </div>
+                                         
                                             <div class="post-meta">
                                                 <div class="post-map">
-                                                    <div class="nearby-map" >
-                                                        <figure *ngIf="post.postImage != null">
-                                                            <img src="../../../assets/Images/{{post.postimage}}" alt="">
+                                                    <div class="nearby-map" *ngIf="post.postImage!=null">
+                                                        <figure>
+                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -514,9 +688,9 @@
                                                     </ul>
                                                     <div class="users-thumb-list" >                                              
                                                    
-                                                        <span> Liked By :<strong></strong> <b></b><a title="">+{{post.likes}} more </a> 
+                                                        <span><strong></strong> <b></b><a title="">+ {{post.likes}} more </a> 
                                                             <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
-                                                            See All
+                                                            See All Likes
                                                             </a>	
                                                         </span>
                                                     </div>
@@ -531,7 +705,7 @@
 															</div>
 															<div class="post-comt-box">
 																<form [formGroup]="CommentForm">
-																	<textarea  formControlName="commenttext" placeholder="Post your comment"></textarea>
+																	<textarea style="    margin-left: -22px;"  formControlName="commenttext" placeholder="Post your comment"></textarea>
 																	<input formControlName="userid" hidden>
                                                                     <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                     <div class="add-smiles">
@@ -541,7 +715,7 @@
 																				<input type="file">
 																			</label>
 																		</div> -->
-																		<span class="em em-expressionless" title="add icon"></span>
+																		<span class="" title=""></span>
 																		<!-- <div class="smiles-bunch">
 																			<i class="em em---1"></i>
 																			<i class="em em-smiley"></i>
@@ -558,7 +732,8 @@
 																		</div> -->
 
 																	</div>
-                                                                    <a class="addnewforum" style="color: white;; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
+                                                                    <a class="addnewforum" style="color: white;    margin-right: 19px;
+                                                                    margin-top: 10px; cursor: pointer;" (click)="createComment(post.postId)" type="submit">submit</a>
 
 																</form>	
 															</div>
@@ -578,58 +753,53 @@
                            
                             </div>
                         </div><!-- centerl meta -->
+
+
+
                         <div class="col-lg-3">
                             <aside class="sidebar static right">
                               
                                 <div class="widget">
-                                    <h4 class="widget-title">Profile intro</h4>
+                                    <!-- <span class="create-post">Profile intro<a [routerLink]="['/user/editProfile']" title="">Edit Profile</a></span> -->
+
+                                    <h4 class="widget-title">Profile intro<a [routerLink]="['/user/editProfile']" title="" style="float:right ; color: #FA6342; font-size:12px; cursor: pointer;">Edit</a></h4>
                                     <ul class="short-profile">
-                                        <li>
-                                            <span>about</span>
-                                            <p>Hi, i am jhon kates, i am 32 years old and worked as a web developer in microsoft </p>
-                                        </li>
-                                        <li>
-                                            <span>fav tv show</span>
-                                            <p>Sacred Games, Spartcus Blood, Games of Theron </p>
-                                        </li>
-                                        <li>
-                                            <span>favourit music</span>
-                                            <p>Justin Biber, Shakira, Nati Natasah</p>
-                                        </li>
+                                        <span class="f-title"><i class="fa fa-user"></i> About Me:</span>
+                                       <li> <p>
+                                            Hi, I’m {{this.userService.user.username}}, I’m from {{this.userService.user.country}} ....
+                                            <!-- 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada -->
+                                        </p></li>
+                                     <li>   <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:</span>
+                                    
+                                    <p>
+                                          {{this.userService.user.birthdate |date}}
+                                        </p></li>
+                                        <li> <span class="f-title"><i class="fa fa-phone"></i> Phone Number:</span>
+                                        <p>
+                                          
+                                            {{this.userService.user.phonenumber}}
+                                        </p>
+                                    </li>
+                                      <li> <span class="f-title"><i class="fa fa-male"></i> Gender:</span>
+                                        <p>
+                                           {{this.userService.user.gender}}
+                                        </p></li>
+                                        
+                                       <li> <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
+                                        <p>
+                                         {{this.userService.user.country}}
+                                        </p>
+                                    </li>
+        
+                                      <li> <span class="f-title"><i class="fa fa-envelope"></i> Email &amp; Website:</span>
+                                        <p>
+                                            {{this.userService.user.email}} 
+                                        </p>
+                                    </li> 
                                     </ul>
                                 </div>
-                                <div class="widget">
-                                    <div class="banner medium-opacity purple">
-                                        <div class="bg-image" style="background-image: url(images/resources/baner-widgetbg.jpg)"></div>
-                                        <div class="baner-top">
-                                            <span><img alt="" src="images/book-icon.png"></span>
-                                            <i class="fa fa-ellipsis-h"></i>
-                                        </div>
-                                        <div class="banermeta">
-                                            <p>
-                                                create your own favourit page.
-                                            </p>
-                                            <span>like them all</span>
-                                            <a data-ripple="" title="" href="#">start now!</a>
-                                        </div>
-                                    </div>											
-                                </div>
-                                <div class="widget pitnik-links stick-widget">
-                                    <ul>
-                                        <li><a href="#" title="">about</a></li>
-                                        <li><a href="#" title="">career</a></li>
-                                        <li><a href="#" title="">advertise</a></li>
-                                        <li><a href="#" title="">Pitnik Apps</a></li>
-                                        <li><a href="#" title="">Pitnik Blog</a></li>
-                                        <li><a href="#" title="">Help</a></li>
-                                        <li><a href="#" title="">Pitnik Gifts</a></li>
-                                        <li><a href="#" title="">contetn policy</a></li>
-                                        <li><a href="#" title="">User Policy</a></li>
-                                    </ul>
-                                    <p>© Pitnik 2020. All Rights Reserved.</p>
-                                </div><!-- little links -->
-                            </aside>
-                        </div><!-- sidebar -->
+                                </aside>
+                            </div>                     
                     </div>	
                 </div>
             </div>
@@ -650,13 +820,12 @@
     <!-- <br> -->
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Post</mat-label>
-            <input type="text" matInput formControlName="posttext"
-            [(ngModel)]="p_data.posttext">
+            <input type="text" matInput formControlName="posttext" [(ngModel)]="p_data.posttext" placeholder="{{p_data.posttext}}">
           </mat-form-field>
     <br>
           
           <mat-label>Image :</mat-label>
-          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" >
+          <input type="file" #file formControlName="imagepath"  (change)="uploadImage(file.files)" [(ngModel)]="p_data.imagepath" placeholder="{{p_data.imagepath}}" >
   
           <button (click)="updatePost()">Update</button>
     </form>
@@ -855,7 +1024,7 @@
                                     <img alt="" src="../../../assets/{{comment.image}}" style="width:50px ; height: 50px; object-fit: contain;">
                                 </div>
                                 <div class="we-comment">
-                                    <h5 style="color:#f87000 ;"><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
+                                    <h5 style="color:#FA6342 ;"><a title="" href="time-line.html">{{comment.commentFrom}}</a></h5>
                                     <p style="margin:30px ;">   {{comment.commentText}}</p>
                                     <div class="inline-itms">
                                         <span>{{comment.commentDate| date}}</span>
@@ -871,4 +1040,5 @@
         </div>
       </div>
     <!-- </div> -->
-</div><!-- The Scrolling Modal image with comment -->
+</div>
+<!-- The Scrolling Modal image with comment -->

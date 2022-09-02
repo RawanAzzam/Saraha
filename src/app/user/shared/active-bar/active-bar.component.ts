@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
+import { UserProfileComponent } from '../../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-active-bar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public active:UserService) { }
 
   ngOnInit(): void {
+    this.active.Activeusers();
   }
 
+
+  
 }

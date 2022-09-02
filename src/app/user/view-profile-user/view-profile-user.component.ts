@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
@@ -15,7 +15,7 @@ import { ViewProfileService } from 'src/app/Services/view-profile.service';
 })
 export class ViewProfileUserComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,public viewService:ViewProfileService,
+  constructor(public userService : UserService,private route:ActivatedRoute,public viewService:ViewProfileService,
     private dialog:MatDialog,public messageService:MessageService,private loginService:LoginService,public post:PostService) { }
    id : any
   
@@ -38,6 +38,9 @@ console.log(this.id)
 this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
     this.post.GetPostLikedBy(this.id);
+    this.userService.getAll();
+    this.userService.Allusers();
+ 
     
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
@@ -61,5 +64,27 @@ this.viewService.getUserById(this.id);
     console.log(this.replyForm.value)
     console.log(evant);
   }
+  CommentForm:FormGroup = new FormGroup({
+    commenttext:new FormControl('',Validators.required),
+    userid: new FormControl(),
+    // imagepath : new FormControl (''),
+    postid : new FormControl()})
 
+    userId:any;
+    CreateLike(postId: number){
+          debugger;
+    
+          this.userId=localStorage.getItem('userId');
+          this.post.createLike(postId,this.userId);
+    }
+    createComment(postId:number){
+      this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
+      this.CommentForm.value.postid=postId;
+      this.CommentForm.value.imagepath=null;
+      this.post.createComment(this.CommentForm.value);
+    }
+    postId:any;
+changePostId(Id:any){
+this.postId=Id;
+}
 }

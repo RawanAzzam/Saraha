@@ -22,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EmailComposeComponent } from './email-compose/email-compose.component';
 import { RouterModule } from '@angular/router';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { EmaiContactusComponent } from './emai-contactus/emai-contactus.component';
+import { ActiveUsersComponent } from './active-users/active-users.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     CreateNewServiceComponent,
     EmailComposeComponent,
     PieChartComponent,
+    EmaiContactusComponent,
+    ActiveUsersComponent,
   ],
   imports: [
     CommonModule,

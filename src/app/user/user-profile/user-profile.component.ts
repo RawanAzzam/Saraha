@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivityService } from 'src/app/Services/activity.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
@@ -14,7 +15,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public post:PostService,public userService : UserService,public loginservice:LoginService,private dialog:MatDialog) { }
+  constructor(public post:PostService,public userService : UserService,public loginservice:LoginService
+    ,private dialog:MatDialog,public activityService:ActivityService) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
 @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
@@ -58,7 +60,8 @@ this.postId=Id;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.post.GetPostInfoByUserId(this.loginservice.userId);
-    
+    this.activityService.getActivityByUserId(this.loginservice.userId);
+
     this.userService.getAll();
     this.userService.Allusers();
  
@@ -69,6 +72,7 @@ this.postId=Id;
 // this.postId=postId;
 
 //   }
+   
 CreatePost(){
   this.postForm.value.userid = Number(localStorage.getItem('userId'));
   this.postForm.value.postdate = new Date();
@@ -127,8 +131,8 @@ p_data:any={};
     console.log(obj);
     this.p_data={
       postId:obj.postId,
-      posttext:obj.posttext,
-    imagepath:obj.imagepath,
+      posttext:obj.postText,
+      imagepath:obj.postImage,
   
     }
     console.log(this.p_data);
@@ -140,7 +144,9 @@ p_data:any={};
   updatePost(){
     //this.updateForm.value.postId=id;
     debugger;
-    this.updateForm.value.imagePath = this.p_data.imagepath;
+    // this.updateForm.controls['imagepath'].setValue(this.p_data.postId);
+    this.updateForm.value.imagepath = this.p_data.imagepath;
+   
     this.post.UpdatePost(this.updateForm.value);
   }
 }
