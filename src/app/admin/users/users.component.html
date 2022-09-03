@@ -27,13 +27,13 @@
                                                
                                                 <div class="central-meta padding30">
                                                     <h4 class="create-post">All Users</h4>
-                                                    <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="openCreateDialog()"> Add User </a>
+                                                    <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="openCreateDialog()"> Add User </a> -->
 
                                                     <div class="row">
                                                         <div *ngFor="let user of userService.users" class="col-lg-4 col-md-6 col-sm-6">
                                                             <div class="friend-box">
                                                                 <figure>
-                                                                    <img src="../../../assets/{{user.imagepath}}" style="object-fit:contain ; height:200px; width:200" alt="">
+                                                                    <img src="../../../assets/{{user.imagepath}}" style="object-fit:cover ; height:200px; width:200" alt="">
                                                                 </figure>
                                                                 <div class="frnd-meta">
                                                                    

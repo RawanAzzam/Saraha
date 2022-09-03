@@ -64,6 +64,7 @@ this.postId=Id;
 
     this.userService.getAll();
     this.userService.Allusers();
+    this.userService.getUserById(this.loginservice.userId);
  
     
   }

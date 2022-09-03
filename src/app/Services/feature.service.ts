@@ -44,7 +44,7 @@ export class FeatureService {
   createService(feature:any){
     console.log(feature);
     if(this.featureImage != null)
-    feature.imagePath = this.featureImage.imagePath;
+    {feature.imagePath = this.featureImage.imagePath;}
 
     debugger;
     this.http.post('https://localhost:44324/api/Feature/CreateFeature',feature).subscribe((result) =>{
@@ -71,7 +71,7 @@ export class FeatureService {
   {
     // this.spinner.show();
     if(this.featureImage != null)
-    body.imagePath=this.featureImage.imagePath;
+   { body.imagePath=this.featureImage.imagePath;}
     debugger;
 console.log(body);
 

@@ -3,13 +3,9 @@
         <ul class="chat-users">
             <div  *ngFor="let active of active.Activeusers">
             <li >
-                <div class="author-thmb">
-<<<<<<< HEAD
-                    <img src="../../../../assets/{{active.imagepath}} ">
-=======
-                    <img *ngIf="active.imagepath == null" src="../../../../assets/Unknown_person.jpg">
-                    <img *ngIf="active.imagepath != null" src="../../../../assets/{{active.imagepath}} ">
->>>>>>> 54a9169a4aa42c9eff3e3c9aced836939daabc04
+                <div title="Sandy" class="user-thmb author-thmb" style="padding-top:10px ;">
+                    <img *ngIf="active.imagepath == null" src="../../../../assets/Unknown_person.jpg" style="object-fit:cover ; width:40px; height: 40px;">
+                    <img *ngIf="active.imagepath != null" src="../../../../assets/{{active.imagepath}} " style="object-fit:cover ; width:40px;height: 40px;">
                     <span class="status f-online"></span>
                 </div>
             </li>
