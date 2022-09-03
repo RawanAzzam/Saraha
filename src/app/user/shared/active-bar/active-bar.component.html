@@ -3,9 +3,9 @@
         <ul class="chat-users">
             <div  *ngFor="let active of active.Activeusers">
             <li >
-                <div title="Sandy" class="user-thmb author-thmb" style="padding-top:10px ;">
-                    <img *ngIf="active.imagepath == null" src="../../../../assets/Unknown_person.jpg" style="object-fit:cover ; width:40px; height: 40px;">
-                    <img *ngIf="active.imagepath != null" src="../../../../assets/{{active.imagepath}} " style="object-fit:cover ; width:40px;height: 40px;">
+                <div class="user-thmb author-thmb" style="padding-top:10px ;">
+                  <a [routerLink]="['/user/viewProfile/',active.userid]"> <img  title="{{active.username}}" *ngIf="active.imagepath == null"  src="../../../../assets/Unknown_person.jpg" style="object-fit:cover ; width:40px; height: 40px;"></a> 
+                 <a [routerLink]="['/user/viewProfile/',active.userid]"> <img  title="{{active.username}}" *ngIf="active.imagepath != null" src="../../../../assets/{{active.imagepath}} " style="object-fit:cover ; width:40px;height: 40px;"></a>
                     <span class="status f-online"></span>
                 </div>
             </li>
