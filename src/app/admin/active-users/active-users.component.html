@@ -29,7 +29,7 @@
 
                             <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let active of active.Activeusers" >
                                 <div class="friend-block">
-                                    <div class="more-opotnz">
+                                    <!-- <div class="more-opotnz">
                                         <i class="fa fa-ellipsis-h"></i>
                                         <ul>
                                             <li><a href="#" title="">Block</a></li>
@@ -37,7 +37,7 @@
                                             <li><a href="#" title="">Mute Notifications</a></li>
                                             <li><a href="#" title="">hide from friend list</a></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                     <figure>
                                         <img alt="" src="./assets/{{active.imagepath}}" style="object-fit:cover ; width:40px; height:40px">
                                     </figure>
@@ -47,7 +47,7 @@
                                             <a href="#" title="">{{active.username}}</a>
                                             <span>{{active.country}}</span>
                                         </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
+                                        <a [routerLink]="['/user/viewProfile/',active.userid]" class="send-mesg" href="#" title="">View Profile</a>
                                     </div>
                                 </div>
                             </div>

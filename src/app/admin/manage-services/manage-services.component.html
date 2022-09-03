@@ -308,21 +308,21 @@
                 <form  class="" [formGroup]="createForm"  >
                     <div style="width:80%;margin:auto;padding:auto">
                  
-                      <input style="    margin: 3px;margin-bottom: 12px;min-width: 298px; max-width: 94px;" placeholder="featureName" type="text" matInput >
+                      <input style="    margin: 3px;margin-bottom: 12px;min-width: 298px; max-width: 94px;" placeholder="featureName" type="text" matInput formControlName="featureName">
                       <input placeholder="Price" type="number" matInput formControlName="featurePrice" >
                       <input style="margin-top:15px ;" placeholder="Duration" type="number" matInput formControlName="featureDuration" >
                       <div class="row">
-                      <input style="margin-top:15px ;    margin-left: 10px;" placeholder=" Describtion" type="string" matInput formControlName="featureDescribtion"  >
+                      <input style="margin-top:15px ;    margin-left: 10px;" placeholder=" Describtion" type="text" matInput formControlName="featureDescribtion"  >
 
                       </div>
                      <div class="row">
                         <label style=" color: red; font-size: 10px; margin-bottom: -8px;margin-top: 8px;" >Optional</label>
     
-                       <input style="margin-top:5px ; margin-left: 15px;" placeholder="Old Price" type="string" matInput formControlName="oldPrice"  >
+                       <input style="margin-top:5px ; margin-left: 15px;" placeholder="Old Price" type="number" matInput formControlName="oldPrice"  >
                       </div>
                       <div class="row">
                       <label>Feature Image </label>
-                      <input style="margin-left:15px" type="file" #file  (change)="uploadImage(file.files)" >
+                      <input style="margin-left:15px" type="file" #file  (change)="uploadImage(file.files)" formControlName="imagePath" >
                      </div>
                       <button style="    margin-top: 19px;
                       margin-right: -3px;" (click)="createThisService()">Create</button>
