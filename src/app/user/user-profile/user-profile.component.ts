@@ -58,7 +58,7 @@ this.postId=Id;
   ngOnInit(): void {
     debugger;
     this.loginservice.checkIfLoginOrNot();
-    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+    this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.post.GetPostInfoByUserId(this.loginservice.userId);
     this.activityService.getActivityByUserId(this.loginservice.userId);
 

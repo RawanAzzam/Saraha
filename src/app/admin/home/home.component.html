@@ -179,7 +179,7 @@
                                 <!-- <li *ngIf="user.Is_Active == 1"> -->
                                 <li *ngFor="let active of active.Activeusers">
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt="" src="./assets/{{active.imagepath}">
+                                         <img alt="" src="./assets/{{active.imagepath}}">
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
@@ -221,6 +221,7 @@
             <table class="table table-responsive">
                 <thead>
                     <tr>
+<<<<<<< HEAD
                         <th style="margin-right:10px ;" scope="col">Recent Messages</th>
                
 
@@ -228,9 +229,16 @@
 
 
                        
+=======
+                        <!-- <th> -->
+                            <span  class="create-post">Recent Messages<a title="" [routerLink]="['/admin/Message']">See All</a></span>
+                        <!-- </th>     -->
+>>>>>>> 54a9169a4aa42c9eff3e3c9aced836939daabc04
                     </tr>
+                    
                 </thead>
                 <tbody>
+<<<<<<< HEAD
                     <tr>
                         <td>
                             <a  style="font-size:meduim ;" title="">Message From<br><a  href="mailto:someone@yoursite.com" style="color:#fa6342e8 ;font-size:small;margin-left:18px ;"></a></a>
@@ -244,6 +252,9 @@
                           <a style="color:#fa6342e8; padding-top:100px;cursor: pointer;" ></a>
                         </td>       
                     </tr> 
+=======
+                  
+>>>>>>> 54a9169a4aa42c9eff3e3c9aced836939daabc04
                     <div *ngFor="let message  of contactUs.Messages"  >              
                 
                         <tr>
@@ -271,8 +282,8 @@
 
 
 <div class="central-meta" style=" width: 825px;margin-left: 15px;">
-    <span class="create-post">Orders<a title="" href="#">Full Month</a></span>
-    <table class="table table-responsive monthly-forecast">
+    <span class="create-post">Orders<a title=""[routerLink]="['/admin/Report']">Full Month</a></span>
+    <table class="table table-responsive monthly-forecast" style="padding-left:50px">
         <thead>
             <tr>
                 <th>Order Number</th>
@@ -284,10 +295,10 @@
                 <!-- <th>Percip</th> -->
             </tr>
         </thead>
-        <tbody *ngFor="let object of order.OServices">
-            <tr>
+        <tbody *ngFor="let object of order.OServices.slice(this.order.OServices.length - 6,this.order.OServices.length-1)">
+            <tr style="text-align:center ;">
                 <td><span>{{object.purchaseid}}</span></td>
-                <td>{{object.datefrom}}</td>
+                <td>{{object.datefrom | date}}</td>
                 <!-- <td><i class="wi wi-day-cloudy"></i></td> -->
                 <td>{{object.featurename}}</td>
                 <td>{{object.featureprice}}</td>

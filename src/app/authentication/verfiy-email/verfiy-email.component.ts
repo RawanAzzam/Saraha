@@ -22,6 +22,6 @@ export class VerfiyEmailComponent implements OnInit {
     if( this.loginService.code == this.code.value)
       this.loginService.updateVerfiyStatus(this.loginService.loginId,1);
      
-    this.route.navigate(["user/editProfile"])
+        this.route.navigate(["user/editProfile"])
   }
 }

@@ -159,7 +159,7 @@
                                 <div class=" central-meta item" *ngIf="post.is_Pin">
                                     <div class="friend-info">
                                         <figure>
-                                            <img src="../../../../../assets/{{this.viewService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
+                                            <img    src="../../../assets/{{post.autherImage}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
                                         </figure>
                                         <div class="friend-name">
                                             <div class="more">
@@ -307,7 +307,7 @@
                         <br/>
 
      <!--************************************* Pinnn Posttt Finish ************************************************-->
-     <div  *ngFor="let post of this.post.userpost" >
+     <div  *ngFor="let post of this.viewService.Userposts" >
         <div  *ngIf="!post.is_Pin" class="central-meta item" >
     
 <!--Postttt-->
@@ -315,7 +315,7 @@
             <div class="user-post">
                 <div class="friend-info">
                     <figure>
-                        <img src="../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px; " alt="">
+                        <img src="../../../assets/{{this.viewService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px; " alt="">
                     </figure>
                     <div class="friend-name">
                         <div class="more">

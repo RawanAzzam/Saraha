@@ -41,7 +41,7 @@
   
                                 <div class="widget">
                                     <h4 class="widget-title">Recent Activity</h4>
-                                    <ul class="activitiez" *ngFor="let activity of activityService.userActivity.slice(this.activityService.userActivity.length -10,this.activityService.userActivity.length-1)">
+                                    <ul class="activitiez" *ngFor="let activity of activityService.userActivity.slice(this.activityService.userActivity.length -5,this.activityService.userActivity.length-1)">
                                         <li>
                                             <div class="activity-meta" *ngIf="activity.activityName == 'post'">
                                                 <i>{{activity.activityDate |
@@ -272,7 +272,9 @@
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;" *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
                                  <li>
                                     <div>
-                                        <img src="./assets/{{user.imagepath}}" height="100" width="100" alt="">
+                                        <img *ngIf="user.imagepath != null" src="./assets/{{user.imagepath}}" height="100" width="100" alt="">
+                                        <img *ngIf="user.imagepath == null" src="../../../assets/Unknown_person.jpg" height="100" width="100" alt="">
+
                                         <div class="sugtd-frnd-meta">
                                             <a href="#" title="">{{user.username}}</a>
                                             <!-- <span>1 mutual friend</span> -->

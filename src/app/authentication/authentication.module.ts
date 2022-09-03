@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { VerfiyEmailComponent } from './verfiy-email/verfiy-email.component';
 import { RouterModule } from '@angular/router';
+import { VerfiyEmailToPasswordComponent } from './verfiy-email-to-password/verfiy-email-to-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -16,7 +18,9 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    VerfiyEmailComponent
+    VerfiyEmailComponent,
+    VerfiyEmailToPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+   
   ]
 })
 export class AuthenticationModule {

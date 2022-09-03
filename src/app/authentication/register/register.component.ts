@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {ToastrService} from 'ngx-toastr';
 import { HomePageService } from 'src/app/Services/home-page.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -16,7 +17,6 @@ import { UserService } from 'src/app/Services/user.service';
 export class RegisterComponent implements OnInit {
   registerForm :FormGroup =  new FormGroup({    
   password : new FormControl('',[Validators.required]),
-  username : new FormControl('',[Validators.required]),
   name : new FormControl('',[Validators.required]),
   email : new FormControl('',[Validators.required]),
   phonenumber : new FormControl('',[Validators.required]),
@@ -29,17 +29,17 @@ export class RegisterComponent implements OnInit {
 
 })
 
-
-
-
-
-  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , public user :UserService,public home: HomePageService) { }
+  constructor(private toaster:ToastrService, private spinner :NgxSpinnerService , 
+    public user :UserService,public home: HomePageService,private loginService:LoginService) { }
 
   ngOnInit(): void {
     this.home.getHome();
   }
   CreateUser(){
     debugger;
+    if(this.loginService.isEmailExist)
+    alert("Email is already used ..")
+    else
     this.user.createUser(this.registerForm.value);
       }
 
@@ -67,7 +67,9 @@ export class RegisterComponent implements OnInit {
  }
       }
 
-
+      IsEmailExist(){
+        this.loginService.IsEmailExist(this.registerForm.controls['email'].value)
+           }
 
 
 

@@ -112,12 +112,14 @@
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
                                                     <div class="change-photo">
-                                                        <img style="object-fit:contain ; height:70px; width:70px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                        <img *ngIf="this.userService.user.imagepath != null" style="object-fit:contain ; height:70px; width:70px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                        <img *ngIf="this.userService.user.imagepath == null" style="object-fit:contain ; height:70px; width:70px" alt="author" src="../../../assets/Unknown_person.jpg">
+
                                                         <div class="edit-img">
                                                                 <label class="fileContainer">
                                                                     <i class="fa fa-camera-retro"></i>
                                                                     Chage DP
-                                                                    <input type="file" #file formControlName="imagepath" (change)="uploadImage(file.files)" >
+                                                                    <input type="file" #file1 formControlName="imagepath" (change)="uploadImage(file1.files)" >
                                                                 </label>
                                                            
                                                         </div>
@@ -686,9 +688,9 @@
                                     <h4 class="widget-title">Change Password</h4>
                                     <form  [formGroup]="passwordForm">
                                         
-                                        <input type="password" matInput formControlName="oldPasswordControl" (change)="checkMatchPassword()"  placeholder="Old Password">
+                                        <input type="password"  formControlName="oldPasswordControl" (change)="checkMatchPassword()"  placeholder="Old Password">
                                        
-                                        <input type="password" matInput formControlName="newPasswordControl" placeholder="New Passowrd">
+                                        <input type="password"  formControlName="newPasswordControl" placeholder="New Passowrd">
                                         <button  (click)="changePassword()" type="submit">Change Password</button>
 
                                     </form>

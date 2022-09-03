@@ -4,7 +4,12 @@
             <div  *ngFor="let active of active.Activeusers">
             <li >
                 <div class="author-thmb">
+<<<<<<< HEAD
                     <img src="../../../../assets/{{active.imagepath}} ">
+=======
+                    <img *ngIf="active.imagepath == null" src="../../../../assets/Unknown_person.jpg">
+                    <img *ngIf="active.imagepath != null" src="../../../../assets/{{active.imagepath}} ">
+>>>>>>> 54a9169a4aa42c9eff3e3c9aced836939daabc04
                     <span class="status f-online"></span>
                 </div>
             </li>

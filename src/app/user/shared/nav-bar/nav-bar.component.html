@@ -221,7 +221,13 @@
         <div class="user-img">
            
             <h5>{{this.userService.user.username}}</h5>
-            <img style="object-fit:cover ; height:60px; width:60px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+            <img *ngIf="this.userService.user.imagepath != null" style="object-fit:cover ; height:60px; width:60px"
+             alt="author"
+              src="./assets/{{this.userService.user.imagepath}}">
+
+              <img *ngIf="this.userService.user.imagepath == null" style="object-fit:cover ; height:60px; width:60px"
+             alt="author"
+              src="../../../../assets/Unknown_person.jpg">
             <span class="status f-online"></span>
              <span class="status f-online"></span>
             <!--<div class="user-setting">

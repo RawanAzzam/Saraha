@@ -22,7 +22,7 @@ id: any;
       }
   ngOnInit(): void {
     this.loginservice.checkIfLoginOrNot();    
-    this.loginservice.getLoginByUserId(this.loginservice.loginId);
+    this.loginservice.getLoginByUserId(this.loginservice.userId);
   
     this.Testimonial.GetAll();
   }

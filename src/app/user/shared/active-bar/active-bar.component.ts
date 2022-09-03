@@ -12,7 +12,8 @@ export class ActiveBarComponent implements OnInit {
   constructor(public active:UserService) { }
 
   ngOnInit(): void {
-    this.active.Activeusers();
+
+    this.active.getActivePepole();
   }
 
 
