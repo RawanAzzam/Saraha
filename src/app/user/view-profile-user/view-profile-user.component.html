@@ -151,7 +151,7 @@
                         <div class="col-lg-6">
 
                           
-                            <div style="margin-top:50px"   class="">
+                            <div style="margin-bottom:-31px ;" class="central-meta">
                                 <!--Pinned Posts-->
                                 <div *ngFor="let post of this.viewService.Userposts" >
                                     <div class ="">
@@ -440,6 +440,45 @@
                         </div><!-- centerl meta -->
                         <div class="col-lg-3">
                             <aside class="sidebar static right">
+
+
+                                    <div class="central-meta">
+                                        <div class="create-post">Send Message</div>
+                                        <div class="contact-box">
+                                            <form class="example-form" [formGroup]="replyForm" >
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                  <mat-label>Message Content</mat-label>
+                                                  <textarea rows="4" type="text" matInput formControlName="messageContent">
+                                                  </textarea>
+                                                </mat-form-field>
+                                                <br>        
+                                                
+                                                <div class="setting-row">
+                                                    <span>Send As Anonymous</span>
+                                                    <input type="checkbox" (change)="change($event)"  formControlName="is_Anon" id="switch2"/> 
+                                                    <label for="switch2"  data-off-label="OFF"></label>
+                                                </div>      
+                                          
+                                                  <button (click)="replyMessage()">Send</button>
+                                            </form>
+
+
+                                            <!-- <form method="post" class="c-form">
+                                                <div>
+                                                    <input type="text" placeholder="Jhon Doe">
+                                                </div>
+                                                <div>
+                                                    <input type="text" placeholder="abcxxx@gmail.com">
+                                                </div>	
+                                                <div>
+                                                    <textarea rows="3" placeholder="Write Something"></textarea>
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="main-btn">Send</button>
+                                                </div>
+                                            </form> -->
+                                        </div>
+                                    </div>	
                                 <!-- <div class="widget">
                                     <h4 class="widget-title">Share Page</h4>
                                     <ul class="socials">

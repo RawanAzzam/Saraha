@@ -110,7 +110,7 @@
 
                     <div class="col-lg-8">
                         <div class="central-meta">
-                            <span class="create-post"> Lastest Reported users <a href="#" title="">See All</a></span>
+                            <span class="create-post"> Lastest Reported users <a [routerLink]="['/admin/Report']" title="">See All</a></span>
                             <ul class="suggested-frnd-caro owl-carousel owl-theme owl-loaded owl-responsive-600">
                                 <div class="owl-item cloned" style="width: 154.5px; margin-right: 10px;"*ngFor="let obj of report.reports.slice(this.report.reports.length - 4,this.report.reports.length-1)">
                                  <li style="   min-height: 231px;
@@ -169,11 +169,11 @@
                          <div class="col-lg-12"  >
                         <!-- company Highlights -->
                      </div>
-                 <div class="col-lg-12" style=" width: 824px; margin-left: -15px; margin-top:5px ;" >
-                     <div class="col-lg-12">
-                 
-                         <div class="widget"style=" width: 824px; margin-left: -1px;" >
-                             <h4 class="widget-title"> Active People</h4>
+                 <div class="col-lg-12" >
+                     <!-- <div class="col-lg-12"> -->
+                            <div class="widget central-meta" style="text-align:start; color:#515365;">
+                            <span class="create-post"style="text-align:start; color:#515365; font-size:15px;" >Active users<a title=""[routerLink]="['/admin/actives']">See All</a></span>
+                         <!-- <div class="widget"style=" width: 824px; margin-left: -1px;" > -->
                              <ul class="most-actie-pep" >
                                 <!-- <div  *ngFor="let user of userservice.users"> -->
                                 <!-- <li *ngIf="user.Is_Active == 1"> -->
@@ -186,7 +186,8 @@
                                 <!-- </div>  -->
                             
                              </ul>
-                         </div>
+                         <!-- </div> -->
+                     <!-- </div> -->
                      </div>
                  
                     
