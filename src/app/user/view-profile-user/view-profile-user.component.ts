@@ -50,6 +50,7 @@ console.log(this.id)
   }
 
   replyMessage(){
+    this.replyForm.controls["userTo"].setValue(Number(this.id));
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
    debugger;
