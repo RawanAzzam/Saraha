@@ -179,7 +179,8 @@
                                 <!-- <li *ngIf="user.Is_Active == 1"> -->
                                 <li *ngFor="let active of active.Activeusers.slice(this.active.Activeusers.length - 14,this.active.Activeusers.length-1)">
                                      <a href="#" title="Sandy" class="user-thmb">
-                                         <img alt="" src="./assets/{{active.imagepath}}" style="object-fit:cover ; width:40px; height:40px">
+                                        <a [routerLink]="['/user/viewProfile/',active.userid]">  <img title="{{active.username}}" alt=""  *ngIf="active.imagepath != null" src="./assets/{{active.imagepath}}" style="object-fit:cover ; width:40px; height:40px"> </a>
+                                        <a [routerLink]="['/user/viewProfile/',active.userid]"><img title="{{active.username}}" alt=""  *ngIf="active.imagepath == null" src="../../../../assets/Unknown_person.jpg" style="object-fit:cover ; width:40px; height:40px"> </a>
                                          <span class="status f-online"></span>
                                      </a>
                                  </li>
