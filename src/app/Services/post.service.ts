@@ -61,12 +61,11 @@ export class PostService {
     })
   }
   Comments= new Map();
-
+commentCount:number=0;
   GetPostCommentBy(postId:number){ 
     debugger;
     this.http.get('https://localhost:44324/api/Post/CommentsByUser/'+postId).subscribe((result) => {
       this.Comments.set(postId,result);
-
       console.log(result);
     },Error => {
       console.log(Error);
