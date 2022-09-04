@@ -527,38 +527,83 @@
 													
 													</div>		
 													
-													<ul class="like-dislike">
-                                                        <li (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                       
-                                                    </ul>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span style="margin-left:5px" class="views" title="views">
-																	<i  class="fa fa-thumbs-up"></i>
-																	<ins>{{post.likes}}</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike"></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																	</a>
-																	<ins></ins>
-																</span>	
-															</li>
-														</ul>
-													
-													</div>
+                                                    <div class="we-video-info">
+                                                        <ul>
+                                                            <li (click)="CreateLike(post.postId)" style="margin-right: 13px;">
+                                                                <span class="views" title="views">                            
+                                                                    <i class="fa fa-thumbs-up"></i>
+                                                                    <ins> {{post.likes}} </ins>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
+                                                            </li>
+                                                            <li>
+                                                                <span class="comment" title="Comments">
+                                                                    <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
+                                                                        <i data-target="#exampleModalCenter" class="fa fa-commenting"></i>
+                                                                        </a>	
+                                                                   
+                                                                    <ins>{{post.comments}} </ins>
+                                                                </span>
+                                                            </li>
+        
+                                                         
+                                                        </ul>
+                                                        <div class="users-thumb-list" >
+                                                            <!-- <a data-toggle="tooltip" title="Anderw">
+                                                                <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                                            </a>
+                                                        -->
+                                                            <span><strong></strong> <b></b><a title="">+ {{post.likes}} more </a> 
+                                                                <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#exampleModalCenter">
+                                                                See All Likes
+                                                                </a>	
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="coment-area" style="display: block;">
+                                                        <ul class="we-comet">												
+                                                            <li class="post-comment">
+                                                                <div class="comet-avatar">
+                                                                    <img src="images/resources/nearly1.jpg" alt="">
+                                                                </div>
+                                                                <div class="post-comt-box">
+                                                                    <form [formGroup]="CommentForm">
+                                                                        <textarea  style=" margin-left: -22px;"  formControlName="commenttext" placeholder="Post your comment"></textarea>
+                                                                        <input formControlName="userid" hidden>
+                                                                        <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
+                                                                        <div class="add-smiles">
+                                                                            <!-- <div class="uploadimage">
+                                                                                <i class="fa fa-image"></i>
+                                                                                <label class="fileContainer">
+                                                                                    <input type="file">
+                                                                                </label>
+                                                                            </div> -->
+                                                                            <!-- <div class="smiles-bunch">
+                                                                                <i class="em em---1"></i>
+                                                                                <i class="em em-smiley"></i>
+                                                                                <i class="em em-anguished"></i>
+                                                                                <i class="em em-laughing"></i>
+                                                                                <i class="em em-angry"></i>
+                                                                                <i class="em em-astonished"></i>
+                                                                                <i class="em em-blush"></i>
+                                                                                <i class="em em-disappointed"></i>
+                                                                                <i class="em em-worried"></i>
+                                                                                <i class="em em-kissing_heart"></i>
+                                                                                <i class="em em-rage"></i>
+                                                                                <i class="em em-stuck_out_tongue"></i>
+                                                                            </div> -->
+    
+                                                                        </div>
+                                                                        <a class="addnewforum" style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;" (click)="createComment(post.postId)" type="submit">submit</a>
+    
+                                                                    </form>	
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
 												</div>
 												<!-- <div class="coment-area" style="">
 													<ul class="we-comet">
