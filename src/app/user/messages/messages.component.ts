@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
+import { ReportService } from 'src/app/Services/report.service';
 
 @Component({
   selector: 'app-messages',
@@ -12,10 +13,13 @@ import { PostService } from 'src/app/Services/post.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(public messageService:MessageService,private dialog:MatDialog , public postService :PostService,public loginservice:LoginService) { }
+  constructor(public messageService:MessageService,private dialog:MatDialog ,
+     public postService :PostService,public loginservice:LoginService,private reportService:ReportService) { }
   // id = 1;
   @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
   @ViewChild('callPublishDailog') callPublishDailog! :TemplateRef<any>;
+  @ViewChild('callReportDailog') callReportDailog! :TemplateRef<any>;
+
   
  replyForm : FormGroup = new FormGroup(
   {
@@ -32,11 +36,20 @@ export class MessagesComponent implements OnInit {
       reply : new FormControl(),
       userTo : new FormControl(),
     })
+
    msgToPostForm : FormGroup = new FormGroup(
     {
       messageContent : new FormControl(),
       userTo : new FormControl(),
     })
+
+    reportForm :FormGroup = new FormGroup(
+      {
+        Message : new FormControl(),
+        UserFrom : new FormControl(),
+        UserTo : new FormControl()
+      }
+    )
 
   ngOnInit(): void {
     this.loginservice.checkIfLoginOrNot();
@@ -56,6 +69,7 @@ export class MessagesComponent implements OnInit {
 
   //  this.dialog.open(this.callreplyDailog)
   }
+
   openReplyDailog(fromId:number, ToId :number){
     console.log(fromId);
     debugger;
@@ -72,6 +86,15 @@ export class MessagesComponent implements OnInit {
    this.dialog.open(this.callPublishDailog)
   }
 
+  openReportDailog(fromId:number, ToId :number){
+    console.log(fromId);
+    debugger;
+    this.reportForm.controls["UserFrom"].setValue(fromId);
+    this.reportForm.controls["UserTo"].setValue(ToId);
+
+   this.dialog.open(this.callReportDailog)
+  }
+
   replyMessage(){
     
    this.replyForm.controls["messageDate"].setValue(new Date());
@@ -85,4 +108,20 @@ export class MessagesComponent implements OnInit {
     console.log(this.replyForm.value)
     console.log(evant);
   }
+
+  reportMessage(){
+    console.log(this.reportForm.value)
+    debugger;
+    this.reportService.createReport(this.reportForm.value);
+  }
+
+  isOther = false
+  changeOther(){
+    if(this.reportForm.value.Message == 'Other')
+    this.isOther = true;
+    else
+    this.isOther = false;
+  }
+
+  
 }

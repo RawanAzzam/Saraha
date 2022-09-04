@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
+import { ReportService } from 'src/app/Services/report.service';
 import { UserService } from 'src/app/Services/user.service';
 import { ViewProfileService } from 'src/app/Services/view-profile.service';
 
@@ -16,11 +17,14 @@ import { ViewProfileService } from 'src/app/Services/view-profile.service';
 export class ViewProfileUserComponent implements OnInit {
 
   constructor(public userService : UserService,private route:ActivatedRoute,public viewService:ViewProfileService,
-    private dialog:MatDialog,public messageService:MessageService,private loginService:LoginService,public post:PostService) { }
+    private dialog:MatDialog,public messageService:MessageService,
+    private loginService:LoginService,public post:PostService,private reportService:ReportService) { }
    id : any
-  
+ 
    @ViewChild('callSendMessageDailog') callSendMessageDailog! :TemplateRef<any>;
-  
+   @ViewChild('callReportDailog') callReportDailog! :TemplateRef<any>;
+   @ViewChild('callReportPostDailog') callReportPostDailog! :TemplateRef<any>;
+
    replyForm : FormGroup = new FormGroup(
     {
       messageContent : new FormControl(),
@@ -30,6 +34,16 @@ export class ViewProfileUserComponent implements OnInit {
       userTo : new FormControl(),
     }
    )
+
+   reportForm :FormGroup = new FormGroup(
+    {
+      Message : new FormControl(),
+      UserFrom : new FormControl(),
+      UserTo : new FormControl(),
+      is_Anon : new FormControl()
+    }
+  )
+
    @Input()
 ngSwitchCase: any
   ngOnInit(): void {
@@ -53,6 +67,7 @@ console.log(this.id)
     this.replyForm.controls["userTo"].setValue(Number(this.id));
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
+   this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
    debugger;
    console.log(this.replyForm.value)
    this.messageService.createNewMessage(this.replyForm.value);
@@ -84,5 +99,35 @@ console.log(this.id)
     postId:any;
 changePostId(Id:any){
 this.postId=Id;
+}
+
+reportUser(){
+  console.log(this.reportForm.value)
+  debugger;
+  this.reportService.createReport(this.reportForm.value);
+}
+
+isOther = false
+changeOther(){
+  if(this.reportForm.value.Message == 'Other')
+  this.isOther = true;
+  else
+  this.isOther = false;
+}
+
+openReportDailog(){
+  debugger;
+  this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
+  this.reportForm.controls["UserTo"].setValue(Number(this.id));
+
+ this.dialog.open(this.callReportDailog)
+}
+
+openReportPostDailog(){
+  debugger;
+  this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
+  this.reportForm.controls["UserTo"].setValue(Number(this.id));
+
+ this.dialog.open(this.callReportPostDailog)
 }
 }

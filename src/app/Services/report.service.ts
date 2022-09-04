@@ -25,4 +25,15 @@ export class ReportService {
     
     })
   }
+
+
+  createReport(report:any){
+    this.http.post("https://localhost:44324/api/Report",report).subscribe((result) => {
+      
+    },error =>{
+      console.log(error);
+    })
+
+    window.location.reload();
+  }
 }
