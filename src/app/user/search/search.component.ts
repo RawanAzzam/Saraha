@@ -20,7 +20,8 @@ export class SearchComponent implements OnInit {
   )
   isSearch : boolean = false;
   ngOnInit(): void {
-    this.userService.getAll();
+    // this.userService.getAll();
+    this.userService.getAllLoginUsers();
   }
   
   search(){

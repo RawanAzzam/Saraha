@@ -28,9 +28,17 @@
                                                 <div class="central-meta padding30">
                                                     <h4 class="create-post">All Users</h4>
                                                     <!-- <a class="main-btn" title="" style="margin-bottom:25px ;" mat-button (click)="openCreateDialog()"> Add User </a> -->
-
+                                                    <div style="margin-left:156px" class="col-lg-7 col-lg-7 col-sm-7">
+                                                        <form  [formGroup]="searchForm">
+                                                           
+                                                            <input class="mb-2" type="text" formControlName="username" (change)="search()" placeholder="Search By Name">
+                                                            <input class="mb-2" type="text" formControlName="country" (change)="search()" placeholder="Search By Country">
+                                                            <input  type="text" formControlName="gender" (change)="search()" placeholder="Search By Gender">
+                                                        </form>
+                                                    </div>
+                                                    <br>
                                                     <div class="row">
-                                                        <div *ngFor="let user of userService.users" class="col-lg-4 col-md-6 col-sm-6">
+                                                        <div *ngFor="let user of this.userService.searchUserResult" class="col-lg-4 col-md-6 col-sm-6">
                                                             <div class="friend-box">
                                                                 <figure>
                                                                     <img src="../../../assets/{{user.imagepath}}" style="object-fit:cover ; height:200px; width:200" alt="">
@@ -38,10 +46,10 @@
                                                                 <div class="frnd-meta">
                                                                    
                                                                     <ul class="frnd-info">
-                                                                        <li><span>Username:</span> {{user.username}}</li>
-                                                                        <li><span>Email:</span> {{user.email}}</li>
-                                                                        <li><span>Phone number:</span> {{user.phonenumber}}</li>
-                                                                        <li><span>Gender:</span> {{user.gender}}</li>
+                                                                        <li>Username: {{user.username}}</li>
+                                                                        <li>Email: {{user.email}}</li>
+                                                                        <li>Phone number: {{user.phonenumber}}</li>
+                                                                        <li>Gender: {{user.gender}}</li>
                                                                     </ul>
                                                                     <!-- <a class="send-mesg" href="#" title="">Message</a> -->
                                                                     <div class="more-opotnz">

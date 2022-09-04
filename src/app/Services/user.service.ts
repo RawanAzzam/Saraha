@@ -25,7 +25,7 @@ getAll(){
 
       this.Allusers=res;
       this.totalCount =this.Allusers.length;
-      this.searchUserResult = res;
+      // this.searchUserResult = res;
 },err=>{
     
 })
@@ -41,6 +41,7 @@ getActivePepole(){
   getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
     this.users=res;
+    this.searchUserResult = res;
     },err=>{
     
     })
