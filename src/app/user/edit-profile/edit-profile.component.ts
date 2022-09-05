@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
+import * as signalR from "@microsoft/signalr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-profile',
@@ -30,9 +31,30 @@ export class EditProfileComponent implements OnInit {
     country : new FormControl (''),
     imagepath : new FormControl ('')})
     
-  constructor(public userService:UserService,public loginService:LoginService,private route:Router,private toster:ToastrService) { }
-  
+  constructor(public userService:UserService,public loginService:LoginService,private route:Router,private toaster:ToastrService) { }
+  title = 'Frontend';
+  notification:any ;
+ connection = new signalR.HubConnectionBuilder()
+ .configureLogging(signalR.LogLevel.Debug)
+ .withUrl("https://localhost:44324/messageHub", {
+   skipNegotiation: true,
+   transport: signalR.HttpTransportType.WebSockets
+ })
+ .build();
   ngOnInit(): void {
+    this.connection.on("MessageReceived", (message) => {
+      console.log(message);
+      
+      this.notification=message;
+      
+      if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
+      {
+        
+       this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+
+      }
+    });
+    this.connection.start().catch(err => document.write(err));
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
@@ -69,7 +91,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.passwordForm.controls['oldPasswordControl'].value  == this.loginService.login.password)
     if(this.passwordForm.controls['oldPasswordControl'].value != this.loginService.login.password)
 {  
-  this.toster.warning('Old Password is not correct ...');
+  this.toaster.warning('Old Password is not correct ...');
 
 }   }
 
