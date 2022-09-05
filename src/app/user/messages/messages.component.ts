@@ -5,6 +5,8 @@ import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
 import { ReportService } from 'src/app/Services/report.service';
+import * as signalR from "@microsoft/signalr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-messages',
@@ -14,7 +16,16 @@ import { ReportService } from 'src/app/Services/report.service';
 export class MessagesComponent implements OnInit {
 
   constructor(public messageService:MessageService,private dialog:MatDialog ,
-     public postService :PostService,public loginservice:LoginService,private reportService:ReportService) { }
+     public postService :PostService,public loginservice:LoginService,private reportService:ReportService,private toaster:ToastrService) { }
+     title = 'Frontend';
+     notification:any ;
+    connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("https://localhost:44324/messageHub", {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
+    .build();
   // id = 1;
   @ViewChild('callreplyDailog') callreplyDailog! :TemplateRef<any>;
   @ViewChild('callPublishDailog') callPublishDailog! :TemplateRef<any>;
@@ -52,6 +63,19 @@ export class MessagesComponent implements OnInit {
     )
 
   ngOnInit(): void {
+      this.connection.on("MessageReceived", (message) => {
+        console.log(message);
+        
+        this.notification=message;
+        
+        if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
+        {
+          
+         this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+  
+        }
+      });
+      this.connection.start().catch(err => document.write(err));
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.loginId);
   this.messageService.getMessages(this.loginservice.userId);
