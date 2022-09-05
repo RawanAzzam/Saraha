@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FollowersComponent } from './followers/followers.component';
+import { FollowingComponent } from './following/following.component';
 import { MakeTestimonyComponent } from './make-testimony/make-testimony.component';
 import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
@@ -56,6 +58,14 @@ const routes: Routes = [
   {
     path:'viewProfile/:id',
     component:ViewProfileUserComponent
+  },
+  {
+    path:"following",
+    component:FollowingComponent
+  },
+  {
+    path:"follower",
+    component:FollowersComponent
   }
 ];
 

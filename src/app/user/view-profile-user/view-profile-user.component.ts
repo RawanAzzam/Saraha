@@ -2,6 +2,7 @@ import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { FollowService } from 'src/app/Services/follow.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
@@ -18,7 +19,8 @@ export class ViewProfileUserComponent implements OnInit {
 
   constructor(public userService : UserService,private route:ActivatedRoute,public viewService:ViewProfileService,
     private dialog:MatDialog,public messageService:MessageService,
-    private loginService:LoginService,public post:PostService,private reportService:ReportService) { }
+    private loginService:LoginService,public post:PostService,private reportService:ReportService,
+    public followService:FollowService) { }
    id : any
  
    @ViewChild('callSendMessageDailog') callSendMessageDailog! :TemplateRef<any>;
@@ -55,6 +57,7 @@ console.log(this.id)
     this.post.GetPostLikedBy(this.id);
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
+    this.followService.isFollow(Number(localStorage.getItem("userId")),this.id);
   }
 
   openSendMessageDailog(){
@@ -129,5 +132,19 @@ openReportPostDailog(){
   this.reportForm.controls["UserTo"].setValue(Number(this.id));
 
  this.dialog.open(this.callReportPostDailog)
+}
+
+followUser(){
+  const follow  = {
+    "userFrom":Number(localStorage.getItem('userId')),
+    "userTo": Number(this.id),
+    "followDate":new Date()
+  }
+
+  this.followService.createFollow(follow);
+}
+
+deleteFollowByUser(){
+  this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),Number(this.id));
 }
 }

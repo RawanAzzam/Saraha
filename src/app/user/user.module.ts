@@ -20,6 +20,8 @@ import { RouterModule } from '@angular/router';
 import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
 import { VisaComponent } from './visa/visa.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FollowingComponent } from './following/following.component';
+import { FollowersComponent } from './followers/followers.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { ToastrModule } from 'ngx-toastr';
     SearchComponent,
     UserProfileComponent,
     ViewProfileUserComponent,
-    VisaComponent
+    VisaComponent,
+    FollowingComponent,
+    FollowersComponent
   ],
   imports: [
     CommonModule,

@@ -22,6 +22,14 @@
                                     <li><a class="send-mesg" (click)="openReportDailog()" title="Report User"
                                             data-toggle="tooltip">
                                             <i class="fa fa-flag"></i></a></li>
+                                   <li *ngIf="!followService.isFollowUser" ><a class="send-mesg" (click)="followUser()" title="Follow"
+                                                data-toggle="tooltip">
+                                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            </a></li>
+                                <li *ngIf="followService.isFollowUser" ><a class="send-mesg" (click)="deleteFollowByUser()" title="Unfollow"
+                                                data-toggle="tooltip">
+                                                <i class="fa fa-user-o" aria-hidden="true"></i>
+                                            </a></li>
 
                                 </ul>
                                 <!-- <ol class="pit-rate">
