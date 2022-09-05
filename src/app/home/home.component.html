@@ -502,70 +502,29 @@
 			<div class="row">
 				<div class="offset-lg-1 col-lg-10">
 					<div class="sec-heading style9 text-center">
-						<span><i class="fa fa-trophy"></i> this is an optional</span>
-						<h2>Pricing <span>Plans</span></h2>
+						<h2>Event <span>Plans</span></h2>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="col-lg-4 col-md-6 col-sm-6"*ngFor="let obj of eventService.event.slice(this.eventService.event.length - 4,this.eventService.event.length-1)">
 					<div class="price-box">
-						<span class="bg-blue">Free of cost</span>
+						<span class="bg-blue">{{obj.header}}</span>
 						<div class="pricings">
-							<h2>Free</h2>
-							<h1>$0 <span>Per Month</span></h1>
+							<h2>{{obj.type}}</h2>
+							<h1>$ {{obj.price}} <span>Per Month</span></h1>
 							<p>
-								our price is free of cost for this package. you can not unlock all features.
+								{{obj.description}}
 							</p>
 							<ul class="price-features">
-								<li><i class="ti-check"></i> Unlimited usages our cloud</li>
-								<li><i class="ti-check"></i> Unlimited Users</li>
-								<li><i class="ti-check"></i> Unlimited storage</li>
-								<li><i class="ti-close"></i> 24x7 great support</li>
-								<li><i class="ti-close"></i> Unlimited Bandwidth</li>
+								<li><i class="ti-check"></i>{{obj.text1}} </li>
+								<li><i class="ti-check"></i> {{obj.text2}}</li>
+								<li><i class="ti-check"></i>{{obj.text3}}</li>
+								
 							</ul>
-							<a class="main-btn" href="#" title="" data-ripple="">Buy Now</a>
+							<a class="main-btn" title="" data-ripple="">{{obj.eventDate |date}} at {{obj.location}}</a>
 						</div>	
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="price-box">
-						<span class="bg-purple">Most Popular</span>
-						<div class="pricings">
-							<h2>Basics</h2>
-							<h1>$19 <span>Per Month</span></h1>
-							<p>
-								our price is free of cost for this package. you can not unlock all features.
-							</p>
-							<ul class="price-features">
-								<li><i class="ti-check"></i> Unlimited usages our cloud</li>
-								<li><i class="ti-check"></i> Unlimited Users</li>
-								<li><i class="ti-check"></i> Unlimited storage</li>
-								<li><i class="ti-close"></i> 24x7 great support</li>
-								<li><i class="ti-close"></i> Unlimited Bandwidth</li>
-							</ul>
-							<a class="main-btn" href="#" title="" data-ripple="">Buy Now</a>
-						</div>	
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-6">
-					<div class="price-box">
-						<span class="bg-red">best Value</span>
-						<div class="pricings">
-							<h2>Premium</h2>
-							<h1>$79 <span>Per Year</span></h1>
-							<p>
-								our price is free of cost for this package. you can not unlock all features.
-							</p>
-							<ul class="price-features">
-								<li><i class="ti-check"></i> Unlimited usages our cloud</li>
-								<li><i class="ti-check"></i> Unlimited Users</li>
-								<li><i class="ti-check"></i> Unlimited storage</li>
-								<li><i class="ti-close"></i> 24x7 great support</li>
-								<li><i class="ti-close"></i> Unlimited Bandwidth</li>
-							</ul>
-							<a class="main-btn" href="#" title="" data-ripple="">Buy Now</a>
-						</div>	
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

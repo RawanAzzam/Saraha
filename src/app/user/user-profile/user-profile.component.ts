@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivityService } from 'src/app/Services/activity.service';
+import { AddsService } from 'src/app/Services/adds.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
@@ -16,7 +17,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class UserProfileComponent implements OnInit {
 
   constructor(public post:PostService,public userService : UserService,public loginservice:LoginService
-    ,private dialog:MatDialog,public activityService:ActivityService) { }
+    ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService) { }
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
 @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
@@ -61,7 +62,8 @@ this.postId=Id;
     this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.post.GetPostInfoByUserId(this.loginservice.userId);
     this.activityService.getActivityByUserId(this.loginservice.userId);
-
+   // this.addsService.GetAll();   
+    this.addsService.GetAddById();
     this.userService.getAll();
     this.userService.Allusers();
     this.userService.getUserById(this.loginservice.userId);
