@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { AboutUsService } from 'src/app/Services/about-us.service';
+import { AddsService } from 'src/app/Services/adds.service';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { HomeService } from 'src/app/Services/home.service';
 
@@ -12,13 +14,82 @@ import { HomeService } from 'src/app/Services/home.service';
 })
 export class ManageHomeComponent implements OnInit {
 
-  constructor(public homeService:HomeService,public aboutUsService:AboutUsService) { }
+  constructor(public homeService:HomeService,public aboutUsService:AboutUsService, public addsService:AddsService,private dialog:MatDialog) { }
 
- 
+ deleteAdd(id:number){
+  debugger;
+this.addsService.deleteAdd(id);
+ }
+ @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
+  @ViewChild('callCreateDailog') callCreateDailog! :TemplateRef<any>; 
+  createForm:FormGroup=new FormGroup({
+    name:new FormControl(),
+    price:new FormControl(),
+    addsDate:new FormControl(),
+    discount:new FormControl(),
+    imagePath:new FormControl()
+   });
+   updateForm:FormGroup=new FormGroup({
+    id:new FormControl(),
+    name:new FormControl(),
+    price:new FormControl(),
+    discount:new FormControl(),
+    addsDate:new FormControl(),
+    imagePath:new FormControl()
+  })
+
+  createAdd(){
+    this.dialog.open(this.callCreateDailog)
+    debugger;
+  this.addsService.createAdd(this.createForm.value)
+  }
+  
+  p_data:any={};
+  updateDailog(obj:any){
+    console.log(obj);
+    this.p_data={
+      id:obj.id,
+      name:obj.name,
+    price:obj.price,
+    addsDate:obj.addsDate,
+    discount:obj.discount,
+    imagePath:obj.imagePath
+    
+    }
+    console.log(this.p_data);
+    this.updateForm.controls['id'].setValue(this.p_data.id); 
+    
+    this.dialog.open(this.callupdateDailog2)
+    
+  }
+  updateAdd(){
+    this.updateForm.value.imagePath = this.p_data.imagePath;
+    this.addsService.UpdateAdd(this.updateForm.value);
+  }
+
+  uploadAddImage(file:any){
+    if(file.length == 0){
+     return
+    }
+    debugger;
+     console.log(file);
+    let fileToUpload = <File>file[0];
+    const formData = new FormData();
+    formData.append('file',fileToUpload,fileToUpload.name);
+    this.addsService.uploadAddsImage(formData);
+   }
+
+
+
+
+
+
+
 
   ngOnInit(): void {
     this.homeService.getHome();
     this.aboutUsService.getAboutUs();
+    this.addsService.GetAll();
   }
    ///////////////////////////// Manage Home Page 
   updateHomeForm : FormGroup = new FormGroup(

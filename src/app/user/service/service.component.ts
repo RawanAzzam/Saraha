@@ -1,9 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 import { VisaService } from 'src/app/Services/visa.service';
+import * as signalR from "@microsoft/signalr";
+import { ToastrService } from 'ngx-toastr';
 import {render} from 'creditcardpayments/creditCardPayments';
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,22 +23,30 @@ export class ServiceComponent implements OnInit {
     })
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number=0;
-  constructor(public userService:UserService ,public featureService : FeatureService,public visa :VisaService,
-    public loginservice:LoginService,private toaster:ToastrService) {
-    render(
-      {
-    id:"#myPaypalButtons",
-    currency:"USD",
-    value:"100.00",
-    onApprove:(details) =>{
-      toaster.success("Paid Successfully");
-    }
-
-    }
-    );
-   }
-
+  constructor(public userService:UserService ,public featureService : FeatureService,public visa :VisaService,public loginservice:LoginService,private toaster:ToastrService) { }
+  title = 'Frontend';
+  notification:any ;
+ connection = new signalR.HubConnectionBuilder()
+ .configureLogging(signalR.LogLevel.Debug)
+ .withUrl("https://localhost:44324/messageHub", {
+   skipNegotiation: true,
+   transport: signalR.HttpTransportType.WebSockets
+ })
+ .build();
   ngOnInit(): void {
+    this.connection.on("MessageReceived", (message) => {
+      console.log(message);
+      
+      this.notification=message;
+      
+      if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
+      {
+        
+       this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+
+      }
+    });
+    this.connection.start().catch(err => document.write(err));
     debugger;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);

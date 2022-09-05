@@ -2,10 +2,13 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivityService } from 'src/app/Services/activity.service';
+import { AddsService } from 'src/app/Services/adds.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
 import { UserService } from 'src/app/Services/user.service';
+import * as signalR from "@microsoft/signalr";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +19,16 @@ import { UserService } from 'src/app/Services/user.service';
 export class UserProfileComponent implements OnInit {
 
   constructor(public post:PostService,public userService : UserService,public loginservice:LoginService
-    ,private dialog:MatDialog,public activityService:ActivityService) { }
+    ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService,private toaster : ToastrService) { }
+    title = 'Frontend';
+     notification:any ;
+    connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("https://localhost:44324/messageHub", {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
+    .build();
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
 @ViewChild('callLikesDailog') callLikesDailog! :TemplateRef<any>;
 @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
@@ -56,12 +68,26 @@ this.postId=Id;
 }
 
   ngOnInit(): void {
+    this.connection.on("MessageReceived", (message) => {
+      console.log(message);
+      
+      this.notification=message;
+      
+      if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
+      {
+        
+       this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+
+      }
+    });
+    this.connection.start().catch(err => document.write(err));
     debugger;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.post.GetPostInfoByUserId(this.loginservice.userId);
     this.activityService.getActivityByUserId(this.loginservice.userId);
-
+   // this.addsService.GetAll();   
+    this.addsService.GetAddById();
     this.userService.getAll();
     this.userService.Allusers();
     this.userService.getUserById(this.loginservice.userId);
