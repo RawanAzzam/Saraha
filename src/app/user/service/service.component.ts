@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
 import { VisaService } from 'src/app/Services/visa.service';
-
+import {render} from 'creditcardpayments/creditCardPayments';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-service',
@@ -20,7 +21,20 @@ export class ServiceComponent implements OnInit {
     })
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number=0;
-  constructor(public userService:UserService ,public featureService : FeatureService,public visa :VisaService,public loginservice:LoginService) { }
+  constructor(public userService:UserService ,public featureService : FeatureService,public visa :VisaService,
+    public loginservice:LoginService,private toaster:ToastrService) {
+    render(
+      {
+    id:"#myPaypalButtons",
+    currency:"USD",
+    value:"100.00",
+    onApprove:(details) =>{
+      toaster.success("Paid Successfully");
+    }
+
+    }
+    );
+   }
 
   ngOnInit(): void {
     debugger;
