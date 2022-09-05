@@ -7,7 +7,7 @@ import { VisaService } from 'src/app/Services/visa.service';
 import * as signalR from "@microsoft/signalr";
 import { ToastrService } from 'ngx-toastr';
 import {render} from 'creditcardpayments/creditCardPayments';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-service',
