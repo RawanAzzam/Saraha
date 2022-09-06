@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { WaedComponent } from './waed/waed.component';
+import { ApppComponent } from './appp/appp.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -21,9 +22,11 @@ const routes: Routes = [];
     AppComponent,
     HomeComponent,
     WaedComponent,
+    ApppComponent,
    
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     RouterModule,
@@ -36,6 +39,7 @@ const routes: Routes = [];
     MatInputModule,
     HttpClientModule,
     RouterModule,
+    
     NgChartsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
