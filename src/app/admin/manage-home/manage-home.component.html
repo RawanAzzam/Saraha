@@ -227,13 +227,16 @@
                                 <div class="tab-pane" id="link2">
                                     <div class="central-meta">
                                         <div class="create-post">Website Adds</div>
+                                        <a class="main-btn" title="" style="margin-bottom:25px ;"data-toggle="modal" (click)="createthis()" > Add advertisment </a>
+
                                         <div class="row merged20" >
+
                                             <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let obj of addsService.Adds">
                                                 <div class="tube-post">
                                                     <figure>
-                                                        <img src="../../../../assets/{{obj.ImagePath}}" alt="">
-                                                        <div class="save-post" title={{obj.price}}><i class="fa fa-clock-o"></i></div>
-                                                        <em>Up To:{{obj.addsDate}}</em>
+                                                        <img src="../../../assets/{{obj.imagePath}}" style="height:250px; width: 250px; object-fit: cover;" alt="">
+                                                        <div class="save-post" title={{obj.name}}><i class="fa fa-clock-o"></i></div>
+                                                        <em>Up To:{{obj.addsDate | date}}</em>
                                                         <div class="more">
                                                             <div class="more-post-optns"><i class="ti-more-alt"></i>
                                                                 <ul>
@@ -247,6 +250,7 @@
                                                     <div class="tube-title">
                                                         <h6><a style="font-size:12px ; color:#fa6342" href="pittube-detail.html" title="">{{obj.name}}</a></h6>
                                                         <span class="upload-time">{{obj.discount}} % off</span>
+                                                        <span style="float:left ; color: black;" class="upload-time">{{obj.price}}$</span>
                                                     </div>
                                                 </div>
                                             </div>                                           
@@ -384,6 +388,42 @@
                  </div>
                   <button style="    margin-top: 19px;
                   margin-right: -3px;" (click)="updateAdd()">Update</button>
+                 </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<ng-template class="modal fade" #callCreateDailog tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add new advertisment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="width:80% ;margin: auto;">
+            <form  class="" [formGroup]="createForm"  >
+                <div style="width:80%;margin:auto;padding:auto">
+             
+                  <input style="    margin: 3px;margin-bottom: 12px;min-width: 298px; max-width: 94px;" placeholder="name" type="text" matInput formControlName="name">
+                  <input placeholder="Price" type="number" matInput formControlName="price" >
+                  <input style="margin-top:15px ;" placeholder="discount" type="number" matInput formControlName="discount" >
+                  <div class="row">
+                  <input style="margin-top:15px ;    margin-left: 10px;" placeholder="Up to date" type="date" matInput formControlName="addsDate"  >
+
+                  </div>
+                 
+                  <div class="row">
+                  <label> Image </label>
+                  <input style="margin-left:15px" type="file" #file  (change)="uploadAddImage(file.files)" formControlName="imagePath" >
+                 </div>
+                  <button style="    margin-top: 19px;
+                  margin-right: -3px;" (click)="createAdd()">Create</button>
                  </div>
                 </form>
             </div>
