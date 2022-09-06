@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApppComponent } from './appp/appp.component';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
@@ -17,8 +18,8 @@ const routes: Routes = [
       component:HomeComponent
       },
       {
-      path:'waed',
-      component:WaedComponent
+      path:'test',
+      component:ApppComponent
       },
   {
     path:'authentication',

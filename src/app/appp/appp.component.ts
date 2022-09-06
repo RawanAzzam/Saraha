@@ -11,9 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ApppComponent {
   constructor(private toaster:ToastrService) { }
-
   title = 'Frontend';
   m :any ;
+  count :any;
     connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
     .withUrl("https://localhost:44324/messageHub", {
@@ -22,23 +22,39 @@ export class ApppComponent {
     })
     .build();
   ngOnInit() {
-    this.connection.on("MessageReceived", (message) => {
+    debugger;
+    this.connection.on("waed", (message) => {
       console.log(message);
       
       this.m=message;
       
-      if(this.m!=null && this.m.userToId ==Number(localStorage.getItem('userId')))
+      if(this.m!=null )
       {
         
-       this.toaster.success(this.m);
-
+        this.toaster.success('<a> Hello world!</a>',this.m, {
+          enableHtml:true,
+      titleClass: "center",
+      messageClass: "center"
+    }) ;
+      }
+    });
+    this.connection.start().catch(err => document.write(err));
+    this.connection.on("www", (likescount) => {
+      console.log(likescount);
+      
+      this.count=likescount;
+      
+      if(this.m!=null )
+      {
+        
+        this.toaster.success('<a> Hello world!</a>',this.m, {
+          enableHtml:true,
+      titleClass: "center",
+      messageClass: "center"
+    }) ;
       }
     });
     this.connection.start().catch(err => document.write(err));
   }
-  
-
-  
-
 
 }
