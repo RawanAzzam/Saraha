@@ -64,7 +64,7 @@ ngSwitchCase: any
       console.log(message);
       
       this.notification=message;
-      
+      debugger;
       if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
       {
         
@@ -74,7 +74,7 @@ ngSwitchCase: any
     });
     this.connection.start().catch(err => document.write(err));
 this.id = this.route.snapshot.params['id']
-console.log(this.id)
+
     this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
     this.post.GetPostInfoByUserId(this.id)
@@ -86,7 +86,7 @@ console.log(this.id)
 
   openSendMessageDailog(){
     this.replyForm.controls["userTo"].setValue(Number(this.id));
-   console.log(this.viewService.user)
+
    this.dialog.open(this.callSendMessageDailog)
   }
 
@@ -95,14 +95,13 @@ console.log(this.id)
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
    this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
-   debugger;
-   console.log(this.replyForm.value)
+ 
    this.messageService.createNewMessage(this.replyForm.value);
+   this.toaster.success("Message Sent ");
   }
 
   change(evant:any){
     console.log(this.replyForm.value)
-    console.log(evant);
   }
   CommentForm:FormGroup = new FormGroup({
     commenttext:new FormControl('',Validators.required),
@@ -112,7 +111,6 @@ console.log(this.id)
 
     userId:any;
     CreateLike(postId: number){
-          debugger;
     
           this.userId=localStorage.getItem('userId');
           this.post.createLike(postId,this.userId);
@@ -129,8 +127,6 @@ this.postId=Id;
 }
 
 reportUser(){
-  console.log(this.reportForm.value)
-  debugger;
   this.reportService.createReport(this.reportForm.value);
 }
 
@@ -143,7 +139,6 @@ changeOther(){
 }
 
 openReportDailog(){
-  debugger;
   this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
   this.reportForm.controls["UserTo"].setValue(Number(this.id));
 
@@ -151,7 +146,6 @@ openReportDailog(){
 }
 
 openReportPostDailog(){
-  debugger;
   this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
   this.reportForm.controls["UserTo"].setValue(Number(this.id));
 

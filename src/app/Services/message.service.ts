@@ -41,7 +41,7 @@ export class MessageService {
       console.log(Error);
     })
    
-    window.location.reload();
+    // window.location.reload();
   }
   getAllMessages(){
 

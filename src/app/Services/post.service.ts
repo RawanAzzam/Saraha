@@ -102,7 +102,6 @@ commentCount:number=0;
       console.log(Erorr)
       
     })
-    window.location.reload();
   }
 
   createComment(comment: any){
@@ -123,7 +122,6 @@ commentCount:number=0;
     },err=>{
      
     })
-    window.location.reload();
   }
 
 
