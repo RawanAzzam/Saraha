@@ -6,6 +6,7 @@ import { ContactUsService } from '../Services/contact-us.service';
 import { EventsService } from '../Services/events.service';
 import { FeatureService } from '../Services/feature.service';
 import { HomePageService } from '../Services/home-page.service';
+import { TestimonialService } from '../Services/testimonial.service';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,10 @@ export class HomeComponent implements OnInit {
     debugger;
     this.eventService.GetAll();
     this.home.getTestimonial();
+    this.testimonial.GetOneTestimonial();
+    this.testimonial.GetOneTestimonial1();
+    this.testimonial.GetOneTestimonial2();
+    this.testimonial.GetOneTestimonial3();
     setTimeout(() => {
       this.spinner.hide();
     }, 3000);
@@ -36,6 +41,6 @@ export class HomeComponent implements OnInit {
   CreateMessage(){
 this.contactUS.CreateNewMessage(this.createMessage.value);
   }
-  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService, public home:HomePageService,public eventService:EventsService) { }
+  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService, public home:HomePageService,public eventService:EventsService, public testimonial: TestimonialService) { }
 
 }

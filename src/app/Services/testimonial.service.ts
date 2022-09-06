@@ -30,7 +30,34 @@ export class TestimonialService {
      })
      window.location.reload();
    }
-
+   t:any;
+   GetOneTestimonial(){
+    debugger;
+    this.http.get("https://localhost:44324/api/Testimonial/GetOneTestimonial").subscribe((result)=>
+    {
+      this.t=result;
+    })
+  }t1:any;
+  GetOneTestimonial1(){
+    debugger;
+    this.http.get("https://localhost:44324/api/Testimonial/GetOneTestimonial1").subscribe((result)=>
+    {
+      this.t1=result;
+    })
+  }t2:any; GetOneTestimonial2(){
+    debugger;
+    this.http.get("https://localhost:44324/api/Testimonial/GetOneTestimonial2").subscribe((result)=>
+    {
+      this.t2=result;
+    })
+  }t3:any;
+  GetOneTestimonial3(){
+    debugger;
+    this.http.get("https://localhost:44324/api/Testimonial/GetOneTestimonial3").subscribe((result)=>
+    {
+      this.t3=result;
+    })
+  }
    UpdateTest(is_Accepted:number, testimonialid:number)
   {
  

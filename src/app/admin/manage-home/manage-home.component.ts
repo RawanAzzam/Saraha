@@ -6,6 +6,7 @@ import { AboutUsService } from 'src/app/Services/about-us.service';
 import { AddsService } from 'src/app/Services/adds.service';
 import { EventsService } from 'src/app/Services/events.service';
 import { FeatureService } from 'src/app/Services/feature.service';
+import { HomePageService } from 'src/app/Services/home-page.service';
 import { HomeService } from 'src/app/Services/home.service';
 
 @Component({
@@ -15,7 +16,8 @@ import { HomeService } from 'src/app/Services/home.service';
 })
 export class ManageHomeComponent implements OnInit {
 
-  constructor(public homeService:HomeService,public aboutUsService:AboutUsService, public addsService:AddsService,private dialog:MatDialog,public eventService:EventsService) { }
+  constructor(public homeService:HomeService,public aboutUsService:AboutUsService,
+ public home:HomePageService, public addsService:AddsService,private dialog:MatDialog,public eventService:EventsService) { }
 
   deleteAdd(id:number){
     debugger;
@@ -152,6 +154,12 @@ createEventForm:FormGroup=new FormGroup({
     this.aboutUsService.getAboutUs();
     this.addsService.GetAll();
     this.eventService.GetAll();
+    this.home.getHome();
+    this.home.getAboutUs();
+    this.home.getFeature();
+    debugger;
+    this.eventService.GetAll();
+    this.home.getTestimonial();
   }
    ///////////////////////////// Manage Home Page 
   updateHomeForm : FormGroup = new FormGroup(
