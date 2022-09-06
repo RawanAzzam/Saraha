@@ -22,7 +22,7 @@
                                     <li><a class="send-mesg" (click)="openReportDailog()" title="Report User"
                                             data-toggle="tooltip">
                                             <i class="fa fa-flag"></i></a></li>
-                                   <li *ngIf="!followService.isFollowUser" ><a class="send-mesg" (click)="followUser()" title="Follow"
+                                   <li *ngIf="!followService.isFollowUser && !followService.isBlockUser" ><a class="send-mesg" (click)="followUser()" title="Follow"
                                                 data-toggle="tooltip">
                                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                             </a></li>
@@ -30,6 +30,16 @@
                                                 data-toggle="tooltip">
                                                 <i class="fa fa-user-o" aria-hidden="true"></i>
                                             </a></li>
+                                            <li *ngIf="!followService.isBlockUser" ><a class="send-mesg" (click)="updateBlockUser()" title="Block"
+                                                data-toggle="tooltip">
+                                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                            </a></li>
+
+                                            <li *ngIf="followService.isBlockUser" ><a class="send-mesg" (click)="deleteFollowByUser()" title="UnBlock"
+                                                data-toggle="tooltip">
+                                                <i class="fa fa-window-close" aria-hidden="true"></i>
+                                            </a></li>
+
 
                                 </ul>
                                 <!-- <ol class="pit-rate">
@@ -47,8 +57,10 @@
                                     <div class="col-lg-2">
                                         <div class="profile-author">
                                             <a class="profile-author-thumb" href="about.html">
-                                                <img alt="author"
+                                                <img *ngIf="!this.followService.isUserBlockMee" alt="author"
                                                     src="../../../assets/{{this.viewService.user.imagepath}}">
+                                                    <img *ngIf="this.followService.isUserBlockMee" alt="author"
+                                                    src="../../../assets/Unknown_person.jpg">
                                                 <div class="edit-dp">
                                                     <label class="fileContainer">
                                                         <i class="fa fa-camera"></i>
@@ -73,15 +85,54 @@
                                         </ul>
                                         <ol class="folw-detail">
 
-                                            <li><span>Posts</span><ins>{{post.postcountById}}</ins></li>
                                             <li><span>Messages</span><ins>{{messageService.messcount}}</ins></li>
-                                            <li><span>Likes</span><ins>{{post.likecount}}</ins></li>
+                                            <li ><span>Followers</span><ins>{{followService.follower.length}}</ins></li>
+                                            <li ><span>Following</span><ins>{{followService.following.length}}</ins></li>
                                         </ol>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- user profile banner  -->
-                        <div class="col-lg-3">
+                        <div class="col-lg-12" *ngIf="this.followService.isUserBlockMee">
+                            <section >
+                                <div class="gap no-gap  low-opacity z0" style=" background: #3D4B5E !important">
+                                    <div class="eror">
+                                        <div class="bg-image" ><img src="../view-profile-user/theme-bg2.jpg" alt=""></div>
+                                    
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="error-page">
+                                                        <div class="row">
+                                                            <div class="col-lg-2 col-md-3 col-sm-3">
+                                                                <div class="big-font">
+                                                                    <span>Block</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                                <div class="error-meta">
+                                                                    <div>
+                                                                        <a href="#" title=""><img src="images/logo.png" alt=""></a>
+                                                                        <h1>Sorry !</h1>
+                                                                        <span>You have been blocked</span>
+                                                                        <p>
+                                                                            ohpps you can't see the content of this page !.
+                                                                        </p>
+                                                                        <a class="main-btn" href="http://localhost:4200/user" title="" data-ripple="">Back Home</a>
+                                                                    </div>	
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            </div>
+                        
+                        <div class="col-lg-3" *ngIf="!this.followService.isUserBlockMee">
                             <aside class="sidebar static left">
                                 <div class="widget">
                                     <h4 class="widget-title">User Badges <a class="see-all" href="#" title="">See
@@ -122,51 +173,49 @@
                                     </ul>
                                 </div>
                                 <div class="widget">
-                                    <h4 class="widget-title">Page Community</h4>
-                                    <ul class="fav-community">
-                                        <li>
-                                            <div class="personal-head">
-                                                <span class="f-title"><i class="fa fa-user"></i> About :<span
-                                                        style="color:rgb(156, 151, 146);font-size: 10;"> Hi, I’m
-                                                        {{this.viewService.user.username}}, I’m from
-                                                        {{this.viewService.user.country}} </span></span>
-                                                <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:
-                                                    <span style="color:rgb(156, 151, 146);font-size: 10;">
-                                                        {{this.viewService.user.birthdate |date}}</span></span>
+                                    <!-- <span class="create-post">Profile intro<a [routerLink]="['/user/editProfile']" title="">Edit Profile</a></span> -->
 
-                                                <span class="f-title"><i class="fa fa-phone"></i> Phone Number:<span
-                                                        style="color:rgb(156, 151, 146);font-size: 10;">
-                                                        {{this.viewService.user.phonenumber}}</span></span>
-
-                                                <span class="f-title"><i class="fa fa-male"></i> Gender:<span
-                                                        style="color:rgb(156, 151, 146);font-size: 10;">
-                                                        {{this.viewService.user.gender}}</span></span>
-
-                                                <span class="f-title"><i class="fa fa-globe"></i> Country:<span
-                                                        style="color:rgb(156, 151, 146);font-size: 10;">
-                                                        {{this.viewService.user.country}}</span></span>
-                                                <span class="f-title"><i class="fa fa-envelope"></i> Email &amp;
-                                                    Website:<span style="color:rgb(156, 151, 146);font-size: 10;">
-                                                        {{this.viewService.user.email}}</span></span>
-
-
-                                            </div>
-                                        </li>
-                                        <li><i class="fa fa-thumbs-up"></i>13,33,454 People like this</li>
-                                        <li><i class="fa fa-rss"></i>13,33,454 People send message to him</li>
-                                        <li><i class="fa fa-share-alt"></i>13,540 Post share </li>
+                                    <h4 class="widget-title">Profile intro</h4>
+                                    <ul class="short-profile">
+                                        <span class="f-title"><i class="fa fa-user"></i> About Me:</span>
+                                       <li> <p>
+                                            Hi, I’m {{this.viewService.user.username}}, I’m from {{this.viewService.user.country}} ....
+                                            <!-- 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada -->
+                                        </p></li>
+                                     <li>   <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:</span>
+                                    
+                                    <p>
+                                          {{this.viewService.user.birthdate |date}}
+                                        </p></li>
+                                       
+                                      <li> <span class="f-title"><i class="fa fa-male"></i> Gender:</span>
+                                        <p>
+                                           {{this.viewService.user.gender}}
+                                        </p></li>
+                                        
+                                       <li> <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
+                                        <p>
+                                         {{this.viewService.user.country}}
+                                        </p>
+                                    </li>
+        
+                                      <li> <span class="f-title"><i class="fa fa-envelope"></i> Email &amp; Website:</span>
+                                        <p>
+                                            {{this.viewService.user.email}} 
+                                        </p>
+                                    </li> 
                                     </ul>
-                                </div><!-- Page Community-->
-
+                                </div>
+                            
 
                             </aside>
                         </div><!-- sidebar -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" *ngIf="!this.followService.isUserBlockMee">
 
 
-                            <div style="margin-bottom:-31px ;" class="central-meta">
+                            <div style="margin-bottom:-31px ;" class="central-meta" *ngIf="!this.followService.isUserBlockMee">
                                 <!--Pinned Posts-->
-                                <div *ngFor="let post of this.viewService.Userposts">
+                                <div *ngFor="let post of this.viewService.Userposts" >
                                     <div class="">
                                         <div class=" central-meta item" *ngIf="post.is_Pin">
                                             <div class="friend-info">
@@ -354,6 +403,7 @@
                             <br />
 
                             <!--************************************* Pinnn Posttt Finish ************************************************-->
+                           <div *ngIf="!this.followService.isUserBlockMee">
                             <div *ngFor="let post of this.viewService.Userposts">
                                 <div *ngIf="!post.is_Pin" class="central-meta item">
 
@@ -511,9 +561,9 @@
 
                                 </div>
                             </div>
-
+</div>
                         </div><!-- centerl meta -->
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" *ngIf="!this.followService.isUserBlockMee">
                             <aside class="sidebar static right">
 
 
@@ -637,6 +687,7 @@
 
                             </aside>
                         </div><!-- sidebar -->
+                  
                     </div>
                 </div>
             </div>
