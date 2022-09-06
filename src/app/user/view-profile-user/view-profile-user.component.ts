@@ -72,7 +72,7 @@ ngSwitchCase: any
 
       }
     });
-    this.connection.start().catch(err => document.write(err));
+ //   this.connection.start().catch(err => document.write(err));
 this.id = this.route.snapshot.params['id']
 console.log(this.id)
     this.viewService.getUserById(this.id);
@@ -82,6 +82,11 @@ console.log(this.id)
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
     this.followService.isFollow(Number(localStorage.getItem("userId")),this.id);
+    this.followService.isBlock(Number(localStorage.getItem("userId")),this.id);
+    this.followService.isUserBlockMe(this.id ,Number(localStorage.getItem("userId")));
+    this.followService.getFollowers(this.id);
+    this.followService.getFollowing(this.id);
+
   }
 
   openSendMessageDailog(){
@@ -91,13 +96,17 @@ console.log(this.id)
   }
 
   replyMessage(){
-    this.replyForm.controls["userTo"].setValue(Number(this.id));
+    if(!this.followService.isUserBlockMee)
+ {   this.replyForm.controls["userTo"].setValue(Number(this.id));
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
    this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
    debugger;
    console.log(this.replyForm.value)
    this.messageService.createNewMessage(this.replyForm.value);
+  }else{
+   this.toaster.error("You CAN NOT send message to "+this.viewService.user.username+" Because blocked you")
+  }
   }
 
   change(evant:any){
@@ -159,16 +168,27 @@ openReportPostDailog(){
 }
 
 followUser(){
-  const follow  = {
+  if(!this.followService.isUserBlockMee)
+  
+  {const follow  = {
     "userFrom":Number(localStorage.getItem('userId')),
     "userTo": Number(this.id),
     "followDate":new Date()
   }
 
-  this.followService.createFollow(follow);
+  this.followService.createFollow(follow);}
+  else{
+    this.toaster.error("You CAN NOT Follow "+this.viewService.user.username+" Because blocked you")
+
+  }
+  
 }
 
 deleteFollowByUser(){
   this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),Number(this.id));
+}
+
+updateBlockUser(){
+  this.followService.updateBlockUser(Number(localStorage.getItem('userId')),Number(this.id),1);
 }
 }

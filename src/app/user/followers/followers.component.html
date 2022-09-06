@@ -30,8 +30,16 @@
                                                                 <span>{{user.country}}</span>
                                                             </div>
                                                             <a [routerLink]="['/user/viewProfile/',user.userid]" class="send-mesg" title="">View Profile</a>
-                                                            <br>
-                                                            <a (click)="deleteFollowByUser(user.userid)" class="send-mesg"  title="">Remove</a>
+                                                            <div class="more-opotnz">
+                                                                <i class="fa fa-ellipsis-h"></i>
+                                                                <ul>
+                                                                   
+                                                                    <a (click)="deleteFollowByUser(user.userid)" class="send-mesg"  title="">Remove</a>
+
+                                                                    <li><a (click)="updateBlockUser(user.userid)" class="send-mesg"  title="">Block</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
 
                                                         </div>
 
