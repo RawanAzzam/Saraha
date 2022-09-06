@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { AboutUsService } from 'src/app/Services/about-us.service';
 import { AddsService } from 'src/app/Services/adds.service';
+import { EventsService } from 'src/app/Services/events.service';
 import { FeatureService } from 'src/app/Services/feature.service';
 import { HomeService } from 'src/app/Services/home.service';
 
@@ -14,29 +15,58 @@ import { HomeService } from 'src/app/Services/home.service';
 })
 export class ManageHomeComponent implements OnInit {
 
-  constructor(public homeService:HomeService,public aboutUsService:AboutUsService, public addsService:AddsService,private dialog:MatDialog) { }
+  constructor(public homeService:HomeService,public aboutUsService:AboutUsService, public addsService:AddsService,private dialog:MatDialog,public eventService:EventsService) { }
 
- deleteAdd(id:number){
-  debugger;
-this.addsService.deleteAdd(id);
- }
+  deleteAdd(id:number){
+    debugger;
+  this.addsService.deleteAdd(id);
+   }
+   deleteEvent(id:number){
+    debugger;
+  this.eventService.delete(id);
+   }
  @ViewChild('callupdateDailog') callupdateDailog2! :TemplateRef<any>; 
-  @ViewChild('callCreateDailog') callCreateDailog! :TemplateRef<any>; 
-  createForm:FormGroup=new FormGroup({
-    name:new FormControl(),
-    price:new FormControl(),
-    addsDate:new FormControl(),
-    discount:new FormControl(),
-    imagePath:new FormControl()
-   });
-   updateForm:FormGroup=new FormGroup({
-    id:new FormControl(),
-    name:new FormControl(),
-    price:new FormControl(),
-    discount:new FormControl(),
-    addsDate:new FormControl(),
-    imagePath:new FormControl()
-  })
+ @ViewChild('callupdateEventDailog') callupdateEventDailog2! :TemplateRef<any>; 
+ @ViewChild('callCreateDailog') callCreateDailog! :TemplateRef<any>; 
+ @ViewChild('callCreateEventDailog') callCreateEventDailog! :TemplateRef<any>; 
+ createForm:FormGroup=new FormGroup({
+  name:new FormControl(),
+  price:new FormControl(),
+  addsDate:new FormControl(),
+  discount:new FormControl(),
+  imagePath:new FormControl()
+ });
+ updateForm:FormGroup=new FormGroup({
+  id:new FormControl(),
+  name:new FormControl(),
+  price:new FormControl(),
+  discount:new FormControl(),
+  addsDate:new FormControl(),
+  imagePath:new FormControl()
+})
+createEventForm:FormGroup=new FormGroup({
+  type:new FormControl(),
+  price:new FormControl(),
+  header:new FormControl(),
+  description:new FormControl(),
+  text1:new FormControl(),  
+  text3:new FormControl(),
+  text2:new FormControl(),
+  eventDate:new FormControl(),
+  location:new FormControl()
+ });
+ updateEventForm:FormGroup=new FormGroup({
+  id:new FormControl(),
+  type:new FormControl(),
+  price:new FormControl(),
+  header:new FormControl(),
+  description:new FormControl(),
+  text1:new FormControl(),  
+  text3:new FormControl(),
+  text2:new FormControl(),
+  eventDate:new FormControl(),
+  location:new FormControl()
+})
 
   createAdd(){
     debugger;
@@ -45,6 +75,15 @@ this.addsService.deleteAdd(id);
   createthis(){
     debugger;
     this.dialog.open(this.callCreateDailog)
+
+  }
+  createEvent(){
+    debugger;
+  this.eventService.create(this.createEventForm.value)
+  }
+  createv(){
+    debugger;
+    this.dialog.open(this.callCreateEventDailog)
 
   }
   
@@ -66,6 +105,31 @@ this.addsService.deleteAdd(id);
     this.dialog.open(this.callupdateDailog2)
     
   }
+  updateEvent(){
+    this.eventService.Update(this.updateEventForm.value);
+  }
+  e_data:any={};
+  updateEventDailog(obj:any){
+    console.log(obj);
+    this.e_data={
+      id:obj.id,
+      type:obj.type,
+    price:obj.price,
+    header:obj.header,
+    description:obj.description,
+    text1:obj.text1,
+    text2:obj.text2,
+    text3:obj.text3,
+    location:obj.location,
+    eventDate:obj.eventDate,
+    
+    }
+    console.log(this.p_data);
+    this.updateEventForm.controls['id'].setValue(this.e_data.id); 
+    
+    this.dialog.open(this.callupdateEventDailog2)
+    
+  }
   updateAdd(){
     this.updateForm.value.imagePath = this.p_data.imagePath;
     this.addsService.UpdateAdd(this.updateForm.value);
@@ -83,17 +147,11 @@ this.addsService.deleteAdd(id);
     this.addsService.uploadAddsImage(formData);
    }
 
-
-
-
-
-
-
-
   ngOnInit(): void {
     this.homeService.getHome();
     this.aboutUsService.getAboutUs();
     this.addsService.GetAll();
+    this.eventService.GetAll();
   }
    ///////////////////////////// Manage Home Page 
   updateHomeForm : FormGroup = new FormGroup(
