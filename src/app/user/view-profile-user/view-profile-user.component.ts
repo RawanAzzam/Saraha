@@ -101,11 +101,12 @@ this.id = this.route.snapshot.params['id']
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
    this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
-   debugger;
-   console.log(this.replyForm.value)
+   
    this.messageService.createNewMessage(this.replyForm.value);
+   this.toaster.success("Message Sent");
+
   }else{
-   this.toaster.error("You CAN NOT send message to "+this.viewService.user.username+" Because blocked you")
+   this.toaster.error("You cannot send message to "+this.viewService.user.username+" because you're blocked")
   }
   }
 
