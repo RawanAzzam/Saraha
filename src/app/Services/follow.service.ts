@@ -10,8 +10,8 @@ export class FollowService {
    isFollowUser : any 
    following : any = []
    follower : any = []
-
-
+    isBlockUser : any
+    isUserBlockMee : any
    getFollowing(userfrom:number){
     this.http.get("https://localhost:44324/api/Follow/GetFollowing/"+userfrom).subscribe((result) => {
     this.following = result;
@@ -47,5 +47,24 @@ export class FollowService {
      })
      window.location.reload();
 
+  }
+
+  updateBlockUser(userFrom : number,userTo : number, isBlock : number){
+    this.http.get("https://localhost:44324/api/Follow/UpdateBlockUser/"+userFrom+"/"+userTo+"/"+isBlock).subscribe((result) => {
+      
+     })
+     window.location.reload();
+  }
+
+  isBlock(userFrom:number,userTo : number){
+    this.http.get("https://localhost:44324/api/Follow/IsBlock/"+userFrom+"/"+userTo).subscribe((result) => {
+      this.isBlockUser = result;
+     })
+  }
+
+  isUserBlockMe(userFrom:number,userTo : number){
+    this.http.get("https://localhost:44324/api/Follow/IsBlock/"+userFrom+"/"+userTo).subscribe((result) => {
+      this.isUserBlockMee = result;
+     })
   }
 }

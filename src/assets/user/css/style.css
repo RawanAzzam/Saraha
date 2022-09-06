@@ -276,7 +276,17 @@ section {
     z-index: 0;
 }
 
-.blackish:before,
+.blackish
+{
+    background: rgb(255, 255, 255) !important;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
 .whitish:before,
 .bluesh:before,
 .purple:before,
@@ -16812,7 +16822,7 @@ a.shopping-cart > i {
 }
 
 .blackish .sub-popup > h4, .blackish .sub-popup > p {
-    color: #fff;
+    color: #f0f0f0;
 }
 .blackish .sub-popup button {
     color: #fff;
