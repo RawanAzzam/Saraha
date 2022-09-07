@@ -43,11 +43,11 @@
                                                             <tbody *ngFor="let object of purchase.OServices">
                                                                 <tr>
                                                                     <td><span>{{object.purchaseid}}</span></td>
-                                                                    <td>{{object.datefrom}}</td>
+                                                                    <td>{{object.datefrom | date}}</td>
                                                                     <!-- <td><i class="wi wi-day-cloudy"></i></td> -->
                                                                     <td>{{object.featurename}}</td>
                                                                     <td>{{object.featureprice}}$</td>
-                                                                    <td>{{object.featureduration}} Months</td>
+                                                                    <td>{{object.featureduration}} Days</td>
                                                                     <td>{{object.username}}</td>
                                                                 </tr>
                                                                 <!-- <tr>
