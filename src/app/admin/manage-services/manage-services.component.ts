@@ -79,7 +79,7 @@ export class ManageServicesComponent implements OnInit {
       featureName:obj.featureName,
     featurePrice:obj.featurePrice,
     featureDuration:obj.featureDuration,
-    featureDescribtion:obj.featureDescribtion,
+    featureDescibtion:obj.featureDescibtion,
     oldPrice:obj.oldPrice,
 
     // enddate:obj.enddate,

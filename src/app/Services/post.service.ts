@@ -96,13 +96,12 @@ commentCount:number=0;
   createLike(postId: number, userId:number){
     debugger;
     // this.Postlike.postId=postId;
-    this.http.get('https://localhost:44324/api/Like/CreateLike/'+userId+'/'+postId ).subscribe((result) =>{
+    this.http.get('https://localhost:44324/api/Like/CreateLike/'+userId+'/'+postId + '/'+Number(localStorage.getItem('userId')) ).subscribe((result) =>{
       console.log(result)
     },Erorr =>{
       console.log(Erorr)
       
     })
-    window.location.reload();
   }
 
   createComment(comment: any){
@@ -113,7 +112,6 @@ commentCount:number=0;
       console.log(Erorr)
       
     })
-    window.location.reload();
   }
   
   
@@ -123,7 +121,6 @@ commentCount:number=0;
     },err=>{
      
     })
-    window.location.reload();
   }
 
 

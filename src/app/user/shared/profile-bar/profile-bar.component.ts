@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FollowService } from 'src/app/Services/follow.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { MessageService } from 'src/app/Services/message.service';
 import { PostService } from 'src/app/Services/post.service';
@@ -11,7 +12,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ProfileBarComponent implements OnInit {
 
-  constructor(public userService:UserService,private loginService:LoginService,public post:PostService,public mess:MessageService) { }
+  constructor(public userService:UserService,private loginService:LoginService,public post:PostService,
+    public mess:MessageService,public followService:FollowService) { }
 
   ngOnInit(): void {
     this.loginService.checkIfLoginOrNot();
@@ -21,6 +23,8 @@ export class ProfileBarComponent implements OnInit {
     // this.post.getPost();
     this.post.getlikecount(this.loginService.userId);
     this.mess.getMessagescountbyid(this.loginService.userId);
+    this.followService.getFollowers(this.loginService.userId);
+    this.followService.getFollowing(this.loginService.userId);
   }
 
 }

@@ -64,7 +64,7 @@ ngSwitchCase: any
       console.log(message);
       
       this.notification=message;
-      
+      debugger;
       if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
       {
         
@@ -72,9 +72,9 @@ ngSwitchCase: any
 
       }
     });
-    this.connection.start().catch(err => document.write(err));
+ //   this.connection.start().catch(err => document.write(err));
 this.id = this.route.snapshot.params['id']
-console.log(this.id)
+
     this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
     this.post.GetPostInfoByUserId(this.id)
@@ -82,27 +82,36 @@ console.log(this.id)
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
     this.followService.isFollow(Number(localStorage.getItem("userId")),this.id);
+    this.followService.isBlock(Number(localStorage.getItem("userId")),this.id);
+    this.followService.isUserBlockMe(this.id ,Number(localStorage.getItem("userId")));
+    this.followService.getFollowers(this.id);
+    this.followService.getFollowing(this.id);
+
   }
 
   openSendMessageDailog(){
     this.replyForm.controls["userTo"].setValue(Number(this.id));
-   console.log(this.viewService.user)
+
    this.dialog.open(this.callSendMessageDailog)
   }
 
   replyMessage(){
-    this.replyForm.controls["userTo"].setValue(Number(this.id));
+    if(!this.followService.isUserBlockMee)
+ {   this.replyForm.controls["userTo"].setValue(Number(this.id));
    this.replyForm.controls["messageDate"].setValue(new Date());
    this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
    this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
-   debugger;
-   console.log(this.replyForm.value)
+   
    this.messageService.createNewMessage(this.replyForm.value);
+   this.toaster.success("Message Sent");
+
+  }else{
+   this.toaster.error("You cannot send message to "+this.viewService.user.username+" because you're blocked")
+  }
   }
 
   change(evant:any){
     console.log(this.replyForm.value)
-    console.log(evant);
   }
   CommentForm:FormGroup = new FormGroup({
     commenttext:new FormControl('',Validators.required),
@@ -112,7 +121,6 @@ console.log(this.id)
 
     userId:any;
     CreateLike(postId: number){
-          debugger;
     
           this.userId=localStorage.getItem('userId');
           this.post.createLike(postId,this.userId);
@@ -129,8 +137,6 @@ this.postId=Id;
 }
 
 reportUser(){
-  console.log(this.reportForm.value)
-  debugger;
   this.reportService.createReport(this.reportForm.value);
 }
 
@@ -143,7 +149,6 @@ changeOther(){
 }
 
 openReportDailog(){
-  debugger;
   this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
   this.reportForm.controls["UserTo"].setValue(Number(this.id));
 
@@ -151,7 +156,6 @@ openReportDailog(){
 }
 
 openReportPostDailog(){
-  debugger;
   this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
   this.reportForm.controls["UserTo"].setValue(Number(this.id));
 
@@ -159,16 +163,27 @@ openReportPostDailog(){
 }
 
 followUser(){
-  const follow  = {
+  if(!this.followService.isUserBlockMee)
+  
+  {const follow  = {
     "userFrom":Number(localStorage.getItem('userId')),
     "userTo": Number(this.id),
     "followDate":new Date()
   }
 
-  this.followService.createFollow(follow);
+  this.followService.createFollow(follow);}
+  else{
+    this.toaster.error("You CAN NOT Follow "+this.viewService.user.username+" Because blocked you")
+
+  }
+  
 }
 
 deleteFollowByUser(){
   this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),Number(this.id));
+}
+
+updateBlockUser(){
+  this.followService.updateBlockUser(Number(localStorage.getItem('userId')),Number(this.id),1);
 }
 }

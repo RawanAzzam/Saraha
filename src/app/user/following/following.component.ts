@@ -35,10 +35,15 @@ export class FollowingComponent implements OnInit {
     });
     this.connection.start().catch(err => document.write(err));
     this.followService.getFollowing(Number(localStorage.getItem("userId")));
+    
   }
 
   deleteFollowByUser(userTo:number){
     this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),userTo);
+  }
+
+  updateBlockUser(userTo:number){
+    this.followService.updateBlockUser(Number(localStorage.getItem('userId')),userTo,1);
   }
 
 }

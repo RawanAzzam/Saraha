@@ -64,7 +64,7 @@
 															<li class="rated"><i class="fa fa-star"></i></li>
 															<li class=""><i class="fa fa-star"></i></li>
 														</ol>
-														<span class="qeemat"><span style="font-size: small; color:gray">{{obj.featureDuration}} Months </span>${{obj.featurePrice}}</span>
+														<span class="qeemat"><span style="font-size: small; color:gray">{{obj.featureDuration}} Days </span>${{obj.featurePrice}}</span>
 													</div>
                             <span class="qeemat"> <div style="margin-left: 180px; " class="more-post-optns"><i class="ti-more-alt"></i>
                                 <ul>
@@ -268,11 +268,9 @@
                  
                       <input style="    margin: 3px;margin-bottom: 12px;min-width: 298px; max-width: 94px;" placeholder="featureName" type="text" matInput formControlName="featureName"  [(ngModel)]="p_data.featureName" >
                       <input placeholder="Price" type="number" matInput formControlName="featurePrice" [(ngModel)]="p_data.featurePrice">
-                      <input style="margin-top:15px ;" placeholder="Duration" type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
-                      <div class="row">
-                      <input style="margin-top:15px ;    margin-left: 10px;" placeholder=" Describtion" type="string" matInput formControlName="featureDescribtion" [(ngModel)]="p_data.featureDescribtion" >
+                      <input style="margin-top:15px ;" placeholder="Duration in days" type="number" matInput formControlName="featureDuration" [(ngModel)]="p_data.featureDuration">
+                      <input style="margin-top:15px ;    margin-left: 10px;" placeholder=" Describtion" type="string" matInput formControlName="featureDescibtion" [(ngModel)]="p_data.featureDescribtion" >
 
-                      </div>
                      <div class="row">
                         <label style=" color: red; font-size: 10px; margin-bottom: -8px;margin-top: 8px;" >Optional</label>
     

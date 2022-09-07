@@ -48,29 +48,49 @@
 	</div><!-- topbar nav -->
 	
 
-<section style="padding: 0px">
+<section style="padding: 0px" id="Home">
 	<div class="gap no-gap overlap22">
 		<div class="text-caro">
 			<div class="unit-text-caro">
-				<img src="./assets/sar/images/resources/text-caro-2.jpg" alt="">
+				<img src="../../../assets/{{home.homePage.slider1}}" alt="">
 				<div class="text-caro-meta">
-					<span style="font-size:30px ;font-weight:bold"> Saraha <span style="color:white ;"> Time </span> Social Network</span>
-					<img src="./assets/sar/images/icon-21.png" alt="">
+					<span style="font-size:30px ;font-weight:bold"> {{home.homePage.description1}}</span>
+					<!-- <img src="../../../assets/{{home.homePage.slider1}}" alt=""> -->
 					<h1 ><a href="#" title="">Time <span>To Be Honest!</span></a></h1>
 					<p>
-						Saraha Time is a social network website that can connect people. Saraha Time is for multipurpose social activities like , saraha , posting,  and much more. Now join & Make Cool Friends around the world !!!
+						{{home.homePage.description2}}
+					</p>
+				</div>
+			</div><div class="unit-text-caro">
+				<img src="../../../assets/{{home.homePage.slider2}}" alt="">
+				<div class="text-caro-meta">
+					<span style="font-size:30px ;font-weight:bold"> {{home.homePage.description1}}</span>
+					<!-- <img src="../../../assets/{{home.homePage.slider1}}" alt=""> -->
+					<h1 ><a href="#" title="">Time <span>To Be Honest!</span></a></h1>
+					<p>
+						{{home.homePage.description2}}
+					</p>
+				</div>
+			</div><div class="unit-text-caro">
+				<img src="../../../assets/{{home.homePage.slider1}}" alt="">
+				<div class="text-caro-meta">
+					<span style="font-size:30px ;font-weight:bold"> {{home.homePage.description1}}</span>
+					<!-- <img src="../../../assets/{{home.homePage.slider1}}" alt=""> -->
+					<h1 ><a href="#" title="">Time <span>To Be Honest!</span></a></h1>
+					<p>
+						{{home.homePage.description2}}
 					</p>
 				</div>
 			</div>
 			
 			<div class="unit-text-caro">
-				<img src="./assets/sar/images/resources/text-caro-1.jpg" alt="">
+				<img src="../../../assets/{{home.homePage.slider2}}" alt="">
 				<div class="text-caro-meta">
-					<span style="font-size:30px ;font-weight:bold"> Saraha <span style="color:white ;"> Time </span> Social Network</span>
-					<img src="./assets/sar/images/icon-21.png" alt="">
-					<h1><a href="#" title="">Time <span>To Be Honest!</span></a></h1>
+					<span style="font-size:30px ;font-weight:bold"> {{home.homePage.description1}}</span>
+					<!-- <img src="../../../assets/{{home.homePage.slider1}}" alt=""> -->
+					<h1 ><a href="#" title="">Time <span>To Be Honest!</span></a></h1>
 					<p>
-						Saraha Time is a social network website that can connect people. Saraha Time is for multipurpose social activities like , saraha , posting,  and much more. Now join & Make Cool Friends around the world !!!
+						{{home.homePage.description2}}
 					</p>
 				</div>
 			</div>
@@ -314,7 +334,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
-					<div class="tab-sec">
+					<!-- <div class="tab-sec">
 						<div class="heading-2">
 							<h4>Our Devoted <span>Clients</span></h4>
 							<p>we shine a spotlight across your organization to fully understand its people, 
@@ -375,24 +395,97 @@
 							  </div>
 							</div>
 						</div>
-					</div><!-- tabs -->
+					</div>tabs -->
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/8Ir2Ay43n2Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div><!-- bootstrap accordion -->
 				<div class="col-lg-6 col-md-6">
+
 					<div class="testi-caro">
-						<div class="testi-silver" *ngFor="let obj of home.testimonial">	
-							<span><img *ngIf="obj.is_accepted" src="./../../assets/{{obj.imagePath}}"></span>
-							<div *ngIf="obj.is_accepted" class="testi-meta">
+						<div class="testi-silver">
+							<span><img alt="" src="../../../assets/{{testimonial.t.imagePath}}"></span>
+							<div class="testi-meta">
 								<p>
-									{{obj.content}}					
+									{{testimonial.t.content}}
 								</p>
-								<span *ngIf="obj.is_accepted"><i class="fa fa-thumbs-o-up"></i>{{obj.user}}</span>
+								<span><i class="fa fa-thumbs-o-up"></i>{{testimonial.t.user}}</span>
+								<!-- <i>designer</i> -->
 							</div>
+						</div>
+						<div class="testi-silver">
+							<span><img alt="" src="../../../assets/{{testimonial.t1.imagePath}}"></span>
+							<div class="testi-meta">
+								<p>
+									{{testimonial.t1.content}}
+								</p>
+								<span><i class="fa fa-thumbs-o-up"></i>{{testimonial.t1.user}}</span>
+								<!-- <i>designer</i> -->
+							</div>
+						</div>
+						<div class="testi-silver">
+							<span><img alt="" src="../../../assets/{{testimonial.t2.imagePath}}"></span>
+							<div class="testi-meta">
+								<p>
+									{{testimonial.t2.content}}
+								</p>
+								<span><i class="fa fa-thumbs-o-up"></i>{{testimonial.t2.user}}</span>
+								<!-- <i>designer</i> -->
+							</div>
+						</div>
+						<div class="testi-silver">
+							<span><img alt="" src="../../../assets/{{testimonial.t3.imagePath}}"></span>
+							<div class="testi-meta">
+								<p>
+									{{testimonial.t3.content}}
+								</p>
+								<span><i class="fa fa-thumbs-o-up"></i>{{testimonial.t3.user}}</span>
+								<!-- <i>designer</i> -->
+							</div>
+						</div>
 					</div>
 
 
 
+
+
+
+
 <!-- 
-					<div class="testi-silver">
+					 <div class="central-meta" >
+						<div id="" class="carousel slide" data-ride="carousel" style="width:100%; height:580px ;">
+							<div class="carousel-inner" style="height: 454px;">
+							  <div class="carousel-item active" >
+								<div class="unit-text-caro">
+									<img src="../../../assets/{{testimonial.t.imagePath}}" alt="">
+									<div class="text-caro-meta">
+										<span>{{testimonial.t.content}}</span>
+										<img src="./assets/sar/images/icon-21.png" alt="">
+										<h1><a href="#" title="">Contact with  <span>Anyone you want!</span></a></h1>
+										<p>
+											{{testimonial.t.user}}
+										</p>
+									</div>
+								</div>     
+							 </div>
+							  <div class="carousel-item">
+								<div class="unit-text-caro">
+									<img src="../../../assets/{{testimonial.t1.imagePath}}" alt="">
+									<div class="text-caro-meta">
+										<span>{{testimonial.t1.content}}</span>
+										<img src="./assets/sar/images/icon-21.png" alt="">
+										<h1><a href="#" title="">Contact with  <span>Anyone you want!</span></a></h1>
+										<p>
+											{{testimonial.t1.user}}
+										</p>
+									</div>
+								</div>                                 
+								 </div>
+							
+							</div>
+						  </div>
+						</div> -->
+					
+ 
+					<!-- <div class="testi-silver">
 						<span><img alt="" src="./assets/sar/images/resources/testi-silver4.jpg"></span>
 						<div class="testi-meta">
 							<p>
@@ -431,8 +524,7 @@
 							<span><i class="fa fa-thumbs-o-up"></i>Emma Watson</span>
 							<i>designer</i>
 						</div>
-					</div> -->
-					</div>								
+					</div>								 -->
 				</div>
 
 

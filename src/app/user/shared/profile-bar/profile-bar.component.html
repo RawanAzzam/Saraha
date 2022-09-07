@@ -55,21 +55,18 @@
                     </li>   
                     <li>
                         <a class="" [routerLink]="['/user/notifications']">Activity</a>
+                    </li> <li>
+                        <a class="" [routerLink]="['/user/about']">About</a>
                     </li>
                     <!-- Notifications -->
-                    <li>
-                        <a class="" [routerLink]="['/user/following']">Following</a>
-                    </li>
-                    <li>
-                        <a class="" [routerLink]="['/user/follower']">Follower</a>
-                    </li>
+                   
                             
                     
                 </ul>
                 <ol class="folw-detail">
-                    <li><span>Posts</span><ins>{{post.postcountById}}</ins></li>
-                    <li><span>Messages</span><ins>{{mess.messcount}}</ins></li>
-                    <li><span>Likes</span><ins>{{post.likecount}}</ins></li>
+                    <li [routerLink]="['/user/messages']"><span>Messages</span><ins>{{mess.messcount}}</ins></li>
+                    <li [routerLink]="['/user/follower']"><span>Followers</span><ins>{{followService.follower.length}}</ins></li>
+                    <li [routerLink]="['/user/following']"><span>Following</span><ins>{{followService.following.length}}</ins></li>
                 </ol>
             </div>
         </div>

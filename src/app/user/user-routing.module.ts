@@ -8,6 +8,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { NotificatonsComponent } from './notificatons/notificatons.component';
 import { SearchComponent } from './search/search.component';
 import { ServiceComponent } from './service/service.component';
+import { BlockedUserComponent } from './shared/blocked-user/blocked-user.component';
 import { UserAboutComponent } from './user-about/user-about.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserTimelineComponent } from './user-timeline/user-timeline.component';
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path:"follower",
     component:FollowersComponent
+  },
+  {
+    path:"block",
+    component:BlockedUserComponent
   }
 ];
 

@@ -5,6 +5,7 @@ import { ActiveBarComponent } from './active-bar/active-bar.component';
 import { ProfileBarComponent } from './profile-bar/profile-bar.component';
 import { UserprofileBarComponent } from './userprofile-bar/userprofile-bar.component';
 import { RouterModule } from '@angular/router';
+import { BlockedUserComponent } from './blocked-user/blocked-user.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     NavBarComponent,
     ActiveBarComponent,
     ProfileBarComponent,
-    UserprofileBarComponent
+    UserprofileBarComponent,
+    BlockedUserComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { RouterModule } from '@angular/router';
     ActiveBarComponent,
     ProfileBarComponent,
     UserprofileBarComponent,
+    BlockedUserComponent,
 
   ]
 })

@@ -25,15 +25,15 @@ export class UserAboutComponent implements OnInit {
   ngOnInit(): void {
     this.connection.on("MessageReceived", (message) => {
       console.log(message);
-      
+      console.log(localStorage.getItem('userId'));
       this.notification=message;
       
       if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
       {
         
        this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
-
-      }
+      };
+      
     });
     this.connection.start().catch(err => document.write(err));
     this.loginService.checkIfLoginOrNot();

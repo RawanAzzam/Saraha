@@ -39,6 +39,7 @@ export class MessagesComponent implements OnInit {
     is_Anon : new FormControl(),
     userFrom : new FormControl(),
     userTo : new FormControl(),
+    
   }
    )
    publishForm : FormGroup = new FormGroup(
@@ -58,7 +59,8 @@ export class MessagesComponent implements OnInit {
       {
         Message : new FormControl(),
         UserFrom : new FormControl(),
-        UserTo : new FormControl()
+        UserTo : new FormControl(),
+  
       }
     )
 
@@ -71,7 +73,7 @@ export class MessagesComponent implements OnInit {
         if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
         {
           
-         this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+         this.toaster.success(this.notification.title ,this.notification.notificationText);
   
         }
       });
@@ -83,6 +85,7 @@ export class MessagesComponent implements OnInit {
   MsgToPost(){
     debugger;
     this.publishForm.controls["userTo"].setValue(localStorage.getItem('userId'));
+    
 
     // this.msgToPostForm.controls["userTo"].setValue(localStorage.getItem('userId'));
     // this.msgToPostForm.value.messageContent=msg;
