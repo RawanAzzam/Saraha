@@ -112,7 +112,6 @@ commentCount:number=0;
       console.log(Erorr)
       
     })
-    window.location.reload();
   }
   
   
