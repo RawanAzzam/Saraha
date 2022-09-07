@@ -406,10 +406,44 @@
           </button>
         </div>
         <div class="modal-body">
+           
+           
+        <ul>
             <div *ngFor="let obj of this.notification">
-               {{obj.message}} waed
-            </div>
 
+            <li *ngIf="obj.commentId !=0 || obj.messageId!=0">
+                <div class="comet-avatar">
+                    <img alt="" src="../../../../assets/{{obj.nType}}" style="width:40px;height: 40px;">
+                </div>
+                <div class="we-comment">
+                    <h5><a title="" href="time-line.html">{{obj.notificationText}}</a></h5>
+                    <p>{{obj.message}}</p>
+                    <div class="inline-itms">
+                        <span>{{obj.notDate}}</span>
+                        <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                    </div>
+                </div>
+
+            </li>
+            <li *ngIf="obj.followId !=0 || obj.likeId!=0">
+                <div class="comet-avatar">
+                    <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;">
+                </div>
+                <div class="we-comment">
+                    <h5><a title="" href="time-line.html">{{obj.notificationText}}</a></h5>
+                    <p></p>
+                    <div class="inline-itms">
+                        <span>{{obj.notDate}}</span>
+                        <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                    </div>
+                </div>
+
+            </li>
+          
+        </div>
+        </ul>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save changes</button>

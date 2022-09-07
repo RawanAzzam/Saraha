@@ -72,7 +72,7 @@ ngSwitchCase: any
 
       }
     });
- //   this.connection.start().catch(err => document.write(err));
+   this.connection.start().catch(err => document.write(err));
 this.id = this.route.snapshot.params['id']
 
     this.viewService.getUserById(this.id);

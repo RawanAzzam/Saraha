@@ -25,7 +25,6 @@ export class UserAboutComponent implements OnInit {
   ngOnInit(): void {
     this.connection.on("MessageReceived", (message) => {
       console.log(message);
-      console.log(localStorage.getItem('userId'));
       this.notification=message;
       
       if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
@@ -36,6 +35,7 @@ export class UserAboutComponent implements OnInit {
       
     });
     this.connection.start().catch(err => document.write(err));
+    
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
