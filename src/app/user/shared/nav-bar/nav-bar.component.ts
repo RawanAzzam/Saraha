@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HomePageService } from 'src/app/Services/home-page.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { UserService } from 'src/app/Services/user.service';
+import * as signalR from "@microsoft/signalr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,12 +12,38 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public userService:UserService,private loginService:LoginService, public home:HomePageService) { }
-
+  constructor(public userService:UserService,private loginService:LoginService, public home:HomePageService,private toaster :ToastrService) { }
+  title = 'Frontend';
+  notification :any = [];
+    connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("https://localhost:44324/messageHub", {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
+    .build();
   ngOnInit(): void {
+    this.userService.getNotificaition(Number(localStorage.getItem('userId')));
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
     this.home.getHome();
+    this.connection.on("NotificationReceived", (message) => {
+      console.log(message);
+      debugger;
+      this.notification=message;
+      
+    
+   
+      
+    });
+    this.connection.start().catch(err => document.write(err));
   }
-}
+  getNot()
+  {
+this.userService.getNotificaition(Number(localStorage.getItem('userId')));
+
+
+  }
+  }
+
