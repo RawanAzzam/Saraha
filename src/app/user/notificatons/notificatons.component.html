@@ -17,14 +17,14 @@
                                         <ul>
                                             <li *ngFor="let activity of activityService.userActivity">
                                                 <figure *ngIf="activity.activityName == 'post'"><img
-                                                        src="../../../assets/{{userService.user.imagepath}}" style=" width:50px ; height:50px; object-fit:cover ;   " alt="">
+                                                        src="../../../assets/{{userService.user.imagepath}}" style=" width:40px ; height:40px; object-fit:cover ;   " alt="">
                                                 </figure>
                                                 <figure *ngIf="activity.activityName == 'like'"><img
-                                                        src="../../../assets/{{this.activityService.activityUserLike.get(activity.likeId).imagepath}}"
+                                                        src="../../../assets/{{this.activityService.activityUserLike.get(activity.likeId).imagepath}} "style=" width:40px ; height:40px; object-fit:cover ;"
                                                         alt=""></figure>
 
                                                         <figure *ngIf="activity.activityName == 'comment'"><img
-                                                            src="../../../assets/{{this.activityService.activityUserComment.get(activity.commentId).imagepath}}"
+                                                            src="../../../assets/{{this.activityService.activityUserComment.get(activity.commentId).imagepath}}" style=" width:40px ; height:40px; object-fit:cover ;"
                                                             alt=""></figure>
     
                                                 <div *ngIf="activity.activityName == 'post'" class="notifi-meta">
@@ -34,7 +34,7 @@
                                                 </div>
                                                 <div *ngIf="activity.activityName == 'like'" class="notifi-meta">
                                                     <p>You liked a <strong><a
-                                                                href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserLike.get(activity.likeId).userid}}">
+                                                                href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserLike.get(activity.likeId).userid}}"  style=" width:40px ; height:40px; object-fit:cover ;">
                                                                 {{this.activityService.activityUserLike.get(activity.likeId).username}}'s
                                                             </a></strong> Post</p>
                                                     <span><i class="fa fa-thumbs-up"></i> {{activity.activityDate |
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div *ngIf="activity.activityName == 'comment'" class="notifi-meta">
                                                     <p>You commented on a <strong><a
-                                                                href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserComment.get(activity.commentId).userid}}">
+                                                                href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserComment.get(activity.commentId).userid}}" style=" width:40px ; height:40px; object-fit:cover ;">
                                                                 {{this.activityService.activityUserComment.get(activity.commentId).username}}'s
                                                             </a></strong> Post</p>
                                                     <span><i class="fa fa-comment"></i> {{activity.activityDate |
