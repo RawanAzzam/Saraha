@@ -24,7 +24,12 @@
                                     <div class="col-lg-2 col-md-3">
                                         <div class="profile-author">
                                             <div class="profile-author-thumb">
-                                                <img style="object-fit:contain ; height:170px; width:120px" alt="author" src="./assets/{{this.userService.user.imagepath}}">
+                                                <img alt="author" src="./assets/{{this.userService.user.imagepath}}"style="object-fit: cover;
+                      
+                                                max-width: 155px;
+                                                min-width: 155px;
+                                                max-height: 155px;
+                                                min-height: 155px;">
                                                 <div class="edit-dp">
                                                     <label class="fileContainer">
                                                         <i class="fa fa-camera"></i>

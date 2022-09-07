@@ -107,7 +107,7 @@
                                         <div class="tab-pane fade show active" id="edit-profile">
                                                 <div class="set-title">
                                                     <h5>Edit Profile</h5>
-                                                    <span>People on Pitnik will get to know you with the info below</span>
+                                                    <span>People on Saraha will get to know you with the info below</span>
                                                 </div>
                                                 <div class="stg-form-area">
                                                     <form method="post" class="c-form" [formGroup]="updateUserForm">
@@ -163,8 +163,8 @@
                                                             </div>
                                                         </div> -->
                                                         <div>
-                                                            <label >Country :</label>
-                                                            <select class="select" formControlName="country" [(ngModel)]="userService.user.country">
+                                                            <label>Country :</label>
+                                                            <select formControlName="country" [(ngModel)]="this.userService.user.country">
                                                             <option value="Afghanistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
                                                             <option value="Algeria">Algeria</option>
@@ -672,7 +672,7 @@
                                         <div class="tab-pane fade" id="apps" role="tabpanel">
                                             <div class="set-title">
                                                 <h5>Apps</h5>
-                                                <span>Keep track of everywhere you have login with your pintik profile and remove access from apps you are no longer using with pitnik <a href="#" title="">Learn more</a></span>
+                                                <span>Keep track of everywhere you have login with your Saraha profile and remove access from apps you are no longer using with pitnik <a href="#" title="">Learn more</a></span>
                                             </div>
                                             <p class="p-info">You have not approved any app</p>
                                         </div><!-- apps -->

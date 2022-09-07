@@ -6,6 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
 
 import { UserModule } from './user/user.module';
+import { VisaComponent } from './user/visa/visa.component';
 import { WaedComponent } from './waed/waed.component';
 
 const routes: Routes = [
@@ -35,7 +36,10 @@ const routes: Routes = [
 path:'user',
 loadChildren: () => UserModule
 },
-
+{
+  path:'visa',
+  component:VisaComponent
+  },
 ];
 
 @NgModule({
