@@ -134,9 +134,14 @@
                                 </div><!-- twitter feed-->
                                 <div class="advertisment-box">
                                     <h4 class="">advertisment</h4>
-                                    <figure>
-                                        <a href="#" title="Advertisment"><img src="../../../assets/user/images/resources/ad-widget.gif" alt=""></a>
-                                    </figure>
+                                        <div style="  width: 260px;
+                                        height: 220px; text-align: center;padding:30px ;border-radius: 10px;"class="animate-me">
+                                       
+                                           <h2>{{this.addsService.a.name}}</h2>
+                                           <div style="font-size:30px ; font-family:Georgia, 'Times New Roman', Times, serif;color:black; text-decoration: dashed;padding: 0;"> {{this.addsService.a.discount}} % <h2>off</h2></div>
+                                           <div> 
+                                            Up to: {{this.addsService.a.addsDate | date }}</div>
+                                        </div>
                                 </div>
                               
                                 <div class="widget">
