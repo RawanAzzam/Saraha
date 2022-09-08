@@ -26,15 +26,17 @@
                                   <aside class="sidebar static left">
                                <!-- badges -->
                                 <div class="widget">
-                                    <h4 class="widget-title">Recent Testimonials <a class="see-all" href="http://localhost:54739/#Testimonials" title="">see all</a></h4>
+                                    <h4 class="widget-title">Recent Testimonials </h4>
                                     <ul class="recent-jobs">
                                         <li *ngFor="let test of Testimonial.testimonial">
-                                            <h6><a href="#" title=""><figure>
-                                                <img style="border-radius:50%" src="./assets/sar/images/resources/nearly1.jpg" alt="">
-                                            </figure>
-                                        </a> <span></span></h6>
-                                            <p>{{test.content}}</p>
-                                            <a style="text-decoration:none; margin-top: 2px; color:#fa6342" href="#" title="">by:</a><span style="width:20px;"> Waed</span>
+                                            <div *ngIf="test.is_accepted">
+                                                <h6><a ><figure>
+                                                    <img style="border-radius:50%" width="50" height="50" src="../../../assets/{{test.imagePath}}" alt="">
+                                                </figure>
+                                            </a> <span></span></h6>
+                                                <p>{{test.content}}</p>
+                                                <a style="text-decoration:none; margin-top: 2px; color:#fa6342" href="#" title="">by:</a><span style="width:20px;"> {{test.user}}</span>
+                                            </div>
                                         </li>
                                       
                                     </ul>

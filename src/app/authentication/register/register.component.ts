@@ -43,17 +43,7 @@ export class RegisterComponent implements OnInit {
     this.user.createUser(this.registerForm.value);
       }
 
-      // uploadImage(file:any){
-      //   if(file.length == 0){
-      //    return
-      //   }
-      //   debugger;
-      //   let fileToUpload = <File>file[0];
-      //   const formData = new FormData();
-      //   formData.append('file',fileToUpload,fileToUpload.name);
-      //   this.user.uploadUserImage(formData);
-       //}
-
+    
         file:any;
        imageShow: any= '';
 

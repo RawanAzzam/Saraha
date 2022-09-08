@@ -234,42 +234,7 @@
                                                 <div class="forum-form">
                                                     <div class="central-meta">
                                                         <form  class="c-form" [formGroup]="updateHomeForm">
-                                                            <div hidden>
-                                                                <label>Logo Image</label>
-                                                             <!-- <img data-holder-rendered="true"  src="../../../assets/{{this.homeService.home.logo}}" alt=""> -->
-                                                             <br>   
-                                                             <input type="file" #file1 formControlName="logo" (change)="uploadImage(file1.files,1)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Email </label>
-                                                                <input type="email" [(ngModel)]="this.homeService.home.email" formControlName="email" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Phone Number</label>
-                                                                <input type="string" formControlName="phoneNumber"  [(ngModel)]="this.homeService.home.phoneNumber" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Address</label>
-                                                                <input type="text" formControlName="address"  [(ngModel)]="this.homeService.home.address" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Slider1 Image</label>
-                                                                <img width="600" height="200" class="ml-5" src="../../../assets/{{this.homeService.home.slider1}}">
-                                                                <input type="file" #file2 formControlName="slider1" (change)="uploadImage(file2.files,2)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Description 1</label>
-                                                                <textarea rows="3" formControlName="description1"  [(ngModel)]="this.homeService.home.description1" placeholder=""></textarea>
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Slider2 Image</label>
-                                                                <img width="600" height="200" class="ml-5" src="../../../assets/{{this.homeService.home.slider2}}">
-                                                                <input type="file" #file3 formControlName="slider2" (change)="uploadImage(file3.files,3)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Description 2</label>
-                                                                <textarea rows="3" formControlName="description2" [(ngModel)]="this.homeService.home.description2" placeholder=""></textarea>
-                                                            </div>
+                                                       
                                                             <div>
                                                                 <label>Member1 Image</label>
                                                                 <img width="100" height="300" class="ml-5 mb-3" src="../../../assets/{{this.homeService.home.member1_Image}}">
@@ -365,42 +330,9 @@
                                                                 <label>Description 2</label>
                                                                 <textarea rows="3" formControlName="description2" [(ngModel)]="this.homeService.home.description2" placeholder=""></textarea>
                                                             </div>
-                                                            <div hidden>
-                                                                <label>Member1 Image</label>
-                                                                <img width="100" height="300" class="ml-5 mb-3" src="../../../assets/{{this.homeService.home.member1_Image}}">
-                                                                <input type="file" #file4 formControlName="member1_Image" (change)="uploadImage(file4.files,4)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member1 Name</label>
-                                                                <input type="text" formControlName="member1_Name" [(ngModel)]="this.homeService.home.member1_Name" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member2 Image</label>
-                                                                <img width="100" height="300" class="ml-5 mb-3" src="../../../assets/{{this.homeService.home.member2_Image}}">
-                                                                <input type="file" #file5 formControlName="member2_Image" (change)="uploadImage(file5.files,5)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member2 Name</label>
-                                                                <input type="text" formControlName="member2_Name" [(ngModel)]="this.homeService.home.member2_Name" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member3 Image</label>
-                                                                <img width="100" height="300" class="ml-5 mb-3" src="../../../assets/{{this.homeService.home.member3_Image}}">
-                                                                <input type="file" #file6 formControlName="member3_Image" (change)="uploadImage(file6.files,6)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member3 Name</label>
-                                                                <input type="text" formControlName="member3_Name" [(ngModel)]="this.homeService.home.member3_Name" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member4 Image</label>
-                                                                <img width="100" height="300" class="ml-5 mb-3" src="../../../assets/{{this.homeService.home.member4_Image}}">
-                                                                <input type="file" #file7 formControlName="member4_Image" (change)="uploadImage(file7.files,7)" placeholder="">
-                                                            </div>
-                                                            <div hidden>
-                                                                <label>Member4 Name</label>
-                                                                <input type="text" formControlName="member4_Name" [(ngModel)]="this.homeService.home.member4_Name" placeholder="">
-                                                            </div>
+                                                            
+                                                          
+                                                           
                                                             <button (click)="updateHome()"> Update </button> 
                                                         </form>
                                                     </div>
