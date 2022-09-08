@@ -276,7 +276,7 @@
                 <!-- <th>Percip</th> -->
             </tr>
         </thead>
-        <tbody *ngFor="let object of order.OServices.slice(this.order.OServices.length - 6,this.order.OServices.length-1)">
+        <tbody *ngFor="let object of order.OServices">
             <tr style="text-align:center ;">
                 <td><span>{{object.purchaseid}}</span></td>
                 <td>{{object.datefrom | date}}</td>
@@ -286,43 +286,14 @@
                 <td>{{object.featureduration}}</td>
                 <td>{{object.username}}</td>
             </tr>
-            <!-- <tr>
-                <td><span>06, Nov</span></td>
-                <td>Wed</td>
-                <td><i class="wi wi-day-showers"></i></td>
-                <td>Take your umbrella with you it will rain in the next hour</td>
-                <td>15°</td>
-                <td>55%</td>
-                <td>0%</td>
-            </tr> -->
+       
            
         </tbody>
     </table>
 </div>
-<!-- ************************************************************************ -->
 
-<!-- <div>
-    <div>
-      <div class="chart"> -->
-        <!-- <canvas baseChart
-                [data]="pieChartData"
-                [type]="pieChartType"
-                [options]="pieChartOptions"
-                [plugins]="pieChartPlugins"
-               
-                >
-        </canvas> -->
         <canvas id="myChart"  #mychart style="margin-left: 12%;"></canvas>
-      <!-- </div>
-    </div>
-  </div>
-  <div class="button-row"> -->
-    <!-- <button mat-button mat-raised-button color="primary" (click)="toggleLegend()">Toggle Legend</button>
-    <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
-    <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
-    <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
-    <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button> -->
-  <!-- </div> -->
+    
 
 
 

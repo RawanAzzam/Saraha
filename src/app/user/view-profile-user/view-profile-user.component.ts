@@ -21,7 +21,7 @@ export class ViewProfileUserComponent implements OnInit {
 
   constructor(public userService: UserService, private route: ActivatedRoute, public viewService: ViewProfileService,
     private dialog: MatDialog, public messageService: MessageService,
-    private loginService: LoginService, public post: PostService, private reportService: ReportService,
+    private loginService: LoginService, public postService: PostService, private reportService: ReportService,
     public followService: FollowService, private toaster: ToastrService) { }
   title = 'Frontend';
   notification: any;
@@ -76,9 +76,7 @@ export class ViewProfileUserComponent implements OnInit {
 
     this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
-    this.post.GetPostInfoByUserId(this.id)
-    this.post.GetPostLikedBy(this.id);
-    this.post.getlikecount(this.id);
+    this.postService.GetPostInfoByUserId(this.id)
     this.messageService.getMessagescountbyid(this.id);
     this.followService.isFollow(Number(localStorage.getItem("userId")), this.id);
     this.followService.isBlock(Number(localStorage.getItem("userId")), this.id);
@@ -123,13 +121,13 @@ export class ViewProfileUserComponent implements OnInit {
   CreateLike(postId: number) {
 
     this.userId = localStorage.getItem('userId');
-    this.post.createLike(postId, this.userId);
+    this.postService.createLike(postId, this.userId);
   }
   createComment(postId: number) {
     this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
     this.CommentForm.value.postid = postId;
     this.CommentForm.value.imagepath = null;
-    this.post.createComment(this.CommentForm.value);
+    this.postService.createComment(this.CommentForm.value);
   }
   postId: any;
   changePostId(Id: any) {

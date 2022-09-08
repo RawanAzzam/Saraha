@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(public post:PostService,public userService : UserService,public loginservice:LoginService
+  constructor(public postService:PostService,public userService : UserService,public loginservice:LoginService
     ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService,private toaster : ToastrService) { }
     title = 'Frontend';
      notification:any ;
@@ -51,16 +51,8 @@ postForm:FormGroup = new FormGroup({
       posttext:new FormControl(),
       imagepath:new FormControl()
     })
-    // GetPostLikedBy(postId:any)
-    // {
-    //   debugger;
-    //   this.post.GetPostLikedBy(postId);
-    // }
-    // GetPostCommentBy(postId:any)
-    // {
-    //  debugger;
-    //  this.post.GetPostCommentBy(postId);
-    // }
+   
+  
     
 postId:any;
 changePostId(Id:any){
@@ -84,7 +76,7 @@ this.postId=Id;
     debugger;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);
-    this.post.GetPostInfoByUserId(this.loginservice.userId);
+    this.postService.GetPostInfoByUserId(this.loginservice.userId);
     this.activityService.getActivityByUserId(this.loginservice.userId);
    // this.addsService.GetAll();   
     this.addsService.GetAddById();
@@ -104,20 +96,21 @@ CreatePost(){
   this.postForm.value.userid = Number(localStorage.getItem('userId'));
   this.postForm.value.postdate = new Date();
    console.log("here , create post")
-  this.post.CreatePost(this.postForm.value);
+  this.postService.CreatePost(this.postForm.value);
+  this.postForm.controls['posttext'].setValue("");
 }
 userId:any;
 CreateLike(postId: number){
       debugger;
 
       this.userId=localStorage.getItem('userId');
-      this.post.createLike(postId,this.userId);
+      this.postService.createLike(postId,this.userId);
 }
 createComment(postId:number){
   this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
   this.CommentForm.value.postid=postId;
   this.CommentForm.value.imagepath=null;
-  this.post.createComment(this.CommentForm.value);
+  this.postService.createComment(this.CommentForm.value);
 }
 
 
@@ -129,7 +122,7 @@ debugger;
         {
           if(result=='yes')
           
-          this.post.deletePost(id);
+          this.postService.deletePost(id);
         else (result=='no')
         console.log("Thank you");
              }
@@ -144,12 +137,12 @@ uploadImage(file:any){
   let fileToUpload = <File>file[0];
   const formData = new FormData();
   formData.append('file',fileToUpload,fileToUpload.name);
-  this.post.uploadPostImage(formData);
+  this.postService.uploadPostImage(formData);
 }
 PinPost(postId :any,isPin:any){
   debugger;
   console.log(postId,isPin);
-this.post.PinPost(postId,isPin);  
+this.postService.PinPost(postId,isPin);  
 }
 
 p_data:any={};
@@ -174,6 +167,6 @@ p_data:any={};
     // this.updateForm.controls['imagepath'].setValue(this.p_data.postId);
     this.updateForm.value.imagepath = this.p_data.imagepath;
    
-    this.post.UpdatePost(this.updateForm.value);
+    this.postService.UpdatePost(this.updateForm.value);
   }
 }

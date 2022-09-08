@@ -178,7 +178,7 @@
                                 <span class="create-post">Create post</span>
                                 <div class="new-postbox">
                                     <figure>
-                                        <img src="../../../assets/{{this.post.userpost.autherImage}}" alt="">
+                                        <img src="../../../assets/{{this.postService.userpost.autherImage}}" alt="">
                                     </figure>
                                     <form [formGroup]="postForm" >
 
@@ -300,7 +300,7 @@
                                 <div style="margin-top:50px"   class="">
 
                                     <!--Pinned Posts-->
-                                    <div *ngFor="let post of this.post.userpost" >
+                                    <div *ngFor="let post of this.postService.userpost" >
                                         <div class ="" >
                                     <div class=" central-meta item" *ngIf="post.is_Pin">
                                         <div class="friend-info" id="h">
@@ -336,8 +336,9 @@
                                                     </div>
                                                     <ul class="like-dislike">
                                                         <li (click)="PinPost(post.postId,0)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li (click)="CreateLike(post.postId)"><a class="bg-blue" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
+                                                        <li *ngIf="!this.postService.IsLike.get(post.postId)" style="cursor:pointer ;"><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                        <li *ngIf="this.postService.IsLike.get(post.postId)" style="cursor:pointer ;"><a class="bg-red" (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"  title="UnLike Post"><i class="ti-thumb-up"></i></a></li>
+
                                                     </ul>
                                                 </div><!-- near by map -->
     
@@ -365,15 +366,21 @@
 
                                                 <div class="we-video-info">
                                                     <ul>
-                                                        <li (click)="CreateLike(post.postId)" style="margin-right: 13px;">
+                                                        <li *ngIf="!this.postService.IsLike.get(post.postId)"
+                                                         (click)="CreateLike(post.postId)" style="margin-right: 13px;">
                                                             <span class="views" title="views">                            
-                                                                <i class="fa fa-thumbs-up"></i>
-                                                                <ins> {{post.likes}} </ins>
+                                                                <i class="fa fa-thumbs-o-up"></i>
+                                                                <ins> {{this.postService.likes.get(post.postId).length}}  </ins>
                                                             </span>
                                                         </li>
-                                                        <li>
-                                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
+                                                        <li *ngIf="this.postService.IsLike.get(post.postId)"
+                                                         (click)="this.postService.removeLike(this.userService.user.userid,post.postId)" style="margin-right: 13px;">
+                                                            <span class="views" title="views">                            
+                                                                <i class="fa fa-thumbs-up"></i>
+                                                                <ins> {{this.postService.likes.get(post.postId).length}}  </ins>
+                                                            </span>
                                                         </li>
+                                                      
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
@@ -411,26 +418,7 @@
 																	<input formControlName="userid" hidden>
                                                                     <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                     <div class="add-smiles">
-																		<!-- <div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div> -->
-																		<!-- <div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div> -->
+																		
 
 																	</div>
                                                                     <a class="addnewforum" style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;" (click)="createComment(post.postId)" type="submit">submit</a>
@@ -471,7 +459,7 @@
                                 </div>
 
                               </div> 
-                            <div *ngFor="let post of this.post.userpost" >
+                            <div *ngFor="let post of this.postService.userpost" >
                                <div class="central-meta item"  *ngIf="post.postType=='msg'">
 										<div class="user-post">
 											<div class="friend-info">
@@ -525,14 +513,13 @@
                                                     <div class="we-video-info">
                                                         <ul>
                                                             <li (click)="CreateLike(post.postId)" style="margin-right: 13px;">
-                                                                <span class="views" title="views">                            
-                                                                    <i class="fa fa-thumbs-up"></i>
-                                                                    <ins> {{post.likes}} </ins>
-                                                                </span>
+                                                                <span class="views" title="views">
+                                                                    <i *ngIf="!this.postService.IsLike.get(post.postId)" class="fa fa-thumbs-o-up"> 
+                                                                 </i>  <i *ngIf="this.postService.IsLike.get(post.postId)" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                                   <ins> {{this.postService.likes.get(post.postId).length}} </ins>
+                                                               </span>
                                                             </li>
-                                                            <li>
-                                                                <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
-                                                            </li>
+                                                           
                                                             <li>
                                                                 <span class="comment" title="Comments">
                                                                     <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
@@ -587,7 +574,7 @@
 									</div>   
                              </div>                        
                             <br/>
-                            <div  *ngFor="let post of this.post.userpost" >
+                            <div  *ngFor="let post of this.postService.userpost" >
                                 <div  *ngIf="!post.is_Pin && post.postType=='post'" class="central-meta item" >
                             
 <!--Postttt-->
@@ -625,8 +612,9 @@
                                                     </div>
                                                     <ul class="like-dislike">
                                                         <li style="cursor:pointer ;" (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                                        <li style="cursor:pointer ;"><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
-                                                        <li><a style="align-items:center ;align-content: center;" class="bg-red" href="#" title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
+                                                        <li *ngIf="!this.postService.IsLike.get(post.postId)" style="cursor:pointer ;"><a class="bg-blue" (click)="CreateLike(post.postId)"  title="Like Post"><i class="ti-thumb-up"></i></a></li>
+                                                        <li *ngIf="this.postService.IsLike.get(post.postId)" style="cursor:pointer ;"><a class="bg-red" (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"  title="UnLike Post"><i class="ti-thumb-up"></i></a></li>
+
                                                     </ul>
                                                 </div><!-- near by map -->
 
@@ -634,13 +622,13 @@
                                                 <div class="we-video-info">
                                                     <ul>
                                                         <li style="margin-right: 13px;">
-                                                            <span class="views" title="views">                                                               <i class="fa fa-thumbs-up"></i>
-                                                                <ins> {{post.likes}} </ins>
+                                                            <span class="views" title="views">
+                                                                 <i *ngIf="!this.postService.IsLike.get(post.postId)" class="fa fa-thumbs-o-up"> 
+                                                              </i>  <i *ngIf="this.postService.IsLike.get(post.postId)" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                                <ins> {{this.postService.likes.get(post.postId).length}} </ins>
                                                             </span>
                                                         </li>
-                                                        <li style="margin-right: 13px;">
-                                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
-                                                        </li>
+                                                     
                                                         <li>
                                                             <span class="comment" title="Comments">
                                                                 <a (click)="changePostId(post.postId)" type="button" class="" data-toggle="modal" data-target="#Comments">
@@ -830,7 +818,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" *ngFor="let user of this.post.likes.get(this.postId)">
+        <div class="modal-body" *ngFor="let user of this.postService.likes.get(this.postId)">
            
            <img src="../../../assets/{{user.userLikeImage}}" hight="50" width="50" class="topic-data" alt="">
         {{user.likeFrom}}
@@ -997,7 +985,7 @@
                     <!-- </div> -->
                     <div style="display: block;" class="coment-area" >
                         <ul class="we-comet">
-                            <li *ngFor="let comment of this.post.Comments.get(this.postId)">
+                            <li *ngFor="let comment of this.postService.Comments.get(this.postId)">
                                 <div class="comet-avatar">
                                     <img alt="" src="../../../assets/{{comment.image}}" style="width:50px ; height: 50px; object-fit: contain;">
                                 </div>

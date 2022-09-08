@@ -29,11 +29,11 @@ export class PostService {
     debugger;
     this.http.post('https://localhost:44324/api/Post/CreatePost',post).subscribe((result) =>{
       console.log(result)
+      this.GetPostInfoByUserId(Number(localStorage.getItem("userId")));
       this.toastr.success("Create Post Successfully")
     },Erorr =>{
       console.log(Erorr)
     })
-    window.location.reload();
   }
   UserId = localStorage.getItem('userId') ;
   userpost : any =[]
@@ -43,7 +43,7 @@ export class PostService {
     this.http.get('https://localhost:44324/api/Post/GetPostByUserId/'+userId).subscribe((result) => {
       this.userpost = result;
       debugger;
-      for(let x of this.userpost){this.GetPostLikedBy(x.postId)}
+      for(let x of this.userpost){this.GetPostLikedBy(x.postId) ; this.CheckIfLiked(userId,x.postId)}
       for(let x of this.userpost){this.GetPostCommentBy(x.postId)}
       this.postcountById=this.userpost.length; 
       console.log(result);
@@ -51,12 +51,13 @@ export class PostService {
       console.log(Error);
     })
   }
-  IsLike :any;
+  IsLike = new Map();
   CheckIfLiked(userId:number , postId:number){
     
     this.http.get('https://localhost:44324/api/Like/IsLike/'+userId + '/'+postId).subscribe((result) => {
-      this.IsLike = result;
-  
+      this.IsLike.set(postId, result);
+      console.log(this.IsLike.get(postId));
+
     },Error => {
       console.log(Error);
     })
@@ -66,7 +67,6 @@ export class PostService {
     debugger;
     this.http.get('https://localhost:44324/api/Post/GetPostLikedByPostId/'+postId).subscribe((result) => {
       this.likes.set(postId,result);
-
       console.log(result);
     },Error => {
       console.log(Error);
@@ -111,19 +111,20 @@ commentCount:number=0;
     this.http.get('https://localhost:44324/api/Like/CreateLike/'+userId+'/'+postId + '/'+Number(localStorage.getItem('userId')) ).subscribe((result) =>{
       console.log(result)
       this.toastr.success("liked Post Successfully")
-
+      this.GetPostLikedBy(postId);
+      this.CheckIfLiked(userId,postId);
     },Erorr =>{
       console.log(Erorr)
       
     })
 
-    window.location.reload();
   }
 
   createComment(comment: any){
     debugger;
     this.http.post('https://localhost:44324/api/Comment/CreateComment', comment).subscribe((result) =>{
       console.log(result)
+
       this.toastr.success("Commented of Post Successfully")
 
     },Erorr =>{
@@ -131,7 +132,6 @@ commentCount:number=0;
       
     })
 
-    window.location.reload();
 
   }
   
@@ -139,11 +139,10 @@ commentCount:number=0;
   deletePost(id:number){
     this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
       this.toastr.success("Delete Post Successfully")
-
+      this.GetPostInfoByUserId(Number(localStorage.getItem("userId")));
     },err=>{
      
     })
-    window.location.reload();
 
   }
 
@@ -192,5 +191,15 @@ this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
     })
   }
 
+  removeLike(userId:number,postId:number){
+    this.http.get('https://localhost:44324/api/Like/DeleteLikeByUserPostId/'+userId+"/"+postId).subscribe((result) => {
+      debugger;   
+    this.GetPostLikedBy(postId);
+        this.CheckIfLiked(userId,postId);
+      console.log(result);
+    },Error => {
+      console.log(Error);
+    })
+  }
 
 }
