@@ -45,5 +45,9 @@ this.userService.getNotificaition(Number(localStorage.getItem('userId')));
 
 
   }
+  updateIsRead()
+  {
+this.userService.UpdateNotIsRead(Number(localStorage.getItem('userId')));
+  }
   }
 

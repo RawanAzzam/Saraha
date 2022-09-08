@@ -301,9 +301,9 @@
 
                                     <!--Pinned Posts-->
                                     <div *ngFor="let post of this.post.userpost" >
-                                        <div class ="">
+                                        <div class ="" >
                                     <div class=" central-meta item" *ngIf="post.is_Pin">
-                                        <div class="friend-info">
+                                        <div class="friend-info" id="h">
                                             <figure>
                                                 <img src="../../../../../assets/{{this.userService.user.imagepath}}" style="object-fit:cover ; width:120px; height: 40px;" alt="">
                                             </figure>

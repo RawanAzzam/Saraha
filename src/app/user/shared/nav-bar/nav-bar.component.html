@@ -3,7 +3,7 @@
     <div class="logo">
         <a title="" href="newsfeed.html"><img src="../../../../assets/{{home.homePage.logo}}"  style=" height:50px; width:100px; object-fit:contain ;"lt=""></a>
     </div>
-    <div class="top-area">
+    <div class="top-area" > 
         <!-- <div class="main-menu">
             <span>
                 <i class="fa fa-braille"></i>
@@ -400,7 +400,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h1 class="modal-title" id="exampleModalLabel">Notifications</h1>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -417,8 +417,18 @@
                     <img alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;">
                 </div>
                 <div style="    padding-top: 13px;" class="we-comment">
-                    <h5 style="color: #fa6342; margin-top: 12px;"><a style="color: #fa6342;margin-top: 12px;" title="" href="time-line.html">{{obj.notificationText}}</a></h5>
-                    <div class="row" style="max-width: 200px;">  <p style="margin-left: 18px;margin-top: -16px;">{{obj.message}}</p> </div>
+                    <h5 style="color: #fa6342; margin-top: 12px;" (click)="updateIsRead()">
+                        <a style="color: #fa6342;margin-top: 12px;" title="" [routerLink]="['/user/my-timeline/']" *ngIf="obj.commentId!=0">{{obj.notificationText}}</a>
+                        <a style="color: #fa6342;margin-top: 12px;" title="" [routerLink]="['/user/messages/']" *ngIf="obj.commentId==0">{{obj.notificationText}}</a>
+
+                    </h5>
+                    <div class="row" style="max-width: 200px;">  <i class="fa fa-quote-left" aria-hidden="true" style="    margin-left: 16px;
+                        font-size: 10px;
+                        margin-right: -14px;
+                        margin-top: -13px;"></i><p style="margin-left: 18px;margin-top: -16px;">{{obj.message}}</p><i class="fa fa-quote-right" aria-hidden="true"style="    margin-left: 3px;
+    font-size: 10px;
+    margin-right: -14px;
+    margin-top: 0px;"></i> </div>
                   
                     <div class="inline-itms">
                         <span>{{obj.notificationDate | date :'M/d/yy, h:mm a'}}</span>
@@ -428,18 +438,19 @@
             </div>
             </li>
             <li *ngIf="obj.followId !=0 || obj.likeId!=0" style="    list-style: none; " >
-                <div style="    padding-top: 13px;
-                background-color: whitesmoke;
-                border-radius: 10px;
-                margin-top: 4px;" *ngIf="!obj.isRead">
+                <div style="padding-top: 13px; background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="!obj.isRead">
                 <div class="comet-avatar">
-                    <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;">
+                  <a [routerLink]="['/user/my-timeline/{{obj.userFromId}}']">  <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;"></a>
+
                 </div>
                 <div class="we-comment" style="padding-top: 13px;">
-                    <h5 style="    color: #fa6342;
-                    margin-top: 12px;"><a   style="    color: #fa6342;
-    margin-top: 12px;"  title="" href="time-line.html">{{obj.notificationText}}</a></h5>
+                    <h5 style=" color: #fa6342;margin-top: 12px;" (click)="updateIsRead()">
+                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/my-timeline/']" *ngIf="obj.likeId!=0"> >{{obj.notificationText}}</a>
+                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/viewProfile/']" *ngIf="obj.likeId==0"> >{{obj.notificationText}}</a>
+
+                    </h5>
                     <p></p>
+
                     <div class="inline-itms">
                         <span>{{obj.notDate | date :'M/d/yy, h:mm a'}}</span>
               
@@ -452,8 +463,7 @@
         </div>
         </ul>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+       
         </div>
       </div>
     </div>
