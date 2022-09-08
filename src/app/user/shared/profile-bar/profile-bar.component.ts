@@ -19,10 +19,7 @@ export class ProfileBarComponent implements OnInit {
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
-    this.post.GetPostInfoByUserId(this.loginService.userId);
-    // this.post.getPost();
-    this.post.getlikecount(this.loginService.userId);
-    this.mess.getMessagescountbyid(this.loginService.userId);
+       this.mess.getMessagescountbyid(this.loginService.userId);
     this.followService.getFollowers(this.loginService.userId);
     this.followService.getFollowing(this.loginService.userId);
   }

@@ -26,6 +26,10 @@
                                                         <figure *ngIf="activity.activityName == 'comment'"><img
                                                             src="../../../assets/{{this.activityService.activityUserComment.get(activity.commentId).imagepath}}" style=" width:40px ; height:40px; object-fit:cover ;"
                                                             alt=""></figure>
+                                                            <figure *ngIf="activity.activityName == 'follow'"><img
+                                                                src="../../../assets/{{this.activityService.activityUserFollow.get(activity.followId).imagepath}} "style=" width:40px ; height:40px; object-fit:cover ;"
+                                                                alt=""></figure>
+        
     
                                                 <div *ngIf="activity.activityName == 'post'" class="notifi-meta">
                                                     <p>You Share a new Post</p>
@@ -46,6 +50,14 @@
                                                                 {{this.activityService.activityUserComment.get(activity.commentId).username}}'s
                                                             </a></strong> Post</p>
                                                     <span><i class="fa fa-comment"></i> {{activity.activityDate |
+                                                        date:'short'}}</span>
+                                                </div>
+                                                <div *ngIf="activity.activityName == 'follow'" class="notifi-meta">
+                                                    <p>You Follow <strong><a
+                                                                href="http://localhost:4200/user/viewProfile/{{this.activityService.activityUserFollow.get(activity.followId).userid}}" style=" width:40px ; height:40px; object-fit:cover ;">
+                                                                {{this.activityService.activityUserFollow.get(activity.followId).username}}'s
+                                                            </a></strong></p>
+                                                    <span><i class="fa fa-user"></i> {{activity.activityDate |
                                                         date:'short'}}</span>
                                                 </div>
                                                 <div class="more">

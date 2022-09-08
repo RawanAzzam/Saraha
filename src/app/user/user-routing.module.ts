@@ -37,7 +37,7 @@ const routes: Routes = [
     component:UserAboutComponent
   },
   {
-    path:'create-testimony',
+    path:'testimony',
     component:MakeTestimonyComponent
   },
   {
