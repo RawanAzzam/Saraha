@@ -26,7 +26,7 @@
             <li >
                 <button  title="Notifications"Style="background-color:none ; background:none;border: none; " type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="getNot()">
                 <i class="fa fa-user"></i><i style="border-radius:100% ;margin-bottom: 5px;    padding: 4px;
-                font-size: 10px;" class="bg-red">5</i>
+                font-size: 10px;" class="bg-red" *ngIf="this.nCount!=0">{{this.nCount}}</i>
 
                 </button >
               
@@ -412,12 +412,16 @@
             <div *ngFor="let obj of this.notification">
 
             <li *ngIf="obj.commentId !=0 || obj.messageId!=0" style="    list-style: none; ">
-                <div style="padding-top: 13px;background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="!obj.isRead">
+                <div style="padding-top: 13px;background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="obj.is_Read==0">
                 <div class="comet-avatar">
                     <img alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;">
                 </div>
                 <div style="    padding-top: 13px;" class="we-comment">
-                    <h5 style="color: #fa6342; margin-top: 12px;" (click)="updateIsRead()">
+                    <h5 style="color: #fa6342; margin-top: 12px;    color: #fa6342;
+                    margin-top: 12px;
+                    font-size: 15px;
+                    font-family: system-ui;
+                    font-weight: bold;" (click)="updateIsRead(obj.notificationId)">
                         <a style="color: #fa6342;margin-top: 12px;" title="" [routerLink]="['/user/my-timeline/']" *ngIf="obj.commentId!=0">{{obj.notificationText}}</a>
                         <a style="color: #fa6342;margin-top: 12px;" title="" [routerLink]="['/user/messages/']" *ngIf="obj.commentId==0">{{obj.notificationText}}</a>
 
@@ -432,27 +436,30 @@
                   
                     <div class="inline-itms">
                         <span>{{obj.notificationDate | date :'M/d/yy, h:mm a'}}</span>
-                        <i style="color: #fa6342;" class="fa fa-ellipsis-h" aria-hidden="true"></i> 
                      </div>
                 </div>
             </div>
             </li>
             <li *ngIf="obj.followId !=0 || obj.likeId!=0" style="    list-style: none; " >
-                <div style="padding-top: 13px; background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="!obj.isRead">
+                <div style="padding-top: 13px; background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="obj.is_Read==0">
                 <div class="comet-avatar">
                   <a [routerLink]="['/user/my-timeline/{{obj.userFromId}}']">  <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;"></a>
 
                 </div>
                 <div class="we-comment" style="padding-top: 13px;">
-                    <h5 style=" color: #fa6342;margin-top: 12px;" (click)="updateIsRead()">
-                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/my-timeline/']" *ngIf="obj.likeId!=0"> >{{obj.notificationText}}</a>
-                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/viewProfile/']" *ngIf="obj.likeId==0"> >{{obj.notificationText}}</a>
+                    <h5 style=" color: #fa6342;margin-top: 12px;    color: #fa6342;
+                    margin-top: 12px;
+                    font-size: 15px;
+                    font-family: system-ui;
+                    font-weight: bold;" (click)="updateIsRead(obj.notificationId)">
+                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/my-timeline/']" *ngIf="obj.likeId!=0" >{{obj.notificationText}}</a>
+                        <a style="color: #fa6342;margin-top: 12px;"  title=""[routerLink]="['/user/viewProfile/']" *ngIf="obj.likeId==0" >{{obj.notificationText}}</a>
 
                     </h5>
                     <p></p>
 
                     <div class="inline-itms">
-                        <span>{{obj.notDate | date :'M/d/yy, h:mm a'}}</span>
+                        <span>{{obj.notificationDate | date :'M/d/yy, h:mm a'}}</span>
               
                     </div>
                 </div>
@@ -462,9 +469,7 @@
           
         </div>
         </ul>
-        <div class="modal-footer">
-       
-        </div>
+    
       </div>
     </div>
   </div>
