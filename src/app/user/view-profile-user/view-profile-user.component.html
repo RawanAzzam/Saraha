@@ -759,20 +759,22 @@
                                 <div class="central-meta">
                                     <div class="create-post">Send Message</div>
                                     <div class="contact-box">
-                                        <form class="example-form" [formGroup]="replyForm">
+                                        <form class="example-form" [formGroup]="sendMessageForm">
                                             <mat-form-field class="example-full-width" appearance="fill">
                                                 <mat-label>Message Content</mat-label>
-                                                <textarea rows="4" type="text" matInput
-                                                    formControlName="messageContent">
-                                                  </textarea>
+                                                <textarea rows="4" type="text" matInput formControlName="messageContent">
+                                              </textarea>
                                             </mat-form-field>
                                             <br>
-
-                                         
-
-                                            <button (click)="replyMessage()">Send</button>
+                                            <div class="setting-row">
+                                                <span>Ask Anonymously</span>
+                                                <input type="checkbox" id="switch00" (change)="changeAnonymously($event)"/> 
+                                                <label for="switch00"  data-off-label="OFF"></label>
+                                            </div>
+                                           
+                                    
+                                            <button (click)="replyMessage()">Send Message</button>
                                         </form>
-
 
                                         <!-- <form method="post" class="c-form">
                                                 <div>
@@ -909,14 +911,18 @@
 
 
 <ng-template #callSendMessageDailog>
-    <form class="example-form" [formGroup]="replyForm">
+    <form class="example-form" [formGroup]="sendMessageForm">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Message Content</mat-label>
             <textarea rows="4" type="text" matInput formControlName="messageContent">
           </textarea>
         </mat-form-field>
         <br>
-
+        <div class="setting-row">
+            <span>Ask Anonymously</span>
+            <input type="checkbox" id="switch00" formControlName="is_Anon" (change)="changeAnonymously($event)"/> 
+            <label for="switch00"  data-off-label="OFF"></label>
+        </div>
        
 
         <button (click)="replyMessage()">Send Message</button>

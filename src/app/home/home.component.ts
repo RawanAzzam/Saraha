@@ -6,6 +6,7 @@ import { ContactUsService } from '../Services/contact-us.service';
 import { EventsService } from '../Services/events.service';
 import { FeatureService } from '../Services/feature.service';
 import { HomePageService } from '../Services/home-page.service';
+import { PurchaseService } from '../Services/purchase.service';
 import { TestimonialService } from '../Services/testimonial.service';
 
 @Component({
@@ -36,11 +37,17 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.spinner.hide();
     }, 3000);
+
+    
+    this.purchaseService.IsPremiumExpire();
   }
 
   CreateMessage(){
 this.contactUS.CreateNewMessage(this.createMessage.value);
   }
-  constructor(private spinner: NgxSpinnerService,private contactUS : ContactUsService, public home:HomePageService,public eventService:EventsService, public testimonial: TestimonialService) { }
+  constructor(private spinner: NgxSpinnerService,
+    private contactUS : ContactUsService,
+     public home:HomePageService,public eventService:EventsService, 
+     public testimonial: TestimonialService,private purchaseService:PurchaseService) { }
 
 }

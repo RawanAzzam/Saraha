@@ -6,7 +6,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { VisaService } from 'src/app/Services/visa.service';
 import * as signalR from "@microsoft/signalr";
 import { ToastrService } from 'ngx-toastr';
-import {render} from 'creditcardpayments/creditCardPayments';
+//import {render} from 'creditcardpayments/creditCardPayments';
 
 
 @Component({
