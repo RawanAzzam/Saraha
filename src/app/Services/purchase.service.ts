@@ -32,6 +32,8 @@ export class PurchaseService {
       this.OServices=result;
      
     })
+
+    
   }
   
   
@@ -40,6 +42,11 @@ export class PurchaseService {
   
   
   
-  
+  IsPremiumExpire(){
+    this.http.get("https://localhost:44324/Api/Purchase/IsPremiumExpire").subscribe((result)=>
+    {
+     
+    })
+  }
   
   }

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private tostar:ToastrService) { }
     //id = 1 ;
   messages : any =[];
   allMessages:any=[];
@@ -33,10 +34,10 @@ export class MessageService {
   }
 
   createNewMessage(message:any){
-    debugger;
-    if(message.is_Anon == null) message.is_Anon = false
+    
     this.http.post('https://localhost:44324/api/Message',message).subscribe((result) => {
       console.log(result);
+      this.tostar.success("Message Sent");
     },Error => {
       console.log(Error);
     })

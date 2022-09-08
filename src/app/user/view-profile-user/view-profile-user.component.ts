@@ -19,61 +19,60 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ViewProfileUserComponent implements OnInit {
 
-  constructor(public userService : UserService,private route:ActivatedRoute,public viewService:ViewProfileService,
-    private dialog:MatDialog,public messageService:MessageService,
-    private loginService:LoginService,public post:PostService,private reportService:ReportService,
-    public followService:FollowService,private toaster :ToastrService) { }
-    title = 'Frontend';
-    notification:any ;
-   connection = new signalR.HubConnectionBuilder()
-   .configureLogging(signalR.LogLevel.Debug)
-   .withUrl("https://localhost:44324/messageHub", {
-     skipNegotiation: true,
-     transport: signalR.HttpTransportType.WebSockets
-   })
-   .build();
-   id : any
- 
-   @ViewChild('callSendMessageDailog') callSendMessageDailog! :TemplateRef<any>;
-   @ViewChild('callReportDailog') callReportDailog! :TemplateRef<any>;
-   @ViewChild('callReportPostDailog') callReportPostDailog! :TemplateRef<any>;
+  constructor(public userService: UserService, private route: ActivatedRoute, public viewService: ViewProfileService,
+    private dialog: MatDialog, public messageService: MessageService,
+    private loginService: LoginService, public post: PostService, private reportService: ReportService,
+    public followService: FollowService, private toaster: ToastrService) { }
+  title = 'Frontend';
+  notification: any;
+  connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("https://localhost:44324/messageHub", {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
+    .build();
+  id: any
 
-   replyForm : FormGroup = new FormGroup(
-    {
-      messageContent : new FormControl(),
-      is_Anon : new FormControl(),
-      messageDate : new FormControl(),
-      userFrom : new FormControl(),
-      userTo : new FormControl(),
-    }
-   )
+  @ViewChild('callSendMessageDailog') callSendMessageDailog!: TemplateRef<any>;
+  @ViewChild('callReportDailog') callReportDailog!: TemplateRef<any>;
+  @ViewChild('callReportPostDailog') callReportPostDailog!: TemplateRef<any>;
 
-   reportForm :FormGroup = new FormGroup(
+  sendMessageForm: FormGroup = new FormGroup(
     {
-      Message : new FormControl(),
-      UserFrom : new FormControl(),
-      UserTo : new FormControl(),
-      is_Anon : new FormControl()
+      messageContent: new FormControl(),
+      is_Anon: new FormControl(),
+      messageDate: new FormControl(),
+      userFrom: new FormControl(),
+      userTo: new FormControl(),
     }
   )
 
-   @Input()
-ngSwitchCase: any
+  reportForm: FormGroup = new FormGroup(
+    {
+      Message: new FormControl(),
+      UserFrom: new FormControl(),
+      UserTo: new FormControl(),
+      is_Anon: new FormControl()
+    }
+  )
+
+  @Input()
+  ngSwitchCase: any
   ngOnInit(): void {
     this.connection.on("MessageReceived", (message) => {
       console.log(message);
-      
-      this.notification=message;
+
+      this.notification = message;
       debugger;
-      if(this.notification!=null && this.notification.userToId ==Number(localStorage.getItem('userId')))
-      {
-        
-       this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
+      if (this.notification != null && this.notification.userToId == Number(localStorage.getItem('userId'))) {
+
+        this.toaster.success(this.notification.userFrom + " " + this.notification.notificationText);
 
       }
     });
- //   this.connection.start().catch(err => document.write(err));
-this.id = this.route.snapshot.params['id']
+    //   this.connection.start().catch(err => document.write(err));
+    this.id = this.route.snapshot.params['id']
 
     this.viewService.getUserById(this.id);
     this.viewService.getPost(this.id);
@@ -81,109 +80,126 @@ this.id = this.route.snapshot.params['id']
     this.post.GetPostLikedBy(this.id);
     this.post.getlikecount(this.id);
     this.messageService.getMessagescountbyid(this.id);
-    this.followService.isFollow(Number(localStorage.getItem("userId")),this.id);
-    this.followService.isBlock(Number(localStorage.getItem("userId")),this.id);
-    this.followService.isUserBlockMe(this.id ,Number(localStorage.getItem("userId")));
+    this.followService.isFollow(Number(localStorage.getItem("userId")), this.id);
+    this.followService.isBlock(Number(localStorage.getItem("userId")), this.id);
+    this.followService.isUserBlockMe(this.id, Number(localStorage.getItem("userId")));
     this.followService.getFollowers(this.id);
     this.followService.getFollowing(this.id);
 
   }
 
-  openSendMessageDailog(){
-    this.replyForm.controls["userTo"].setValue(Number(this.id));
+  openSendMessageDailog() {
+    this.sendMessageForm.controls["userTo"].setValue(Number(this.id));
 
-   this.dialog.open(this.callSendMessageDailog)
+    this.dialog.open(this.callSendMessageDailog)
   }
 
-  replyMessage(){
-    if(!this.followService.isUserBlockMee)
- {   this.replyForm.controls["userTo"].setValue(Number(this.id));
-   this.replyForm.controls["messageDate"].setValue(new Date());
-   this.replyForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
-   this.replyForm.value.is_Anon = !this.viewService.user.is_Premium;
-   
-   this.messageService.createNewMessage(this.replyForm.value);
-   this.toaster.success("Message Sent");
+  replyMessage() {
+    if (!this.followService.isUserBlockMee) {
+      this.sendMessageForm.controls["userTo"].setValue(Number(this.id));
+      this.sendMessageForm.controls["messageDate"].setValue(new Date());
+      this.sendMessageForm.controls["userFrom"].setValue(Number(localStorage.getItem('userId')));
+       this.sendMessageForm.controls['is_Anon'].setValue(this.is_anon);
+      console.log(this.sendMessageForm.value)
+      this.messageService.createNewMessage(this.sendMessageForm.value);
+      
 
-  }else{
-   this.toaster.error("You cannot send message to "+this.viewService.user.username+" because you're blocked")
-  }
+    } else {
+      this.toaster.error("You cannot send message to " + this.viewService.user.username + " because you're blocked")
+    }
   }
 
-  change(evant:any){
-    console.log(this.replyForm.value)
+  change(evant: any) {
+    console.log(this.sendMessageForm.value)
   }
-  CommentForm:FormGroup = new FormGroup({
-    commenttext:new FormControl('',Validators.required),
+  CommentForm: FormGroup = new FormGroup({
+    commenttext: new FormControl('', Validators.required),
     userid: new FormControl(),
     // imagepath : new FormControl (''),
-    postid : new FormControl()})
+    postid: new FormControl()
+  })
 
-    userId:any;
-    CreateLike(postId: number){
-    
-          this.userId=localStorage.getItem('userId');
-          this.post.createLike(postId,this.userId);
-    }
-    createComment(postId:number){
-      this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
-      this.CommentForm.value.postid=postId;
-      this.CommentForm.value.imagepath=null;
-      this.post.createComment(this.CommentForm.value);
-    }
-    postId:any;
-changePostId(Id:any){
-this.postId=Id;
-}
+  userId: any;
+  CreateLike(postId: number) {
 
-reportUser(){
-  this.reportService.createReport(this.reportForm.value);
-}
-
-isOther = false
-changeOther(){
-  if(this.reportForm.value.Message == 'Other')
-  this.isOther = true;
-  else
-  this.isOther = false;
-}
-
-openReportDailog(){
-  this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
-  this.reportForm.controls["UserTo"].setValue(Number(this.id));
-
- this.dialog.open(this.callReportDailog)
-}
-
-openReportPostDailog(){
-  this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
-  this.reportForm.controls["UserTo"].setValue(Number(this.id));
-
- this.dialog.open(this.callReportPostDailog)
-}
-
-followUser(){
-  if(!this.followService.isUserBlockMee)
-  
-  {const follow  = {
-    "userFrom":Number(localStorage.getItem('userId')),
-    "userTo": Number(this.id),
-    "followDate":new Date()
+    this.userId = localStorage.getItem('userId');
+    this.post.createLike(postId, this.userId);
+  }
+  createComment(postId: number) {
+    this.CommentForm.value.userid = Number(localStorage.getItem('userId'));
+    this.CommentForm.value.postid = postId;
+    this.CommentForm.value.imagepath = null;
+    this.post.createComment(this.CommentForm.value);
+  }
+  postId: any;
+  changePostId(Id: any) {
+    this.postId = Id;
   }
 
-  this.followService.createFollow(follow);}
-  else{
-    this.toaster.error("You CAN NOT Follow "+this.viewService.user.username+" Because blocked you")
+  reportUser() {
+    this.reportService.createReport(this.reportForm.value);
+  }
+
+  isOther = false
+  changeOther() {
+    if (this.reportForm.value.Message == 'Other')
+      this.isOther = true;
+    else
+      this.isOther = false;
+  }
+
+  openReportDailog() {
+    this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
+    this.reportForm.controls["UserTo"].setValue(Number(this.id));
+
+    this.dialog.open(this.callReportDailog)
+  }
+
+  openReportPostDailog() {
+    this.reportForm.controls["UserFrom"].setValue(Number(localStorage.getItem('userId')));
+    this.reportForm.controls["UserTo"].setValue(Number(this.id));
+
+    this.dialog.open(this.callReportPostDailog)
+  }
+
+  followUser() {
+    if (!this.followService.isUserBlockMee) {
+      const follow = {
+        "userFrom": Number(localStorage.getItem('userId')),
+        "userTo": Number(this.id),
+        "followDate": new Date()
+      }
+
+      this.followService.createFollow(follow);
+    }
+    else {
+      this.toaster.error("You CAN NOT Follow " + this.viewService.user.username + " Because blocked you")
+
+    }
 
   }
-  
-}
 
-deleteFollowByUser(){
-  this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),Number(this.id));
-}
+  deleteFollowByUser() {
+    this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')), Number(this.id));
+  }
 
-updateBlockUser(){
-  this.followService.updateBlockUser(Number(localStorage.getItem('userId')),Number(this.id),1);
-}
+  updateBlockUser() {
+    this.followService.updateBlockUser(Number(localStorage.getItem('userId')), Number(this.id), 1);
+  }
+
+  is_anon : boolean = false 
+  changeAnonymously(event: any) {
+    if (event.target.checked)
+      if (this.viewService.user.is_Premium)
+        {
+          this.toaster.error("You CAN NOT send message as Anonymously to " + this.viewService.user.username)
+          event.target.checked = false;
+        }
+      else
+        this.is_anon = event.target.checked
+    else
+      this.is_anon = event.target.checked
+     
+  }
+
 }
