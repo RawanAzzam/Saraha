@@ -37,6 +37,7 @@ getActivePepole(){
   },err=>{
   
   })
+
 }
   getAllLoginUsers(){
     this.http.get('https://localhost:44324/api/UserProfile/GetAllLoginUsers').subscribe((res)=>{
@@ -139,7 +140,11 @@ getActivePepole(){
     console.log(this.searchUserResult);
     })
   }
+  getNotificaition(userLoggedIn : any){
+  this.http.get("https://localhost:44324/api/UserProfile/Notification/"+userLoggedIn+'/').subscribe((res)=>{
   
+  },err=>{
   
+  })}
 
 }

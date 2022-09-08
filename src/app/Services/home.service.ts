@@ -27,6 +27,7 @@ export class HomeService {
   }
 
   uploadImage(file:FormData,index:number){
+    debugger;
     switch(index){
       ////////////////////////1
       case 1 : this.http.post('https://localhost:44324/api/Home/UploadLogo',file).subscribe((result) => {
