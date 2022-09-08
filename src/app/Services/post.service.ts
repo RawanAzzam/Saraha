@@ -49,6 +49,16 @@ export class PostService {
       console.log(Error);
     })
   }
+  IsLike :any;
+  CheckIfLiked(userId:number , postId:number){
+    
+    this.http.get('https://localhost:44324/api/Like/IsLike/'+userId + '/'+postId).subscribe((result) => {
+      this.IsLike = result;
+  
+    },Error => {
+      console.log(Error);
+    })
+  }
   likes=new Map();
   GetPostLikedBy(postId:number){ 
     debugger;
