@@ -140,11 +140,18 @@ getActivePepole(){
     console.log(this.searchUserResult);
     })
   }
+  
   getNotificaition(userLoggedIn : any){
   this.http.get("https://localhost:44324/api/UserProfile/Notification/"+userLoggedIn+'/').subscribe((res)=>{
   
   },err=>{
   
   })}
+  UpdateNotIsRead(userLoggedIn : any){
+    this.http.get("https://localhost:44324/api/UserProfile/UpdateNot/"+userLoggedIn+'/').subscribe((res)=>{
+    
+    },err=>{
+    
+    })}
 
 }

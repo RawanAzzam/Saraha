@@ -12,7 +12,7 @@
 
                         <div class="central-meta item" *ngFor="let message of this.messageService.userMessages">
                          
-                            <div class="user-post">
+                            <div class="user-post" id="{{message.messageId}}">
                                 <div class="friend-info">
                                     <figure>
                                         <img *ngIf="!message.is_Anon" src="./../../assets/{{message.userFromImage}}" alt="">
