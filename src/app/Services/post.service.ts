@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class PostService {
 
-  constructor(private http:HttpClient,public loginservice:LoginService) { }
+  constructor(private http:HttpClient,public loginservice:LoginService,private toastr:ToastrService) { }
   posts : any = [{}]
   postcount : any;
   postImage:any;
@@ -28,6 +29,7 @@ export class PostService {
     debugger;
     this.http.post('https://localhost:44324/api/Post/CreatePost',post).subscribe((result) =>{
       console.log(result)
+      this.toastr.success("Create Post Successfully")
     },Erorr =>{
       console.log(Erorr)
     })
@@ -98,29 +100,41 @@ commentCount:number=0;
     // this.Postlike.postId=postId;
     this.http.get('https://localhost:44324/api/Like/CreateLike/'+userId+'/'+postId + '/'+Number(localStorage.getItem('userId')) ).subscribe((result) =>{
       console.log(result)
+      this.toastr.success("liked Post Successfully")
+
     },Erorr =>{
       console.log(Erorr)
       
     })
+
+    window.location.reload();
   }
 
   createComment(comment: any){
     debugger;
     this.http.post('https://localhost:44324/api/Comment/CreateComment', comment).subscribe((result) =>{
       console.log(result)
+      this.toastr.success("Commented of Post Successfully")
+
     },Erorr =>{
       console.log(Erorr)
       
     })
+
+    window.location.reload();
+
   }
   
   
   deletePost(id:number){
     this.http.delete('https://localhost:44324/api/Post/delete/'+id).subscribe((resp)=>{
-     
+      this.toastr.success("Delete Post Successfully")
+
     },err=>{
      
     })
+    window.location.reload();
+
   }
 
 
@@ -135,11 +149,12 @@ console.log(body);
 this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
       // this.spinner.hide();
       // this.toaster.success('Updated |Successfully');
+      this.toastr.success("Updated Post Successfully")
+
     },err=>{
       // this.spinner.hide();
       // this.toaster.error(err.message);
     })
-   window.location.reload();
   }
   PinPost (postId :any,isPin:any)
   {
@@ -148,6 +163,8 @@ this.http.put('https://localhost:44324/api/Post',body).subscribe((resp)=>{
     this.http.get('https://localhost:44324/api/Post/PinPost/'+postId+'/'+isPin).subscribe((resp)=>{
       // this.spinner.hide();
       // this.toaster.success('Updated |Successfully');
+            this.toastr.success("Pin Post Successfully")
+
     },err=>{
       // this.spinner.hide();
       // this.toaster.error(err.message);

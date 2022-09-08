@@ -16,7 +16,8 @@ export class MakeTestimonyComponent implements OnInit {
     userid: new FormControl('')
 })
 id: any;
-  constructor(private Testimonial:TestimonialService,public loginservice:LoginService,private toaster:ToastrService) { }
+  constructor(public Testimonial:TestimonialService,public loginservice:LoginService,
+    private toaster:ToastrService) { }
   title = 'Frontend';
   notification:any ;
  connection = new signalR.HubConnectionBuilder()

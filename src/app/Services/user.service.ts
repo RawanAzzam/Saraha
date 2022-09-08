@@ -56,9 +56,9 @@ getActivePepole(){
     else
     {
       if(user.gender == 'Female')
-      user.imagepath = "Unknown_person.jpg";
+      user.imagepath = "Female.jpeg";
       else
-      user.imagepath = "Unknown_person.jpg";
+      user.imagepath = "Male,jpeg";
     }
     debugger;
     this.http.post('https://localhost:44324/api/UserProfile/Register',user).subscribe((result) =>{

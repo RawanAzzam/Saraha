@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 export class ActivityService {
   activityUserLike = new Map();
   activityUserComment = new Map();
-
+  activityUserFollow = new Map();
   constructor(private http:HttpClient) { }
 
    userActivity : any = []
@@ -21,6 +21,7 @@ export class ActivityService {
        { 
          if(activity.activityName == 'like') this.getUserbyLikeId(activity.likeId);
          if(activity.activityName == 'comment') this.getUserbyCommentId(activity.commentId);
+         if(activity.activityName == 'follow') this.getUserByFollowId(activity.followId);
         }
     },Error => {
       console.log(Error);
@@ -40,6 +41,15 @@ export class ActivityService {
     this.http.get("https://localhost:44324/api/Activity/GetUserByCommentId/"+commentId).subscribe((result) => {
       console.log(result);
      this.activityUserComment.set(commentId,result);
+    },Error => {
+      console.log(Error);
+    })
+  }
+
+  getUserByFollowId(followId:Number){
+    this.http.get("https://localhost:44324/api/Activity/GetUserByFollowId/"+followId).subscribe((result) => {
+      console.log(result);
+     this.activityUserFollow.set(followId,result);
     },Error => {
       console.log(Error);
     })

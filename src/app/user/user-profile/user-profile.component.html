@@ -324,9 +324,14 @@
                                             </div>
                                             <div class="post-meta">
                                                 <div class="post-map">
+                                                    <div class="description">
+                                                        <p>
+                                                            {{post.postText}} 
+                                                        </p>
+                                                    </div>
                                                     <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
-                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                                            <img src="./../../assets/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -336,11 +341,7 @@
                                                     </ul>
                                                 </div><!-- near by map -->
     
-                                                <div class="description">
-                                                    <p>
-                                                        {{post.postText}} 
-                                                    </p>
-                                                </div>
+                                               
                                                 <div class="detail" style=" margin-left: -147px;" *ngIf="post.postType=='msg'">
 												
                                                     <div class="description" >
@@ -569,26 +570,7 @@
                                                                         <input formControlName="userid" hidden>
                                                                         <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                         <div class="add-smiles">
-                                                                            <!-- <div class="uploadimage">
-                                                                                <i class="fa fa-image"></i>
-                                                                                <label class="fileContainer">
-                                                                                    <input type="file">
-                                                                                </label>
-                                                                            </div> -->
-                                                                            <!-- <div class="smiles-bunch">
-                                                                                <i class="em em---1"></i>
-                                                                                <i class="em em-smiley"></i>
-                                                                                <i class="em em-anguished"></i>
-                                                                                <i class="em em-laughing"></i>
-                                                                                <i class="em em-angry"></i>
-                                                                                <i class="em em-astonished"></i>
-                                                                                <i class="em em-blush"></i>
-                                                                                <i class="em em-disappointed"></i>
-                                                                                <i class="em em-worried"></i>
-                                                                                <i class="em em-kissing_heart"></i>
-                                                                                <i class="em em-rage"></i>
-                                                                                <i class="em em-stuck_out_tongue"></i>
-                                                                            </div> -->
+                                                                          
     
                                                                         </div>
                                                                         <a class="addnewforum" style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;" (click)="createComment(post.postId)" type="submit">submit</a>
@@ -599,65 +581,7 @@
                                                         </ul>
                                                     </div>
 												</div>
-												<!-- <div class="coment-area" style="">
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div> -->
+												
 											</div>
 										</div>
 									</div>   
@@ -689,9 +613,14 @@
                                          
                                             <div class="post-meta">
                                                 <div class="post-map">
+                                                    <div class="description" >
+                                                        <p>
+                                                            {{post.postText}} 
+                                                        </p>
+                                                    </div>
                                                     <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
-                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                                            <img src="./../../assets/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -701,11 +630,7 @@
                                                     </ul>
                                                 </div><!-- near by map -->
 
-                                                <div class="description" >
-                                                    <p>
-                                                        {{post.postText}} 
-                                                    </p>
-                                                </div>
+                                              
                                                 <div class="we-video-info">
                                                     <ul>
                                                         <li style="margin-right: 13px;">
