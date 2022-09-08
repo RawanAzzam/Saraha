@@ -41,15 +41,21 @@
                                                         <div *ngFor="let user of this.userService.searchUserResult" class="col-lg-4 col-md-6 col-sm-6">
                                                             <div class="friend-box">
                                                                 <figure>
-                                                                    <img src="../../../assets/{{user.imagepath}}" style="object-fit:cover ; height:200px; width:200" alt="">
+                                                                    <img  src="./assets/sar/images/resources/frnd-cover1.jpg" alt="">
                                                                 </figure>
+                                                                <div class="frnd-meta">
+                                                                    <img  style="     max-height: 70px;
+                                                                    min-height: 70px;
+                                                                    max-width: 70px;
+                                                                    min-width: 70px;" src="../../../assets/{{user.imagepath}}" alt="">
+                                                                </div>
                                                                 <div class="frnd-meta">
                                                                    
                                                                     <ul class="frnd-info">
-                                                                        <li>Username: {{user.username}}</li>
-                                                                        <li>Email: {{user.email}}</li>
-                                                                        <li>Phone number: {{user.phonenumber}}</li>
-                                                                        <li>Gender: {{user.gender}}</li>
+                                                                        <li><strong>Username: </strong>{{user.username}}</li>
+                                                                        <li> <strong>Email: </strong> {{user.email}}</li>
+                                                                        <li><strong>Phone number:  </strong>{{user.phonenumber}}</li>
+                                                                        <li> <strong>Gender: </strong>{{user.gender}}</li>
                                                                     </ul>
                                                                     <!-- <a class="send-mesg" href="#" title="">Message</a> -->
                                                                     <div class="more-opotnz">
