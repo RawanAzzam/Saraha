@@ -14,8 +14,16 @@ export class NavBarComponent implements OnInit {
 
   constructor(public userService:UserService,private loginService:LoginService, public home:HomePageService,private toaster :ToastrService) { }
   title = 'Frontend';
+  nCount:any;
   notification :any = [];
     connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("https://localhost:44324/messageHub", {
+      skipNegotiation: true,
+      transport: signalR.HttpTransportType.WebSockets
+    })
+    .build();
+    con = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
     .withUrl("https://localhost:44324/messageHub", {
       skipNegotiation: true,
@@ -30,14 +38,22 @@ export class NavBarComponent implements OnInit {
     this.home.getHome();
     this.connection.on("NotificationReceived", (message) => {
       console.log(message);
-      debugger;
       this.notification=message;
       
     
    
       
     });
+
     this.connection.start().catch(err => document.write(err));
+    this.con.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
+    });
+    this.con.start().catch(err => document.write(err));
   }
   getNot()
   {
@@ -45,9 +61,10 @@ this.userService.getNotificaition(Number(localStorage.getItem('userId')));
 
 
   }
-  updateIsRead()
+  updateIsRead(notId :any)
   {
-this.userService.UpdateNotIsRead(Number(localStorage.getItem('userId')));
+    debugger;
+this.userService.UpdateNotIsRead(Number(localStorage.getItem('userId')),notId);
   }
   }
 

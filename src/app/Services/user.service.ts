@@ -147,8 +147,9 @@ getActivePepole(){
   },err=>{
   
   })}
-  UpdateNotIsRead(userLoggedIn : any){
-    this.http.get("https://localhost:44324/api/UserProfile/UpdateNot/"+userLoggedIn+'/').subscribe((res)=>{
+  UpdateNotIsRead(userLoggedIn : any,notId :any){
+    debugger;
+    this.http.get("https://localhost:44324/api/UserProfile/UpdateNot/"+userLoggedIn+'/'+notId+'/').subscribe((res)=>{
     
     },err=>{
     
