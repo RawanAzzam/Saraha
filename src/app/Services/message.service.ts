@@ -34,7 +34,7 @@ export class MessageService {
   }
 
   createNewMessage(message:any){
-    
+    if(message.is_Anon == null) message.is_Anon = false;
     this.http.post('https://localhost:44324/api/Message',message).subscribe((result) => {
       console.log(result);
       this.tostar.success("Message Sent");
