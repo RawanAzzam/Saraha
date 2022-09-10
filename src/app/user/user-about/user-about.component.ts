@@ -36,7 +36,6 @@ export class UserAboutComponent implements OnInit {
       
     });
 
-    this.connection.start().catch(err => document.write(err));
     this.connection.on("NotCount", (count) => {
       debugger;
 
