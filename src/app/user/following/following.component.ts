@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FollowingComponent implements OnInit {
 
   constructor(public followService:FollowService,private toaster:ToastrService) { }
+ nCount:any;
   title = 'Frontend';
   notification:any ;
  connection = new signalR.HubConnectionBuilder()
@@ -32,6 +33,14 @@ export class FollowingComponent implements OnInit {
        this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
 
       }
+    });
+    this.connection.start().catch(err => document.write(err));
+    this.connection.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
     });
     this.connection.start().catch(err => document.write(err));
     
