@@ -247,6 +247,11 @@
                                                 </div>
                                                 <div class="post-meta">
                                                     <div class="post-map">
+                                                        <div class="description">
+                                                            <p>
+                                                                {{post.postText}}
+                                                            </p>
+                                                        </div>
                                                         <div class="nearby-map">
                                                             <figure>
                                                                 <img src="./../../assets/{{post.postImage}}"
@@ -274,11 +279,7 @@
                                                         </ul>
                                                     </div><!-- near by map -->
 
-                                                    <div class="description">
-                                                        <p>
-                                                            {{post.postReply}}
-                                                        </p>
-                                                    </div>
+                                                  
                                                     <div class="detail" style=" margin-left: -147px;"
                                                         *ngIf="post.postType=='msg'">
 
@@ -589,9 +590,14 @@
 
                                             <div class="post-meta">
                                                 <div class="post-map">
+                                                    <div class="description">
+                                                        <p>
+                                                            {{post.postText}}
+                                                        </p>
+                                                    </div>
                                                     <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
-                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                                            <img src="./../../assets/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
@@ -616,11 +622,7 @@
                                                     </ul>
                                                 </div><!-- near by map -->
 
-                                                <div class="description">
-                                                    <p>
-                                                        {{post.postText}}
-                                                    </p>
-                                                </div>
+                                               
                                                 <div class="we-video-info">
                                                     <ul>
                                                         <li *ngIf="!this.postService.IsLike.get(post.postId)"

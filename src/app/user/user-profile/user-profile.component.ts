@@ -74,8 +74,6 @@ this.postId=Id;
 
       }
     });
-    this.connection.start().catch(err => document.write(err));
-    this.connection.start().catch(err => document.write(err));
     this.connection.on("NotCount", (count) => {
       debugger;
 
