@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class UserAboutComponent implements OnInit {
 
   constructor(public userService:UserService,private loginService:LoginService,public post:PostService,private toaster:ToastrService) { }
+  nCount :any;
   title = 'Frontend';
   notification:any ;
  connection = new signalR.HubConnectionBuilder()
@@ -33,6 +34,15 @@ export class UserAboutComponent implements OnInit {
        this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
       };
       
+    });
+
+    this.connection.start().catch(err => document.write(err));
+    this.connection.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
     });
     this.connection.start().catch(err => document.write(err));
     

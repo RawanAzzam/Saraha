@@ -36,6 +36,7 @@ export class NavBarComponent implements OnInit {
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
     this.home.getHome();
+    
     this.connection.on("NotificationReceived", (message) => {
       console.log(message);
       this.notification=message;

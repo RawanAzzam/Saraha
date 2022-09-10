@@ -414,7 +414,9 @@
             <li *ngIf="obj.commentId !=0 || obj.messageId!=0" style="    list-style: none; ">
                 <div style="padding-top: 13px;background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="obj.is_Read==0">
                 <div class="comet-avatar">
-                    <img alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;">
+                    <a [routerLink]="['/user/viewProfile',obj.userFrom]">
+                    <img alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;border-radius: 100%;">
+                </a>
                 </div>
                 <div style="    padding-top: 13px;" class="we-comment">
                     <h5 style="color: #fa6342; margin-top: 12px;    color: #fa6342;
@@ -440,10 +442,10 @@
                 </div>
             </div>
             </li>
-            <li *ngIf="obj.followId !=0 || obj.likeId!=0" style="    list-style: none; " >
+            <li *ngIf="obj.followId !=0 || obj.likeId!=0" style=" list-style: none; " >
                 <div style="padding-top: 13px; background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="obj.is_Read==0">
                 <div class="comet-avatar">
-                  <a [routerLink]="['/user/my-timeline/{{obj.userFromId}}']">  <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;"></a>
+                  <a [routerLink]="['/user/viewProfile',obj.userFrom]">  <img alt="" src="../../../../assets/{{obj.message}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;border-radius: 100%;"></a>
 
                 </div>
                 <div class="we-comment" style="padding-top: 13px;">
