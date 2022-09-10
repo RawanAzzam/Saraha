@@ -16,6 +16,7 @@ export class MakeTestimonyComponent implements OnInit {
     userid: new FormControl('')
 })
 id: any;
+nCount:any;
   constructor(public Testimonial:TestimonialService,public loginservice:LoginService,
     private toaster:ToastrService) { }
   title = 'Frontend';
@@ -44,6 +45,13 @@ id: any;
        this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
 
       }
+    });
+    this.connection.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
     });
     this.connection.start().catch(err => document.write(err));
     this.loginservice.checkIfLoginOrNot();    

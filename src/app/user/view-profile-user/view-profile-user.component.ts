@@ -25,6 +25,7 @@ export class ViewProfileUserComponent implements OnInit {
     public followService: FollowService, private toaster: ToastrService) { }
   title = 'Frontend';
   notification: any;
+  nCount :any;
   connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
     .withUrl("https://localhost:44324/messageHub", {
@@ -71,7 +72,14 @@ export class ViewProfileUserComponent implements OnInit {
 
       }
     });
-    //   this.connection.start().catch(err => document.write(err));
+      this.connection.on("NotCount", (count) => {
+        debugger;
+  
+        console.log(count);
+        this.nCount=count;
+  
+      });
+      this.connection.start().catch(err => document.write(err));
     this.id = this.route.snapshot.params['id']
 
     this.viewService.getUserById(this.id);
@@ -100,7 +108,8 @@ export class ViewProfileUserComponent implements OnInit {
        this.sendMessageForm.controls['is_Anon'].setValue(this.is_anon);
       console.log(this.sendMessageForm.value)
       this.messageService.createNewMessage(this.sendMessageForm.value);
-      
+      this.sendMessageForm.controls["messageContent"].setValue("");
+
 
     } else {
       this.toaster.error("You cannot send message to " + this.viewService.user.username + " because you're blocked")
@@ -128,6 +137,8 @@ export class ViewProfileUserComponent implements OnInit {
     this.CommentForm.value.postid = postId;
     this.CommentForm.value.imagepath = null;
     this.postService.createComment(this.CommentForm.value);
+    this.CommentForm.controls['commenttext'].setValue("");
+
   }
   postId: any;
   changePostId(Id: any) {

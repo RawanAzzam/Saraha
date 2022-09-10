@@ -247,6 +247,11 @@
                                                 </div>
                                                 <div class="post-meta">
                                                     <div class="post-map">
+                                                        <div class="description">
+                                                            <p>
+                                                                {{post.postText}}
+                                                            </p>
+                                                        </div>
                                                         <div class="nearby-map">
                                                             <figure>
                                                                 <img src="./../../assets/{{post.postImage}}"
@@ -274,11 +279,7 @@
                                                         </ul>
                                                     </div><!-- near by map -->
 
-                                                    <div class="description">
-                                                        <p>
-                                                            {{post.postText}}
-                                                        </p>
-                                                    </div>
+                                                  
                                                     <div class="detail" style=" margin-left: -147px;"
                                                         *ngIf="post.postType=='msg'">
 
@@ -292,8 +293,7 @@
                                                                     <a href="#" title="">Saraha Message</a>
                                                                 </div>
                                                                 <p style="margin-left: 0px;">
-                                                                    {{post.postReply}}
-
+                                                                    {{post.postText}}
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -306,7 +306,7 @@
                                                             <li *ngIf="!this.postService.IsLike.get(post.postId)"
                                                                 (click)="CreateLike(post.postId)"
                                                                 style="margin-right: 13px;">
-                                                                <span class="views" title="views">
+                                                                <span class="views" title="Likes">
                                                                     <i class="fa fa-thumbs-o-up"></i>
                                                                     <ins>
                                                                         {{this.postService.likes.get(post.postId).length}}
@@ -316,8 +316,9 @@
                                                             <li *ngIf="this.postService.IsLike.get(post.postId)"
                                                                 (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
                                                                 style="margin-right: 13px;">
-                                                                <span class="views" title="views">
-                                                                    <i class="fa fa-thumbs-up"></i>
+                                                                <span class="views" title="Likes">
+                                                                    <i class="fa fa-thumbs-up"
+                                                                        style="color:#fa6342"></i>
                                                                     <ins>
                                                                         {{this.postService.likes.get(post.postId).length}}
                                                                     </ins>
@@ -332,7 +333,8 @@
                                                                             class="fa fa-commenting"></i>
                                                                     </a>
 
-                                                                    <ins>{{post.comments}} </ins>
+                                                                    <ins>{{this.postService.Comments.get(post.postId).length}}
+                                                                    </ins>
                                                                 </span>
                                                             </li>
 
@@ -343,7 +345,8 @@
                                                         <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                     </a>
                                                 -->
-                                                            <span><strong></strong> <b></b><a title="">+ {{post.likes}}
+                                                            <span><strong></strong> <b></b><a title="">+
+                                                                    {{this.postService.likes.get(post.postId).length}}
                                                                     more </a>
                                                                 <a (click)="changePostId(post.postId)" type="button"
                                                                     class="" data-toggle="modal"
@@ -448,7 +451,7 @@
                                                 </div>
                                                 <div class="description">
                                                     <p style="margin-left:6px ;">
-                                                        {{post.postText}}
+                                                        {{post.postReply}}
 
                                                     </p>
                                                 </div>
@@ -467,7 +470,7 @@
                                                                     <a href="#" title="">Saraha Message</a>
                                                                 </div>
                                                                 <p style="margin-left: 0px;">
-                                                                    {{post.postReply}}
+                                                                    {{post.postText}}
 
                                                                 </p>
                                                             </div>
@@ -481,7 +484,7 @@
                                                             <li *ngIf="!this.postService.IsLike.get(post.postId)"
                                                                 (click)="CreateLike(post.postId)"
                                                                 style="margin-right: 13px;">
-                                                                <span class="views" title="views">
+                                                                <span class="views" title="Likes">
                                                                     <i class="fa fa-thumbs-o-up"></i>
                                                                     <ins>
                                                                         {{this.postService.likes.get(post.postId).length}}
@@ -491,8 +494,9 @@
                                                             <li *ngIf="this.postService.IsLike.get(post.postId)"
                                                                 (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
                                                                 style="margin-right: 13px;">
-                                                                <span class="views" title="views">
-                                                                    <i class="fa fa-thumbs-up"></i>
+                                                                <span class="views" title="Likes">
+                                                                    <i class="fa fa-thumbs-up"
+                                                                        style="color:#fa6342"></i>
                                                                     <ins>
                                                                         {{this.postService.likes.get(post.postId).length}}
                                                                     </ins>
@@ -507,7 +511,8 @@
                                                                             class="fa fa-commenting"></i>
                                                                     </a>
 
-                                                                    <ins>{{post.comments}} </ins>
+                                                                    <ins>{{this.postService.Comments.get(post.postId).length}}
+                                                                    </ins>
                                                                 </span>
                                                             </li>
 
@@ -518,7 +523,8 @@
                                                             <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
                                                         </a>
                                                     -->
-                                                            <span><strong></strong> <b></b><a title="">+ {{post.likes}}
+                                                            <span><strong></strong> <b></b><a title="">+
+                                                                    {{this.postService.likes.get(post.postId).length}}
                                                                     more </a>
                                                                 <a (click)="changePostId(post.postId)" type="button"
                                                                     class="" data-toggle="modal"
@@ -584,39 +590,45 @@
 
                                             <div class="post-meta">
                                                 <div class="post-map">
+                                                    <div class="description">
+                                                        <p>
+                                                            {{post.postText}}
+                                                        </p>
+                                                    </div>
                                                     <div class="nearby-map" *ngIf="post.postImage!=null">
                                                         <figure>
-                                                            <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                                            <img src="./../../assets/{{post.postImage}}" alt="">
                                                         </figure>
                                                     </div>
                                                     <ul class="like-dislike">
                                                         <!-- <li style="cursor:pointer ;" (click)="PinPost(post.postId,1)"><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li> -->
                                                         <li *ngIf="!this.postService.IsLike.get(post.postId)"
-                                                        style="cursor:pointer ;"><a class="bg-blue"
-                                                            (click)="CreateLike(post.postId)"
-                                                            title="Like Post"><i class="ti-thumb-up"></i></a>
-                                                    </li>
-                                                    <li *ngIf="this.postService.IsLike.get(post.postId)"
-                                                        style="cursor:pointer ;"><a class="bg-red"
-                                                            (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
-                                                            title="UnLike Post"><i class="ti-thumb-up"></i></a>
-                                                    </li>
+                                                            style="cursor:pointer ;"><a class="bg-blue"
+                                                                (click)="CreateLike(post.postId)" title="Like Post"><i
+                                                                    class="ti-thumb-up"></i></a>
+                                                        </li>
+                                                        <li *ngIf="this.postService.IsLike.get(post.postId)"
+                                                            style="cursor:pointer ;"><a class="bg-red"
+                                                                (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
+                                                                title="UnLike Post"><i class="ti-thumb-up"></i></a>
+                                                        </li>
+                                                        <li><a style="align-items:center ;align-content: center;"
+                                                                class="bg-yellow" title="Report"
+                                                                (click)="openReportPostDailog()">
+                                                                <i style="margin-top:3px ;height: 2px;"
+                                                                    class="ti-flag"></i></a></li>
 
 
                                                     </ul>
                                                 </div><!-- near by map -->
 
-                                                <div class="description">
-                                                    <p>
-                                                        {{post.postText}}
-                                                    </p>
-                                                </div>
+                                               
                                                 <div class="we-video-info">
                                                     <ul>
                                                         <li *ngIf="!this.postService.IsLike.get(post.postId)"
                                                             (click)="CreateLike(post.postId)"
                                                             style="margin-right: 13px;">
-                                                            <span class="views" title="views">
+                                                            <span class="views" title="Likes">
                                                                 <i class="fa fa-thumbs-o-up"></i>
                                                                 <ins> {{this.postService.likes.get(post.postId).length}}
                                                                 </ins>
@@ -625,8 +637,8 @@
                                                         <li *ngIf="this.postService.IsLike.get(post.postId)"
                                                             (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
                                                             style="margin-right: 13px;">
-                                                            <span class="views" title="views">
-                                                                <i class="fa fa-thumbs-up"></i>
+                                                            <span class="views" title="Likes">
+                                                                <i class="fa fa-thumbs-up" style="color:#fa6342"></i>
                                                                 <ins> {{this.postService.likes.get(post.postId).length}}
                                                                 </ins>
                                                             </span>
@@ -639,7 +651,7 @@
                                                                     <i data-target="#exampleModalCenter"
                                                                         class="fa fa-commenting"></i>
                                                                 </a>
-                                                                <ins>{{post.comments}}</ins>
+                                                                <ins>{{this.postService.Comments.get(post.postId).length}}</ins>
                                                             </span>
                                                         </li>
 
@@ -647,7 +659,8 @@
                                                     </ul>
                                                     <div class="users-thumb-list">
 
-                                                        <span><strong></strong> <b></b><a title="">+ {{post.likes}} more
+                                                        <span><strong></strong> <b></b><a title="">+
+                                                                {{this.postService.likes.get(post.postId).length}} more
                                                             </a>
                                                             <a (click)="changePostId(post.postId)" type="button"
                                                                 class="" data-toggle="modal"

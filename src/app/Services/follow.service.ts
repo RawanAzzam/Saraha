@@ -49,6 +49,7 @@ export class FollowService {
       this.isFollow(userFrom,userTo);
       this.isBlock(userFrom,userTo);
       this.getFollowers(userTo);
+      this.getFollowing(userFrom);
       this.toastr.success("UnFollow/UnBlock User Successfully")
 
      })

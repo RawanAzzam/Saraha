@@ -21,7 +21,9 @@ export class UserProfileComponent implements OnInit {
   constructor(public postService:PostService,public userService : UserService,public loginservice:LoginService
     ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService,private toaster : ToastrService) { }
     title = 'Frontend';
-     notification:any ;
+   
+    notification:any ;
+   nCount:any;
     connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
     .withUrl("https://localhost:44324/messageHub", {
@@ -72,7 +74,15 @@ this.postId=Id;
 
       }
     });
+    this.connection.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
+    });
     this.connection.start().catch(err => document.write(err));
+
     debugger;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);
@@ -111,6 +121,7 @@ createComment(postId:number){
   this.CommentForm.value.postid=postId;
   this.CommentForm.value.imagepath=null;
   this.postService.createComment(this.CommentForm.value);
+  this.CommentForm.controls['commenttext'].setValue("");
 }
 
 

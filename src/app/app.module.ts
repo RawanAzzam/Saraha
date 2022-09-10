@@ -13,17 +13,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { WaedComponent } from './waed/waed.component';
-import { ApppComponent } from './appp/appp.component';
 
 const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    WaedComponent,
-    ApppComponent,
-   
   ],
   imports: [
     
@@ -42,7 +37,7 @@ const routes: Routes = [];
     
     NgChartsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 2000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     })

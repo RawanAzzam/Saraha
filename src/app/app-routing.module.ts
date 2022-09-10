@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ApppComponent } from './appp/appp.component';
-
-import { AuthenticationModule } from './authentication/authentication.module';
 import { HomeComponent } from './home/home.component';
-
 import { UserModule } from './user/user.module';
-import { VisaComponent } from './user/visa/visa.component';
-import { WaedComponent } from './waed/waed.component';
 
 const routes: Routes = [
     {
@@ -18,10 +12,7 @@ const routes: Routes = [
       path:'Home',
       component:HomeComponent
       },
-      {
-      path:'test',
-      component:ApppComponent
-      },
+   
   {
     path:'authentication',
     loadChildren: () =>import('./authentication/authentication.module')
@@ -36,10 +27,7 @@ const routes: Routes = [
 path:'user',
 loadChildren: () => UserModule
 },
-{
-  path:'visa',
-  component:VisaComponent
-  },
+
 ];
 
 @NgModule({

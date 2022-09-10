@@ -18,6 +18,7 @@ export class MessagesComponent implements OnInit {
   constructor(public messageService:MessageService,private dialog:MatDialog ,
      public postService :PostService,public loginservice:LoginService,private reportService:ReportService,private toaster:ToastrService) { }
      title = 'Frontend';
+   nCount:any;
      notification:any ;
     connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
@@ -76,6 +77,13 @@ export class MessagesComponent implements OnInit {
          this.toaster.success(this.notification.title ,this.notification.notificationText);
   
         }
+      });
+      this.connection.on("NotCount", (count) => {
+        debugger;
+  
+        console.log(count);
+        this.nCount=count;
+  
       });
       this.connection.start().catch(err => document.write(err));
     this.loginservice.checkIfLoginOrNot();
