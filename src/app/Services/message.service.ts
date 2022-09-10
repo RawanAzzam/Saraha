@@ -38,11 +38,12 @@ export class MessageService {
     this.http.post('https://localhost:44324/api/Message',message).subscribe((result) => {
       console.log(result);
       this.tostar.success("Message Sent");
+      this.getMessagescountbyid(message.userTo);
     },Error => {
       console.log(Error);
     })
    
-    // window.location.reload();
+    
   }
   getAllMessages(){
 

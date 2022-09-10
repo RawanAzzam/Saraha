@@ -111,6 +111,7 @@ createComment(postId:number){
   this.CommentForm.value.postid=postId;
   this.CommentForm.value.imagepath=null;
   this.postService.createComment(this.CommentForm.value);
+  this.CommentForm.controls['commenttext'].setValue("");
 }
 
 

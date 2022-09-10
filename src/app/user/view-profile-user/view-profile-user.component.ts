@@ -100,7 +100,8 @@ export class ViewProfileUserComponent implements OnInit {
        this.sendMessageForm.controls['is_Anon'].setValue(this.is_anon);
       console.log(this.sendMessageForm.value)
       this.messageService.createNewMessage(this.sendMessageForm.value);
-      
+      this.sendMessageForm.controls["messageContent"].setValue("");
+
 
     } else {
       this.toaster.error("You cannot send message to " + this.viewService.user.username + " because you're blocked")
@@ -128,6 +129,8 @@ export class ViewProfileUserComponent implements OnInit {
     this.CommentForm.value.postid = postId;
     this.CommentForm.value.imagepath = null;
     this.postService.createComment(this.CommentForm.value);
+    this.CommentForm.controls['commenttext'].setValue("");
+
   }
   postId: any;
   changePostId(Id: any) {
