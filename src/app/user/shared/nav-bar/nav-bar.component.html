@@ -415,7 +415,9 @@
                 <div style="padding-top: 13px;background-color: whitesmoke;border-radius: 10px;margin-top: 4px;" *ngIf="obj.is_Read==0">
                 <div class="comet-avatar">
                     <a [routerLink]="['/user/viewProfile',obj.userFrom]">
-                    <img alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;border-radius: 100%;">
+                    <img *ngIf="obj.notType != null" alt="" src="../../../../assets/{{obj.notType}}" style="width:40px;height: 40px;margin-top:1pc;margin-left: 5px;border-radius: 100%;">
+                    <img *ngIf="obj.notType == null" src="../../../assets/Unknown_person.jpg" alt="">
+
                 </a>
                 </div>
                 <div style="    padding-top: 13px;" class="we-comment">
