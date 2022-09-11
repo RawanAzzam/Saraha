@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
   
    mnth =this.now.toLocaleString('default', { month: 'short' });
   constructor( public userservice:UserService , public contactUs:ContactUsService ,public report :ReportService,
-    public post : PostService,public active:UserService,public order:PurchaseService,public message:MessageService,public featureService:FeatureService,public weatherService :SarahaWeatherService,private loginService :LoginService) { }
+    public post : PostService,public active:UserService,public order:PurchaseService,public message:MessageService,
+    public featureService:FeatureService,public weatherService :SarahaWeatherService,private loginService :LoginService) { }
 //  MessageCount:number = this.message.getMessages().length;
-user :any =  this.userservice.getUserById(Number(localStorage.getItem('userId')));
 
 ngOnInit(): void {
   this.featureService.FeatureName();
@@ -45,23 +45,18 @@ this.post.getAll();
   
    this.contactUs.GetAll();
    this.userservice.getAll();
-  //  this.userservice.getUserById(Number(localStorage.getItem('country')));
+    this.userservice.getUserById(Number(localStorage.getItem('userId')));
    this.report.getAllUserReport();
    debugger;
-   this.weatherService.GetWeather();
    this.active.Activeusers();
  
-console.log(this.weatherService.weather);
    
 
   }
 // ********************************
 
 @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
-public hi()
-{
-  this.weatherService.GetWeather();
-}
+
 BarChart :any= [];
 
 canvas: any;

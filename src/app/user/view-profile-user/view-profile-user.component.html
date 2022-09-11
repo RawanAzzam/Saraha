@@ -19,8 +19,7 @@
                                 </div>
                                 <img src="../../../assets/user/images/resources/fav-banner.jpg" alt="">
                                 <ul class="profile-controls">
-                                    <li><a class="send-mesg" (click)="openSendMessageDailog()" title="Send Message"
-                                            data-toggle="tooltip"><i class="fa fa-comment"></i></a></li>
+                                  
                                     <li><a class="send-mesg" (click)="openReportDailog()" title="Report User"
                                             data-toggle="tooltip">
                                             <i class="fa fa-flag"></i></a></li>
@@ -146,34 +145,7 @@
                                             <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img
                                                     src="../../../assets/user/images/badges/badge3.png" alt=""></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="#" title="10 Years old User" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/year10.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Page Admin" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge1.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="100+ Refferal" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge8.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Tranding Posts" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge21.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="1000+ Subscribers" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge3.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="Pitnik Shirt winner" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge20.png" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a href="#" title="500+ Followers" data-toggle="tooltip"><img
-                                                    src="../../../assets/user/images/badges/badge10.png" alt=""></a>
-                                        </li> -->
+                                    
                                     </ul>
                                 </div>
                                 <div class="widget">
@@ -865,69 +837,33 @@
                                     </div>
                                 </div>
 
-                                <div class="widget">
-                                    <div class="weather-widget low-opacity bluesh">
+                                <div class="widget" style="height:30px ;">
+                                    <div class="weather-widget low-opacity bluesh" style="height:332px ;">
                                         <div class="bg-image"
-                                            style="background-image: url(images/resources/weather.jpg)"></div>
+                                            style="background-image: url(../assets/sar/images/resources/weather.jpg)">
+                                        </div>
                                         <span class="refresh-content"><i class="fa fa-refresh"></i></span>
                                         <div class="weather-week">
                                             <div class="icon sun-shower">
-                                                <div class="cloud"></div>
+                                                <div class=""></div>
                                                 <div class="sun">
                                                     <div class="rays"></div>
                                                 </div>
-                                                <div class="rain"></div>
+                                                <div class=""></div>
                                             </div>
                                         </div>
                                         <div class="weather-infos">
-                                            <span class="weather-tem">25</span>
-                                            <h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
+                                            <span class="weather-tem">{{userService.weather.temp}}</span>
+                                            <h3>{{userService.weather.description}}<i>{{userService.weather.city}} ,
+                                                    {{userService.weather.country}}</i></h3>
                                             <div class="weather-date skyblue-bg">
-                                                <span>MAY<strong>21</strong></span>
+                                                <span>{{mnth}}<strong>{{day1}}</strong></span>
                                             </div>
                                         </div>
-                                        <div class="monthly-weather">
-                                            <ul>
-                                                <li>
-                                                    <span>Sun</span>
-                                                    <a href="#" title=""><i class="wi wi-day-sunny"></i></a>
-                                                    <em>40°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Mon</span>
-                                                    <a href="#" title=""><i class="wi wi-day-cloudy"></i></a>
-                                                    <em>10°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Tue</span>
-                                                    <a href="#" title=""><i class="wi wi-day-hail"></i></a>
-                                                    <em>20°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Wed</span>
-                                                    <a href="#" title=""><i class="wi wi-day-lightning"></i></a>
-                                                    <em>34°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Thu</span>
-                                                    <a href="#" title=""><i class="wi wi-day-showers"></i></a>
-                                                    <em>22°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Fri</span>
-                                                    <a href="#" title=""><i class="wi wi-day-windy"></i></a>
-                                                    <em>26°</em>
-                                                </li>
-                                                <li>
-                                                    <span>Sat</span>
-                                                    <a href="#" title=""><i class="wi wi-day-sunny-overcast"></i></a>
-                                                    <em>30°</em>
-                                                </li>
-                                            </ul>
-                                        </div>
+
 
                                     </div><!-- Weather Widget -->
-                                </div><!-- weather-->
+                                </div>
 
 
 
@@ -965,25 +901,7 @@
 
 
 
-<ng-template #callSendMessageDailog>
-    <form class="example-form" [formGroup]="sendMessageForm">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Message Content</mat-label>
-            <textarea rows="4" type="text" matInput formControlName="messageContent">
-          </textarea>
-        </mat-form-field>
-        <br>
-        <div class="setting-row">
-            <span>Ask Anonymously</span>
-            <input type="checkbox" id="switch00" formControlName="is_Anon" (change)="changeAnonymously($event)" />
-            <label for="switch00" data-off-label="OFF"></label>
-        </div>
 
-
-        <button (click)="replyMessage()">Send Message</button>
-    </form>
-
-</ng-template>
 
 <div class="modal fade" id="Comments">
     <div class="modal-dialog" style="max-width:600px ;">
@@ -1046,7 +964,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button (click)="reportUser()">Report</button>
+        <button [mat-dialog-close]="true" (click)="reportUser()">Report</button>
     </form>
 
 </ng-template>
@@ -1071,7 +989,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button (click)="reportUser()">Report</button>
+        <button [mat-dialog-close]="true" (click)="reportUser()">Report</button>
     </form>
 
 </ng-template>

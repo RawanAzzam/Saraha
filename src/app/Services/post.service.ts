@@ -167,8 +167,11 @@ export class PostService {
     debugger;
 
     this.http.get('https://localhost:44324/api/Post/PinPost/' + postId + '/' + isPin).subscribe((resp) => {
-
+       if(isPin == 0)
+      this.toastr.success("UnPin Post Successfully")
+      else if(isPin == 1)
       this.toastr.success("Pin Post Successfully")
+
       this.GetPostInfoByUserId(Number(localStorage.getItem("userId")));
     }, err => {
 

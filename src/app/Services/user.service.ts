@@ -125,6 +125,7 @@ getActivePepole(){
       
       console.log(result);
       this.user = result;
+      this.getWeatherByCountry();
     },err => {
       console.log(err)
     })
@@ -154,5 +155,32 @@ getActivePepole(){
     },err=>{
     
     })}
+
+    weather : any
+    getWeatherByCountry(){
+      console.log("hi getWeatherByCountry")
+      debugger
+      console.log(this.user.country)
+       if(this.user.country != null)
+     { this.http.get('https://localhost:44324/weatherforecast/weather/'+this.user.country).subscribe((res)=>{
+      this.weather=res;
+      console.log(this.weather);
+      debugger
+      },err=>{
+        console.log(err);
+  
+      })}
+      else{
+        this.http.get('https://localhost:44324/weatherforecast/weather/'+"Jordan").subscribe((res)=>{
+      this.weather=res;
+      console.log("hello");
+      debugger
+      },err=>{
+        console.log(err);
+  
+      })
+      }
+
+    }
 
 }

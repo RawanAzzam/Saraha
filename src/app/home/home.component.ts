@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     message:new FormControl('',Validators.required),
 })
   ngOnInit(): void {
-    this.spinner.show();
     this.home.getHome();
     this.home.getAboutUs();
     this.home.getFeature();
@@ -34,9 +33,7 @@ export class HomeComponent implements OnInit {
     this.testimonial.GetOneTestimonial1();
     this.testimonial.GetOneTestimonial2();
     this.testimonial.GetOneTestimonial3();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000);
+  
 
     
     this.purchaseService.IsPremiumExpire();
@@ -45,8 +42,7 @@ export class HomeComponent implements OnInit {
   CreateMessage(){
 this.contactUS.CreateNewMessage(this.createMessage.value);
   }
-  constructor(private spinner: NgxSpinnerService,
-    private contactUS : ContactUsService,
+  constructor(    private contactUS : ContactUsService,
      public home:HomePageService,public eventService:EventsService, 
      public testimonial: TestimonialService,private purchaseService:PurchaseService) { }
 

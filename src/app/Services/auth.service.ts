@@ -63,6 +63,7 @@ export class AuthService {
     },err => {
       console.log(err)
         alert("Email or Password is not correct ...")
+        this.spinner.hide();
     })
 
 

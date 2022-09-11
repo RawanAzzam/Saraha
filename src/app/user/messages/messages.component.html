@@ -71,7 +71,7 @@
    
  
       
-          <button (click)="replyMessage()">Send Message</button>
+          <button [mat-dialog-close]="true" (click)="replyMessage()">Send Message</button>
     </form>
     
 </ng-template>
@@ -85,7 +85,7 @@
           </mat-form-field>
        
   
-          <button (click)="MsgToPost()">Reply</button>
+          <button [mat-dialog-close]="true" (click)="MsgToPost()">Reply</button>
     </form>
     
 </ng-template>
@@ -111,7 +111,7 @@
       </mat-form-field>
       <br>
         <br>
-          <button (click)="reportMessage()">Report</button>
+          <button [mat-dialog-close]="true" (click)="reportMessage()">Report</button>
     </form>
     
 </ng-template>

@@ -9,6 +9,7 @@ import { PostService } from 'src/app/Services/post.service';
 import { UserService } from 'src/app/Services/user.service';
 import * as signalR from "@microsoft/signalr";
 import { ToastrService } from 'ngx-toastr';
+import { SarahaWeatherService } from 'src/app/Services/saraha-weather.service';
 
 
 @Component({
@@ -19,9 +20,14 @@ import { ToastrService } from 'ngx-toastr';
 export class UserProfileComponent implements OnInit {
 
   constructor(public postService:PostService,public userService : UserService,public loginservice:LoginService
-    ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService,private toaster : ToastrService) { }
+    ,private dialog:MatDialog,public activityService:ActivityService,public addsService:AddsService,
+    public weather :SarahaWeatherService,private toaster : ToastrService) { }
     title = 'Frontend';
-   
+    now = new Date();
+   day1 = this.now.getDate();
+    mnth =this.now.toLocaleString('default', { month: 'short' });
+
+    
     notification:any ;
    nCount:any;
     connection = new signalR.HubConnectionBuilder()
@@ -62,6 +68,7 @@ this.postId=Id;
 }
 
   ngOnInit(): void {
+
     this.connection.on("MessageReceived", (message) => {
       console.log(message);
       
@@ -87,20 +94,20 @@ this.postId=Id;
     this.loginservice.checkIfLoginOrNot();
     this.loginservice.getLoginByUserId(this.loginservice.userId);
     this.postService.GetPostInfoByUserId(this.loginservice.userId);
+
     this.activityService.getActivityByUserId(this.loginservice.userId);
-   // this.addsService.GetAll();   
     this.addsService.GetAddById();
     this.userService.getAll();
     this.userService.Allusers();
+
     this.userService.getUserById(this.loginservice.userId);
- 
+  
+      
+
+
     
   }
-//   GetPostId(postId:any)
-//   {
-// this.postId=postId;
 
-//   }
    
 CreatePost(){
   this.postForm.value.userid = Number(localStorage.getItem('userId'));
