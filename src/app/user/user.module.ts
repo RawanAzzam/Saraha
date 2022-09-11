@@ -14,7 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';  // <<<< import it here
+import { FormsModule } from '@angular/forms'; 
 import { RouterModule } from '@angular/router';
 import { ViewProfileUserComponent } from './view-profile-user/view-profile-user.component';
 import { ToastrModule } from 'ngx-toastr';

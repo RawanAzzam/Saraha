@@ -13,6 +13,7 @@ export class FollowersComponent implements OnInit {
   constructor(public followService:FollowService,private toaster:ToastrService) { }
   title = 'Frontend';
   notification:any ;
+  nCount:any
  connection = new signalR.HubConnectionBuilder()
  .configureLogging(signalR.LogLevel.Debug)
  .withUrl("https://localhost:44324/messageHub", {
@@ -32,6 +33,14 @@ export class FollowersComponent implements OnInit {
        this.toaster.success(this.notification.userFrom +" "+this.notification.notificationText);
 
       }
+    });
+    this.connection.start().catch(err => document.write(err));
+    this.connection.on("NotCount", (count) => {
+      debugger;
+
+      console.log(count);
+      this.nCount=count;
+
     });
     this.connection.start().catch(err => document.write(err));
     
