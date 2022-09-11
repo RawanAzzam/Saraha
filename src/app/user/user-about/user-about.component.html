@@ -118,7 +118,7 @@
             <!-- **************************************************************** -->
             <div class="col-lg-8 col-md-8" >
                 <div class="central-meta">
-                    <span class="create-post">Top Posts<a href="#" title="">See All</a></span>
+                    <span class="create-post">Top Posts<a [routerLink]="['/User/']" title="">See All</a></span>
                     <div class="widget">
                         <!-- <h4 class="widget-title">Top Posts</h4> -->
             <div>
@@ -130,7 +130,7 @@
                     <div class=" central-meta item" >
                         <div class="friend-info">
                             <figure>
-                                <img src="../../../assets/{{this.userService.user.imagepath}}" alt="">
+                                <img src="../../../assets/{{this.userService.user.imagepath}}" style=" height:50px ; width:50px; object-fit:cover" alt="">
                             </figure>
                             <div class="friend-name">
                                 <!-- <div class="more">
@@ -144,7 +144,7 @@
                                         </ul>
                                     </div>
                                 </div> -->
-                                <ins><a href="time-line.html" title=""> {{post.auther}}</a>  <a style="margin-left:200px ;"  aria-hidden="true"> </a>
+                                <ins><a href="time-line.html" title=""> {{post.auther}}</a> 
                                 </ins>
                                 <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
                             </div>

@@ -11,6 +11,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { ViewProfileService } from 'src/app/Services/view-profile.service';
 import * as signalR from "@microsoft/signalr";
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-view-profile-user',
@@ -21,7 +22,7 @@ export class ViewProfileUserComponent implements OnInit {
 
   constructor(public userService: UserService, private route: ActivatedRoute, public viewService: ViewProfileService,
     private dialog: MatDialog, public messageService: MessageService,
-    private loginService: LoginService, public postService: PostService, private reportService: ReportService,
+    private spinner: NgxSpinnerService, public postService: PostService, private reportService: ReportService,
     public followService: FollowService, private toaster: ToastrService) { }
   title = 'Frontend';
   notification: any;
@@ -34,8 +35,9 @@ export class ViewProfileUserComponent implements OnInit {
     })
     .build();
   id: any
-
-  @ViewChild('callSendMessageDailog') callSendMessageDailog!: TemplateRef<any>;
+  now = new Date();
+  day1 = this.now.getDate();
+   mnth =this.now.toLocaleString('default', { month: 'short' });
   @ViewChild('callReportDailog') callReportDailog!: TemplateRef<any>;
   @ViewChild('callReportPostDailog') callReportPostDailog!: TemplateRef<any>;
 
@@ -61,6 +63,7 @@ export class ViewProfileUserComponent implements OnInit {
   @Input()
   ngSwitchCase: any
   ngOnInit(): void {
+   this.spinner.show();
     this.connection.on("MessageReceived", (message) => {
       console.log(message);
 
@@ -91,14 +94,10 @@ export class ViewProfileUserComponent implements OnInit {
     this.followService.isUserBlockMe(this.id, Number(localStorage.getItem("userId")));
     this.followService.getFollowers(this.id);
     this.followService.getFollowing(this.id);
-
+    this.spinner.hide();
   }
 
-  openSendMessageDailog() {
-    this.sendMessageForm.controls["userTo"].setValue(Number(this.id));
-
-    this.dialog.open(this.callSendMessageDailog)
-  }
+ 
 
   replyMessage() {
     if (!this.followService.isUserBlockMee) {
