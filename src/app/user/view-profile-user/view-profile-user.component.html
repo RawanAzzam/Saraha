@@ -228,7 +228,7 @@
                                 <!--Pinned Posts-->
                                 <div *ngFor="let post of this.postService.userpost">
                                     <div class="">
-                                        <div class=" central-meta item" *ngIf="post.is_Pin">
+                                        <div class=" central-meta item" *ngIf="post.is_Pin && post.postType!='msg'">
                                             <div class="friend-info">
                                                 <figure>
                                                     <img src="../../../assets/{{post.autherImage}}"
@@ -280,26 +280,7 @@
                                                     </div><!-- near by map -->
 
                                                   
-                                                    <div class="detail" style=" margin-left: -147px;"
-                                                        *ngIf="post.postType=='msg'">
-
-                                                        <div class="description">
-                                                            <div class="share-post" style="    min-height: 100px;max-height: 100px;
-                                                            min-width: 460px;max-width: 460px;margin-left: 162px;">
-                                                                <figure>
-                                                                    <i class="fa fa-share"></i>
-                                                                </figure>
-                                                                <div class="origin-name">
-                                                                    <a href="#" title="">Saraha Message</a>
-                                                                </div>
-                                                                <p style="margin-left: 0px;">
-                                                                    {{post.postText}}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
+                                                    
 
                                                     <div class="we-video-info">
                                                         <ul>
@@ -419,6 +400,148 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="central-meta item" *ngIf="post.is_Pin && post.postType=='msg'">
+                                            <div class="user-post">
+                                                <div class="friend-info">
+                                                    <figure>
+                                                        <img style="min-width:40px;max-width:40px;min-height:40px;max-height:40px"
+                                                            src="../../../../../assets/{{post.autherImage}}"
+                                                            style="object-fit:cover ; width:120px; height: 40px;" alt="">
+                                                    </figure>
+    
+                                                    <div class="friend-name">
+                                                        <div class="more">
+                                                            <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                                <!-- <ul>
+                                                                <li  (click)="deletePost(post.postId)"><i class="fa fa-trash-o"></i>Delete Post</li>                                                    
+                                                                <li (click)="PinPost(post.postId,1)"><i class="fa fa-wpexplorer"></i>Pin Post</li>
+                                                                
+                                                            </ul> -->
+                                                            </div>
+                                                        </div>
+                                                        <ins><a title="" href="time-line.html">{{post.auther}}</a><a
+                                                            style="margin-left:200px ;" class="fa fa-thumb-tack"
+                                                            aria-hidden="true"> Pinned</a></ins>
+                                                        <span>published: {{post.postDate| date :'M/d/yy, h:mm a' }}</span>
+                                                    </div>
+                                                    <div class="description">
+                                                        <p style="margin-left:6px ;">
+                                                            {{post.postReply}}
+    
+                                                        </p>
+                                                    </div>
+                                                    <div class="post-meta">
+                                                        <div class="linked-image align-left">
+                                                        </div>
+                                                        <div class="detail" style=" margin-left: -147px;">
+    
+                                                            <div class="description">
+                                                                <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                            min-width: 460px;max-width: 460px;">
+                                                                    <figure>
+                                                                        <i class="fa fa-share"></i>
+                                                                    </figure>
+                                                                    <div class="origin-name">
+                                                                        <a href="#" title="">Saraha Message</a>
+                                                                    </div>
+                                                                    <p style="margin-left: 0px;">
+                                                                        {{post.postText}}
+    
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+    
+    
+                                                        </div>
+    
+                                                        <div class="we-video-info">
+                                                            <ul>
+                                                                <li *ngIf="!this.postService.IsLike.get(post.postId)"
+                                                                    (click)="CreateLike(post.postId)"
+                                                                    style="margin-right: 13px;">
+                                                                    <span class="views" title="Likes">
+                                                                        <i class="fa fa-thumbs-o-up"></i>
+                                                                        <ins>
+                                                                            {{this.postService.likes.get(post.postId).length}}
+                                                                        </ins>
+                                                                    </span>
+                                                                </li>
+                                                                <li *ngIf="this.postService.IsLike.get(post.postId)"
+                                                                    (click)="this.postService.removeLike(this.userService.user.userid,post.postId)"
+                                                                    style="margin-right: 13px;">
+                                                                    <span class="views" title="Likes">
+                                                                        <i class="fa fa-thumbs-up"
+                                                                            style="color:#fa6342"></i>
+                                                                        <ins>
+                                                                            {{this.postService.likes.get(post.postId).length}}
+                                                                        </ins>
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="comment" title="Comments">
+                                                                        <a (click)="changePostId(post.postId)" type="button"
+                                                                            class="" data-toggle="modal"
+                                                                            data-target="#Comments">
+                                                                            <i data-target="#exampleModalCenter"
+                                                                                class="fa fa-commenting"></i>
+                                                                        </a>
+    
+                                                                        <ins>{{this.postService.Comments.get(post.postId).length}}
+                                                                        </ins>
+                                                                    </span>
+                                                                </li>
+    
+    
+                                                            </ul>
+                                                            <div class="users-thumb-list">
+                                                                <!-- <a data-toggle="tooltip" title="Anderw">
+                                                                <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                                            </a>
+                                                        -->
+                                                                <span><strong></strong> <b></b><a title="">+
+                                                                        {{this.postService.likes.get(post.postId).length}}
+                                                                        more </a>
+                                                                    <a (click)="changePostId(post.postId)" type="button"
+                                                                        class="" data-toggle="modal"
+                                                                        data-target="#exampleModalCenter">
+                                                                        See All Likes
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="coment-area" style="display: block;">
+                                                            <ul class="we-comet">
+                                                                <li class="post-comment">
+                                                                    <div class="comet-avatar">
+                                                                        <img src="images/resources/nearly1.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="post-comt-box">
+                                                                        <form [formGroup]="CommentForm">
+                                                                            <textarea style=" margin-left: -22px;"
+                                                                                formControlName="commenttext"
+                                                                                placeholder="Post your comment"></textarea>
+                                                                            <input formControlName="userid" hidden>
+                                                                            <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
+                                                                            <div class="add-smiles">
+    
+    
+                                                                            </div>
+                                                                            <a class="addnewforum"
+                                                                                style="color: white;; cursor: pointer;    margin-right: 19px; margin-top: 10px;"
+                                                                                (click)="createComment(post.postId)"
+                                                                                type="submit">submit</a>
+    
+                                                                        </form>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +550,7 @@
                             <!--************************************* Pinnn Posttt Finish ************************************************-->
                             <div *ngIf="!this.followService.isUserBlockMee">
                                 <div *ngFor="let post of this.postService.userpost">
-                                    <div class="central-meta item" *ngIf="post.postType=='msg'">
+                                    <div class="central-meta item" *ngIf="post.postType=='msg' && !post.is_Pin">
                                         <div class="user-post">
                                             <div class="friend-info">
                                                 <figure>
