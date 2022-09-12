@@ -184,7 +184,11 @@ export class PostService {
   Top3Post(userId: number) {
     this.http.get('https://localhost:44324/api/Post/Top3Post/' + userId).subscribe((result) => {
       this.Top3post = result;
-
+      for (let x of this.Top3post) { 
+        this.GetPostLikedBy(x.postId);
+        this.GetPostCommentBy(x.postId);
+        this.CheckIfLiked(Number(localStorage.getItem("userId")), x.postId);
+      }
       console.log(result);
     }, Error => {
       console.log(Error);

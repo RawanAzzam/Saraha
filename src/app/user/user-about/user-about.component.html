@@ -56,1250 +56,300 @@
                             </div>
                         </aside>	
                     </div>	
-                    <!-- <div class="col-lg-8 col-md-8">
-                        <div class="central-meta">
-                            <span class="create-post">Posts<a href="#" title="">See All</a></span>
-                            <div class="widget">
-                                <h4 class="widget-title">Top Posts</h4>
-                                <ul class="activitiez" *ngFor="let post of this.post.Top3post.slice(this.post.Top3post.length - 4,this.post.Top3post.length-1)">
-                                    <li>
-                                        
-                                    <li>
-                                        <div class="activity-meta">
-                                            <i>30 Days Ago</i>
-                                            <span><a href="#" title="">Posted your status. “Hello guys, how are you?”</a></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="activity-meta">
-                                            <i>2 Years Ago</i>
-                                            <span><a href="#" title="">Share a video on her timeline.</a></span>
-                                            <h6>"<a href="#">you are so funny mr.been.</a>"</h6>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-
-
-                        <!-- <div class="central-meta">
-                            <span class="create-post">Photos &amp; Likes (3) <a href="#" title="">See All</a></span>
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="fav-play">
-                                        <figure>
-                                            <img src="./assets/sar/images/resources/tvplay1.jpg" alt="">
-                                        </figure>	
-                                        <span class="tv-play-title">Attaturk Tv Series 2017 </span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="fav-play">
-                                        <figure>
-                                            <img src="./assets/sar/images/resources/tvplay2.jpg" alt="">
-                                        </figure>	
-                                        <span class="tv-play-title">Thor Hollywood Movie 2017 </span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="fav-play">
-                                        <figure>
-                                            <img src="./assets/sar/images/resources/tvplay3.jpg" alt="">
-                                        </figure>	
-                                        <span class="tv-play-title">Spider Men 2015 </span>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div> -->
-                  
-                 
+                    
 
             <!-- **************************************************************** -->
-            <div class="col-lg-8 col-md-8" >
+            <div class="col-lg-9 col-md-9" >
                 <div class="central-meta">
-                    <span class="create-post">Top Posts<a [routerLink]="['/User/']" title="">See All</a></span>
-                    <div class="widget">
-                        <!-- <h4 class="widget-title">Top Posts</h4> -->
-            <div>
-                             
-                <div  class="">
-                  
-                    <div *ngFor="let post of this.post.Top3post.slice(this.post.Top3post.length - 4,this.post.Top3post.length-1)" >
-                        <div class ="">
-                    <div class=" central-meta item" >
-                        <div class="friend-info">
-                            <figure>
-                                <img src="../../../assets/{{this.userService.user.imagepath}}" style=" height:50px ; width:50px; object-fit:cover" alt="">
-                            </figure>
-                            <div class="friend-name">
-                                <!-- <div class="more">
-                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                        <ul>
-                                            <li (click)="updateDailog(post)"><i class="fa fa-pencil-square-o"></i>Edit Post</li>
-                                            <li (click)="deletePost(post.postId)"><i class="fa fa-trash-o">Delete Post</i></li>
-                                        
-                                            <li (click)="PinPost(post.postId,0)"><i class="fa fa-wpexplorer"></i>Un Pin Post</li>
-                                            <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
-                                        </ul>
-                                    </div>
-                                </div> -->
-                                <ins><a href="time-line.html" title=""> {{post.auther}}</a> 
-                                </ins>
-                                <span><i class="fa fa-globe"></i> published: {{post.postDate | date}}</span>
-                            </div>
-                            <div class="post-meta">
-                                <div class="post-map">
-                                    <div class="nearby-map">
+                    <span class="create-post">Top Posts<a [routerLink]="['/user/']" title="">See All</a></span>
+
+                    <div *ngFor="let post of this.postService.Top3post.slice(this.postService.Top3post.length - 4,this.postService.Top3post.length-1)"  >
+                            <div *ngIf="post.postType=='post'" class="central-meta item">
+
+                                <!--Postttt-->
+
+                                <div >
+                                    <div class="friend-info">
                                         <figure>
-                                            <!-- <img src="./../../assets/Images/{{post.postImage}}" alt="">
+                                            <img src="../../../assets/{{this.userService.user.imagepath}}"
+                                                style="object-fit:cover ; width:40px; height: 40px; " alt="">
                                         </figure>
-                                    </div> -->
-                                    <ul class="like-dislike">
-                                        <li><a class="bg-purple" title="Save to Pin Post"><i class="fa fa-thumb-tack"></i></a></li>
-                                        <li><a class="bg-blue" title="Like Post"><i  class="ti-thumb-up"></i></a></li>
-                                        <li><a style="align-items:center ;align-content: center;" class="bg-red"title="Love Post"><i style="margin-top:3px ;height: 2px;" class="ti-heart"></i></a></li>
-                                    </ul></figure></div>
-                                </div><!-- near by map -->
+                                        <div class="friend-name">
+                                            <div class="more">
+                                                <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                   
+                                                </div>
+                                            </div>
+                                            <ins><a href="time-line.html" title=""> {{post.auther}}</a></ins>
+                                            <span><i class="fa fa-globe"></i> published: {{post.postDate | date
+                                                :'M/d/yy, h:mm a' }}</span>
+                                        </div>
 
-                                <div class="description">
-                                    <p>
-                                        {{post.postText}} 
-                                    </p>
-                                    <figure>
-                                        <img src="./../../assets/Images/{{post.postImage}}" alt="">
-                                    </figure>
+                                        <div class="post-meta">
+                                            <div class="post-map">
+                                                <div class="description">
+                                                    <p>
+                                                        {{post.postText}}
+                                                    </p>
+                                                </div>
+                                                <div class="nearby-map" *ngIf="post.postImage!=null">
+                                                    <figure>
+                                                        <img src="./../../assets/{{post.postImage}}" alt="">
+                                                    </figure>
+                                                </div>
+                                                <ul class="like-dislike">
+                                                   
+
+                                                </ul>
+                                            </div><!-- near by map -->
+
+
+                                            <div class="we-video-info">
+                                                <ul>
+                                                    <li *ngIf="!this.postService.IsLike.get(post.postId)"
+                                                       
+                                                        style="margin-right: 13px;">
+                                                        <span class="views" title="views">
+                                                            <i class="fa fa-thumbs-o-up"></i>
+                                                            <ins>
+                                                                {{this.postService.likes.get(post.postId).length}}
+                                                            </ins>
+                                                        </span>
+                                                    </li>
+                                                    <li *ngIf="this.postService.IsLike.get(post.postId)"
+                                                       
+                                                        style="margin-right: 13px;">
+                                                        <span class="views" title="views">
+                                                            <i class="fa fa-thumbs-up"
+                                                                style="color:#fa6342"></i>
+                                                            <ins>
+                                                                {{this.postService.likes.get(post.postId).length}}
+                                                            </ins>
+                                                        </span>
+                                                    </li>
+
+
+                                                    <li>
+                                                        <span class="comment" title="Comments">
+                                                            <a (click)="changePostId(post.postId)" type="button"
+                                                                class="" data-toggle="modal"
+                                                                data-target="#Comments">
+                                                                <i data-target="#exampleModalCenter"
+                                                                    class="fa fa-commenting"></i>
+                                                            </a>
+                                                            <ins>{{this.postService.Comments.get(post.postId).length}}</ins>
+                                                        </span>
+                                                    </li>
+
+
+                                                </ul>
+                                                <div class="users-thumb-list">
+
+                                                    <span><strong></strong> <b></b><a title="">+
+                                                            {{this.postService.likes.get(post.postId).length}}
+                                                            more </a>
+                                                        <a (click)="changePostId(post.postId)" type="button"
+                                                            class="" data-toggle="modal"
+                                                            data-target="#exampleModalCenter">
+                                                            See All Likes
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="coment-area" style="display: block;">
+                                                
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
                                 </div>
-                               
-                                <div class="we-video-info">
-                                    <ul>
-                                        <!-- <li  (click)="CreateLike(post.postId)" style="margin-right: 13px;"> -->
-                                    <li  style="margin-right: 13px;">
-                                            <span class="views" title="views">  <i class="fa fa-thumbs-up"></i>
-                                                <ins> {{post.likes}} </ins>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <div class="likes heart" title="Loves">❤ <span>{{post.likes}}</span></div>
-                                        </li>
-                                        <li>
-                                            <span class="comment" title="Comments">
-                                                <i class="fa fa-commenting"></i>
-                                                <ins>{{post.comments}} </ins>
-                                            </span>
-                                        </li>
 
-                                     
-                                    </ul>
-                                    <div class="users-thumb-list" >
-                                        <a data-toggle="tooltip" title="Anderw">
-                                            <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
-                                        </a>
-                                   
-                                        <span><strong></strong>, <b>Sarah</b> and <a title="">24+ more</a> liked</span>
+                            </div>
+                            <div class="central-meta item" *ngIf="post.postType=='msg'">
+                                <div class="user-post">
+                                    <div class="friend-info">
+                                        <figure>
+                                            <img style="min-width:40px;max-width:40px;min-height:40px;max-height:40px"
+                                                src="../../../../../assets/{{this.userService.user.imagepath}}"
+                                                style="object-fit:cover ; width:40px; height: 40px;" alt="">
+                                                
+                                        </figure>
+
+                                        <div class="friend-name">
+                                            <div class="more">
+                                                <div class="more-post-optns"><i class="ti-more-alt"></i>
+                                                  
+                                                </div>
+                                            </div>
+                                            <ins><a title="" href="time-line.html">{{post.auther}}</a></ins>
+                                            <span>published: {{post.postDate| date :'M/d/yy, h:mm a' }}</span>
+                                        </div>
+                                        <div class="description">
+                                            <p style="margin-left:6px ;">
+                                                {{post.postReply}}
+
+                                            </p>
+                                        </div>
+                                        <div class="post-meta">
+                                            <div class="linked-image align-left">
+                                            </div>
+                                            <div class="detail" style=" margin-left: -147px;">
+
+                                                <div class="description">
+                                                    <div class="share-post" style="    min-height: 100px;max-height: 100px;
+                                                    min-width: 460px;max-width: 460px;">
+                                                        <figure>
+                                                            <i class="fa fa-share"></i>
+                                                        </figure>
+                                                        <div class="origin-name">
+                                                            <a href="#" title="">Saraha Message</a>
+                                                        </div>
+                                                        <p style="margin-left: 0px;">
+                                                            {{post.postText}}
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="we-video-info">
+                                                <ul>
+                                                    <li *ngIf="!this.postService.IsLike.get(post.postId)"
+                                                      
+                                                        style="margin-right: 13px;">
+                                                        <span class="views" title="views">
+                                                            <i class="fa fa-thumbs-o-up"></i>
+                                                            <ins>
+                                                                {{this.postService.likes.get(post.postId).length}}
+                                                            </ins>
+                                                        </span>
+                                                    </li>
+                                                    <li *ngIf="this.postService.IsLike.get(post.postId)"
+                                                       
+                                                        style="margin-right: 13px;">
+                                                        <span class="views" title="views">
+                                                            <i class="fa fa-thumbs-up"
+                                                                style="color:#fa6342"></i>
+                                                            <ins>
+                                                                {{this.postService.likes.get(post.postId).length}}
+                                                            </ins>
+                                                        </span>
+                                                    </li>
+
+
+                                                    <li>
+                                                        <span class="comment" title="Comments">
+                                                            <a (click)="changePostId(post.postId)" type="button"
+                                                                class="" data-toggle="modal"
+                                                                data-target="#Comments">
+                                                                <i data-target="#exampleModalCenter"
+                                                                    class="fa fa-commenting"></i>
+                                                            </a>
+
+                                                            <ins>{{this.postService.Comments.get(post.postId).length}}
+                                                            </ins>
+                                                        </span>
+                                                    </li>
+
+
+                                                </ul>
+                                                <div class="users-thumb-list">
+                                                    <!-- <a data-toggle="tooltip" title="Anderw">
+                                                        <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
+                                                    </a>
+                                                -->
+                                                    <span><strong></strong> <b></b><a title="">+
+                                                            {{this.postService.likes.get(post.postId).length}}
+                                                            more </a>
+                                                        <a (click)="changePostId(post.postId)" type="button"
+                                                            class="" data-toggle="modal"
+                                                            data-target="#exampleModalCenter">
+                                                            See All Likes
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                          
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="coment-area" >
-                                <ul class="we-comet">
-                                    <li>
-                                        <div class="comet-avatar">
-                                            <img src="../../../assets/sar/images/resources/nearly3.jpg" alt="">
-                                        </div>
-                                        <div class="we-comment">
-                                            <h5><a href="time-line.html" title="">Jason borne</a></h5>
-                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-                                            <div class="inline-itms">
-                                                <span>1 year ago</span>
-                                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                                <a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-                                            </div>
-                                        </div>
-
-                                    </li>
-                                  
-                                    <li>
-                                        <a href="#" title="" class="showmore underline">more comments+</a>
-                                    </li>
-                                   
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-              </div> 
             
-            <br/>
-            </div></div></div>
-         <!-- ************************************************************************* -->
-
-         
-            <!-- <div class="tab-pane" id="link2">
-              
-            </div>
-            <div class="tab-pane fade" id="link3">
-               
-            </div>
-            <div class="tab-pane fade" id="link4">
-                <div class="central-meta">
-                    <div class="create-post">Followers</div>
-                        <div class="row merged20">
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure1.jpg" alt="">
-                                    </figure>
+            </div></div>
     
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Adam James</a>
-                                            <span>Los Angeles, CA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure2.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Andrew</a>
-                                            <span>Tornoto, Canada</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure3.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Arnold</a>
-                                            <span>Istanbul, Turky</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure4.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Ella Jhon</a>
-                                            <span>Maxico city, USA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure5.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Madison</a>
-                                            <span>Los Angeles, CA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure6.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Victoria</a>
-                                            <span>Brazil</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure7.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Lillian</a>
-                                            <span>Mumbai India</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure8.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Xing wing</a>
-                                            <span>Beijing, China</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure9.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Anson</a>
-                                            <span>Spain</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure10.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Babson</a>
-                                            <span>London, Uk</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure11.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Sarah</a>
-                                            <span>Islamabad, Pakistan</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure12.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Aishweria</a>
-                                            <span>New Delhi, India</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure13.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Jason Bill</a>
-                                            <span>Los Angeles, CA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure14.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Camila</a>
-                                            <span>Washington DC, USA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure15.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Sofia</a>
-                                            <span>Los Angeles, CA</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="friend-block">
-                                    <div class="more-opotnz">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                        <ul>
-                                            <li><a href="#" title="">Block</a></li>
-                                            <li><a href="#" title="">UnBlock</a></li>
-                                            <li><a href="#" title="">Mute Notifications</a></li>
-                                            <li><a href="#" title="">hide from friend list</a></li>
-                                        </ul>
-                                    </div>
-                                    <figure>
-                                        <img src="./assets/sar/images/resources/frnd-figure16.jpg" alt="">
-                                    </figure>
-    
-                                    <div class="frnd-meta">
-                                        <div class="frnd-name">
-                                            <a href="#" title="">Riley</a>
-                                            <span>London, Uk</span>
-                                        </div>
-                                        <a class="send-mesg" href="#" title="">Message</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <div class="tab-pane fade" id="link5">
-                <div class="central-meta">
-                    <div class="create-post">Following</div>
-                    <div class="row merged20">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure14.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Camila</a>
-                                        <span>Washington DC, USA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure15.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Sofia</a>
-                                        <span>Los Angeles, CA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure5.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Madison</a>
-                                        <span>Los Angeles, CA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure6.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Victoria</a>
-                                        <span>Brazil</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure7.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Lillian</a>
-                                        <span>Mumbai India</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure16.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Riley</a>
-                                        <span>London, Uk</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure1.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Adam James</a>
-                                        <span>Los Angeles, CA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure2.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Andrew</a>
-                                        <span>Tornoto, Canada</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure3.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Arnold</a>
-                                        <span>Istanbul, Turky</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure4.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Ella Jhon</a>
-                                        <span>Maxico city, USA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure8.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Xing wing</a>
-                                        <span>Beijing, China</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure9.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Anson</a>
-                                        <span>Spain</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure10.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Babson</a>
-                                        <span>London, Uk</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure11.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Sarah</a>
-                                        <span>Islamabad, Pakistan</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure12.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Aishweria</a>
-                                        <span>New Delhi, India</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="friend-block">
-                                <div class="more-opotnz">
-                                    <i class="fa fa-ellipsis-h"></i>
-                                    <ul>
-                                        <li><a href="#" title="">Block</a></li>
-                                        <li><a href="#" title="">UnBlock</a></li>
-                                        <li><a href="#" title="">Mute Notifications</a></li>
-                                        <li><a href="#" title="">hide from friend list</a></li>
-                                    </ul>
-                                </div>
-                                <figure>
-                                    <img src="./assets/sar/images/resources/frnd-figure13.jpg" alt="">
-                                </figure>
-    
-                                <div class="frnd-meta">
-                                    <div class="frnd-name">
-                                        <a href="#" title="">Jason Bill</a>
-                                        <span>Los Angeles, CA</span>
-                                    </div>
-                                    <a class="send-mesg" href="#" title="">Message</a>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div>	
-            </div>
-            <div class="tab-pane fade" id="link6">
-                <div class="central-meta">
-                    <div class="user-post">
-                        <div class="friend-info">
-                            <figure>
-                                <img alt="" src="images/resources/nearly2.jpg">
-                            </figure>
-                            <div class="friend-name">
-                                <div class="more">
-                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                        <ul>
-                                            <li class="send-mesg"><i class="fa fa-comment"></i>Send Message</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <ins><a title="" href="time-line.html">Jack Carter</a> Post</ins>
-                                <span><i class="fa fa-globe"></i> published: September,15 2020 19:PM </span>
-                                
-                            </div>
-                            <div class="post-meta searched">
-                                <div class="linked-image align-right">
-                                    <a title="" href="#"><img alt="" src="images/resources/search-2.jpg"></a>
-                                </div>
-                                <div class="detail">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labor... </p>
-                                </div>		
-                                <div class="we-video-info">
-                                    <ul>
-                                        <li>
-                                            <span title="views" class="views">
-                                                <i class="fa fa-eye"></i>
-                                                <ins>1.2k</ins>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
-                                        </li>
-                                        <li>
-                                            <span title="Comments" class="comment">
-                                                <i class="fa fa-commenting"></i>
-                                                <ins>52</ins>
-                                            </span>
-                                        </li>
-    
-                                        <li>
-                                            <span>
-                                                <a title="Share" href="#" class="share-pst">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                                <ins>20</ins>
-                                            </span>	
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="coment-area" style="display: none;">
-                                <ul class="we-comet">
-                                    <li>
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-1.jpg">
-                                        </div>
-                                        <div class="we-comment">
-                                            <h5><a title="" href="time-line.html">Jason borne</a></h5>
-                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-                                            <div class="inline-itms">
-                                                <span>1 year ago</span>
-                                                <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
-                                                <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
-                                            </div>
-                                        </div>
-    
-                                    </li>
-                                    <li>
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-2.jpg">
-                                        </div>
-                                        <div class="we-comment">
-                                            <h5><a title="" href="time-line.html">Sophia</a></h5>
-                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-                                                <i class="em em-smiley"></i>
-                                            </p>
-                                            <div class="inline-itms">
-                                                <span>1 year ago</span>
-                                                <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
-                                                <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="showmore underline" title="" href="#">more comments+</a>
-                                    </li>
-                                    <li class="post-comment">
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-2.jpg">
-                                        </div>
-                                        <div class="post-comt-box">
-                                            <form method="post">
-                                                <textarea placeholder="Post your comment"></textarea>
-                                                <div class="add-smiles">
-                                                    <div class="uploadimage">
-                                                        <i class="fa fa-image"></i>
-                                                        <label class="fileContainer">
-                                                            <input type="file">
-                                                        </label>
-                                                    </div>
-                                                    <span title="add icon" class="em em-expressionless"></span>
-                                                    <div class="smiles-bunch">
-                                                        <i class="em em---1"></i>
-                                                        <i class="em em-smiley"></i>
-                                                        <i class="em em-anguished"></i>
-                                                        <i class="em em-laughing"></i>
-                                                        <i class="em em-angry"></i>
-                                                        <i class="em em-astonished"></i>
-                                                        <i class="em em-blush"></i>
-                                                        <i class="em em-disappointed"></i>
-                                                        <i class="em em-worried"></i>
-                                                        <i class="em em-kissing_heart"></i>
-                                                        <i class="em em-rage"></i>
-                                                        <i class="em em-stuck_out_tongue"></i>
-                                                    </div>
-                                                </div>
-    
-                                                <button type="submit"></button>
-                                            </form>	
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="central-meta no-margin">
-                    <div class="user-post">
-                        <div class="friend-info">
-                            <figure>
-                                <img alt="" src="images/resources/nearly1.jpg">
-                            </figure>
-                            
-                            <div class="friend-name">
-                                <div class="more">
-                                    <div class="more-post-optns"><i class="ti-more-alt"></i>
-                                        <ul>
-                                            <li class="send-mesg"><i class="fa fa-comment"></i>Send Message</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <ins><a title="" href="time-line.html">Jack Carter</a> Post</ins>
-                                <span><i class="fa fa-globe"></i> published: September,15 2020 19:PM </span>
-                            </div>
-                            <div class="post-meta searched">
-                                <div class="linked-image align-right">
-                                    <a title="" href="#"><img alt="" src="images/resources/search-1.jpg"></a>
-                                </div>
-                                <div class="detail">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labor... </p>
-                                </div>		
-                                <div class="we-video-info">
-                                    <ul>
-                                        <li>
-                                            <span title="views" class="views">
-                                                <i class="fa fa-eye"></i>
-                                                <ins>1.2k</ins>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
-                                        </li>
-                                        <li>
-                                            <span title="Comments" class="comment">
-                                                <i class="fa fa-commenting"></i>
-                                                <ins>52</ins>
-                                            </span>
-                                        </li>
-    
-                                        <li>
-                                            <span>
-                                                <a title="Share" href="#" class="share-pst">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                                <ins>20</ins>
-                                            </span>	
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="coment-area" style="display: none;">
-                                <ul class="we-comet">
-                                    <li>
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-1.jpg">
-                                        </div>
-                                        <div class="we-comment">
-                                            <h5><a title="" href="time-line.html">Jason borne</a></h5>
-                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-                                            <div class="inline-itms">
-                                                <span>1 year ago</span>
-                                                <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
-                                                <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
-                                            </div>
-                                        </div>
-    
-                                    </li>
-                                    <li>
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-2.jpg">
-                                        </div>
-                                        <div class="we-comment">
-                                            <h5><a title="" href="time-line.html">Sophia</a></h5>
-                                            <p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-                                                <i class="em em-smiley"></i>
-                                            </p>
-                                            <div class="inline-itms">
-                                                <span>1 year ago</span>
-                                                <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
-                                                <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="showmore underline" title="" href="#">more comments+</a>
-                                    </li>
-                                    <li class="post-comment">
-                                        <div class="comet-avatar">
-                                            <img alt="" src="images/resources/comet-2.jpg">
-                                        </div>
-                                        <div class="post-comt-box">
-                                            <form method="post">
-                                                <textarea placeholder="Post your comment"></textarea>
-                                                <div class="add-smiles">
-                                                    <div class="uploadimage">
-                                                        <i class="fa fa-image"></i>
-                                                        <label class="fileContainer">
-                                                            <input type="file">
-                                                        </label>
-                                                    </div>
-                                                    <span title="add icon" class="em em-expressionless"></span>
-                                                    <div class="smiles-bunch">
-                                                        <i class="em em---1"></i>
-                                                        <i class="em em-smiley"></i>
-                                                        <i class="em em-anguished"></i>
-                                                        <i class="em em-laughing"></i>
-                                                        <i class="em em-angry"></i>
-                                                        <i class="em em-astonished"></i>
-                                                        <i class="em em-blush"></i>
-                                                        <i class="em em-disappointed"></i>
-                                                        <i class="em em-worried"></i>
-                                                        <i class="em em-kissing_heart"></i>
-                                                        <i class="em em-rage"></i>
-                                                        <i class="em em-stuck_out_tongue"></i>
-                                                    </div>
-                                                </div>
-    
-                                                <button type="submit"></button>
-                                            </form>	
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-                      -->
-
-<!-- content -->
 </div>
 </div>
 </div>
    
 </div>	
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngFor="let user of this.postService.likes.get(this.postId)">
+
+                <img src="../../../assets/{{user.userLikeImage}}" style="border-radius:50%; object-fit:cover; height:50px; width:50px" class="topic-data" alt="">
+                {{user.likeFrom}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Comments">
+    <div class="modal-dialog" style="max-width:600px ;">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">Comments
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <div class="col-lg-12">
+
+                    <div style="display: block;" class="coment-area">
+                        <ul class="we-comet">
+                            <li *ngFor="let comment of this.postService.Comments.get(this.postId)">
+                                <div class="comet-avatar">
+                                    <img alt="" src="../../../assets/{{comment.image}}"
+                                    style="border-radius:50%; object-fit:cover; height:50px; width:50px">
+                                </div>
+                                <div class="we-comment">
+                                    <h5 style="color:#FA6342 ;">{{comment.commentFrom}}</h5>
+                                    <br>
+                                    <p > {{comment.commentText}}</p>
+                                    <div class="inline-itms">
+                                        <span>{{comment.commentDate| date}}</span>
+                                       
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
 </div>

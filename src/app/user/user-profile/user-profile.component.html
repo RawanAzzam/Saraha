@@ -144,61 +144,10 @@
                                                 (click)="CreatePost()">Post</button>
                                         </div>
                                     </form>
-                                    <!-- <div class="add-location-post">
-                                        <span>Drag map point to selected area</span>
-                                        <div class="row">
-
-                                            <div class="col-lg-6">
-                                                  <label class="control-label">Lat :</label>
-                                                  <input type="text" class="" id="us3-lat" />
-                                            </div>
-                                            <div class="col-lg-6">
-                                                  <label>Long :</label>
-                                                  <input type="text" class="" id="us3-lon" />
-                                            </div>
-                                        </div>
-                                          map -->
-                                    <!-- </div> -->
+                             
                                 </div>
 
-                            </div><!-- add post new box -->
-                            <!-- <div class="central-meta">
-                                <span class="create-post">Suggested Friend's <a href="#" title="">See All</a></span>
-                              
-                                <ul class="suggested-frnd-caro">
-                                  
-                                    <li style="display:inline-block;">
-                                        <div *ngFor="let user of userService.Allusers .slice(this.userService.Allusers.length - 4,this.userService.Allusers.length-1 )" >
-                                        <img src="../../../assets/{{user.imagepath}}" height="100" width="100" alt="">
-                                        <div class="sugtd-frnd-meta">
-                                            <a href="#" title="">{{user.username}}</a>
-                                            <span>1 mutual friend</span> -->
-                            <!-- <ul class="add-remove-frnd">
-                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i class="fa fa-user-plus"></i></a></li>
-                                                <li class="remove-frnd"><a href="#" title="remove friend"><i class="fa fa-user-times"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        </div>
-                                    </li>
-                                   
-                                
-                                    <li>
-                                        <img src="../../../assets/user/images/resources/recent6.jpg" alt="">
-                                        <div class="sugtd-frnd-meta">
-                                            <a href="#" title="">Amelia</a>
-                                            <span>3 mutual friend</span>
-                                            <ul class="add-remove-frnd">
-                                                <li class="add-tofrndlist"><a href="#" title="Add friend"><i class="fa fa-user-plus"></i></a></li>
-                                                <li class="remove-frnd"><a href="#" title="remove friend"><i class="fa fa-user-times"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                
-                                </ul>
-                            </div> -->
-                            <!-- suggested friends -->
-
-                            <!-- **************************     -->
+                            </div>
                             <div style="margin-bottom:-31px ;" class="central-meta">
                                 <span class="create-post">Suggested Friend's <a [routerLink]="['/user/search']"
                                         title="">See All</a></span>
@@ -528,10 +477,7 @@
 
                                                                 </ul>
                                                                 <div class="users-thumb-list">
-                                                                    <!-- <a data-toggle="tooltip" title="Anderw">
-                                                                <img alt="" src="../../../assets/sar/images/resources/userlist-1.jpg">  
-                                                            </a>
-                                                        -->
+                                                                 
                                                                     <span><strong></strong> <b></b><a title="">+
                                                                             {{this.postService.likes.get(post.postId).length}}
                                                                             more </a>
@@ -855,29 +801,10 @@
                                                                             formControlName="commenttext"
                                                                             placeholder="Post your comment"></textarea>
                                                                         <input formControlName="userid" hidden>
-                                                                        <!-- <input formControlName="postid" value="{{post.postId}}" hidden> -->
                                                                         <div class="add-smiles">
-                                                                            <!-- <div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div> -->
+                                                                      
                                                                             <span class="" title=""></span>
-                                                                            <!-- <div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div> -->
+                                                                  
 
                                                                         </div>
                                                                         <a class="addnewforum" style="color: white;    margin-right: 19px;

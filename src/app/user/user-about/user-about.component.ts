@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserAboutComponent implements OnInit {
 
-  constructor(public userService:UserService,private loginService:LoginService,public post:PostService,private toaster:ToastrService) { }
+  constructor(public userService:UserService,private loginService:LoginService,public postService:PostService,private toaster:ToastrService) { }
   nCount :any;
   title = 'Frontend';
   notification:any ;
@@ -48,7 +48,12 @@ export class UserAboutComponent implements OnInit {
     this.loginService.checkIfLoginOrNot();
     this.userService.getUserById(this.loginService.userId);
     this.loginService.getLoginByUserId(this.loginService.userId);
-    this.post.Top3Post(this.loginService.userId);
+    this.postService.Top3Post(this.loginService.userId);
   }
 
+  postId:any
+
+  changePostId(Id:any){
+    this.postId=Id;
+    }
 }
