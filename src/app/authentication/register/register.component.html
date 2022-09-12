@@ -74,11 +74,7 @@
                             
                                 <button class="b"  type="submit" (click)="CreateUser()" cdkFocusInitial>Register</button>
                             </form>
-                            <a data-ripple="" title="" href="#" class="with-smedia facebook"><i class="fa fa-facebook"></i></a>
-                            <a data-ripple="" title="" href="#" class="with-smedia twitter"><i class="fa fa-twitter"></i></a>
-                            <a data-ripple="" title="" href="#" class="with-smedia instagram"><i class="fa fa-instagram"></i></a>
-                            <a data-ripple="" title="" href="#" class="with-smedia google"><i class="fa fa-google-plus"></i></a>
-                            <span>already have an account? <a class="we-account underline" href="#" title="">Sign in</a></span>
+                            <span>already have an account? <a class="we-account underline" [routerLink]="['/authentication/Login']" title="">Sign in</a></span>
                         </div>
                     </div>
                     
