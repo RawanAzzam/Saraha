@@ -44,22 +44,50 @@ export class FollowService {
    })
   }
 
-  deleteFollowByUser(userFrom:number,userTo:number){
-    this.http.get("https://localhost:44324/api/Follow/DeleteFollowByUser/"+userFrom+"/"+userTo).subscribe((result) => {
-      this.isFollow(userFrom,userTo);
+  blockUserAndUpdateUser(userFrom:number,userTo:number,isBlock:number){
+    this.http.get("https://localhost:44324/api/Follow/UpdateBlockUser/"+userFrom+"/"+userTo+"/"+isBlock).subscribe((result) => {
       this.isBlock(userFrom,userTo);
+      this.isFollow(userFrom,userTo);
       this.getFollowers(userTo);
-      this.getFollowing(userFrom);
-      this.toastr.success("UnFollow/UnBlock User Successfully")
+      this.getFollowing(userTo);
+      this.toastr.success("Block User Successfully")
+     })
+    
+  }
 
+  blockUserAndUpdateMe(userFrom:number,userTo:number,isBlock:number){
+    this.http.get("https://localhost:44324/api/Follow/UpdateBlockUser/"+userFrom+"/"+userTo+"/"+isBlock).subscribe((result) => {
+      this.isBlock(userFrom,userTo);
+      this.getFollowers(userFrom);
+      this.getFollowing(userFrom);
+      this.toastr.success("Block User Successfully")
      })
 
   }
+  
+  deleteFollower(userFrom:number,userTo:number){
+    this.http.get("https://localhost:44324/api/Follow/DeleteFollowByUser/"+userFrom+"/"+userTo).subscribe((result) => {
+      this.getFollowers(userTo);
+      this.getFollowing(userTo);
+      this.toastr.success("Remove User Successfully")
+     })
+  }
 
-  updateBlockUser(userFrom : number,userTo : number, isBlock : number){
-    this.http.get("https://localhost:44324/api/Follow/UpdateBlockUser/"+userFrom+"/"+userTo+"/"+isBlock).subscribe((result) => {
+  
+  deleteFollowing(userFrom:number,userTo : number){
+    this.http.get("https://localhost:44324/api/Follow/DeleteFollowByUser/"+userFrom+"/"+userTo).subscribe((result) => {
+      this.isFollow(userFrom,userTo);
+      this.getFollowing(userFrom);
+      this.getFollowers(userTo);
+      this.toastr.success("UnFollow User Successfully")
+
+     })
+  }
+
+  UnblockUser(userFrom : number,userTo : number){
+    this.http.get("https://localhost:44324/api/Follow/DeleteFollowByUser/"+userFrom+"/"+userTo).subscribe((result) => {
       this.isBlock(userFrom,userTo);
-      this.toastr.success("Block User Successfully")
+      this.toastr.success("UnBlock User Successfully")
 
      })
   }
