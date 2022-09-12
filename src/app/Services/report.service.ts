@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private toastr:ToastrService) { }
   reports : any = [{}]
   Report :any =[{}]
   getAllUserReport(){
@@ -29,11 +30,11 @@ export class ReportService {
 
   createReport(report:any){
     this.http.post("https://localhost:44324/api/Report",report).subscribe((result) => {
-      
+      this.toastr.success("Report User Successfully")
+
     },error =>{
       console.log(error);
     })
 
-    window.location.reload();
   }
 }

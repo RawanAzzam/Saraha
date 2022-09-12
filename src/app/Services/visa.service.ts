@@ -79,7 +79,6 @@ checkVisa(cardNum:string,totalcost:number, userId:any, featureId:number){
     else if(this.mess.message=="Paid sucessfully")
     {
       this.toaster.success("Paid sucessfully");
-      window.location.reload();
     }
   },err => {
     console.log(err)
