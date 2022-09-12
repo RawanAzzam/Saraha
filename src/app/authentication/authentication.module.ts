@@ -29,6 +29,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     MatFormFieldModule,
     FormsModule,
     RouterModule,
+    
    
   ]
 })
