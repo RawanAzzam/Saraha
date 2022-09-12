@@ -187,12 +187,16 @@ export class ViewProfileUserComponent implements OnInit {
 
   }
 
-  deleteFollowByUser() {
-    this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')), Number(this.id));
+  UnblockUser(){
+    this.followService.UnblockUser(Number(localStorage.getItem('userId')), Number(this.id));
   }
 
-  updateBlockUser() {
-    this.followService.updateBlockUser(Number(localStorage.getItem('userId')), Number(this.id), 1);
+  deleteFollowing(){
+    this.followService.deleteFollowing(Number(localStorage.getItem('userId')), Number(this.id));
+  }
+
+  blockUserAndUpdateUser(){
+    this.followService.blockUserAndUpdateUser(Number(localStorage.getItem('userId')), Number(this.id),1)
   }
 
   is_anon : boolean = false 
@@ -209,5 +213,7 @@ export class ViewProfileUserComponent implements OnInit {
       this.is_anon = event.target.checked
      
   }
+
+ 
 
 }

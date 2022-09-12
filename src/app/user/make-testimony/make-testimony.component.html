@@ -31,7 +31,7 @@
                                         <li *ngFor="let test of Testimonial.testimonial">
                                             <div *ngIf="test.is_accepted">
                                                 <h6><a ><figure>
-                                                    <img style="border-radius:50%" width="50" height="50" src="../../../assets/{{test.imagePath}}" alt="">
+                                                    <img style="border-radius:50%; object-fit:cover; height:50px; width:50px"  src="../../../assets/{{test.imagePath}}" alt="">
                                                 </figure>
                                             </a> <span></span></h6>
                                                 <p>{{test.content}}</p>

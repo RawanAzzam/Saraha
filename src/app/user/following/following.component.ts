@@ -48,11 +48,11 @@ export class FollowingComponent implements OnInit {
   }
 
   deleteFollowByUser(userTo:number){
-    this.followService.deleteFollowByUser(Number(localStorage.getItem('userId')),userTo);
+    this.followService.deleteFollowing(Number(localStorage.getItem('userId')),userTo);
   }
 
   updateBlockUser(userTo:number){
-    this.followService.updateBlockUser(Number(localStorage.getItem('userId')),userTo,1);
+    this.followService.blockUserAndUpdateMe(Number(localStorage.getItem('userId')),userTo,1);
   }
 
 }

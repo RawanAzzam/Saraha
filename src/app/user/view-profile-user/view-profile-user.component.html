@@ -28,17 +28,17 @@
                                             data-toggle="tooltip">
                                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                         </a></li>
-                                    <li *ngIf="followService.isFollowUser"><a class="send-mesg"
-                                            (click)="deleteFollowByUser()" title="Unfollow" data-toggle="tooltip">
+                                    <li *ngIf="followService.isFollowUser && !followService.isBlockUser"><a class="send-mesg"
+                                            (click)="deleteFollowing()" title="Unfollow" data-toggle="tooltip">
                                             <i class="fa fa-user-o" aria-hidden="true"></i>
                                         </a></li>
                                     <li *ngIf="!followService.isBlockUser"><a class="send-mesg"
-                                            (click)="updateBlockUser()" title="Block" data-toggle="tooltip">
+                                            (click)="blockUserAndUpdateUser()" title="Block" data-toggle="tooltip">
                                             <i class="fa fa-ban" aria-hidden="true"></i>
                                         </a></li>
 
                                     <li *ngIf="followService.isBlockUser"><a class="send-mesg"
-                                            (click)="deleteFollowByUser()" title="UnBlock" data-toggle="tooltip">
+                                            (click)="UnblockUser()" title="UnBlock" data-toggle="tooltip">
                                             <i class="fa fa-window-close" aria-hidden="true"></i>
                                         </a></li>
 

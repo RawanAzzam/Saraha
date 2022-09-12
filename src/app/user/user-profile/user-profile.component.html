@@ -1032,7 +1032,7 @@
             </div>
             <div class="modal-body" *ngFor="let user of this.postService.likes.get(this.postId)">
 
-                <img src="../../../assets/{{user.userLikeImage}}" hight="50" width="50" class="topic-data" alt="">
+                <img src="../../../assets/{{user.userLikeImage}}" style="border-radius:50%; object-fit:cover; height:50px; width:50px" class="topic-data" alt="">
                 {{user.likeFrom}}
             </div>
             <div class="modal-footer">
@@ -1073,16 +1073,15 @@
                             <li *ngFor="let comment of this.postService.Comments.get(this.postId)">
                                 <div class="comet-avatar">
                                     <img alt="" src="../../../assets/{{comment.image}}"
-                                        style="width:50px ; height: 50px; object-fit: contain;">
+                                    style="border-radius:50%; object-fit:cover; height:50px; width:50px">
                                 </div>
                                 <div class="we-comment">
-                                    <h5 style="color:#FA6342 ;"><a title=""
-                                            href="time-line.html">{{comment.commentFrom}}</a></h5>
-                                    <p style="margin:30px ;"> {{comment.commentText}}</p>
+                                    <h5 style="color:#FA6342 ;">{{comment.commentFrom}}</h5>
+                                    <br>
+                                    <p > {{comment.commentText}}</p>
                                     <div class="inline-itms">
                                         <span>{{comment.commentDate| date}}</span>
-                                        <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
-                                        <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                                       
                                     </div>
                                 </div>
                             </li>
