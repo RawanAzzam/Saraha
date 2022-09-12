@@ -98,7 +98,14 @@ export class EditProfileComponent implements OnInit {
 
   changePassword(){
     if(this.passwordForm.controls['oldPasswordControl'].value == this.loginService.login.password)
-   this.loginService.changePassword(this.loginService.login.loginid,this.passwordForm.controls['newPasswordControl'].value)
+{   this.loginService.changePassword(this.loginService.login.loginid,this.passwordForm.controls['newPasswordControl'].value)
+
+  this.passwordForm.controls['oldPasswordControl'].setValue("");
+  this.passwordForm.controls['newPasswordControl'].setValue("");
+
+}   else
+   this.toaster.warning('Old Password is not correct ...');
+
   }
 
   verfiyEmail(){

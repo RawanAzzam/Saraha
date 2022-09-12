@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ActivityService } from './activity.service';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -8,7 +9,8 @@ import { LoginService } from './login.service';
 })
 export class PostService {
 
-  constructor(private http: HttpClient, public loginservice: LoginService, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, public loginservice: LoginService, private toastr: ToastrService,
+    private activityService:ActivityService) { }
   posts: any = [{}]
   postcount: any;
   postImage: any;
@@ -141,6 +143,7 @@ export class PostService {
     this.http.delete('https://localhost:44324/api/Post/delete/' + id).subscribe((resp) => {
       this.toastr.success("Delete Post Successfully")
       this.GetPostInfoByUserId(Number(localStorage.getItem("userId")));
+      this.activityService.getActivityByUserId(Number(localStorage.getItem("userId")));
     }, err => {
 
     })
