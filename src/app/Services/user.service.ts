@@ -164,6 +164,8 @@ getActivePepole(){
        if(this.user.country != null)
      { this.http.get('https://localhost:44324/weatherforecast/weather/'+this.user.country).subscribe((res)=>{
       this.weather=res;
+      console.log(this.user.country);
+
       console.log(this.weather);
       debugger
       },err=>{
