@@ -60,10 +60,10 @@ export class ServiceComponent implements OnInit {
     console.log('Value of star', star);
   }
 
-
+  // Sorry ! your card is expire!
 checkout(cost:any, featureId:any){
   debugger;
-  this.visa.checkVisa(this.VisaForm.controls['Cardnum'].value,cost,localStorage.getItem('userId'),featureId)
+  this.visa.checkVisa(this.VisaForm.controls['Cardnum'].value,this.VisaForm.controls['Expir'].value,cost,localStorage.getItem('userId'),featureId)
 }
 
 }

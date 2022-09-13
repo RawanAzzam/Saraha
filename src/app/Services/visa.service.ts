@@ -57,10 +57,10 @@ updateVisa(visa:any){
 
 
 mess: any;
-checkVisa(cardNum:string,totalcost:number, userId:any, featureId:number){
+checkVisa(cardNum:string,Expir:Date ,totalcost:number, userId:any, featureId:number){
  
   debugger;
-  this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+totalcost+'/'+userId+'/'+featureId).subscribe((result) => {
+  this.http.get('https://localhost:44324/api/Visa/GetVisa/'+cardNum+'/'+Expir+'/'+totalcost+'/'+userId+'/'+featureId).subscribe((result) => {
     this.mess=result;
     console.log(this.mess);
     if(this.mess.message=="Not enough balance")
@@ -74,6 +74,11 @@ checkVisa(cardNum:string,totalcost:number, userId:any, featureId:number){
     else if(this.mess.message== "Sorry! You already have this service")
     {
       this.toaster.error("Sorry! You already have this service");
+      
+    }
+    else if(this.mess.message== " Sorry ! your card is expire!")
+    {
+      this.toaster.error(" Sorry ! your card is expire!");
       
     }
     else if(this.mess.message=="Paid sucessfully")
